@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "kind": "operational-preflight-not-research",
+  "product_source_commit": "b620a11a72097f22e5addbfaf58b56073f9612cd",
+  "artifact_root": "/Users/armand/Development/varde-research/rules-lab-v1/preflight",
+  "files": {
+    "tests.log": "00d2a3b28e887ab4e99a546510f81680c8f40cae27650990b2ad8a6b612a2cc1",
+    "varde-rules-lab-v1-browser-baseline/shot-0.png": "d0cba7ea2311d4dce5b756a541e10dbcb10fc48b87824dc6844f4f3c4d4ecc09",
+    "varde-rules-lab-v1-browser-opening/shot-0.png": "7dd4b196dfff5b4fe07cde31939750570deb6ea23638174787d5f1f0ab3e917c",
+    "varde-rules-lab-v1-browser-swap/shot-0.png": "187e86575d38ad9e5b4e786af02ce202d9b4575c23dddd1aa4d9e92b0cb121db",
+    "varde-rules-lab-v1-browser-baseline/state-0.json": "0c8377548f943d641f24be1191b33557637f534ed39f3a51e8f1798dc9852333",
+    "varde-rules-lab-v1-browser-opening/state-0.json": "004309b61e3fb2cb407665fca4fe1d7191a6fa3973502bd4fbbbcfda0233b6c4",
+    "varde-rules-lab-v1-browser-swap/state-0.json": "81c96ae4d4c8ae7e6928acf0430955e28f64e006b7932cb26f6c0e018fcf7354"
+  },
+  "research_seconds_charged": 0
+}

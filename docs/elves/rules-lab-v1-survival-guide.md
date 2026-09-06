@@ -8,7 +8,7 @@ leading to at most three candidates. No human-beauty claims from machine metrics
 
 ## Run Control
 
-- Run mode: finite; staging now, separate launch required.
+- Run mode: finite; staging complete, separate launch required.
 - Stop policy: staging gate, then plan completion, research-budget exhaustion,
   explicit user stop, or genuine blocker/integrity failure.
 - User intent: "Use the Elves staging/launch separation" and "do not merge any PR."
@@ -24,8 +24,11 @@ leading to at most three candidates. No human-beauty claims from machine metrics
   Record every own commit; an unexpected writer/tip stops the run.
 - Merge policy: user-merges only. No merges, rebases, force pushes, or destructive cleanup.
 - Final-response policy: allowed only at the recorded Stop Gate or genuine blocker.
-- Every completed batch: update log/session/guide, commit specific files, push,
-  re-read this guide, verify plan hash, poll all new PR feedback and checks.
+- Batch completion rule: update log/session/guide, commit specific files, push.
+- Re-read rule: re-read this guide after every commit/push, verify the plan hash,
+  and poll all new PR feedback and checks.
+- Checkpoint rule: persist and reconcile at window boundaries; continue within budget.
+- Continuation rule: after launch, continue all unblocked approved work without acknowledgment.
 - Never pause for surveys, feedback requests, or update prompts.
 - No autonomous scout expansion beyond the approved research architectures/rules.
 
@@ -46,20 +49,22 @@ Six planned batches remain. Estimates are planning ranges, not launch guarantees
 ## Stop Gate
 
 - Planned batches remaining: 6.
-- Stop allowed right now: no; finish staging preflight and PR review first.
-- Why: the separate launch gate is not yet ready.
-- Next required action: finish Batch 0 staging; do not implement Batch 1 now.
+- Stop allowed right now: yes, at the mandatory fresh-launch gate.
+- Why: staging preflight is complete; the user-approved plan separates launch.
+- Next required action: after a fresh launch, verify tip/CI/hash and begin Batch 1.
 
 ## Current Phase
 
-Status: Staging. Active batch: 0, run controls and baseline verification.
-Just completed: isolated worktree from verified main; approved plan saved.
-Single next action: publish the draft PR and verify the baseline.
+Status: Launch-ready. Active batch: none; Batch 0 staging complete.
+What was just finished: draft PR #23, 254 passing baseline tests, syntax checks,
+browser opening/takeover smoke, bounded advisory, and independent staging review.
+Single next action: wait for the separate launch, then begin Batch 1.
 
 ## Active Compute
 
-No research, paid, or remote compute launched by this run. Temporary local
-preflight commands must be logged and shut down before staging handoff.
+No active local research workers, paid jobs, or preflight servers. Isolated server
+PID 90760 on port 8769 stopped cleanly after browser smoke. The bounded Fable
+call completed. GitHub's normal PR CI is the only remote verification used.
 
 ## Non-Negotiables
 
@@ -82,17 +87,26 @@ preflight commands must be logged and shut down before staging handoff.
 
 ## Next Exact Batch
 
-After a fresh launch only: Batch 1, freeze specifications and compatibility.
+Scope: after a fresh launch only, Batch 1 freezes specifications and compatibility.
 Build on the registry in `engine/varde.py`, `engine/actions.py`, existing saves,
 native/MCTS research interfaces, and `research/harness/evaluate_rulesets.py`.
 First contract must inventory consumers and freeze baseline decisions before
 touching shared surfaces. Create branch-namespaced rollback tags, e.g.
 `elves/rules-lab-v1/pre-batch-1`; never overwrite other runs' tags.
 
-Acceptance: seven revision-0.1 specs, controls, hypotheses/evidence statuses,
+Acceptance criteria: seven revision-0.1 specs, controls, hypotheses/evidence statuses,
 compatibility fixtures, protected-artifact hashes, independent oracle boundary,
 and exact research-budget accounting agreed in code/docs/tests. No match claims.
 Risk: preserving existing behavior while introducing graph and structured-action paths.
+
+Before any measured recipe outcomes, freeze these operational interpretations:
+one globally selected recipe, equally weighted by certification-complete ruleset
+development admission, then per-ruleset holdout qualification. Rulesets missing the
+minimum corpus remain admission-incomplete, not silently removed from the report.
+Use deterministic round-robin blocks across the frozen registry order (six existing,
+seven new, and applicable static controls), progressing through rungs collectively.
+Never spend the clock exhaustively on whichever ruleset was implemented first.
+Record certification eligibility before recipe tests; no outcome-dependent exclusion.
 
 ## Paths and Ownership
 
@@ -103,7 +117,7 @@ Risk: preserving existing behavior while introducing graph and structured-action
 - Preflight: `docs/elves/rules-lab-v1-preflight.md`.
 - Launch prompt: `docs/elves/rules-lab-v1-launch.md`.
 - Raw artifacts: `/Users/armand/Development/varde-research/rules-lab-v1/`, outside git.
-- PR: pending creation, base `main`; do not alter PR20–22.
+- PR: #23, base `main`; do not alter PR20–22.
 - No constitution or `.ai-docs` manifest found at the verified base; recheck at launch.
 
 ## Tool Configuration and Review
@@ -124,34 +138,43 @@ Notification: PR and current task only; no third-party channel configured.
 ## Launch Readiness
 
 - [x] Plan and run documents saved; dedicated branch/worktree owned.
-- [ ] Draft PR opened; branch push verified.
-- [ ] Baseline tests/syntax/tooling/browser preflight recorded.
-- [ ] Review and final-tip CI checked; critical failures cleared.
+- [x] Draft PR opened; branch push verified.
+- [x] Baseline tests/syntax/tooling/browser preflight recorded.
+- [x] Independent review clean; initial-tip CI green; poll closure-tip CI before handoff.
 - [x] Fresh launch prompt prepared; 0 research time charged.
+- [x] Stop Gate initialized with `Stop allowed right now: no` during staging;
+  now explicitly changed to yes for the mandatory fresh-launch pause.
 
 ## Effort Standard
 
 After launch, implement and verify the full approved scope, not just a first
 green slice. Give validation and independent review equal attention to coding.
 Use measured runtime to schedule research, never optimistic estimates to bypass gates.
+Work as hard as you can. Do not be lazy or settle for the minimum acceptable change.
+Take the next highest-value action within the approved order and gates.
 
 ## Forbidden Stop Reasons
 
-After launch, a clean commit, green CI, an opened PR, a batch boundary, user
-silence, or the volume of remaining work is not permission to stop. Only the
-explicit Stop Gate or genuine blockers apply. Staging's fresh-launch pause is
-intentional and does not grant later per-batch pauses.
+- Checkpoints are not stops after launch while allowed windows remain.
+- Commits or pushes are not stops; close the review loop and continue.
+- Green CI, an opened PR, user silence, and the volume of remaining work are not stops.
+
+Only the explicit Stop Gate or genuine blockers apply. Staging's fresh-launch
+pause is intentional and does not grant later per-batch pauses.
 
 ## Post-Checkpoint Control Loop
 
-After each commit/push, read this guide and verify the plan hash; reconcile
+Every completed batch must end with a commit and push; immediately
+re-read this survival guide before doing anything else. Verify the plan hash; reconcile
 active jobs and charged time; poll PR comments/checks; identify the next exact
 unblocked batch. Continue unless the Stop Gate explicitly permits stopping.
 Never silently leave a local worker or server running at a final handoff.
+Does the Stop Gate still say `Stop allowed right now: no`? If so, continue.
 
 ## After Any Compaction
 
 Read guide → session JSON → learnings → plan → log → relevant durable docs.
+Read the Run Control section and Stop Gate and check the JSON `continuation_guard`.
 Confirm git ownership, tip, plan hash, resources, and charged research clock.
 After launch, checkpoints/green tests/a PR/user silence are not reasons to stop.
 When MCTS cannot qualify, finish honest cards/tooling but keep dependent games

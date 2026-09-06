@@ -1,7 +1,7 @@
 {
   "session_id": "rules-lab-v1-2026-09-06",
   "version": "1.12.0",
-  "status": "staging",
+  "status": "launch_ready",
   "branch": "codex/rules-lab-v1",
   "worktree": "/Users/armand/Development/varde-rules-lab-v1",
   "base_commit": "b620a11a72097f22e5addbfaf58b56073f9612cd",
@@ -12,7 +12,9 @@
   "execution_log_path": "docs/elves/rules-lab-v1-execution-log.md",
   "preflight_path": "docs/elves/rules-lab-v1-preflight.md",
   "launch_path": "docs/elves/rules-lab-v1-launch.md",
-  "pr_number": null,
+  "pr_number": 23,
+  "pr_url": "https://github.com/scarmani/varde/pull/23",
+  "staging_commit": "a065f6dbaa8a40a4dba8fb8f17553d234f8751a0",
   "merge_policy": "never",
   "launch_authorized": false,
   "protected_pr_heads": {
@@ -33,12 +35,27 @@
   },
   "continuation_guard": {
     "remaining_batches": 6,
-    "stop_allowed": false,
+    "stop_allowed": true,
     "checkpoint_is_stop": false,
-    "next_required_action": "Finish staging preflight and draft PR, then wait for a fresh launch."
+    "next_required_action": "After a fresh launch, verify owned tip, CI and plan hash, set stop_allowed false, and start Batch 1."
   },
-  "test_baseline": {"passed": null, "total": null, "skipped": null, "status": "pending"},
-  "current_batch": {"id": 0, "name": "Staging", "status": "in_progress"},
+  "test_baseline": {"passed": 254, "total": 254, "skipped": 0, "status": "captured", "seconds": 25.285},
+  "current_batch": {"id": 0, "name": "Staging", "status": "complete"},
+  "preflight": {
+    "python": "3.13.0",
+    "node": "25.9.0",
+    "ruff": "0.14.14",
+    "python_compile": "pass",
+    "javascript_syntax": "pass",
+    "changed_python_lint": "not applicable: no changed Python",
+    "browser": "pass: startup, canvas opening, pie takeover; screenshots/text inspected; zero console errors",
+    "server_stopped": true,
+    "initial_tip_ci": "both tests checks passed at a065f6dbaa8a40a4dba8fb8f17553d234f8751a0",
+    "final_tip_ci_policy": "verify on GitHub after closure push and again before launch",
+    "independent_staging_review": "no blockers; global recipe scope and deterministic interleaving recorded",
+    "fable_goal_cycle": {"status": "success", "backend": "cli", "model": "claude-fable-5", "elapsed_seconds": 104.7},
+    "artifacts": "/Users/armand/Development/varde-research/rules-lab-v1/preflight"
+  },
   "batches": [
     {"id": 1, "name": "Freeze specifications and compatibility", "status": "pending"},
     {"id": 2, "name": "Scoring variants and graph foundation", "status": "pending"},

@@ -2,12 +2,62 @@
 
 ## Run digest
 
-- Phase: staging, Batch 0. No implementation batch completed.
+- Phase: staging complete, mandatory fresh-launch pause. No implementation batch completed.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
-- Branch: `codex/rules-lab-v1`; PR pending creation.
-- Next: finish staging and provide fresh launch instructions.
+- Branch: `codex/rules-lab-v1`; draft PR #23.
+- Next: fresh launch reads guide, verifies tip/CI/hash, and starts Batch 1.
 - Active research: none; charged time 0/129,600 seconds.
-- Report: preflight markdown pending verification; no overnight result report yet.
+- Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
+  `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Staging validation and review: 2026-09-06T23:29Z
+
+Contract status: staging-only scope delivered; closure push/check poll still required
+before final task handoff. Plan hash unchanged:
+`71517f521ca4da1ab17acc817381e52f3f05e872700ece6ec96c9ae0a59dec6c`.
+
+Verification: 254/254 unittest tests pass in 25.285 seconds (zero skipped), Python
+compileall and JavaScript syntax exit 0, Ruff available (no changed Python to lint).
+Both initial-tip GitHub test checks passed. No PR comments/reviews at initial poll.
+Tooling-only browser failure: missing matching executable, repaired by installing
+Chromium v1234. Installer removed v1228 cache automatically; record the
+`PLAYWRIGHT_SKIP_BROWSER_GC=1` mitigation rather than repeating implicit cleanup.
+The actual bundled-client smoke then verified startup, legal opening at (-1,1),
+and pie takeover (player-2 becomes Black, player-1 White, move number unchanged).
+Opened all three screenshots and inspected all three text states; no console/page
+errors. Isolated server PID90760, port8769, disposable model path, exited cleanly.
+
+Fable advisory: one bounded CLI goal cycle succeeded in 104.7 seconds. Accepted
+staging-only sequence; discarded stale advice to require HEAD still equal base
+after our own staging commit. No changed scope, duplicate commit/PR, or extra call.
+Another local task requested temporary reviewer-capacity hold; no additional
+consult was launched; the existing consult completed and capacity was later released.
+
+Independent read-only reviewer found no blocking scope or safety issue at a065f6d.
+Two pre-outcome clarifications were added to Batch 1 run controls: one global
+recipe with equal per-ruleset development weighting followed by per-ruleset
+holdout gates, and deterministic round-robin ruleset/control blocks. These resolve
+operational ambiguity without editing the approved plan or changing any rule/gate.
+Final independent closure review also found no blockers: all seven artifact hashes
+match, test log confirms 254 passes, port8769 is closed, and final-tip CI is
+explicitly not claimed before the push/check completes.
+
+Regression attestation: seven initial additive run-control files, plus one compact
+artifact index in closure; no engine, tests, browser, saves, model, or historical
+research artifact changed. Shared product surfaces modified: zero consumers.
+Baseline 254 tests; current 254, delta 0 removed/0 skipped. Confidence HIGH for
+staging isolation because cumulative paths are documentation/session metadata
+only and real baseline browser behavior was inspected, not merely syntax-tested.
+
+Initial commit: `a065f6dbaa8a40a4dba8fb8f17553d234f8751a0`, pushed and draft PR23
+opened immediately. No implementation tag yet; Batch 1 creates its namespaced
+pre-batch tag on fresh launch. Total engineering/staging elapsed about 25 minutes;
+research elapsed 0. Raw logs/screenshots/states and advisory copied outside git.
+Run-state documents updated; old `progress.md` and historical Elves docs untouched.
+
+Next: push closure docs, re-read survival guide, verify current PR checks/feedback,
+then stop at the user's mandatory launch separation. No seven-variant deliverable
+or comparative result is claimed complete.
 
 ## Session setup: 2026-09-06
 
