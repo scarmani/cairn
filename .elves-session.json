@@ -1,7 +1,7 @@
 {
   "session_id": "rules-lab-v1-2026-09-06",
   "version": "1.12.0",
-  "status": "launch_ready",
+  "status": "in_progress",
   "branch": "codex/rules-lab-v1",
   "worktree": "/Users/armand/Development/varde-rules-lab-v1",
   "base_commit": "b620a11a72097f22e5addbfaf58b56073f9612cd",
@@ -16,7 +16,8 @@
   "pr_url": "https://github.com/scarmani/varde/pull/23",
   "staging_commit": "a065f6dbaa8a40a4dba8fb8f17553d234f8751a0",
   "merge_policy": "never",
-  "launch_authorized": false,
+  "launch_authorized": true,
+  "launch_base_commit": "31f9c236d0decb5837e5046ef7f244a15faf37fc",
   "protected_pr_heads": {
     "20": "315443366ddeb499d294f47221e89c2c1dbca4d7",
     "21": "808c31720730fcf23bbc02c4549bd7151bdab3ec",
@@ -34,13 +35,13 @@
     "active_jobs": []
   },
   "continuation_guard": {
-    "remaining_batches": 6,
-    "stop_allowed": true,
+    "remaining_batches": 5,
+    "stop_allowed": false,
     "checkpoint_is_stop": false,
-    "next_required_action": "After a fresh launch, verify owned tip, CI and plan hash, set stop_allowed false, and start Batch 1."
+    "next_required_action": "Close Batch 1 push/check loop, then execute Batch 2 scoring variants and graph foundation under the frozen compatibility contract."
   },
   "test_baseline": {"passed": 254, "total": 254, "skipped": 0, "status": "captured", "seconds": 25.285},
-  "current_batch": {"id": 0, "name": "Staging", "status": "complete"},
+  "current_batch": {"id": 2, "name": "Scoring variants and graph foundation", "status": "pending"},
   "preflight": {
     "python": "3.13.0",
     "node": "25.9.0",
@@ -57,7 +58,7 @@
     "artifacts": "/Users/armand/Development/varde-research/rules-lab-v1/preflight"
   },
   "batches": [
-    {"id": 1, "name": "Freeze specifications and compatibility", "status": "pending"},
+    {"id": 1, "name": "Freeze specifications and compatibility", "status": "complete", "rollback_tag": "elves/rules-lab-v1/pre-batch-1", "tests_passed": 299, "compatibility_hash": "0797f216e00869ce6f3dbc5644f3367f89923904451657700a3a30bd57896dc6"},
     {"id": 2, "name": "Scoring variants and graph foundation", "status": "pending"},
     {"id": 3, "name": "Four junction variants", "status": "pending"},
     {"id": 4, "name": "Browser laboratory and mechanical oracle", "status": "pending"},

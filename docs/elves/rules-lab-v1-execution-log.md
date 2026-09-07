@@ -2,13 +2,62 @@
 
 ## Run digest
 
-- Phase: staging complete, mandatory fresh-launch pause. No implementation batch completed.
+- Phase: launched, Batch 1 complete; Batch 2 next after push/check closure.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
-- Next: fresh launch reads guide, verifies tip/CI/hash, and starts Batch 1.
+- Next: scoring variants and graph foundation; five batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 1 closure: 2026-09-06
+
+Delivered seven immutable revision-0.1 specifications and three static controls,
+named hypotheses and concept inventories, typed evidence cards with strict human
+observation and admission gates, an atomic locked three-window budget ledger,
+and deterministic round-robin scheduling. Live engine/server/browser remain untouched.
+
+Compatibility freeze: 103 reachable positions, 218 seeded Casual/Standard choices,
+24 saves (six rulesets × n=3–6) replayed under both legacy format identifiers,
+and 16 historical artifact digests. Fixture content hash:
+`0797f216e00869ce6f3dbc5644f3367f89923904451657700a3a30bd57896dc6`.
+Generation was guarded against the unchanged approved-base source hashes.
+
+Independent reviews found and resolved four gaps test-first: machine evidence
+could fill human-only fields, unmeasured cards could authorize shortlist membership,
+malformed hashes/counters could pass schema validation, and saves covered only Toy.
+Reviewers reran the affected tests and reported no remaining blockers.
+
+Verification: 299 tests pass, zero skips (254 baseline +45 additive tests); changed
+Python Ruff, compilation, JavaScript syntax and diff whitespace checks pass.
+Raw final log: external `rules-lab-v1/batch-1-tests-final.log`. No old tests weakened.
+Regression confidence HIGH for Batch 1 isolation: only additive modules/tests/docs,
+plus this run's metadata. Six legacy products still behave identically.
+
+One bounded Fable cycle succeeded in 123.0 seconds; receipt at
+`.aragora/goal_cycles/20260907T011308Z/`. Namespaced rollback tag
+`elves/rules-lab-v1/pre-batch-1` points to launch tip 31f9c23. Research charged 0;
+no certification, calibration or match work launched. Commit/push and exact-tip CI
+poll follow this closure; continuation remains mandatory. No merge authorized.
+
+## Batch 1 launch contract: 2026-09-06
+
+User explicitly launched the staged run. Verified clean owned tip 31f9c23 locally
+and on PR23, both CI checks successful, unchanged plan hash, no new review request.
+Continuation guard is active; staging pause no longer applies.
+
+Behaviors: immutable seven-rule/three-control specification; evidence statuses
+with provenance/uncertainty and no false zero ratings; legacy decision/save
+compatibility corpus captured before shared changes; persistent bounded research
+clock and deterministic allocation metadata. No research games/certification yet.
+Build on: current registry/actions/Game serialization, native opponent API,
+research manifest hashing and atomic checkpoint patterns. Preserve all old artifacts.
+Acceptance: specs match the frozen plan, unknown/invalid definitions rejected,
+historical source digests recorded, all parity fixtures replay exactly, budget
+projection/overlap/restart/cancellation accounting tested, full suite remains green.
+Blast radius: new lab modules/docs/tests/fixtures only; existing product consumers
+unchanged. Shared wiring is deferred to Batch 2 after parity freeze. Risk low now,
+high for later graph/actions integration. Baseline 254 tests, zero skips.
 
 ## Staging validation and review: 2026-09-06T23:29Z
 

@@ -8,7 +8,7 @@ leading to at most three candidates. No human-beauty claims from machine metrics
 
 ## Run Control
 
-- Run mode: finite; staging complete, separate launch required.
+- Run mode: finite; user issued the fresh launch on 2026-09-06; execution active.
 - Stop policy: staging gate, then plan completion, research-budget exhaustion,
   explicit user stop, or genuine blocker/integrity failure.
 - User intent: "Use the Elves staging/launch separation" and "do not merge any PR."
@@ -44,27 +44,28 @@ both the active window and total remainder. Do not launch a full cohort just to
 cross a boundary. Persist completed fixed blocks and resume their exact manifest.
 
 No research window has opened. Research charged: 0 / 129,600 seconds.
-Six planned batches remain. Estimates are planning ranges, not launch guarantees.
+Five planned batches remain. Estimates are planning ranges, not launch guarantees.
 
 ## Stop Gate
 
-- Planned batches remaining: 6.
-- Stop allowed right now: yes, at the mandatory fresh-launch gate.
-- Why: staging preflight is complete; the user-approved plan separates launch.
-- Next required action: after a fresh launch, verify tip/CI/hash and begin Batch 1.
+- Planned batches remaining: 5.
+- Stop allowed right now: no.
+- Why: the user launched all six batches; work remains and no stop condition applies.
+- Next required action: close Batch 1 push/check loop, then execute Batch 2.
 
 ## Current Phase
 
-Status: Launch-ready. Active batch: none; Batch 0 staging complete.
-What was just finished: draft PR #23, 254 passing baseline tests, syntax checks,
-browser opening/takeover smoke, bounded advisory, and independent staging review.
-Single next action: wait for the separate launch, then begin Batch 1.
+Status: In progress. Batch 1 implemented, validated and independently reviewed;
+Batch 2 starts after the closure push/check loop. Frozen compatibility contains
+103 positions, 218 seeded decisions, 24 save examples across six rulesets and four
+sizes, both legacy format IDs, and 16 protected historical artifact digests.
+Single next action: implement three scoring variants and immutable graph foundation.
 
 ## Active Compute
 
-No active local research workers, paid jobs, or preflight servers. Isolated server
-PID 90760 on port 8769 stopped cleanly after browser smoke. The bounded Fable
-call completed. GitHub's normal PR CI is the only remote verification used.
+No active research workers, paid jobs, or servers. Ordinary batch tests and
+GitHub PR CI are verification only. Batch 1 Fable goal cycle completed successfully
+in 123 seconds; receipt `.aragora/goal_cycles/20260907T011308Z/`.
 
 ## Non-Negotiables
 
@@ -87,17 +88,17 @@ call completed. GitHub's normal PR CI is the only remote verification used.
 
 ## Next Exact Batch
 
-Scope: after a fresh launch only, Batch 1 freezes specifications and compatibility.
-Build on the registry in `engine/varde.py`, `engine/actions.py`, existing saves,
-native/MCTS research interfaces, and `research/harness/evaluate_rulesets.py`.
-First contract must inventory consumers and freeze baseline decisions before
-touching shared surfaces. Create branch-namespaced rollback tags, e.g.
-`elves/rules-lab-v1/pre-batch-1`; never overwrite other runs' tags.
+Scope: Batch 2 implements Line Breath, Gjerde Majority and Breath Connection,
+plus immutable topology-keyed graph geometry, a game factory and complete analysis
+keys behind the shared rules-action interface. Construction play belongs to Batch 3;
+browser/server exposure belongs to Batch 4. Build on frozen `lab_spec.py`, existing
+flat resolution/group primitives, legacy action adapter and compatibility corpus.
+Create `elves/rules-lab-v1/pre-batch-2` without overwriting existing tags.
 
-Acceptance criteria: seven revision-0.1 specs, controls, hypotheses/evidence statuses,
-compatibility fixtures, protected-artifact hashes, independent oracle boundary,
-and exact research-budget accounting agreed in code/docs/tests. No match claims.
-Risk: preserving existing behavior while introducing graph and structured-action paths.
+Acceptance: exact scoring boundaries/group penalties, graph geometry/immutability,
+version-2 strict save/history round trips, legacy version-1 parity, full forbidden
+history in analysis keys, old seeded decisions unchanged. No research matches.
+Risk: shared action and factory consumers; leave `engine/varde.py` unchanged.
 
 Before any measured recipe outcomes, freeze these operational interpretations:
 one globally selected recipe, equally weighted by certification-complete ruleset
@@ -142,8 +143,7 @@ Notification: PR and current task only; no third-party channel configured.
 - [x] Baseline tests/syntax/tooling/browser preflight recorded.
 - [x] Independent review clean; initial-tip CI green; poll closure-tip CI before handoff.
 - [x] Fresh launch prompt prepared; 0 research time charged.
-- [x] Stop Gate initialized with `Stop allowed right now: no` during staging;
-  now explicitly changed to yes for the mandatory fresh-launch pause.
+- [x] Mandatory staging pause completed; fresh launch received. Stop Gate is now no.
 
 ## Effort Standard
 
