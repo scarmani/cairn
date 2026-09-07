@@ -51,9 +51,11 @@ Two planned batches remain. Estimates are planning ranges, not launch guarantees
 - Planned batches remaining: 2.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: commit/push verified Batch5B and close exact-tip CI
-  and continue. All646 tests pass locally,49 additive. Origin attestation and worker hard stops remain
-  prerequisite work before actual research. No internal checkpoint stop.
+- Next required action: commit/push verified Batch5C, fully reread guide/hash and
+  close exact-tip CI/feedback. Then freeze the charged bootstrap/corpus program
+  and remaining gated MCTS engineering. All697 tests pass locally,51 additive.
+  Batch5C advisory failed exit2, no response accepted/retry; reservation released.
+  No internal checkpoint stop; two planned batches remain.
 
 ## Current Phase
 
@@ -111,43 +113,49 @@ auto-retry or become scores. Timings stay outside canonical results. Scoped Ruff
 compileall/both JS/diff green; final independent review clean, including all11
 artifact hashes and the narrow oversized-time validation delta.
 No actual-game proof or origin attestation; no worker-hard-stop claim. Artifact
-index docs/elves/rules-lab-v1-batch5b-artifacts.json. Commit/push/CI next.
+index docs/elves/rules-lab-v1-batch5b-artifacts.json. Closure
+86392fa6d4410286ff7a5da0f7c7f3af5d021b9d pushed; guide fully reread and plan
+hash/PRfeedback checked. Both exact-tip CI tests pass (runs34088984211/34088980137).
+
+Batch5C locally verified:697tests in114.184s, zero skips,51 additive. Full-action
+origin receipts cover16 definitions with independent mechanical replay for10;
+legacy-six limits stay explicit. Exact-root wrappers have distinct implementation
+identities. Supervision uses nonblocking request/result protocol,1..8 owned workers,
+durable pre-entry receipts, explicit foreign-session reconciliation and fail-closed
+fault accounting. Synthetic source/input/persistence/protocol/cleanup/cap tests
+pass. Darwin all-zombie EPERM handling is narrow and bounded, not a permission
+bypass. Direct leaders are reaped; descendants are confirmed non-running.
+Earlier REDs are preserved. Protected131 tracked source/evidence files remain
+byte-identical to86392fa; native hash unchanged. Scoped Ruff, compileall/both JS,
+diff and final independent review clean, including all16 artifact hashes and
+foreign-session/cap deltas. Commit/CI pending. Index
+docs/elves/rules-lab-v1-batch5c-artifacts.json. Research0, no window.
 
 ## Active Compute
 
-No active research workers or paid jobs. Product tests/browser verification are
-terminal; Batch5A fullsuite exec79604 exited0. Isolated server PID31058/exec60631 exited143 by owned SIGTERM; port8773
-closed, Playwright rules-lab closed, and disposable model file remains absent.
-Implementation and final independent-review agents are terminal and clean.
-Both local5B fullsuite sessions84641/44956 exited0; final646tests90.663s.
-No research worker, testserver or browser active. SDK released its review at05:33Z.
-The subsequent single Batch5B advisory exec75983 exited0 in186.30s, receipt
-20260907T053346Z, CLI fallback claude-opus-4-8 in181.9s. Full response and prompt
-read/sanity-checked; provenance inference and irrelevant Aragora template rules
-not accepted. Process inventory empty and capacity explicitly released to both
-coordinating tasks. No active provider call, paid API or same-cycle retry.
-Batch5 goal cycle20260907T045202Z succeeded via CLI fallback claude-opus-4-8
-in180.7s (184.16s wrapper). Full response/prompt read; scope accepted as interface
-engineering only. Process inventory empty; capacity explicitly released to both
-SDK/#10010 tasks. No active advisory, parallel provider call or retry.
-Browser goal cycle20260907T041217Z failed exit2 in153.54s: CLI error plus150s
-fallback timeout, API disabled/unavailable. No output accepted or same-cycle retry.
-Wrapper/session terminal, process inventory empty and capacity explicitly returned.
-Proceed with approved scope under goal-cycle skill Hard rule3; no guessed advice.
-Ordinary product tests and CI are
-engineering verification only. Last successful bounded goal cycle167.5s via CLI
-fallback claude-opus-4-8, receipt `.aragora/goal_cycles/20260907T030657Z/`.
-Prior receipts and advisory dispositions are preserved in the execution log.
-One oracle goal cycle at20260907T034232Z failed exit2: primaryCLI error, fallback
-150s timeout, API unavailable by design. No output accepted or retried; process
-inventory empty and capacity explicitly returned to#10010. Normal already-approved
-oracle engineering continues under the bounded-consult failure protocol; no
-approval, evidence or relaxed gate inferred. #10010 released with an empty process
-inventory; SDK task019f807d-64fd-7502-8043-9c42ec27be88 then completed its one
-pass and explicitly released. RulesLab's subsequent single advisory is terminal
-and its explicit capacity release sent to both tasks. No provider job remains.
-Research charge0.
+No active official research jobs, paid jobs, testserver or browser. Research
+charged0/129600s; no window opened. Product fullsuite exec85175 exited0:
+697tests114.184s. Focused origin27tests13.783s and independent supervisor10tests
+5.674s pass; root process-test sessions76101/36135 exited0. Owner14process tests
+pass, plus foreign-session reconciliation. All implementation/review agents are
+terminal; only final read-only artifact closure may be delegated before commit.
 
+Process tests used disposable synthetic ledgers, not the official allowance.
+Initial Darwin EPERM failure is preserved in batch-5c-supervisor-owner-verification.md.
+Actual cleanup tests pass; fresh lab-worker inventory empty. No actual proof,
+corpus generation, agent calibration, MCTS or policy game launched in this unit.
+Isolated browser server PID31058/exec60631 remains stopped, port8773 closed;
+Playwright rules-lab closed and disposable Personal model absent.
+
+Batch5C advisory exec72340 ended exit2 in244.70s, receipt20260907T060258Z:
+CLI error then240s fallback timeout, API disabled/unavailable. No response
+accepted or same-cycle retry. Owned wrapper/consult gone; reservation explicitly
+released to SDK/#10010. Unrelated Claude.app processes were left untouched.
+The coordinating tasks subsequently reported release; recheck before the next
+single bounded call. No fleet-wide capacity-free claim from our process inventory.
+Prior advisory receipts, dispositions and resource chronology remain in the log.
+Proceed under goal-cycle Hard rule3 for the current unit; no guessed advice.
+Last disk check332GiB free. No new research throughput measurement exists.
 ## Non-Negotiables
 
 - Preserve existing six candidates, public defaults, seeded decisions, saves,
@@ -178,11 +186,15 @@ tests now; no actual game proof producer, corpus or calibrated decision.
 That interface unit is green/pushed with exact-tip CI closed. Current Batch5B
 contract docs/rules-lab-proof-producer.md is frozen at SHA256
 0490ad4e873d2e5a31bb835fb8cda64c091e1baad25a4295e67561aed63beffc.
-Add the exact terminal producer and deterministic in-process fixed-task scaffold,
-with independent synthetic producer/checker round trips. Both frozen5A modules
-stay byte-identical. The scaffold cannot interrupt callbacks or launch workers;
-full-origin attestation and hard-stop supervisor remain explicit next prerequisites
-before charged real-state certification/calibration. No corpus/search outcomes yet.
+That producer/scaffold unit is complete at86392fa with both exact-tip checks green.
+Current5C contract docs/rules-lab-origin-supervision.md SHA256
+cdd61dde5762a596ce2a366bb5931d9ef844dd2c871902ead46fa6967314acfa is frozen.
+That unit is locally verified at697tests/114.184s; final source/artifact review
+clean, commit/push/CI pending. Existing5A/5B and product sources
+remain byte-identical. Only short known mechanics and synthetic jobs ran in
+disposable ledgers. Actual corpus/probe remains deferred until the pre-research
+manifest and charged bootstrap are separately frozen. Next complete5C closure,
+then use one bounded conductor cycle for the substantive corpus/MCTS unit.
 Browser contract remains frozen at
 SHA25657bc6d9d70310557b58c9dd33cfa602a86a5658769462cf4023e688d59833f6a.
 Build Batch5 terminal-certificate interfaces and deterministic run controls using

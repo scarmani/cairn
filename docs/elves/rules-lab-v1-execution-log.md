@@ -2,13 +2,104 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–4 complete; Batch5B locally verified, closure next.
+- Phase: launched, Batches1–4 complete; Batch5C locally verified, closure pending.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
 - Next: terminal certification interfaces, then charged gated MCTS; two batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 5C verification: 2026-09-07
+
+Full suite697tests pass in114.184s, zero skips (51 additive). Scoped Ruff,
+compileall, both JS syntax and diff checks pass. Fullsuite exec85175 terminal0;
+focused origin27tests13.783s and independent supervisor10tests5.674s pass.
+Owner14tests3.950s plus the stricter new-coordinator reconciliation0.101s pass.
+Final independent review clean, including all16 artifact hashes and the narrow
+foreign-session/cap regression deltas. No remaining closure blocker.
+All131 protected tracked engine/browser/server/harness/evidence files match86392fa.
+Prior4D/5A/5B/oracle/historical hash sets and native-agent identity are unchanged.
+Protected PR20–22 are exact/draft/open/unmerged; PR23 has no review/inline blockers.
+
+Full fresh-action origin replay, actual-source binding and exact-root provenance
+are verified for16 definitions; oracle10 replay is separately reported and the
+legacy-six independence gap is explicit. Worker checks cover1/2/8 deterministic
+results, out-of-order cancellation/resume, foreign zero-attempt leases, malformed
+or nonreading protocol, task/input/source/persistence faults and final budget/cap
+failure despite complete payloads. No failure becomes a score or automatic retry.
+
+The initial process suite reported9errors from Darwin os.killpg EPERM after TERM
+left an unreaped zombie leader. The original console was truncated; the external
+owner verification receipt preserves the observed negative and exact reproduction,
+not a claimed complete raw log. Narrow Darwin handling requires nonreaping exit
+confirmation and bounded empty/all-zombie group inspection. Arbitrary EPERM,
+live/ambiguous membership and failed inspection remain unconfirmed cleanup.
+Direct children are reaped; same-group descendants are confirmed non-running.
+All focused/final process tests now pass and no lab worker remains.
+
+Source and raw receipts are linked in rules-lab-v1-batch5c-artifacts.json. Research
+charged0, no window or real-game proof/calibration/MCTS; synthetic process tests
+used disposable ledgers only. Disk332GiB free. No Personal write/server/browser.
+Next commit/push, immediate guide/hash/feedback/CI, then continue Batch5's frozen
+charged bootstrap/corpus and three-recipe program. No internal checkpoint stop.
+
+## Batch 5C pre-research review findings: 2026-09-07
+
+Origin focused suite:27tests pass in13.783s. Independent review reproduced a
+provider-identity RED: the full-origin wrapper initially reused the base provider
+descriptor. The fixed wrapper has its own revision and implementation hash,
+stable across positions, while the exact origin/root remains metadata-bound.
+Frozen base providers are unchanged. Production16 replay and independent10
+mechanical replay remain distinct; no receipt asserts admission.
+
+Supervisor independent review demonstrated a zero-attempt selector-failure RED:
+a disposable synthetic ledger remained active, and reconciliation could not name
+the job because there were no attempts. No worker was created. It also identified
+completed payloads masking final budget failure, blocking outbound request writes,
+and serial cleanup consuming more than the reserved cohort grace. These are
+engineering findings before any research; owner fixes and regression tests are
+in progress. Preserve failures and require full verification before launch.
+Root's eight-worker test reservation was corrected to use an explicit0.1s reap
+bound and8s synthetic cohort cap, reserving cleanup and bounded group inspection
+for all eight workers.
+This is test-driver sizing, not weakened product limits or research throughput.
+Official research remains0/129600s with no window or real-game task.
+
+## Batch 5C contract: 2026-09-07
+
+Freeze docs/rules-lab-origin-supervision.md SHA256
+cdd61dde5762a596ce2a366bb5931d9ef844dd2c871902ead46fa6967314acfa, fully read
+before delegation. Origin owner:lab_compatibility; supervisor owner:lab_budget;
+independent invariants/review:lab_plan_review. Root owns integration/fullsuite/docs.
+No existing source edits. Known mechanical action chains only, synthetic bounded
+process tests and disposable ledgers; officialresearch0/no window. Full-action
+origin, actor/seat/history binding, oracle10 comparison and explicit legacy6
+independence limits; supervised1..8workers, durable attempted/completed/fault states,
+owned TERM/KILL/reap and runtime source verification. Actual bootstrap remains a
+separate predeclared charged stage, not disguised free throughput calibration.
+
+## Batch 5B push and 5C advisory: 2026-09-07
+
+5C advisory20260907T060258Z failed exit2 in244.70s: CLI error, fallback240s
+timeout, API disabled. No response accepted or same-cycle retry. Owned wrapper/
+consult processes gone; reservation explicitly released to both coordinating tasks.
+Two unrelated Claude.app-owned CLI processes observed and left untouched; no
+global capacity-free claim. Continue approved engineering under goal-cycle Hard
+rule3 using own judgment. Research0; no execution gate or scope relaxed.
+
+Exact-tip CI closed successful at06:04:26Z/06:04:23Z,
+runs34088984211/34088980137. Checkpoint comment published; no review blockers.
+
+86392fa6d4410286ff7a5da0f7c7f3af5d021b9d pushed. Guide fully reread and plan
+hash checked immediately after commit/push; PR23 draft/open/unmerged, no new
+reviews/inline comments. Both exact-tip tests in progress. Source/raw index verified.
+Next-cycle context/wrapper prepared outsidegit. SDK/#10010 compact snapshots idle,
+bounded-provider inventory empty; explicit capacity reservation sent to both.
+One CLI-only5C cycle launched exec72340,240s/attempt570s total+5s cleanup, no
+paid API/parallel call/retry. Advisory preparation overlaps pending CI, but no new
+implementation unit begins before exact-tip closure and actual advice is read.
+No research job/window; charge0. Continue; this internal checkpoint is not a stop.
 
 ## Batch 5B verification: 2026-09-07
 

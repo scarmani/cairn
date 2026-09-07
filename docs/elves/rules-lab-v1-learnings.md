@@ -36,6 +36,17 @@
 - A local survival proof does not show survival is preferable to a sacrifice.
 - Exact root WDL does not classify unresolved root alternatives. Keep complete
   optimal-action sets separate, including all equivalent winning margins.
+- A full-origin provider wrapper needs its own implementation identity, not just
+  extra metadata under the base provider's hash. Keep that identity position-
+  independent; bind the exact replay/root separately.
+- Enforced worker limits require nonblocking outbound requests as well as reads.
+  A child that never reads can otherwise strand the coordinator before a timeout.
+- On Darwin, group KILL after successful TERM can report EPERM for an unreaped
+  zombie leader. Never ignore arbitrary EPERM: retain the owned handle, confirm
+  exit without reaping, and require a bounded empty/all-zombie group snapshot.
+  Reserve serial cleanup and observation time for every allocated worker.
+- Successful payloads do not override a failed cohort. Budget/deadline failures
+  and zero-attempt crash leases remain explicit, including during resume.
 - Compare finite JSON identities canonically: Python equality treats true,1 and
   1.0 as equal. Unknown proof successors still need conserved actor/seat checks.
 - Legacy Game.clone shares mutable geometry. Research cache/provider ownership
