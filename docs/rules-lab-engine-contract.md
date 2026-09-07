@@ -2,8 +2,9 @@
 
 This implements the frozen revision-0.1 definitions; it does not change a rule.
 The reference `engine/varde.py` remains unchanged. New server/browser wiring is
-deferred until the three scoring variants and four construction games pass their
-mechanical and compatibility tests.
+deferred to Batch4. The three scoring variants, four construction games and three
+static controls are implemented behind the explicit opt-in factory and covered
+by mechanical and compatibility tests; none is a new ordinary browser default.
 
 ## Ownership and shared surfaces
 
@@ -37,6 +38,9 @@ All shared collections are immutable, including map values; attributes cannot
 be reassigned. Construction returns a new snapshot. Outer rim/phantom metadata
 is inherited geometrically from the original board, not recomputed as three
 minus an increased degree. Pickle reconstructs through the canonical factory.
+Cache eviction can create an equal but nonidentical board object. Canonical keys,
+adjacency and snapshot isolation, not permanent interning, are the cross-process
+contract. A live clone directly shares its immutable source board.
 
 ## Position identity and saves
 

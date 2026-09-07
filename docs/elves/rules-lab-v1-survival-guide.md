@@ -44,25 +44,24 @@ both the active window and total remainder. Do not launch a full cohort just to
 cross a boundary. Persist completed fixed blocks and resume their exact manifest.
 
 No research window has opened. Research charged: 0 / 129,600 seconds.
-Four planned batches remain. Estimates are planning ranges, not launch guarantees.
+Three planned batches remain. Estimates are planning ranges, not launch guarantees.
 
 ## Stop Gate
 
-- Planned batches remaining: 4.
+- Planned batches remaining: 3.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: push the validated Batch 3 Y/six/controls checkpoint,
-  close exact-tip CI, then continue planted/passage. Do not stop at this checkpoint.
+- Next required action: push Batch3 closure, check exact-tip CI and feedback,
+  then implement Batch4 under a bounded advisory. Do not stop at this checkpoint.
 
 ## Current Phase
 
-Status: In progress. Batch 2 pushed at3a2eb58; both exact-tip CI checks pass, no new
-review blockers. Batch 3 unit A (Y/six and static controls) passes 363 tests and
-independent review; its checkpoint is followed by unit B (planted/passage) before
-Batch 3 can complete. Three scoring rules
-are available through the opt-in factory, not yet the browser. Graph geometry is
-immutable; version-2 saves validate complete histories by legal journal replay.
-Single next action: checkpoint push/CI, then atomic planted Y and opposite passages.
+Status: Batch3 complete locally:386 tests in64.481s, zero skips, scoped independent
+reviews clean. All seven lab games and three static controls are available through
+the explicit opt-in factory, not yet the browser. Graph geometry is immutable;
+version2 saves validate complete histories by legal journal replay. Planted Y is
+atomic and separate from empty construction; passages support three orientations.
+Single next action: closure push/CI, then Batch4 playable laboratory and oracle.
 
 ## Active Compute
 
@@ -72,10 +71,11 @@ goal cycle completed in 514.5 seconds (CLI fallback `claude-opus-4-8`), receipt
 `.aragora/goal_cycles/20260907T013611Z/`. Batch 3 unit A advisory completed in
 181.5 seconds (same CLI fallback), receipt `.aragora/goal_cycles/20260907T020236Z/`.
 Its two-unit sequencing is internal to Batch 3; it does not omit scope or permit a
-stop. Separate Evergreen capacity hold was released. SDK task
-`019f807d-64fd-7502-8043-9c42ec27be88` subsequently reserved Claude capacity for
-one bounded review. No new Claude/Fable call until its explicit terminal release;
-local checkpoint/testing may continue. No advisory process belongs to this run.
+stop. Unit B advisory completed successfully in336.5s via the same CLI fallback,
+receipt `.aragora/goal_cycles/20260907T022500Z/`. Process tree is absent and capacity
+was explicitly released to task019f2b0a-45dd-7543-a985-f43a5cb241fb. That task has
+now explicitly released capacity and reports no reviewer process remaining.
+Reinventory before the next bounded advisory. No research computation is active.
 
 ## Non-Negotiables
 
@@ -98,18 +98,23 @@ local checkpoint/testing may continue. No advisory process belongs to this run.
 
 ## Next Exact Batch
 
-Scope: Batch 3 implements Y and six-spoke construction first, then planted Y and
-opposite-pair passages. Build on `lab_graph.py`, `LabGame`, shared RulesAction and
-factory, not a second resolver. Add three static research-only controls. Browser
-and server exposure remain Batch 4. Create `elves/rules-lab-v1/pre-batch-3`.
+Scope: Batch4 adds experimental browser/API support, shared structured actions,
+replay/export, provisional objective-aware Casual/Standard opponents and an
+independent mechanical graph oracle. Build on the existing factory, immutable
+graphs and RulesState; preserve legacy server branches and all ordinary defaults.
+Create rollback tag `elves/rules-lab-v1/pre-batch-4` after Batch3 CI closes.
 
-Acceptance: neutral permanent topology; inactive centers absent; original-vertex
-opening/scoring; capture-first/suicide/superko; orientation equivalence and symmetry;
-empty versus planted counters; planted construction cannot immediately capture;
-strict topology-aware journal/history replay; complete-seat pie/end/resumption;
-legacy parity/full tests. No live cutoff. No research computation or match claims.
-Risk: topology-specific histories, scoring through zero-point hubs, clone isolation.
-Keep `engine/varde.py` unchanged and preserve all historical evidence.
+Acceptance: explicit lab opt-in, all seven games, construction preview/orientation
+by mouse/keyboard, zero-point hubs, actual neighbor/liberty inspection, three match
+modes, complete-seat takeover and both ending decisions, paused spectator load,
+strict v2 replay and legacy saves, no Classic profiles/Personal application to lab,
+structured local records/text state, real browser interaction/screenshots/errors,
+independent oracle invariants, full tests and review. MCTS remains research-only.
+Risk: live server ownership must use RulesState.actor_seat, not legacy computer
+ending shortcuts; game.finished is not accepted terminal. One authoritative lab
+ending state, no duplicated acceptance logic. Preparatory integration map outside
+git: `batch-4-integration-map.md`. Keep engine/varde.py and history unchanged.
+Mechanical unit tests only: proof certification and research are Batch5 and charged.
 
 Before any measured recipe outcomes, freeze these operational interpretations:
 one globally selected recipe, equally weighted by certification-complete ruleset

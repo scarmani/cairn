@@ -1,11 +1,12 @@
 # Rules Laboratory specifications, revision 0.1
 
 These definitions implement the specification freeze in the approved
-[laboratory plan](plans/rules-lab-v1.md). The catalog is metadata only at this
-stage: it does not register playable games, expose browser choices, or claim
-that any experimental engine or agent has passed admission. All ten new entries
-have admission status **unmeasured**. Normal games and the six legacy candidates
-remain unchanged. No combination of the seven changes is authorized in this round.
+[laboratory plan](plans/rules-lab-v1.md). The catalog itself remains metadata;
+the opt-in game factory now implements all seven games and three static controls.
+Browser exposure is the next engineering batch. No experimental agent has passed
+admission: all ten new entries retain admission status **unmeasured**. Normal
+games and the six legacy candidates remain unchanged. No combination of the seven
+changes is authorized in this round.
 
 ## Board, turns, and scoring conventions
 
@@ -177,11 +178,14 @@ and historical signatures. Legacy version-1 rules and histories remain unchanged
 
 ## Evidence and next verification
 
-The metadata tests establish the frozen definitions, orientation vocabulary,
-immutability, detached finite JSON, and isolation from the legacy registry. They
-do not exercise an experimental legal transition. Future mechanical fixtures must
-verify scoring, distinct liberties, planted non-capture, clone isolation, symmetry,
-topology/history round trips, pie, and endings before games are playable.
+Metadata tests establish the frozen definitions, orientation vocabulary,
+immutability, detached finite JSON, and isolation from the legacy registry.
+Additional engine/integration tests now exercise scoring, distinct liberties,
+planted non-capture and suicide, merging, permanent topology after capture,
+clone isolation, all spatial symmetries, topology/history round trips, pie, and
+separate ending decisions. The [execution log](elves/rules-lab-v1-execution-log.md)
+records test counts, independent review and raw-log hashes by checkpoint.
+These tests do not constitute an admitted search corpus or comparative games.
 
 All hypotheses above remain unmeasured. Local survival/capture proofs certify only
 their declared obligation and horizon. Only accepted-terminal score certification

@@ -251,3 +251,14 @@ Original prompt: yes to all in best order proceed and execute according to your 
 - 363 tests pass, zero skips; frozen legacy decisions/saves unchanged. Independent
   scoped reviews clean. No browser exposure yet; planted/passage are next in Batch 3.
 - Research charged zero; this checkpoint does not end the launched six-batch run.
+
+## Rules Laboratory Batch 3 complete — 2026-09-06
+
+- Planted Y and opposite-pair passages complete the seven opt-in engine games.
+  Planting is one action with one placement and one construction; no empty
+  intermediate position enters the history. Empty building remains unavailable
+  in planted rules. Later captures preserve every activated connection.
+- 386 tests pass in64.481s, zero skips; scoped independent reviews clean.
+  Added Full Passage cache-eviction coverage without changing production caching.
+- Browser laboratory, objective-aware provisional opponents and independent
+  mechanical oracle are next. Research remains unlaunched and comparisons blocked.

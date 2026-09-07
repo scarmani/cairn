@@ -27,6 +27,10 @@
 - Dynamic-board cache keys include spoke family: orientation zero is not the
   same graph in Y, six and passage. Original rim metadata must not be recomputed
   as three minus an increased degree. Pickle reconstructs immutable maps by key.
+- Bounded geometry caches do not promise permanent interning. A Full Passage
+  legality scan can generate267 candidate graphs and evict the current board
+  from the256-entry LRU. Test warm-cache identity separately from post-eviction
+  canonical/neighbor equality; live clones still share their immutable board.
 - A planted new hub cannot remove any pre-existing enemy liberty. A test reporting
   immediate enemy capture from planting alone signals a topology/resolution error.
 - A local survival proof does not show survival is preferable to a sacrifice.

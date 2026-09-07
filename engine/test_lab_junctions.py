@@ -1,10 +1,11 @@
-"""Independent mechanical fixtures for Y and six-spoke junction games.
+"""Independent mechanical fixtures for all four frozen junction games.
 
 Short replay fixtures use real legal transitions, without policy search. Explicit
 constructed scoring/color cases are local invariants, not reachable-game evidence
 or game-optimal certificates. No playouts, calibration, or research runs occur.
 """
 
+from copy import deepcopy
 import unittest
 
 from lab_game import LabGame
@@ -16,7 +17,12 @@ CENTER = (0, 0)
 CORNERS = ((2, 0), (1, 1), (-1, 1), (-2, 0), (-1, -1), (1, -1))
 FILLERS = ((-8, -2), (-8, 0), (-8, 2), (8, -2), (8, 0), (8, 2), (-7, -3))
 JUNCTION_RULES = ("junction-y", "junction-six")
-CHOICES = {"junction-y": ((0, 2, 4), (1, 3, 5)), "junction-six": ((0, 1, 2, 3, 4, 5),)}
+CHOICES = {
+    "junction-y": ((0, 2, 4), (1, 3, 5)),
+    "junction-six": ((0, 1, 2, 3, 4, 5),),
+    "junction-planted": ((0, 2, 4), (1, 3, 5)),
+    "junction-passage": ((0, 3), (1, 4), (2, 5)),
+}
 
 
 def component_and_liberties(game, point):
@@ -44,6 +50,8 @@ def replay(rules, actions, n=3):
             game.play(action[1])
         elif action[0] == "construct":
             game.construct(action[1], action[2])
+        elif action[0] == "plant":
+            game.plant(action[1], action[2])
         else:
             raise AssertionError("unrecognized mechanical fixture action")
     return game
@@ -92,7 +100,7 @@ def transform_sequence(rules, actions, turns, reflect):
                 ((-i if reflect else i) + turns) % 6
                 for i in CHOICES[rules][action[2]]
             ))
-            result.append(("construct", transform_face(action[1], turns, reflect),
+            result.append((action[0], transform_face(action[1], turns, reflect),
                            CHOICES[rules].index(selected)))
     return tuple(result)
 
@@ -302,6 +310,249 @@ class TestLabJunctionMechanics(unittest.TestCase):
                     self.assertEqual(len(game.board.scoring_points), 54)
                     with self.assertRaises(ValueError):
                         LabGame.from_dict(before)
+
+
+class TestLabPlantedAndPassage(unittest.TestCase):
+    assert_round_trip = TestLabJunctionMechanics.assert_round_trip
+
+    def test_off_center_construction_uses_face_ids_not_point_ids(self):
+        corners = ((5, 1), (4, 2), (2, 2), (1, 1), (2, 0), (4, 0))
+        for rules, method_name in (("junction-planted", "plant"), ("junction-passage", "construct")):
+            for n in range(3, 7):
+                for orientation, selected in enumerate(CHOICES[rules]):
+                    with self.subTest(rules=rules, n=n, orientation=orientation):
+                        game = LabGame(n, rules=rules)
+                        initial = game.to_dict()
+                        with self.assertRaises(Illegal):
+                            getattr(game, method_name)((1, 0), orientation)
+                        self.assertEqual(game.to_dict(), initial)
+                        game.play(FILLERS[0])
+                        self.assertEqual(getattr(game, method_name)((1, 0), orientation), 0)
+                        self.assertEqual(game.board.centers[(1, 0)], (3, 1))
+                        self.assertEqual(game.state[(3, 1)], (WHITE,) if method_name == "plant" else ())
+                        self.assertEqual(set(game.board.neighbors[(3, 1)]), {corners[i] for i in selected})
+                        self.assertEqual(game.action_journal[-1], {
+                            "action": method_name, "face": [1, 0], "orientation": orientation,
+                        })
+                        self.assertEqual(game.moves_played, 2)
+                        self.assertEqual(game.placements_played, 2 if method_name == "plant" else 1)
+                        self.assertEqual(game.constructions_played, 1)
+                        self.assertFalse(game.swap_available)
+                        self.assert_round_trip(game)
+
+    def test_planted_junction_merges_three_groups_with_no_direct_empty_neighbor(self):
+        sequence = (("play", CORNERS[0]), ("play", FILLERS[0]),
+                    ("play", CORNERS[2]), ("play", FILLERS[1]),
+                    ("play", CORNERS[4]), ("play", FILLERS[2]))
+        game = replay("junction-planted", sequence)
+        for index in (0, 2, 4):
+            self.assertEqual(component_and_liberties(game, CORNERS[index])[0], {CORNERS[index]})
+        before = game.to_dict()
+        old_history = set(game.history)
+        trial_board, trial_state, captured = game.try_plant(FACE, 0)
+        self.assertEqual(captured, 0)
+        self.assertEqual(trial_state[CENTER], (BLACK,))
+        self.assertEqual(game.to_dict(), before)
+        self.assertEqual(game.plant(FACE, 0), 0)
+        self.assertEqual(game.state, trial_state)
+        self.assertIs(game.board, trial_board)
+        self.assertEqual(component_and_liberties(game, CENTER), (
+            {CORNERS[0], CORNERS[2], CORNERS[4], CENTER},
+            {CORNERS[1], CORNERS[3], CORNERS[5], (4, 0), (-2, 2), (-2, -2)},
+        ))
+        self.assertTrue(all(game.state[p] == (BLACK,) for p in game.board.neighbors[CENTER]))
+        self.assertEqual((game.moves_played, game.placements_played, game.constructions_played), (7, 7, 1))
+        self.assertEqual(len(game.history - old_history), 1)
+        self.assertEqual(len(game.action_journal), 7)
+        self.assertEqual(game.action_journal[-1], {"action": "plant", "face": [0, 0], "orientation": 0})
+        empty_intermediate = dict(game.state)
+        empty_intermediate[CENTER] = ()
+        for color in (BLACK, WHITE):
+            self.assertNotIn(game.repetition_key(empty_intermediate, color), game.history)
+        self.assertEqual(game.last_capture_waves, [])
+        self.assert_round_trip(game)
+
+        # A forged create-empty event or extra intermediate history entry is not
+        # the atomic plant that was actually played; replay must reject both.
+        payload = game.to_dict()
+        payload["journal"][-1]["action"] = "construct"
+        with self.assertRaises(ValueError):
+            LabGame.from_dict(payload)
+        payload = game.to_dict()
+        intermediate = deepcopy(next(record for record in payload["history"]
+                                     if record["topology"] == payload["topology"]))
+        intermediate["stacks"][game.board.index[CENTER]] = []
+        payload["history"].append(intermediate)
+        with self.assertRaises(ValueError):
+            LabGame.from_dict(payload)
+
+    def test_planting_preserves_an_enemy_groups_existing_sole_liberty(self):
+        sequence = (("play", CORNERS[1]), ("play", CORNERS[0]),
+                    ("play", CORNERS[5]), ("play", FILLERS[0]))
+        for orientation in (0, 1):
+            with self.subTest(orientation=orientation):
+                game = replay("junction-planted", sequence)
+                self.assertEqual(component_and_liberties(game, CORNERS[0]), ({CORNERS[0]}, {(4, 0)}))
+                before = game.to_dict()
+                _board, _state, captured = game.try_plant(FACE, orientation)
+                self.assertEqual(captured, 0)
+                self.assertEqual(game.to_dict(), before)
+                self.assertEqual(game.plant(FACE, orientation), 0)
+                self.assertEqual(game.state[CORNERS[0]], (WHITE,))
+                self.assertEqual(component_and_liberties(game, CORNERS[0]), ({CORNERS[0]}, {(4, 0)}))
+                self.assert_round_trip(game)
+
+    def test_planted_suicide_filters_orientation_and_is_fully_atomic(self):
+        sequence = (("play", FILLERS[0]), ("play", CORNERS[0]),
+                    ("play", FILLERS[1]), ("play", CORNERS[2]),
+                    ("play", FILLERS[2]), ("play", CORNERS[4]))
+        game = replay("junction-planted", sequence)
+        before = game.to_dict()
+        old_board = game.board
+        for trial in (game.try_plant, game.plant):
+            with self.assertRaisesRegex(Illegal, "suicide"):
+                trial(FACE, 0)
+            self.assertEqual(game.to_dict(), before)
+            self.assertIs(game.board, old_board)
+        for empty_construction in (game.try_construct, game.construct):
+            with self.assertRaises(Illegal):
+                empty_construction(FACE, 1)
+            self.assertEqual(game.to_dict(), before)
+        choices = tuple(game.construction_actions())
+        self.assertTrue(all(action.kind == "plant" for action in choices))
+        self.assertEqual(tuple(action.orientation for action in choices if action.point == FACE), (1,))
+        self.assertEqual(game.to_dict(), before)
+        self.assertEqual(game.plant(FACE, 1), 0)
+        self.assertEqual(game.state[CENTER], (BLACK,))
+        self.assertEqual(component_and_liberties(game, CENTER),
+                         ({CENTER}, {CORNERS[1], CORNERS[3], CORNERS[5]}))
+        self.assert_round_trip(game)
+
+    def test_passage_occupancy_connects_opposite_groups_for_each_orientation(self):
+        for orientation, (first, second) in enumerate(CHOICES["junction-passage"]):
+            sequence = (("play", CORNERS[first]), ("construct", FACE, orientation),
+                        ("play", CORNERS[second]), ("play", FILLERS[0]))
+            game = replay("junction-passage", sequence)
+            first_group, first_liberties = component_and_liberties(game, CORNERS[first])
+            second_group, second_liberties = component_and_liberties(game, CORNERS[second])
+            self.assertEqual(first_group, {CORNERS[first]})
+            self.assertEqual(second_group, {CORNERS[second]})
+            self.assertIn(CENTER, first_liberties & second_liberties)
+            self.assertEqual(game.play(CENTER), 0)
+            group, liberties = component_and_liberties(game, CENTER)
+            self.assertEqual(group, {CENTER, CORNERS[first], CORNERS[second]})
+            self.assertEqual(liberties, (first_liberties | second_liberties) - {CENTER})
+            self.assertEqual(len(liberties), 6)
+            self.assertTrue(all(game.state[p] == (BLACK,) for p in game.board.neighbors[CENTER]))
+            self.assert_round_trip(game)
+
+    def test_passage_shared_liberty_and_suicide(self):
+        sequence = tuple(action for i in range(4)
+                         for action in (("play", CORNERS[i]), ("play", FILLERS[i])))
+        game = replay("junction-passage", sequence)
+        group, liberties = component_and_liberties(game, CORNERS[0])
+        self.assertEqual(group, set(CORNERS[:4]))
+        self.assertEqual(liberties, {CORNERS[5], (4, 0), (2, 2), (-2, 2), CORNERS[4], (-4, 0)})
+        game.construct(FACE, 0)
+        self.assertEqual(component_and_liberties(game, CORNERS[0]), (group, liberties | {CENTER}))
+        self.assert_round_trip(game)
+        for orientation, selected in enumerate(CHOICES["junction-passage"]):
+            sequence = [("play", FILLERS[0]), ("construct", FACE, orientation)]
+            for i, corner in enumerate(selected):
+                sequence.extend((("play", FILLERS[i + 1]), ("play", CORNERS[corner])))
+            game = replay("junction-passage", sequence)
+            before = game.to_dict()
+            with self.assertRaisesRegex(Illegal, "suicide"):
+                game.play(CENTER)
+            with self.assertRaises(Illegal):
+                game.plant(FACE, orientation)
+            self.assertEqual(game.to_dict(), before)
+            self.assertFalse(any(action.point == FACE for action in game.construction_actions()))
+            self.assert_round_trip(game)
+
+    @staticmethod
+    def capture_actions(rules):
+        if rules == "junction-planted":
+            return (("play", CORNERS[0]), ("plant", FACE, 0),
+                    ("play", CORNERS[2]), ("play", FILLERS[0]), ("play", CORNERS[4]))
+        return (("play", CORNERS[0]), ("construct", FACE, 0),
+                ("play", (8, 0)), ("play", CENTER), ("play", CORNERS[3]))
+
+    def test_captured_planted_and_passage_hubs_remain_reoccupiable(self):
+        for rules in ("junction-planted", "junction-passage"):
+            for n in range(3, 7):
+                with self.subTest(rules=rules, n=n):
+                    sequence = self.capture_actions(rules)
+                    game = replay(rules, sequence[:-1], n=n)
+                    board = game.board
+                    before = game.to_dict()
+                    final = sequence[-1][1]
+                    self.assertEqual(game.try_play(final)[1], 1)
+                    self.assertEqual(game.to_dict(), before)
+                    self.assertEqual(game.play(final), 1)
+                    self.assertIs(game.board, board)
+                    self.assertEqual(game.state[CENTER], ())
+                    self.assertEqual(game.last_capture_waves, [(CENTER,)])
+                    self.assertFalse(any(action.point == FACE for action in game.construction_actions()))
+                    self.assert_round_trip(game)
+                    game.play_pass()  # White yields; Black can join its corner groups.
+                    original_control = game.original_control_count()
+                    old_constructions = game.constructions_played
+                    old_placements = game.placements_played
+                    self.assertEqual(game.play(CENTER), 0)
+                    self.assertEqual(game.state[CENTER], (BLACK,))
+                    self.assertEqual(game.constructions_played, old_constructions)
+                    self.assertEqual(game.placements_played, old_placements + 1)
+                    self.assertEqual(game.consecutive_passes, 0)
+                    self.assertEqual(game.original_control_count(), original_control)
+                    self.assertEqual(game.action_journal[-1], {"action": "play", "point": [0, 0]})
+                    self.assertIs(game.board, board)
+                    self.assert_round_trip(game)
+
+    def test_planted_and_passage_capture_replay_symmetries_and_color_reversal(self):
+        for rules in ("junction-planted", "junction-passage"):
+            actions = self.capture_actions(rules)
+            original = replay(rules, actions)
+            for turns in range(6):
+                for reflect in (False, True):
+                    with self.subTest(rules=rules, turns=turns, reflect=reflect):
+                        game = replay(rules, transform_sequence(rules, actions, turns, reflect))
+                        self.assertEqual(game.state, {transform_point(p, turns, reflect): stack
+                                                     for p, stack in original.state.items()})
+                        self.assertEqual(game.score(), original.score())
+                        self.assertEqual(game.last_capture_waves, [(CENTER,)])
+                        self.assert_round_trip(game)
+            extra = (8, 2)
+            reversed_game = replay(rules, (("play", extra),) + actions)
+            self.assertEqual(original.state[extra], ())
+            self.assertEqual(reversed_game.state[extra], (BLACK,))
+            for point in original.board.points:
+                if point != extra:
+                    expected = tuple(WHITE if c == BLACK else BLACK for c in original.state[point])
+                    self.assertEqual(reversed_game.state[point], expected)
+            self.assertEqual(reversed_game.last_capture_waves, [(CENTER,)])
+            self.assert_round_trip(reversed_game)
+
+    def test_new_variants_original_only_area_in_constructed_local_states(self):
+        # Pure scoring fixtures, never claimed reachable or exported as evidence.
+        for rules in ("junction-planted", "junction-passage"):
+            for owner, other in ((BLACK, WHITE), (WHITE, BLACK)):
+                game = LabGame(3, rules=rules)
+                game.state = {point: (other,) for point in game.board.original_points}
+                for point in (CORNERS[1], CORNERS[5], (4, 0)):
+                    game.state[point] = (owner,)
+                for point in (CORNERS[0], CORNERS[2]):
+                    game.state[point] = ()
+                self.assertEqual(game.score(), {owner: 4, other: 49})
+                game.board = game.board.with_junction(FACE, 0)
+                game.topology = game.board.topology
+                game.state[CENTER] = ()
+                self.assertEqual(game.score(), {owner: 3, other: 49})
+                game.state[CENTER] = (owner,)
+                self.assertEqual(game.score(), {owner: 4, other: 49})
+                self.assertEqual(game.original_control_count(), {owner: 3, other: 49})
+                with self.assertRaises(ValueError):
+                    LabGame.from_dict(game.to_dict())
 
 
 if __name__ == "__main__":

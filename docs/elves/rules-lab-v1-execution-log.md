@@ -2,13 +2,94 @@
 
 ## Run digest
 
-- Phase: launched, Batches 1–2 complete; Batch 3 unit A validated, unit B next.
+- Phase: launched, Batches1–3 complete locally; Batch3 closure push/CI next.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
-- Next: four junction variants and static controls; four batches remain.
+- Next: browser/API, provisional opponents and mechanical oracle; three batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 3 closure: 2026-09-06
+
+Delivered all four junction games and three static controls through the explicit
+factory. Unit B adds atomic planted Y and empty opposite-pair passages using
+existing immutable geometry and capture-first resolution. Empty-build and planted
+capabilities are distinct; journals/counters/repetition contain only actual final
+rules states. Hubs persist and can be reoccupied after capture, never score a point.
+
+Verification:386 tests pass in64.481s, zero skips (363 prior +23 additive in unitB;
+46 new tests across Batch3). Full legacy fixture parity remains exact. The7 root
+planted integration tests and independent off-center fixture failed before the
+missing constructors were implemented. Final scoped production/atomicity review,
+independent18-test mechanics review and16-test integration review are clean.
+Ruff, Python compilation, JS syntax and whitespace checks pass. Reference engine,
+legacy opponent, server and browser remain byte-unchanged from approved base.
+
+Raw full-suite log `batch-3b-tests.log`, SHA256
+`87218b8e86e6bf3f59b488666133fb03132bc1cb778a514bbfdc9cffd205a781`.
+No browser feature was exposed in this batch; the unchanged public path retains
+the inspected Batch2 browser baseline. Actual new-lab browser interactions belong
+to Batch4, not claimed verified here. Specs/engine docs now distinguish implemented
+mechanics from unmeasured search admission. No research seconds charged.
+
+Regression confidence HIGH: isolated lab paths, legal replay/symmetry/atomicity
+fixtures, exact old behavior, fullsuite and independent review. UnitA checkpoint
+3c4f151 is pushed with both CI checks green. Close this UnitB push/check loop and
+continue Batch4 without stopping or merging. The unrelated #10010 task released
+Claude capacity; no active advisory/research/server process belongs to this run.
+
+## Batch 3 unit B contract: 2026-09-06
+
+Implementation review update: planted/passage thin path and16 root integration
+tests pass. A new Full Passage subcase exposed an invalid permanent-interning
+assumption in the old pickle test:267 candidate graphs may evict the current
+geometry from boundedLRU256. Kept the exact warm-cache identity assertion and
+added post-scan canonical/neighbor equality plus an explicit eviction round trip.
+Independent reviewer confirms no geometry defect or weakened clone/save contract;
+rerun16tests passed1.29s. Final mechanics/full regression closure remains pending.
+
+Bounded advisory succeeded in336.5s via CLI fallback claude-opus-4-8; receipt
+`.aragora/goal_cycles/20260907T022500Z/`. Sanity-checked against live3c4f151:
+keep existing geometry, add only missing LabGame capabilities and tests. Use the
+repo's actual unittest/CI commands, not advisory pytest wording. Prove the
+no-immediate-capture consequence in invariant tests; do not replace real Go
+resolution with an asserted rule or add a separate action generator. Advisory
+language about a checkpoint does not authorize stopping. Process tree absent;
+Claude capacity released to task019f2b0a pending its own terminal release.
+
+Unit A is pushed at3c4f15193c2b71c97c8be9fe154521924819fb2d. Both exact-tip
+CI checks pass (1m46s,2m45s), no new PR feedback. Full compatibility verification
+rerun returns the identical103-position/218-decision/24-save content hash.
+SDK capacity released explicitly; the Unit B advisory is the only active local
+advisory process and remains bounded. A subsequent unrelated task requests the
+capacity afterward; finish this advisory then release, with no further Claude
+launch until it releases. No engineering or research authorization is transferred.
+
+Behaviors: planted Y creates topology and its stone as one atomic legal action;
+passages create empty centers with one of three opposite-pair orientations.
+One plant increments moves, placements and constructions each once, records only
+the occupied final repetition signature, and produces one plant journal event.
+Adding a planted hub cannot remove old enemy liberties; legal positions therefore
+permit no immediate enemy capture from planting alone. Normal later captures
+retain the hub and spokes. Neither construction type can open the game.
+
+Build on: existing LabGame graph preparation/commit, immutable GraphBoard and
+shared RulesAction parsing/replay. Use the existing capture-first flat resolver;
+separate empty-build capability from all topology-changing rules so planted
+games never expose empty construction. No new resolver or legacy path rewrite.
+
+Acceptance: test-first legal sequences for friendly merging through occupied
+neighbors, enemy atari preservation, suicide/orientation filtering, later capture
+and reoccupation, off-center face-versus-point IDs, all rotations/reflections,
+strict journal/counter/history validation, complete-seat ending replay, all sizes,
+zero mutation on failure and exact legacy parity. Full suite, scoped independent
+review, Ruff/syntax and exact-tip CI before completing Batch3.
+
+Blast radius: lab_game.py and additive lab tests only; factory/actions already
+support structured plant actions. No browser/server/reference engine, learning
+model or historical evidence changes. Baseline363 tests, zero skips. No proof,
+calibration or research games in this unit; research charge remains zero.
 
 ## Batch 3 unit A checkpoint: 2026-09-06
 

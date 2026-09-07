@@ -10,7 +10,7 @@ from lab_graph import seeded_static_topology
 from varde import BLACK, WHITE, Illegal
 
 
-EMPTY_JUNCTIONS = ("junction-y", "junction-six")
+EMPTY_JUNCTIONS = ("junction-y", "junction-six", "junction-passage")
 CONTROLS = ("go-honeycomb", "go-static-y", "go-static-six")
 
 
@@ -84,6 +84,11 @@ class TestLabGraphIntegration(unittest.TestCase):
                     game.play((0, 0))
                     payload = game.to_dict()
                     self.assertEqual({len(record["stacks"]) for record in payload["history"]}, {6*n*n, 6*n*n+1, 6*n*n+2})
+                    # A warm cache reuses the exact immutable board. A Full
+                    # passage scan may later evict it (>256 candidate graphs).
+                    copied = pickle.loads(pickle.dumps(game))
+                    self.assertEqual(copied.to_dict(), payload)
+                    self.assertIs(copied.board, game.board)
                     for format_id in ("varde-game", "cairn-game"):
                         restored = load_game(payload | {"format": format_id})
                         self.assertEqual(restored.to_dict(), payload)
@@ -92,7 +97,8 @@ class TestLabGraphIntegration(unittest.TestCase):
                         self.assertEqual(restored.construction_actions(), game.construction_actions())
                     copied = pickle.loads(pickle.dumps(game))
                     self.assertEqual(copied.to_dict(), payload)
-                    self.assertIs(copied.board, game.board)
+                    self.assertEqual(copied.board, game.board)
+                    self.assertEqual(copied.board.neighbors, game.board.neighbors)
 
     def test_graph_history_and_initial_topology_tampering_is_rejected(self):
         game = new_game(3, rules="junction-y", experimental=True)
@@ -166,6 +172,162 @@ class TestLabGraphIntegration(unittest.TestCase):
             self.assertNotIn("topology_seed", payload)
             self.assertNotIn("initial_topology", payload)
             self.assertEqual(load_game(payload).to_dict(), payload)
+
+    def test_full_passage_cache_eviction_preserves_live_snapshot_and_pickle(self):
+        game = new_game(6, rules="junction-passage", experimental=True)
+        game.play((2, 0))
+        game.construct((0, 0), 0)
+        before, board = game.to_dict(), game.board
+        serialized = pickle.dumps(game)
+        self.assertGreater(len(game.construction_actions()), 256)
+        copied = pickle.loads(serialized)
+        self.assertIsNot(copied.board, board)
+        self.assertEqual(copied.board.cache_key, board.cache_key)
+        self.assertEqual(copied.board.neighbors, board.neighbors)
+        self.assertEqual(copied.to_dict(), before)
+        self.assertEqual(game.to_dict(), before)
+        self.assertIs(game.board, board)
+
+
+class TestLabPlantedIntegration(unittest.TestCase):
+    def test_all_sizes_require_opt_in_original_opening_and_only_plant_actions(self):
+        for n in range(3, 7):
+            with self.subTest(n=n):
+                with self.assertRaisesRegex(ValueError, "experimental"):
+                    new_game(n, rules="junction-planted")
+                game = new_game(n, rules="junction-planted", experimental=True)
+                before = game.to_dict()
+                self.assertEqual(set(game.legal_placements()), set(game.board.original_points))
+                self.assertEqual(game.construction_actions(), ())
+                for method in (game.construct, game.plant):
+                    with self.assertRaises(Illegal):
+                        method((1, 0), 0)
+                self.assertEqual(game.to_dict(), before)
+                game.play((2, 0))
+                actions = game.construction_actions()
+                self.assertEqual({action.kind for action in actions}, {"plant"})
+                self.assertEqual(len(actions), 2 * len(game.board.faces))
+                self.assertEqual(load_game(game.to_dict()).to_dict(), game.to_dict())
+
+    def test_off_center_plant_is_one_action_and_only_final_history_state(self):
+        game = new_game(3, rules="junction-planted", experimental=True)
+        game.play((2, 0))
+        game.play_pass()
+        old_history = set(game.history)
+        self.assertEqual(game.plant((1, 0), 1), 0)
+        self.assertEqual(game.board.centers[(1, 0)], (3, 1))
+        self.assertEqual(game.state[(3, 1)], (BLACK,))
+        self.assertEqual(game.topology, ((1, 0, 1),))
+        self.assertEqual((game.moves_played, game.placements_played, game.constructions_played), (3, 2, 1))
+        self.assertEqual(game.consecutive_passes, 0)
+        self.assertEqual(game.quiet_moves, 0)
+        self.assertEqual(game.history - old_history, {game.repetition_key()})
+        self.assertEqual(game.action_journal[-1], {"action": "plant", "face": [1, 0], "orientation": 1})
+        empty_intermediate = dict(game.state)
+        empty_intermediate[(3, 1)] = ()
+        self.assertNotIn(game.repetition_key(empty_intermediate), game.history)
+        self.assertEqual(game.original_control_count(), {BLACK: 1, WHITE: 0})
+        self.assertEqual(game.control_count(), {BLACK: 2, WHITE: 0})
+        self.assertEqual(game.score(), {BLACK: 54, WHITE: 0})
+
+    def test_shared_actions_trial_and_takeover_keep_identity_and_clone_isolation(self):
+        for n in range(3, 7):
+            state = RulesState.from_game(new_game(n, rules="junction-planted", experimental=True))
+            state = apply_action(state, RulesAction("play", (2, 0)))
+            state = apply_action(state, RulesAction("swap"))
+            before = state.to_dict()
+            plant = RulesAction("plant", (1, 0), orientation=0)
+            self.assertIn(plant, legal_actions(state))
+            self.assertNotIn(RulesAction("construct", (1, 0), orientation=0), legal_actions(state))
+            built = apply_action(state, plant)
+            self.assertEqual(state.to_dict(), before)
+            self.assertEqual(built.seats, {BLACK: "seat-white", WHITE: "seat-black"})
+            self.assertEqual(built.game.state[(3, 1)], (WHITE,))
+            self.assertEqual(built.actor_seat, "seat-white")
+            self.assertNotEqual(state.analysis_key(), built.analysis_key())
+            self.assertEqual(RulesState.from_dict(built.to_dict()).analysis_key(), built.analysis_key())
+
+    def test_history_widths_formats_and_pickle_after_multiple_plants(self):
+        for n in range(3, 7):
+            game = new_game(n, rules="junction-planted", experimental=True)
+            game.play((2, 0))
+            game.plant((0, 0), 1)
+            game.plant((1, -1), 0)
+            payload = game.to_dict()
+            self.assertEqual({len(record["stacks"]) for record in payload["history"]}, {6*n*n, 6*n*n+1, 6*n*n+2})
+            for format_id in ("varde-game", "cairn-game"):
+                restored = load_game(payload | {"format": format_id})
+                self.assertEqual(restored.to_dict(), payload)
+                self.assertEqual(restored.construction_actions(), game.construction_actions())
+                self.assertEqual(restored.legal_placements(), game.legal_placements())
+            copied = pickle.loads(pickle.dumps(game))
+            self.assertEqual(copied.to_dict(), payload)
+            self.assertIs(copied.board, game.board)
+
+    def test_journal_counter_orientation_and_intermediate_state_tampering_rejected(self):
+        game = new_game(3, rules="junction-planted", experimental=True)
+        game.play((2, 0))
+        game.plant((1, 0), 1)
+        original = game.to_dict()
+        changed = []
+        for counter in ("moves_played", "placements_played", "constructions_played"):
+            bad = deepcopy(original)
+            bad[counter] += 1
+            changed.append(bad)
+        for event in (
+            {"action": "construct", "face": [1, 0], "orientation": 1},
+            {"action": "play", "point": [3, 1]},
+            {"action": "plant", "face": [1, 0], "orientation": 0},
+        ):
+            bad = deepcopy(original)
+            bad["journal"][-1] = event
+            changed.append(bad)
+        bad = deepcopy(original)
+        record = deepcopy(next(row for row in bad["history"] if row["topology"]))
+        record["stacks"][game.board.index[(3, 1)]] = []
+        bad["history"].append(record)
+        changed.append(bad)
+        for payload in changed:
+            with self.assertRaises(ValueError):
+                load_game(payload)
+        self.assertEqual(game.to_dict(), original)
+
+    def test_no_wrong_construction_type_or_duplicate_face_is_legal(self):
+        for rules in ("junction-planted", "junction-passage"):
+            game = new_game(3, rules=rules, experimental=True)
+            game.play((2, 0))
+            kind = "plant" if rules == "junction-planted" else "construct"
+            wrong = game.construct if kind == "plant" else game.plant
+            before = game.to_dict()
+            with self.assertRaises(Illegal):
+                wrong((1, 0), 0)
+            self.assertEqual(game.to_dict(), before)
+            getattr(game, kind)((1, 0), 0)
+            before, board = game.to_dict(), game.board
+            for face, orientation in (((1, 0), 0), ((1, 0), 1), ((99, 0), 0), ((True, 0), 0), ((0, 0), True), ((0, 0), 3)):
+                with self.subTest(rules=rules, face=face, orientation=orientation):
+                    with self.assertRaises(Illegal):
+                        getattr(game, kind)(face, orientation)
+                    self.assertEqual(game.to_dict(), before)
+                    self.assertIs(game.board, board)
+
+    def test_planted_both_acceptance_paths_and_once_only_resumption(self):
+        state = RulesState.from_game(new_game(3, rules="junction-planted", experimental=True))
+        for action in (RulesAction("play", (2, 0)), RulesAction("plant", (1, 0), orientation=1), RulesAction("pass"), RulesAction("pass")):
+            state = apply_action(state, action)
+        accepted_once = apply_action(state, RulesAction("accept"))
+        restored = RulesState.from_dict(accepted_once.to_dict())
+        both = apply_action(restored, RulesAction("accept"))
+        self.assertTrue(both.terminal)
+        self.assertTrue(RulesState.from_dict(both.to_dict()).terminal)
+        resumed = apply_action(restored, RulesAction("resume"))
+        self.assertEqual(resumed.game.topology, state.game.topology)
+        self.assertEqual(resumed.end_acceptances, set())
+        for action in (RulesAction("pass"), RulesAction("pass"), RulesAction("accept")):
+            resumed = apply_action(resumed, action)
+        self.assertTrue(resumed.terminal)
+        self.assertTrue(RulesState.from_dict(resumed.to_dict()).terminal)
+        self.assertNotIn(RulesAction("resume"), legal_actions(resumed))
 
 
 if __name__ == "__main__":

@@ -16,7 +16,11 @@ from varde import (
 
 
 SCORING_RULESETS = ("line-breath", "gjerde-majority", "breath-connection")
-CONSTRUCTION_RULESETS = ("junction-y", "junction-six")
+EMPTY_CONSTRUCTION_RULESETS = ("junction-y", "junction-six", "junction-passage")
+PLANTED_CONSTRUCTION_RULESETS = ("junction-planted",)
+# All topology-changing games may accumulate construction counts; only the
+# empty subset permits construct() rather than the atomic plant() action.
+CONSTRUCTION_RULESETS = ("junction-y", "junction-six", "junction-planted", "junction-passage")
 STATIC_RULESETS = ("go-honeycomb", "go-static-y", "go-static-six")
 GRAPH_RULESETS = CONSTRUCTION_RULESETS + STATIC_RULESETS
 IMPLEMENTED_RULESETS = SCORING_RULESETS + GRAPH_RULESETS
@@ -44,7 +48,7 @@ def _players(value):
 
 
 class LabGame(Game):
-    """Frozen scoring variants, empty Y/six junctions, and static controls."""
+    """Seven frozen laboratory games and their three static controls."""
 
     def __init__(self, n=3, rules="breath-connection", *, seed=0):
         spec = get_experiment_spec(rules)
@@ -147,12 +151,14 @@ class LabGame(Game):
         self.action_journal.append({"action": "play", "point": list(point)})
         return captured
 
-    def try_construct(self, face, orientation):
-        """Return candidate board/stones, without changing any current snapshot."""
+    def _expanded_topology(self, face, orientation, *, kind):
+        """Prepare neutral candidate geometry; do not record an intermediate state."""
         if self.finished:
             raise Illegal("game over")
-        if self.rules not in CONSTRUCTION_RULESETS:
-            raise Illegal("empty construction is unavailable in this ruleset")
+        allowed = EMPTY_CONSTRUCTION_RULESETS if kind == "construct" else PLANTED_CONSTRUCTION_RULESETS
+        if self.rules not in allowed:
+            label = "empty" if kind == "construct" else "planted"
+            raise Illegal(f"{label} construction is unavailable in this ruleset")
         if self.moves_played == 0:
             raise Illegal("first move must be a placement on an original vertex")
         try:
@@ -162,11 +168,32 @@ class LabGame(Game):
             raise Illegal(str(error)) from error
         state = dict(self.state)
         state[board.centers[face]] = ()
+        return face, board, state
+
+    def try_construct(self, face, orientation):
+        """Return candidate board/stones, without changing any current snapshot."""
+        _face, board, state = self._expanded_topology(face, orientation, kind="construct")
         # Adding an empty neutral neighbor cannot remove any existing liberty.
         # No capture resolution or speculative stone placement is appropriate.
         if self.repetition_key(state, other(self.to_move), board=board) in self.history:
             raise Illegal("repetition")
         return board, state
+
+    def _resolve_plant(self, face, orientation, *, trace=None):
+        face, board, provisional = self._expanded_topology(face, orientation, kind="plant")
+        state, captured = resolve(
+            board, provisional, board.centers[face], self.to_move, set(),
+            trace=trace, rules="gjerde-go",
+        )
+        # The empty candidate center is not an actual game state. Only the final
+        # occupied topology is checked/recorded for this single rules action.
+        if self.repetition_key(state, other(self.to_move), board=board) in self.history:
+            raise Illegal("repetition")
+        return board, state, captured
+
+    def try_plant(self, face, orientation):
+        """Return candidate graph, resolved stones, and captures without mutation."""
+        return self._resolve_plant(face, orientation)
 
     def construction_actions(self):
         from actions import RulesAction
@@ -174,36 +201,51 @@ class LabGame(Game):
         if self.finished or self.moves_played == 0 or self.rules not in CONSTRUCTION_RULESETS:
             return ()
         choices = []
+        planted = self.rules in PLANTED_CONSTRUCTION_RULESETS
+        transition = self.try_plant if planted else self.try_construct
+        kind = "plant" if planted else "construct"
         orientations = get_experiment_spec(self.rules).orientation_sets
         for face in self.board.faces:
             if self.board.centers[face] in self.board.active_centers:
                 continue
             for orientation in range(len(orientations)):
                 try:
-                    self.try_construct(face, orientation)
+                    transition(face, orientation)
                 except Illegal:
                     continue
-                choices.append(RulesAction("construct", face, orientation=orientation))
+                choices.append(RulesAction(kind, face, orientation=orientation))
         return tuple(choices)
 
-    def construct(self, face, orientation):
+    def _commit_topology(self, face, orientation, board, state, *, kind, captured=0, waves=()):
         from actions import RulesAction
 
-        board, state = self.try_construct(face, orientation)
-        face = tuple(face)
+        action = RulesAction(kind, tuple(face), orientation=orientation)
         was_swap_reply = self.moves_played == 1
         self.board, self.state, self.topology = board, state, board.topology
         self.to_move = other(self.to_move)
         self.moves_played += 1
         self.constructions_played += 1
+        if kind == "plant":
+            self.placements_played += 1
         self.consecutive_passes = 0
         self.quiet_moves = 0
-        self.last_capture_waves = []
+        self.last_capture_waves = list(waves)
         if was_swap_reply:
             self.swap_decided = True
         self.history.add(self.repetition_key())
-        self.action_journal.append(RulesAction("construct", face, orientation=orientation).to_dict())
-        return 0
+        self.action_journal.append(action.to_dict())
+        return captured
+
+    def construct(self, face, orientation):
+        board, state = self.try_construct(face, orientation)
+        return self._commit_topology(face, orientation, board, state, kind="construct")
+
+    def plant(self, face, orientation):
+        waves = []
+        board, state, captured = self._resolve_plant(face, orientation, trace=waves)
+        return self._commit_topology(
+            face, orientation, board, state, kind="plant", captured=captured, waves=waves,
+        )
 
     def play_pass(self):
         if self.finished:
@@ -411,7 +453,7 @@ class LabGame(Game):
 
         for event in payload["journal"]:
             action = RulesAction.from_dict(event)
-            if action.kind not in ("play", "pass", "swap", "resume", "construct"):
+            if action.kind not in ("play", "pass", "swap", "resume", "construct", "plant"):
                 raise ValueError("unsupported laboratory journal action")
             try:
                 if action.kind == "play":
@@ -422,6 +464,8 @@ class LabGame(Game):
                     game.take_over()
                 elif action.kind == "construct":
                     game.construct(action.point, action.orientation)
+                elif action.kind == "plant":
+                    game.plant(action.point, action.orientation)
                 else:
                     game.demand_resumption()
             except Illegal as error:

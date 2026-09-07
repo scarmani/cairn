@@ -8,6 +8,109 @@ from varde import BLACK, WHITE, Illegal
 
 
 class TestLabConstructionSnapshots(unittest.TestCase):
+    def test_planted_junction_is_one_atomic_occupied_transition(self):
+        game = LabGame(3, rules="junction-planted")
+        game.play((2, 0))
+        before = game.to_dict()
+        board, stones, captured = game.try_plant((0, 0), 0)
+        self.assertEqual(game.to_dict(), before)
+        self.assertEqual(stones[(0, 0)], (WHITE,))
+        self.assertEqual(captured, 0)
+        final_key = game.repetition_key(stones, BLACK, board=board)
+        self.assertEqual(game.plant((0, 0), 0), 0)
+        self.assertEqual((game.moves_played, game.placements_played, game.constructions_played), (2, 2, 1))
+        self.assertEqual(game.repetition_key(), final_key)
+        self.assertEqual(game.to_move, BLACK)
+        self.assertEqual(game.action_journal[-1], {"action": "plant", "face": [0, 0], "orientation": 0})
+        topology_history = [key for key in game.history if key[3] == ((0, 0, 0),)]
+        self.assertEqual(topology_history, [final_key])
+        self.assertEqual(LabGame.from_dict(game.to_dict()).to_dict(), game.to_dict())
+
+    def test_planted_legal_actions_never_offer_empty_construction(self):
+        game = LabGame(3, rules="junction-planted")
+        self.assertEqual(game.construction_actions(), ())
+        with self.assertRaises(Illegal):
+            game.plant((0, 0), 0)
+        game.play((2, 0))
+        before = game.to_dict()
+        with self.assertRaisesRegex(Illegal, "empty construction is unavailable"):
+            game.construct((0, 0), 0)
+        self.assertEqual(game.to_dict(), before)
+        actions = game.construction_actions()
+        self.assertEqual(len(actions), 2 * len(game.board.faces))
+        self.assertEqual({action.kind for action in actions}, {"plant"})
+        self.assertEqual(game.to_dict(), before)
+
+    def test_orientation_specific_plant_suicide_filters_actions_without_mutation(self):
+        game = LabGame(3, rules="junction-planted")
+        game.play((2, 0))
+        # Legal replay: White passes while Black fills the odd three corners.
+        for point in (game.board.faces[(0, 0)][i] for i in (1, 3, 5)):
+            game.play_pass()
+            game.play(point)
+        self.assertEqual(game.to_move, WHITE)
+        before, board = game.to_dict(), game.board
+        with self.assertRaisesRegex(Illegal, "suicide"):
+            game.plant((0, 0), 1)
+        self.assertIs(game.board, board)
+        self.assertEqual(game.to_dict(), before)
+        local = {action.orientation for action in game.construction_actions() if action.point == (0, 0)}
+        self.assertEqual(local, {0})
+        self.assertEqual(game.plant((0, 0), 0), 0)
+        self.assertEqual(LabGame.from_dict(game.to_dict()).to_dict(), game.to_dict())
+
+    def test_passage_three_orientations_use_off_center_face_coordinates(self):
+        for n in range(3, 7):
+            for orientation in range(3):
+                with self.subTest(n=n, orientation=orientation):
+                    game = LabGame(n, rules="junction-passage")
+                    game.play((2, 0))
+                    face = (1, 0)
+                    corners = game.board.faces[face]
+                    board, stones = game.try_construct(face, orientation)
+                    self.assertEqual(board.centers[face], (3, 1))
+                    self.assertEqual(
+                        set(board.neighbors[(3, 1)]),
+                        {corners[orientation], corners[orientation + 3]},
+                    )
+                    self.assertEqual(stones[(3, 1)], ())
+                    self.assertEqual(game.construct(face, orientation), 0)
+                    self.assertEqual((game.moves_played, game.placements_played, game.constructions_played), (2, 1, 1))
+                    self.assertEqual(LabGame.from_dict(game.to_dict()).to_dict(), game.to_dict())
+
+    def test_new_actions_cannot_be_reinterpreted_between_planted_and_empty_games(self):
+        planted = LabGame(3, rules="junction-planted")
+        planted.play((2, 0))
+        planted.plant((0, 0), 0)
+        bad = planted.to_dict()
+        bad["journal"][-1]["action"] = "construct"
+        with self.assertRaisesRegex(ValueError, "empty construction is unavailable"):
+            LabGame.from_dict(bad)
+        for rules in ("junction-y", "junction-six", "junction-passage", "go-static-y", "breath-connection"):
+            game = LabGame(3, rules=rules)
+            game.play((2, 0))
+            before = game.to_dict()
+            with self.assertRaisesRegex(Illegal, "planted construction is unavailable"):
+                game.plant((0, 0), 0)
+            self.assertEqual(game.to_dict(), before)
+
+    def test_planted_pass_reset_counters_and_journal_replay_all_sizes(self):
+        for n in range(3, 7):
+            game = LabGame(n, rules="junction-planted")
+            game.play((2, 0))
+            game.play_pass()
+            game.plant((1, 0), 1)
+            self.assertEqual((game.moves_played, game.placements_played, game.constructions_played), (3, 2, 1))
+            self.assertEqual((game.consecutive_passes, game.quiet_moves), (0, 0))
+            payload = game.to_dict()
+            for format_id in ("varde-game", "cairn-game"):
+                self.assertEqual(LabGame.from_dict(payload | {"format": format_id}).to_dict(), payload)
+            for field in ("moves_played", "placements_played", "constructions_played"):
+                bad = deepcopy(payload)
+                bad[field] += 1
+                with self.assertRaisesRegex(ValueError, "journal"):
+                    LabGame.from_dict(bad)
+
     def test_trial_topology_key_and_commit_match_without_mutating_parent(self):
         for rules in ("junction-y", "junction-six"):
             game = LabGame(3, rules=rules)

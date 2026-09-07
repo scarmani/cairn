@@ -35,13 +35,13 @@
     "active_jobs": []
   },
   "continuation_guard": {
-    "remaining_batches": 4,
+    "remaining_batches": 3,
     "stop_allowed": false,
     "checkpoint_is_stop": false,
-    "next_required_action": "Push validated Batch 3 unit A, close exact-tip CI, then implement planted/passage. Continue through both units; an internal checkpoint is not a stop."
+    "next_required_action": "Push completed Batch3 and close exact-tip CI/feedback; then run one bounded Batch4 advisory and implement browser/API, native lab opponents and independent mechanical oracle."
   },
   "test_baseline": {"passed": 254, "total": 254, "skipped": 0, "status": "captured", "seconds": 25.285},
-  "current_batch": {"id": 3, "name": "Four junction variants", "status": "in_progress", "unit": "Y/six and static controls checkpoint; planted/passage next"},
+  "current_batch": {"id": 4, "name": "Browser laboratory and mechanical oracle", "status": "pending", "prerequisite": "Batch3 closure push and exact-tip CI"},
   "preflight": {
     "python": "3.13.0",
     "node": "25.9.0",
@@ -60,7 +60,7 @@
   "batches": [
     {"id": 1, "name": "Freeze specifications and compatibility", "status": "complete", "rollback_tag": "elves/rules-lab-v1/pre-batch-1", "tests_passed": 299, "compatibility_hash": "0797f216e00869ce6f3dbc5644f3367f89923904451657700a3a30bd57896dc6"},
     {"id": 2, "name": "Scoring variants and graph foundation", "status": "complete", "rollback_tag": "elves/rules-lab-v1/pre-batch-2", "tests_passed": 340, "tests_seconds": 61.001, "parity": "103 positions, 218 decisions, 24 saves unchanged", "browser": "Classic startup, opening and pie; three screenshots/text states inspected; zero errors; server stopped"},
-    {"id": 3, "name": "Four junction variants", "status": "in_progress", "rollback_tag": "elves/rules-lab-v1/pre-batch-3", "unit_a": {"status": "validated", "tests_passed": 363, "tests_seconds": 64.829, "skipped": 0, "review": "three scoped reviews clean"}},
+    {"id": 3, "name": "Four junction variants", "status": "complete", "rollback_tag": "elves/rules-lab-v1/pre-batch-3", "tests_passed": 386, "tests_seconds": 64.481, "skipped": 0, "review": "scoped production, independent mechanics and integration reviews clean", "unit_a": {"commit": "3c4f15193c2b71c97c8be9fe154521924819fb2d", "tests_passed": 363, "tests_seconds": 64.829, "ci": "both tests checks pass"}},
     {"id": 4, "name": "Browser laboratory and mechanical oracle", "status": "pending"},
     {"id": 5, "name": "Certified corpora and gated MCTS", "status": "pending"},
     {"id": 6, "name": "Conditional comparisons and evidence cards", "status": "pending"}
