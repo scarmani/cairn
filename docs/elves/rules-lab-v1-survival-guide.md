@@ -51,10 +51,12 @@ Two planned batches remain. Estimates are planning ranges, not launch guarantees
 - Planned batches remaining: 2.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: commit/push verified Batch5C, fully reread guide/hash and
-  close exact-tip CI/feedback. Then freeze the charged bootstrap/corpus program
-  and remaining gated MCTS engineering. All697 tests pass locally,51 additive.
-  Batch5C advisory failed exit2, no response accepted/retry; reservation released.
+- Next required action:5D final artifact review clean; commit/push specific files,
+  reread guide/hash/check feedback and exact-tip CI. Then one bounded conductor
+  cycle for trusted proof jobs and the three frozen MCTS recipes. Both substrate
+  CI checks pass at47f5a87. Advisory56693 succeeded and was disposed.
+  All738 tests pass locally; no proof/research/window in5D.
+  Prior5C advisory failed exit2, no response accepted/retry; reservation released.
   No internal checkpoint stop; two planned batches remain.
 
 ## Current Phase
@@ -128,22 +130,45 @@ bypass. Direct leaders are reaped; descendants are confirmed non-running.
 Earlier REDs are preserved. Protected131 tracked source/evidence files remain
 byte-identical to86392fa; native hash unchanged. Scoped Ruff, compileall/both JS,
 diff and final independent review clean, including all16 artifact hashes and
-foreign-session/cap deltas. Commit/CI pending. Index
-docs/elves/rules-lab-v1-batch5c-artifacts.json. Research0, no window.
+foreign-session/cap deltas. Closure47f5a87d7c8a672e06c8398b9333889fd44a7e75
+pushed; guide fully reread and plan hash/feedback checked. Both exact-tip CI tests
+pass: runs34092752672 and34092894182. Checkpoint PRcomment5566386312.
+Index docs/elves/rules-lab-v1-batch5c-artifacts.json. Research0, no window.
+
+Batch5D contract docs/rules-lab-corpus-contract.md frozen at
+0ce5de6b12bf7002ec25adb3c93aab3a2f6dab68f2ff3017b81a54af03536dc0.
+Symmetry/compiler and authored table verified;738tests215.425s, zero skips,
+41 additive. All scoped syntax/lint green. Author source frozen at
+1e2c847b9789ffbd36d85083dd3b0c391cf2f0ad25b5540af5131a708ca663f4
+before full compilation. First512 replay91.429s produced476eligible,32forced,
+2duplicates,2invalid Rosette caps. Exact full regeneration finished at222.952s
+total,24609 exited0; fullsuite79297 exited0. Independent source/table/raw/compact
+review clean, including closure index/docs and all16 artifact hashes. Compact
+docs/elves/rules-lab-v1-candidate-index.json SHA256
+5b0cedefb4b8ced6ce8786ac5cb197b79d8c9c76117a8eccc5e59eeb8c123561.
+No replacements, policy games, certification or official research/window.
 
 ## Active Compute
 
-No active official research jobs, paid jobs, testserver or browser. Research
+Batch5D advisory exec56693 terminal0, receipt20260907T065400Z: CLI fallback
+claude-opus-4-8 in182.2s,186.506s wrapper. Full response/prompt read and sanity-
+checked; corrections/disposition recorded in log. No paid API/retry/parallel call.
+Owned processes absent and capacity explicitly released to SDK/#10010. External
+context/wrapper/JSON prefixbatch-5d. Both substrate47f5a87 CI checks pass;
+5D closure-tip push/CI remains pending.
+No active official research jobs, paid jobs, testserver or browser. Mechanical
+corpus regeneration24609 and fullsuite79297 both terminal0. Research
 charged0/129600s; no window opened. Product fullsuite exec85175 exited0:
 697tests114.184s. Focused origin27tests13.783s and independent supervisor10tests
 5.674s pass; root process-test sessions76101/36135 exited0. Owner14process tests
-pass, plus foreign-session reconciliation. All implementation/review agents are
-terminal; only final read-only artifact closure may be delegated before commit.
+pass, plus foreign-session reconciliation.5D implementation agents terminal;
+final read-only artifact review terminal/clean. No research workers/process tests active.
 
-Process tests used disposable synthetic ledgers, not the official allowance.
+Historical5C process tests used disposable synthetic ledgers, not the official allowance.
 Initial Darwin EPERM failure is preserved in batch-5c-supervisor-owner-verification.md.
 Actual cleanup tests pass; fresh lab-worker inventory empty. No actual proof,
-corpus generation, agent calibration, MCTS or policy game launched in this unit.
+corpus generation, agent calibration, MCTS or policy game launched in5C.
+The5D mechanical candidate compilation is recorded above; it is not research.
 Isolated browser server PID31058/exec60631 remains stopped, port8773 closed;
 Playwright rules-lab closed and disposable Personal model absent.
 
@@ -154,8 +179,9 @@ released to SDK/#10010. Unrelated Claude.app processes were left untouched.
 The coordinating tasks subsequently reported release; recheck before the next
 single bounded call. No fleet-wide capacity-free claim from our process inventory.
 Prior advisory receipts, dispositions and resource chronology remain in the log.
-Proceed under goal-cycle Hard rule3 for the current unit; no guessed advice.
+That5C unit proceeded under goal-cycle Hard rule3; no guessed advice.
 Last disk check332GiB free. No new research throughput measurement exists.
+
 ## Non-Negotiables
 
 - Preserve existing six candidates, public defaults, seeded decisions, saves,
@@ -190,11 +216,13 @@ That producer/scaffold unit is complete at86392fa with both exact-tip checks gre
 Current5C contract docs/rules-lab-origin-supervision.md SHA256
 cdd61dde5762a596ce2a366bb5931d9ef844dd2c871902ead46fa6967314acfa is frozen.
 That unit is locally verified at697tests/114.184s; final source/artifact review
-clean, commit/push/CI pending. Existing5A/5B and product sources
+clean, pushed47f5a87 and both exact-tip CI checks pass. Existing5A/5B and product sources
 remain byte-identical. Only short known mechanics and synthetic jobs ran in
 disposable ledgers. Actual corpus/probe remains deferred until the pre-research
-manifest and charged bootstrap are separately frozen. Next complete5C closure,
-then use one bounded conductor cycle for the substantive corpus/MCTS unit.
+manifest and charged bootstrap are separately frozen. The single5D conductor
+cycle is complete/disposed; the frozen corpus contract is locally verified above.
+Close final artifact review/commit/push/CI and continue required MCTS and charged
+proof program under one next bounded conductor cycle.
 Browser contract remains frozen at
 SHA25657bc6d9d70310557b58c9dd33cfa602a86a5658769462cf4023e688d59833f6a.
 Build Batch5 terminal-certificate interfaces and deterministic run controls using

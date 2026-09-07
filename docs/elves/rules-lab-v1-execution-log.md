@@ -2,13 +2,99 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–4 complete; Batch5C locally verified, closure pending.
+- Phase: launched, Batches1–4 complete;5D locally verified, closure pending.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
 - Next: terminal certification interfaces, then charged gated MCTS; two batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 5D verification: 2026-09-07
+
+738tests215.425s pass, zero skips (41 additive); scoped Ruff/compileall/bothJS/
+diff green. Fullsuite79297 and corpus24609 terminal0. First512 compile91.429s,
+full exact raw/compact regeneration222.952s total. Structural results476candidate,
+32single-action,2spatialduplicates,2invalid Rosette cap attempts; all512 preserved,
+no replacements. Every rule has14 holdout candidates, development14 for Rosette/
+Passage and16 otherwise across both sizes. All certified counts0, MCTS admission
+incomplete; ten dual mechanical origin paths and six legacy limits explicit.
+No proof/calibration/policy game/research window. Engineering replay is not proof
+throughput. Independent source/table/raw/compact review clean; closure index/docs
+review now clean, including all16 hashes and corrected historical-guide statements.
+All147 protected tracked engine/browser/server/harness files unchanged from47f5a87;
+331GiBfree. No remaining local closure blocker.
+
+Whole raw SHA d1dc7d7bd23b036862ddcffe9915fb5b7932147c838f93c4ef29fea9e255f7fc;
+compact5b0cedefb4b8ced6ce8786ac5cb197b79d8c9c76117a8eccc5e59eeb8c123561.
+Source/log/advisory identities in rules-lab-v1-batch5d-artifacts.json; report in
+docs/rules-lab-corpus-report.md. Initial REDs were missing-new-module tests,
+test-only RulesState indexing, bool-property call and pass-before-opening fixture;
+all corrected without production changes or gate weakening. Invalid authored
+Rosette caps remain negative candidate rows, not a rules-defect claim.
+Next closure push/CI then required trusted proof-job and MCTS engineering; no
+internal checkpoint stop. No process or budget lease remains active.
+
+## Batch 5D authored table freeze before full compilation: 2026-09-07
+
+Independent table review clean. Source lab_corpus_candidates.py SHA256
+1e2c847b9789ffbd36d85083dd3b0c391cf2f0ad25b5540af5131a708ca663f4;
+table-order definitions b06d1cb986813f8fb227b8674def9c8cdc59ba4ea07f9ee967449c460858e06b;
+canonical-ID-order list16aa38b04fa323f1ffa94552a657da92cc1f38560cd3bdfa01e8f6b47a7d3d6b.
+Exactly512 explicit proposals:12 common+4 family-specific templates per rule/size.
+No table may adapt after compilation. All constructorientations are represented;
+known hub-reopening and actor-preserving/closing rescue chains are transcribed.
+Three author tests pass0.214s; initial test-only RED called a bool property,
+corrected without changing the candidate source. Fullsuite79297 running; Ruff,
+compileall, both JS and diff green. First full compilation has not run yet at
+this freeze. Research0; no window. Candidate legality negatives will be retained.
+
+## Batch 5D contract freeze and start: 2026-09-07
+
+Both exact47f5a87 CI checks pass (runs34092752672/34092894182). PR23 remains
+draft/open/unmerged, no review/inline blockers; checkpoint comment5566386312.
+Frozen docs/rules-lab-corpus-contract.md SHA256
+0ce5de6b12bf7002ec25adb3c93aab3a2f6dab68f2ff3017b81a54af03536dc0.
+Main read fully before delegation. New symmetry/compiler/invariant owners active;
+root owns authored table and full generation. Sixteen short fixed templates per
+n3/n4 and16definitions, maximum512; no legal-alternative/policy/proof searches.
+Freeze complete table before full compilation. Structural equivalence remains
+unknown, all certified counts0. First charged32-task/120s bootstrap is explicitly
+predeclared but not launched here. Research0; no window. Initial test-first REDs
+are missing new modules, preserved; no old test weakened.
+
+## Batch 5D advisory disposition: 2026-09-07
+
+Single advisory20260907T065400Z succeeded via CLI fallbackclaude-opus-4-8:
+182.2s provider/186.506s wrapper, exec56693 terminal0. Full response and prompt
+read; no paid API. Owned wrapper/provider inventory empty, capacity explicitly
+released to SDK/#10010. No retry. Exact-tip47f5a87 CI still being reconciled;
+no5D implementation begins before both checks pass.
+
+Accept one bounded candidate-origin/symmetry/frozen-split engineering unit with
+short authored legal chains only; no proof, recipe measurement or policy game.
+Keep all16 definitions visible and legacy-six independent-mechanics qualification
+explicit. Correct advisory details before execution: all-actions-equivalent cannot
+be removed by a proof-free structural screen; retain it as unknown until charged
+exact certification. Candidate counts are not certified counts/admission; no new
+unspecified "margin" gate. A pending CI check is a wait, not permission to end
+the launched run. Bootstrap must use fixed round-robin coverage, not favor the
+first/smallest ruleset. Its cap is a reservation, never claimed sufficient to
+certify a split before throughput exists. Source/performance risks remain visible.
+Three immutable MCTS recipes remain required in the following unit; no new search
+architecture or free actual-game calibration is authorized by the advice.
+
+## Batch 5C push and 5D advisory: 2026-09-07
+
+47f5a87d7c8a672e06c8398b9333889fd44a7e75 committed and pushed; survival guide
+fully reread, plan hash verified immediately after commit/push. PR23 remains
+draft/open/unmerged with no new reviews/inline comments. Exact-tip CI is running.
+Fresh SDK/#10010 snapshots idle and bounded-provider process inventory empty;
+explicit single-call reservation sent to both, #10010 acknowledged. One CLI-only
+5D advisory launched exec56693 with240s/attempt,570s total+bounded cleanup, no
+paid API/parallel call/retry. External batch-5d-context.md/wrapper/JSON receipt.
+Must read/dispose actual advice and close CI before implementation. Research0,
+no window; all owned engineering tests/agents terminal. This is not a stop gate.
 
 ## Batch 5C verification: 2026-09-07
 
