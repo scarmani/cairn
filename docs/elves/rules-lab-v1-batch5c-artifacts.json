@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "source_parent": "86392fa6d4410286ff7a5da0f7c7f3af5d021b9d",
+  "engineering_only": true,
+  "research_seconds": 0,
+  "tests": {
+    "passed": 697,
+    "added": 51,
+    "skipped": 0,
+    "seconds": 114.184
+  },
+  "independent_review": "clean; final closure delta review recorded in execution log",
+  "real_game_certificates": 0,
+  "admitted_agents": 0,
+  "raw_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "sources": [
+    {
+      "path": "docs/rules-lab-origin-supervision.md",
+      "sha256": "cdd61dde5762a596ce2a366bb5931d9ef844dd2c871902ead46fa6967314acfa"
+    },
+    {
+      "path": "research/harness/lab_origin.py",
+      "sha256": "9ddc928f3406bf4398defe781e691986e48814f89d23078120abc70bd4f12cb4"
+    },
+    {
+      "path": "research/harness/lab_supervisor.py",
+      "sha256": "8e29d03c7b44d3f30b607f2df5ff48e6a3f19f1e8da06204db6652014b07e5e3"
+    },
+    {
+      "path": "research/harness/lab_worker.py",
+      "sha256": "f085ea684580b46b0cc8606d818d1781cf2cd01a02f1c2a6293b7c16c13bc52d"
+    },
+    {
+      "path": "engine/test_lab_origin.py",
+      "sha256": "2f54f3632226e4f6364808a05ba283bfc6c461505eacde80ee930582d1d0a6c3"
+    },
+    {
+      "path": "engine/test_lab_origin_invariants.py",
+      "sha256": "7ca19a2b1f5df0cb3e9ea101983f2c0fe2ef2f487c1ed8b61e4d6bd290b81ad2"
+    },
+    {
+      "path": "engine/test_lab_supervisor.py",
+      "sha256": "4ddc4ea958e59e73d988eecdea33ab9b98104ade4b7418f10cf8299523c08487"
+    },
+    {
+      "path": "engine/test_lab_supervisor_invariants.py",
+      "sha256": "097adcded01855e7154c26f872daa86370264634ab2c15a7c0b57af5a971cf9b"
+    },
+    {
+      "path": "engine/lab_supervisor_test_helpers.py",
+      "sha256": "6ae42bda5897380d9833700ab2f4fe230dc9f740c2253f9ae905769888539dbf"
+    }
+  ],
+  "selected_artifacts": [
+    {
+      "path": "batch-5c-tests.log",
+      "sha256": "56e1751335fa97fa8124b75f7d9a2170586e01febdd74e6e57d83dc4bc3ea0d6"
+    },
+    {
+      "path": "batch-5c-origin-tests.log",
+      "sha256": "beef933d567c5ea9ad747c1024ff5d99f3a9081e6af005578b38f4502f7948a0"
+    },
+    {
+      "path": "batch-5c-supervisor-invariants-initial.log",
+      "sha256": "b6206c9a2898459d7bc512d43da7a2a1e2bb7d6984803d48f26ddbceec949f96"
+    },
+    {
+      "path": "batch-5c-supervisor-invariants-final.log",
+      "sha256": "3967781a4b8ad1c7963629911a8e4d237e44b2bf5bfef0d4a398733ed19ecabc"
+    },
+    {
+      "path": "batch-5c-supervisor-owner-verification.md",
+      "sha256": "a5599eefeb68fcbe8cab390964465c20d357bd44076c20b451a2917343bbbfe1"
+    },
+    {
+      "path": "batch-5c-goal-cycle.json",
+      "sha256": "a57858f7b1c856c07b01687cd8b78c7c61f15c76e885fbf2d31a45244d973816"
+    },
+    {
+      "path": "batch-5c-context.md",
+      "sha256": "46a57d5c2ce154cb8c91c3b8a1b574df47fe1140459b27c170bab6a407b97cf2"
+    }
+  ],
+  "claim_limit": "Complete fresh-action origin replay for16 definitions; independent mechanical replay for10 and explicit legacy-six limit. Synthetic owned-worker protocol and budget enforcement tested. No actual-game certificate, throughput calibration, MCTS admission, comparative match or game-quality result. The original supervisor RED is preserved as a receipt, not misrepresented as a complete raw console log."
+}

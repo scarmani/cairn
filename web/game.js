@@ -6,6 +6,17 @@ const passButton = document.querySelector("#pass-btn");
 const swapButton = document.querySelector("#swap-btn");
 const resumeButton = document.querySelector("#resume-btn");
 const finishExtButton = document.querySelector("#finish-ext-btn");
+const acceptButton = document.querySelector("#accept-btn");
+const experimentalCheckbox = document.querySelector("#experimental-lab");
+const constructionControls = document.querySelector("#construction-controls");
+const constructionTitle = document.querySelector("#construction-title");
+const orientationSelect = document.querySelector("#construction-orientation");
+const confirmConstructionButton = document.querySelector("#confirm-construction-btn");
+const cancelConstructionButton = document.querySelector("#cancel-construction-btn");
+const labEvidence = document.querySelector("#lab-evidence");
+const labEvidenceNote = document.querySelector("#lab-evidence-note");
+const labInspector = document.querySelector("#lab-inspector");
+const labInspectorNote = document.querySelector("#lab-inspector-note");
 const sizeSelect = document.querySelector("#board-size");
 const rulesSelect = document.querySelector("#ruleset");
 const modeSelect = document.querySelector("#game-mode");
@@ -37,15 +48,21 @@ const importRecordFile = document.querySelector("#import-record-file");
 const exportRecordButton = document.querySelector("#export-record-btn");
 const clearRecordButton = document.querySelector("#clear-record-btn");
 const playtestStatus = document.querySelector("#playtest-status");
+const loadButton = document.querySelector("#load-btn");
+const saveButton = document.querySelector("#save-btn");
+const trainingControls = document.querySelector("#training-controls");
+const originalSizeLabels = new Map(Array.from(sizeSelect.options, (option) => [option.value, option.textContent]));
 
 let game = null;
 let projected = new Map();
+let projectedSites = new Map();
 let hoverKey = null;
 let animation = null;
 let lastFrame = performance.now();
 let thinking = false;
 let computerSequence = 0;
 let actionInFlight = false;
+let replacementInFlight = false;
 let visual = null;
 let watchPlaying = false;
 let training = null;
@@ -55,6 +72,11 @@ let rulesetCatalog = null;
 let playtestRecord = null;
 let playtestImported = false;
 let playtestLastActionAt = performance.now();
+let playtestInterrupted = false;
+let gameEpoch = 0;
+let constructionPreview = null;
+let hoverTarget = null;
+let lastOrdinaryRuleset = "classic";
 
 const savedSpeed = Number(
   localStorage.getItem("varde-playback-speed")
@@ -116,6 +138,28 @@ function rulesetById(rulesetId) {
   return rulesetCatalog?.rulesets?.find((ruleset) => ruleset.id === rulesetId);
 }
 
+function isLabGame() { return game?.experimental === true; }
+function isLabSetup() { return rulesetById(rulesSelect.value)?.experimental === true; }
+function labContext() { return isLabGame() || isLabSetup(); }
+function canCreateRuleset(ruleset) {
+  return Boolean(ruleset && (ruleset.public_new_game || (
+    experimentalCheckbox.checked && ruleset.experimental === true
+    && ruleset.experimental_available === true
+  )));
+}
+function labLegalAction(kind, point = null, orientation = null) {
+  return game?.legal_actions?.find((action) => (
+    action.action === kind
+    && (point === null || keyOf(action.point || action.face) === keyOf(point))
+    && (orientation === null || action.orientation === orientation)
+  ));
+}
+function humanInputLocked() {
+  return !game || thinking || actionInFlight || Boolean(
+    isLabGame() ? game.match?.computer_can_act : game.match?.computer_turn,
+  );
+}
+
 function localSessionId() {
   if (crypto.randomUUID) return crypto.randomUUID();
   const values = new Uint32Array(4);
@@ -128,8 +172,8 @@ function updatePlaytestControls() {
     game
     && game.match?.mode === "hotseat"
     && game.moves_played === 0
-    && rulesetById(game.rules)?.status === "candidate"
-    && !playtestRecord,
+    && (rulesetById(game.rules)?.status === "candidate" || (isLabGame() && window.VardeLabRecord))
+    && !playtestRecord && !actionInFlight,
   );
   startRecordButton.disabled = !canStart;
   exportRecordButton.disabled = !playtestRecord;
@@ -144,8 +188,9 @@ function updatePlaytestControls() {
     }
     return;
   }
-  const label = playtestImported
-    ? `Imported ${playtestRecord.status}`
+  const label = playtestInterrupted ? "Recording interrupted · last valid prefix frozen"
+    : playtestImported
+    ? `Imported ${playtestRecord.status}${playtestRecord.format === "varde-lab-playtest" ? " · structure checked only, not mechanically certified" : ""}`
     : playtestRecord.status === "complete" ? "Complete" : "Recording";
   playtestStatus.textContent = `${label} · ${playtestRecord.actions.length} action${playtestRecord.actions.length === 1 ? "" : "s"} · export stays on this device`;
 }
@@ -155,8 +200,21 @@ function startPlaytestRecord() {
     !game
     || game.match?.mode !== "hotseat"
     || game.moves_played !== 0
-    || rulesetById(game.rules)?.status !== "candidate"
+    || actionInFlight
+    || (!isLabGame() && rulesetById(game.rules)?.status !== "candidate")
   ) return;
+  if (isLabGame()) {
+    try {
+      playtestRecord = window.VardeLabRecord.createLabRecord(game, {
+        sessionId: localSessionId(), catalogVersion: rulesetCatalog.version,
+      });
+      playtestImported = false;
+      playtestInterrupted = false;
+      playtestLastActionAt = performance.now();
+      updatePlaytestControls();
+    } catch (error) { message.textContent = error.message; }
+    return;
+  }
   playtestRecord = {
     format: "varde-human-playtest",
     version: 1,
@@ -176,6 +234,7 @@ function startPlaytestRecord() {
     ended_by_stagnation: false,
   };
   playtestImported = false;
+  playtestInterrupted = false;
   playtestLastActionAt = performance.now();
   updatePlaytestControls();
 }
@@ -183,6 +242,7 @@ function startPlaytestRecord() {
 function clearPlaytestRecord() {
   playtestRecord = null;
   playtestImported = false;
+  playtestInterrupted = false;
   playtestLastActionAt = performance.now();
   updatePlaytestControls();
 }
@@ -199,6 +259,17 @@ function actionKind(path) {
 }
 
 function capturePlaytestAction(path, body, before, next, actionAt) {
+  if (playtestInterrupted) return;
+  if (playtestRecord?.format === "varde-lab-playtest") {
+    if (playtestImported || path !== "/api/action") return;
+    playtestRecord = window.VardeLabRecord.appendLabAction(playtestRecord, {
+      action: body, before, after: next,
+      elapsedMs: Math.max(0, Math.round(actionAt - playtestLastActionAt)),
+    });
+    playtestLastActionAt = performance.now();
+    updatePlaytestControls();
+    return;
+  }
   const kind = actionKind(path);
   if (!playtestRecord || playtestImported || !kind) return;
   if (playtestRecord.status === "complete" && kind !== "resume") return;
@@ -346,15 +417,16 @@ function assertImportedPlaytestRecord(record) {
 
 function populateRulesetSelect(catalog) {
   const selected = rulesSelect.value || "classic";
-  rulesSelect.replaceChildren(...catalog.rulesets.map((ruleset) => {
+  const visible = catalog.rulesets.filter((ruleset) => !ruleset.experimental || experimentalCheckbox.checked);
+  rulesSelect.replaceChildren(...visible.map((ruleset) => {
     const option = document.createElement("option");
     option.value = ruleset.id;
-    option.disabled = !ruleset.public_new_game;
-    const suffix = ruleset.public_new_game ? "" : ` — ${ruleset.status}`;
+    option.disabled = !canCreateRuleset(ruleset);
+    const suffix = ruleset.experimental ? " — experimental" : ruleset.public_new_game ? "" : ` — ${ruleset.status}`;
     option.textContent = `${ruleset.label}${suffix}`;
     return option;
   }));
-  rulesSelect.value = rulesetById(selected) ? selected : "classic";
+  rulesSelect.value = visible.some((spec) => spec.id === selected) ? selected : lastOrdinaryRuleset;
 }
 
 function updateRulesetSetup({coerceSize = false} = {}) {
@@ -362,7 +434,19 @@ function updateRulesetSetup({coerceSize = false} = {}) {
   if (!ruleset) return;
   for (const option of sizeSelect.options) {
     const size = Number(option.value);
-    option.disabled = size < ruleset.min_size || size > ruleset.max_size;
+    option.disabled = ruleset.allowed_sizes
+      ? !ruleset.allowed_sizes.includes(size)
+      : size < ruleset.min_size || size > ruleset.max_size;
+    if (ruleset.experimental && size <= 6) {
+      const name = ["", "", "", "Toy", "Beginner", "Intermediate", "Full"][size];
+      const lines = 9 * size * size - 3 * size;
+      const cells = 3 * size * (size - 1) + 1;
+      const unit = ruleset.id === "gjerde-majority" ? `${cells} cells · ${lines} lines`
+        : ruleset.geometry === "kagome-lines" ? `${lines} lines` : `${6 * size * size} original vertices`;
+      option.textContent = `${name} (${unit})`;
+    } else {
+      option.textContent = originalSizeLabels.get(option.value);
+    }
   }
   const selectedSize = Number(sizeSelect.value);
   if (coerceSize && (selectedSize < ruleset.min_size || selectedSize > ruleset.max_size)) {
@@ -371,7 +455,8 @@ function updateRulesetSetup({coerceSize = false} = {}) {
   const status = ruleset.status === "candidate" ? "evaluation candidate" : ruleset.status;
   const reason = ruleset.archival_reason ? ` ${ruleset.archival_reason}` : "";
   rulesetNote.textContent = `${ruleset.label} ${ruleset.evaluation_id} · ${status}. ${ruleset.description}${reason}`;
-  newButton.disabled = !ruleset.public_new_game;
+  newButton.disabled = !canCreateRuleset(ruleset) || actionInFlight;
+  updateSetupVisibility();
 }
 
 function installRulesetCatalog(catalog) {
@@ -425,6 +510,10 @@ function updateProfileNote() {
 
 function syncSetupControls() {
   if (!game?.match) return;
+  if (isLabGame() && !experimentalCheckbox.checked) {
+    experimentalCheckbox.checked = true;
+    populateRulesetSelect(rulesetCatalog);
+  }
   if (game.rules) rulesSelect.value = game.rules;
   updateRulesetSetup();
   modeSelect.value = game.match.mode;
@@ -460,6 +549,24 @@ function updateSetupVisibility() {
     element.hidden = !(versus || watch);
   });
   spectatorControls.hidden = !watch;
+  const lab = labContext();
+  if (lab) {
+    profileSelect.hidden = true;
+    blackProfileSelect.hidden = true;
+    whiteProfileSelect.hidden = true;
+    document.querySelector("#profile-controls").hidden = true;
+  }
+  trainingControls.hidden = lab;
+  labEvidence.hidden = !lab;
+  labInspector.hidden = !isLabGame();
+  document.querySelector("#sky-legend").hidden = isLabGame();
+  document.querySelectorAll(".lab-legend").forEach((element) => {
+    element.hidden = !isLabGame() || !game.construction_sites?.length;
+  });
+  document.querySelector("#inspection-hint").textContent = isLabGame()
+    ? "Hover to inspect actual connections · press F for fullscreen"
+    : "Hover to inspect stacks · press F for fullscreen";
+  labEvidenceNote.textContent = "Casual and Standard are provisional objective-aware opponents. MCTS admission is unmeasured; no comparative game evidence. Classic profiles and Personal learning are not used.";
   updateProfileNote();
 }
 
@@ -478,6 +585,10 @@ function stopPlayback({cancelWait = true} = {}) {
 
 function setGame(next, schedule = true) {
   game = next;
+  constructionPreview = null;
+  hoverTarget = null;
+  hoverKey = null;
+  constructionControls.hidden = true;
   sizeSelect.value = String(game.n);
   animation = game.capture_waves.length
     ? {
@@ -504,14 +615,26 @@ function updateControls() {
   const rulesTag = game.rules && game.rules !== "classic" ? ` · ${game.rules}` : "";
   const controlText = `Black ${control.B} · White ${control.W}${rulesTag}`;
   const scoreText = `Black ${game.score.B} · White ${game.score.W}${rulesTag}`;
+  const lab = isLabGame();
+  const labControl = game.original_control || control;
+  const currentText = lab
+    ? `Current score: ${scoreText} · original control ${labControl.B}–${labControl.W}`
+    : controlText;
   const setTurnText = (primary, secondary) => {
     const small = document.createElement("small");
     small.textContent = secondary;
     turnStatus.replaceChildren(document.createTextNode(primary), small);
   };
   if (thinking) {
-    setTurnText("Computer is thinking…", controlText);
-  } else if (game.finished) {
+    setTurnText("Computer is thinking…", currentText);
+  } else if (lab && game.finished && !game.accepted) {
+    const lead = game.score.B === game.score.W ? "Tied score"
+      : `${game.score.B > game.score.W ? "Black" : "White"} leads`;
+    setTurnText(
+      `${game.current_player} · ${game.actor_color === "B" ? "Black" : "White"} decides`,
+      `${lead} · pending acceptance · ${scoreText}`,
+    );
+  } else if (lab ? game.accepted : game.finished) {
     const result = game.score.B === game.score.W
       ? "Draw"
       : `${game.score.B > game.score.W ? "Black" : "White"} wins`;
@@ -519,8 +642,8 @@ function updateControls() {
     setTurnText(result, `${scoreText}${ending}`);
   } else {
     setTurnText(
-      `${game.current_player} · ${game.to_move === "B" ? "Black" : "White"} to move`,
-      `${controlText} · move ${game.moves_played + 1}`,
+      `${game.current_player} · ${(lab ? game.actor_color : game.to_move) === "B" ? "Black" : "White"} to move`,
+      `${currentText} · ${lab ? `${game.placements_played} placements · ${game.constructions_played} constructions` : `move ${game.moves_played + 1}`}`,
     );
   }
   const extendOnly = ["breath-rescue", "breath-run"].includes(game.rules);
@@ -534,16 +657,28 @@ function updateControls() {
   }
   finishExtButton.hidden = !game.extension_only_turn;
   finishExtButton.disabled = thinking || Boolean(game.match?.computer_turn);
-  const computerTurn = game.match?.computer_turn || thinking || actionInFlight;
-  passButton.disabled = game.finished || game.moves_played === 0 || computerTurn;
-  swapButton.hidden = !game.swap_available || computerTurn;
-  resumeButton.hidden = !game.resumption_available;
-  resumeButton.disabled = thinking || Boolean(game.match?.computer_can_act);
+  const computerTurn = humanInputLocked();
+  passButton.disabled = lab ? computerTurn || !labLegalAction("pass")
+    : game.finished || game.moves_played === 0 || computerTurn;
+  swapButton.hidden = lab ? !labLegalAction("swap") : !game.swap_available || computerTurn;
+  swapButton.disabled = lab && computerTurn;
+  resumeButton.hidden = lab ? !labLegalAction("resume") : !game.resumption_available;
+  resumeButton.disabled = computerTurn || Boolean(game.match?.computer_can_act);
+  acceptButton.hidden = !lab || !labLegalAction("accept");
+  acceptButton.disabled = computerTurn;
+  confirmConstructionButton.disabled = computerTurn || !constructionPreview;
+  orientationSelect.disabled = computerTurn;
+  newButton.disabled = actionInFlight || !canCreateRuleset(rulesetById(rulesSelect.value));
+  loadButton.disabled = actionInFlight;
+  saveButton.disabled = actionInFlight;
+  document.querySelectorAll(".controls select, .controls input").forEach((element) => {
+    element.disabled = actionInFlight;
+  });
   canvas.style.cursor = computerTurn ? "wait" : "default";
   const watch = game.match?.mode === "watch";
   spectatorControls.hidden = !watch;
-  playButton.disabled = !watch || !game.match?.computer_can_act;
-  stepButton.disabled = !watch || watchPlaying || thinking || !game.match?.computer_can_act;
+  playButton.disabled = !watch || replacementInFlight || !game.match?.computer_can_act;
+  stepButton.disabled = !watch || watchPlaying || thinking || actionInFlight || !game.match?.computer_can_act;
   if (watch && !game.match?.computer_can_act && watchPlaying) {
     stopPlayback({cancelWait: false});
   }
@@ -551,10 +686,11 @@ function updateControls() {
 }
 
 async function scheduleComputerMove(forceOne = false) {
-  if (!game?.match?.computer_can_act || thinking) return;
+  if (!game?.match?.computer_can_act || thinking || actionInFlight) return;
   const watch = game.match.mode === "watch";
   if (watch && !watchPlaying && !forceOne) return;
   const sequence = ++computerSequence;
+  const epoch = gameEpoch;
   thinking = true;
   updateControls();
   const waves = game.capture_waves?.length || 0;
@@ -562,19 +698,17 @@ async function scheduleComputerMove(forceOne = false) {
     ? Math.max(forceOne ? 0 : Number(speedSelect.value), waves * captureWaveDuration())
     : Math.max(350, waves * 520);
   await new Promise((resolve) => setTimeout(resolve, waveDelay));
-  if (sequence !== computerSequence) {
-    if (!actionInFlight) {
-      thinking = false;
-      updateControls();
-    }
-    return;
-  }
+  // A canceled timer no longer owns thinking state; a replacement game may
+  // already have scheduled its own computer action.
+  if (sequence !== computerSequence || epoch !== gameEpoch) return;
   try {
     actionInFlight = true;
+    updateControls();
     const next = await request("/api/computer", {});
+    if (epoch !== gameEpoch) return;
     actionInFlight = false;
     thinking = false;
-    setGame(next, !forceOne);
+    setGame(next, !forceOne && (!watch || watchPlaying));
   } catch (error) {
     actionInFlight = false;
     thinking = false;
@@ -585,21 +719,60 @@ async function scheduleComputerMove(forceOne = false) {
 }
 
 async function humanAction(path, body = {}) {
-  if (thinking || actionInFlight || game?.match?.computer_turn) return;
+  if (humanInputLocked()) return;
   const before = game;
+  const epoch = gameEpoch;
   const actionAt = performance.now();
   try {
     actionInFlight = true;
     updateControls();
     const next = await request(path, body);
+    if (epoch !== gameEpoch) return;
     actionInFlight = false;
-    capturePlaytestAction(path, body, before, next, actionAt);
+    let recordError = null;
+    try {
+      capturePlaytestAction(path, body, before, next, actionAt);
+    } catch (error) {
+      playtestInterrupted = true;
+      recordError = `Game action succeeded, but recording stopped: ${error.message}. The last valid record prefix is still exportable.`;
+    }
     setGame(next);
+    if (recordError) message.textContent = recordError;
   } catch (error) {
     actionInFlight = false;
     message.textContent = error.message;
     updateControls();
   }
+}
+
+async function replaceGame(path, body) {
+  if (actionInFlight) return;
+  stopPlayback();
+  const epoch = ++gameEpoch;
+  constructionPreview = null;
+  constructionControls.hidden = true;
+  actionInFlight = true;
+  replacementInFlight = true;
+  updateControls();
+  try {
+    const next = await request(path, body);
+    if (epoch !== gameEpoch) return;
+    actionInFlight = false;
+    clearPlaytestRecord();
+    setGame(next, false);
+  } catch (error) {
+    if (epoch === gameEpoch) message.textContent = error.message;
+  } finally {
+    if (epoch === gameEpoch) {
+      actionInFlight = false;
+      replacementInFlight = false;
+      thinking = false;
+      updateControls();
+    }
+  }
+  // A rejected load leaves the old game intact. Restore its automatic human-
+  // versus-computer turn, while spectator games remain deliberately paused.
+  if (game?.match.mode !== "watch") scheduleComputerMove();
 }
 
 function makeProjection() {
@@ -639,6 +812,151 @@ function makeProjection() {
     x: offsetX + (x - minX) * scale,
     y: offsetY + (-y * Math.sqrt(3) - minY) * scale,
   });
+  projectedSites = new Map((game.construction_sites || []).filter((site) => !site.active)
+    .map((site) => [keyOf(site.face), visual.projectRaw(...site.center)]));
+}
+
+function previewSite() {
+  return constructionPreview && game?.construction_sites?.find(
+    (site) => keyOf(site.face) === keyOf(constructionPreview.face),
+  );
+}
+
+function selectConstruction(site) {
+  if (humanInputLocked() || site.active || !site.legal_orientations.length) return;
+  constructionPreview = {face: [...site.face], orientation: site.legal_orientations[0], kind: site.kind};
+  hoverTarget = {kind: "site", key: keyOf(site.face)};
+  orientationSelect.replaceChildren(...site.legal_orientations.map((orientation) => {
+    const option = document.createElement("option");
+    option.value = String(orientation);
+    option.textContent = `Orientation ${orientation + 1} · corners ${site.orientations[orientation].map((index) => index + 1).join("–")}`;
+    return option;
+  }));
+  constructionTitle.textContent = `${site.kind === "plant" ? "Plant" : "Construct"} at face ${site.face.join(", ")}`;
+  confirmConstructionButton.textContent = site.kind === "plant" ? "Plant junction" : "Construct junction";
+  constructionControls.hidden = false;
+  canvas.focus({preventScroll: true});
+  updateControls();
+  draw();
+  fitFullscreen();
+}
+
+function cancelConstruction() {
+  constructionPreview = null;
+  constructionControls.hidden = true;
+  draw();
+  fitFullscreen();
+}
+
+async function confirmConstruction() {
+  const site = previewSite();
+  if (humanInputLocked() || !site) return;
+  const action = labLegalAction(site.kind, site.face, constructionPreview.orientation);
+  if (!action) { cancelConstruction(); return; }
+  await humanAction("/api/action", action);
+}
+
+function drawLabCells() {
+  for (const cell of game.cells || []) {
+    const center = visual.projectRaw(...cell.center);
+    if (cell.owner) {
+      ctx.beginPath();
+      ctx.arc(center.x, center.y, visual.stoneRadius * 1.25, 0, Math.PI * 2);
+      ctx.fillStyle = cell.owner === "B" ? "rgba(37,41,35,.15)" : "rgba(255,253,248,.62)";
+      ctx.fill();
+    }
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = `650 ${Math.max(8, visual.stoneRadius * 0.65)}px system-ui`;
+    ctx.fillStyle = "#4e5149";
+    ctx.fillText(`${cell.counts.B}:${cell.counts.W}`, center.x, center.y);
+    if (cell.owner) {
+      ctx.font = `700 ${Math.max(8, visual.stoneRadius * 0.56)}px system-ui`;
+      ctx.fillText(`${cell.owner} +1`, center.x, center.y + visual.stoneRadius * 0.68);
+    }
+  }
+}
+
+function drawConstructionSites() {
+  for (const site of game.construction_sites || []) {
+    if (site.active) continue;
+    const pos = projectedSites.get(keyOf(site.face));
+    const selected = keyOf(site.face) === (constructionPreview && keyOf(constructionPreview.face));
+    ctx.save();
+    ctx.beginPath();
+    ctx.setLineDash([visual.stoneRadius * 0.19, visual.stoneRadius * 0.17]);
+    ctx.arc(pos.x, pos.y, visual.stoneRadius * (selected ? 0.60 : 0.42), 0, Math.PI * 2);
+    ctx.strokeStyle = site.legal_orientations.length ? "rgba(48,94,137,.85)" : "rgba(83,89,94,.38)";
+    ctx.lineWidth = Math.max(1.2, visual.lineWidth * 0.8);
+    ctx.stroke();
+    ctx.restore();
+  }
+  const site = previewSite();
+  if (!site) return;
+  const center = visual.projectRaw(...site.center);
+  ctx.save();
+  ctx.strokeStyle = "#287e8b";
+  ctx.lineWidth = Math.max(2, visual.lineWidth * 1.5);
+  ctx.setLineDash([visual.stoneRadius * 0.3, visual.stoneRadius * 0.16]);
+  for (const index of site.orientations[constructionPreview.orientation]) {
+    const corner = projected.get(keyOf(site.corners[index]));
+    ctx.beginPath();
+    ctx.moveTo(center.x, center.y);
+    ctx.lineTo(corner.x, corner.y);
+    ctx.stroke();
+  }
+  if (site.kind === "plant") {
+    ctx.beginPath();
+    ctx.arc(center.x, center.y, visual.stoneRadius, 0, Math.PI * 2);
+    ctx.fillStyle = game.actor_color === "B" ? "rgba(37,41,35,.4)" : "rgba(255,253,248,.7)";
+    ctx.fill();
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function inspectionData() {
+  if (!isLabGame()) return null;
+  const target = hoverTarget || (constructionPreview && {kind: "site", key: keyOf(constructionPreview.face)});
+  if (!target) return null;
+  if (target.kind === "site") {
+    const site = game.construction_sites.find((item) => keyOf(item.face) === target.key);
+    if (!site) return null;
+    return {kind: "site", face: site.face, center: site.center, active: site.active,
+      legal_orientations: site.legal_orientations, orientation: site.orientation,
+      construction_kind: site.kind, corners: site.corners, orientations: site.orientations,
+      role: "Inactive center: absent from the graph, not an empty liberty."};
+  }
+  const point = game.points.find((item) => keyOf(item.coord) === target.key);
+  if (!point) return null;
+  const site = game.construction_sites?.find((item) => item.active && keyOf(item.center) === target.key);
+  return {kind: "point", coord: point.coord, occupied: point.stack.at(-1) || null,
+    original: point.original, scoring: point.scoring, center: point.center,
+    neighbors: point.neighbors, distinct_group_liberties: point.group_libs,
+    legal: point.legal, construction: site ? {face: site.face, permanent: true, orientation: site.orientation} : null,
+    adjacent_cells: game.cells?.filter((cell) => cell.edges.some((edge) => keyOf(edge) === target.key))
+      .map((cell) => ({face: cell.face, counts: cell.counts, owner: cell.owner})) || [],
+  };
+}
+
+function updateLabInspector() {
+  const info = inspectionData();
+  if (!info) {
+    labInspectorNote.textContent = "Hover over an intersection or a construction site to inspect its actual connections.";
+  } else if (info.kind === "site") {
+    const options = info.legal_orientations.length
+      ? `legal orientations ${info.legal_orientations.map((index) => index + 1).join(", ")}` : "no construction is legal now";
+    labInspectorNote.textContent = `Face ${info.face.join(",")} · center ${info.center.join(",")} · ${info.role} ${options}`;
+  } else {
+    const role = info.center ? "permanent junction · 0 points"
+      : game.rules === "gjerde-majority" ? "original line · cells score, lines do not"
+        : `original scoring ${game.points[0]?.segment ? "line" : "vertex"}`;
+    const liberties = Number.isInteger(info.distinct_group_liberties)
+      ? ` · ${info.distinct_group_liberties} distinct group liberties` : "";
+    const construction = info.construction ? ` · orientation ${info.construction.orientation + 1}` : "";
+    const cells = info.adjacent_cells.map((cell) => `cell ${cell.face.join(",")} B${cell.counts.B}/W${cell.counts.W}${cell.owner ? ` (${cell.owner} +1)` : " (unowned)"}`).join("; ");
+    labInspectorNote.textContent = `${info.coord.join(",")} · ${info.occupied || "empty"} · ${role}${construction}${liberties} · neighbors ${info.neighbors.map((point) => `(${point.join(",")})`).join(" ")}${cells ? ` · ${cells}` : ""}`;
+  }
 }
 
 function roundedRect(x, y, w, h, r) {
@@ -656,6 +974,7 @@ function draw() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.lineCap = "round";
+  if (isLabGame()) drawLabCells();
   const lineMode = game.points[0]?.segment != null;
   if (lineMode) {
     // Gjerde: draw the hex grid's lines themselves. Unclaimed lines
@@ -732,6 +1051,8 @@ function draw() {
     ? new Set(animation.waves[animation.index].map(keyOf))
     : new Set();
 
+  if (isLabGame()) drawConstructionSites();
+
   for (const point of game.points) {
     const key = keyOf(point.coord);
     const pos = projected.get(key);
@@ -752,7 +1073,7 @@ function draw() {
       ctx.stroke();
     }
     if (!top) {
-      if (!lineMode) {
+      if (!lineMode && !(isLabGame() && point.center)) {
         ctx.beginPath();
         ctx.arc(
           pos.x,
@@ -775,7 +1096,7 @@ function draw() {
         ctx.lineWidth = Math.max(1.5, visual.lineWidth * 0.75);
         ctx.stroke();
 
-        const shown = point.stack.slice(-5);
+        const shown = isLabGame() && game.flat ? [] : point.stack.slice(-5);
         shown.forEach((color, index) => {
           ctx.fillStyle = color === "B" ? "#292d27" : "#f7f3e8";
           ctx.fillRect(
@@ -807,6 +1128,20 @@ function draw() {
         ctx.stroke();
       }
     }
+    if (isLabGame() && point.center) {
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, visual.stoneRadius * (top ? 1.09 : 0.63), 0, Math.PI * 2);
+      ctx.strokeStyle = "#466a8d";
+      ctx.lineWidth = Math.max(1.5, visual.lineWidth * 0.7);
+      ctx.stroke();
+      if (!top) {
+        ctx.fillStyle = "#466a8d";
+        ctx.font = `650 ${Math.max(8, visual.stoneRadius * 0.68)}px system-ui`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("0", pos.x, pos.y);
+      }
+    }
     if (point.sky) {
       ctx.beginPath();
       ctx.moveTo(pos.x, pos.y - visual.stoneRadius * 1.87);
@@ -825,7 +1160,8 @@ function draw() {
     }
   }
 
-  if (hoverKey) drawInspector(hoverKey);
+  if (isLabGame()) updateLabInspector();
+  else if (hoverKey) drawInspector(hoverKey);
 }
 
 function drawInspector(key) {
@@ -864,24 +1200,40 @@ function canvasPoint(event) {
 }
 
 function nearestPoint(event) {
+  const target = nearestTarget(event);
+  return target?.kind === "point" ? target.key : null;
+}
+
+function nearestTarget(event) {
   if (!visual) return null;
   const mouse = canvasPoint(event);
   let best = null;
   let distance = Infinity;
   for (const [key, pos] of projected) {
     const d = Math.hypot(mouse.x - pos.x, mouse.y - pos.y);
-    if (d < distance) { best = key; distance = d; }
+    if (d < distance) { best = {kind: "point", key}; distance = d; }
+  }
+  for (const [key, pos] of projectedSites) {
+    const d = Math.hypot(mouse.x - pos.x, mouse.y - pos.y);
+    if (d < distance) { best = {kind: "site", key}; distance = d; }
   }
   return distance <= visual.hitRadius ? best : null;
 }
 
 canvas.addEventListener("mousemove", (event) => {
+  hoverTarget = nearestTarget(event);
   hoverKey = nearestPoint(event);
   draw();
 });
-canvas.addEventListener("mouseleave", () => { hoverKey = null; draw(); });
+canvas.addEventListener("mouseleave", () => { hoverKey = null; hoverTarget = null; draw(); });
 canvas.addEventListener("click", async (event) => {
-  if (thinking || game.match?.computer_turn) return;
+  if (humanInputLocked()) return;
+  const target = nearestTarget(event);
+  if (isLabGame() && target?.kind === "site") {
+    const site = game.construction_sites.find((item) => keyOf(item.face) === target.key);
+    if (site) selectConstruction(site);
+    return;
+  }
   const key = nearestPoint(event);
   const point = game.points.find((p) => keyOf(p.coord) === key);
   if (!point || !point.legal || game.finished) return;
@@ -893,42 +1245,68 @@ canvas.addEventListener("click", async (event) => {
   }
   // Mid extension-only turn, ordinary placements wait for End turn.
   if (game.extension_only_turn) return;
-  await humanAction("/api/play", {point: point.coord});
+  await humanAction(isLabGame() ? "/api/action" : "/api/play",
+    isLabGame() ? {action: "play", point: point.coord} : {point: point.coord});
 });
 
 newButton.addEventListener("click", async () => {
+  if (!game || actionInFlight || !canCreateRuleset(rulesetById(rulesSelect.value))) return;
   const warning = playtestRecord
     ? "Start a new game and clear the current local playtest record? Export it first if you need it."
     : "Start a new game?";
   if ((game.moves_played || playtestRecord) && !confirm(warning)) return;
-  stopPlayback();
-  try {
-    const next = await request("/api/new", {
+  const body = {
       n: Number(sizeSelect.value),
       rules: rulesSelect.value,
       mode: modeSelect.value,
       human_color: colorSelect.value,
       difficulty: difficultySelect.value,
-      profile: profileSelect.value,
       black_difficulty: blackDifficultySelect.value,
-      black_profile: blackProfileSelect.value,
       white_difficulty: whiteDifficultySelect.value,
-      white_profile: whiteProfileSelect.value,
       explain: explainCheckbox.checked,
-    });
-    clearPlaytestRecord();
-    setGame(next);
-  } catch (error) {
-    message.textContent = error.message;
+  };
+  if (isLabSetup()) {
+    body.experimental = true;
+  } else {
+    body.profile = profileSelect.value;
+    body.black_profile = blackProfileSelect.value;
+    body.white_profile = whiteProfileSelect.value;
   }
+  await replaceGame("/api/new", body);
 });
-passButton.addEventListener("click", async () => humanAction("/api/pass"));
-swapButton.addEventListener("click", async () => humanAction("/api/swap"));
-resumeButton.addEventListener("click", async () => humanAction("/api/resume"));
+passButton.addEventListener("click", async () => humanAction(
+  isLabGame() ? "/api/action" : "/api/pass", isLabGame() ? {action: "pass"} : {},
+));
+swapButton.addEventListener("click", async () => humanAction(
+  isLabGame() ? "/api/action" : "/api/swap", isLabGame() ? {action: "swap"} : {},
+));
+resumeButton.addEventListener("click", async () => humanAction(
+  isLabGame() ? "/api/action" : "/api/resume", isLabGame() ? {action: "resume"} : {},
+));
+acceptButton.addEventListener("click", async () => {
+  if (isLabGame()) await humanAction("/api/action", {action: "accept"});
+});
 finishExtButton.addEventListener("click", async () =>
   humanAction("/api/finish-extensions"));
 modeSelect.addEventListener("change", updateSetupVisibility);
-rulesSelect.addEventListener("change", () => updateRulesetSetup({coerceSize: true}));
+rulesSelect.addEventListener("change", () => {
+  if (!isLabSetup()) lastOrdinaryRuleset = rulesSelect.value;
+  updateRulesetSetup({coerceSize: true});
+});
+experimentalCheckbox.addEventListener("change", () => {
+  if (!rulesetCatalog) return;
+  populateRulesetSelect(rulesetCatalog);
+  updateRulesetSetup({coerceSize: true});
+});
+orientationSelect.addEventListener("change", () => {
+  const site = previewSite();
+  const orientation = Number(orientationSelect.value);
+  if (!site || !site.legal_orientations.includes(orientation)) return;
+  constructionPreview.orientation = orientation;
+  draw();
+});
+confirmConstructionButton.addEventListener("click", confirmConstruction);
+cancelConstructionButton.addEventListener("click", cancelConstruction);
 profileSelect.addEventListener("change", updateProfileNote);
 blackProfileSelect.addEventListener("change", updateProfileNote);
 whiteProfileSelect.addEventListener("change", updateProfileNote);
@@ -944,10 +1322,12 @@ importRecordFile.addEventListener("change", async (event) => {
   const file = event.target.files[0];
   if (!file) return;
   try {
-    playtestRecord = assertImportedPlaytestRecord(
-      JSON.parse(await file.text()),
-    );
+    const parsed = JSON.parse(await file.text());
+    playtestRecord = parsed?.format === "varde-lab-playtest"
+      ? window.VardeLabRecord.validateLabRecordShape(parsed)
+      : assertImportedPlaytestRecord(parsed);
     playtestImported = true;
+    playtestInterrupted = false;
     message.textContent = "";
     updatePlaytestControls();
   } catch (error) {
@@ -961,6 +1341,7 @@ clearRecordButton.addEventListener("click", () => {
 });
 
 playButton.addEventListener("click", () => {
+  if (replacementInFlight) return;
   if (watchPlaying) {
     stopPlayback();
     return;
@@ -982,16 +1363,20 @@ speedSelect.addEventListener("change", () => {
   }
 });
 
-document.querySelector("#save-btn").addEventListener("click", async () => {
-  const snapshot = await request("/api/snapshot");
+saveButton.addEventListener("click", async () => {
+  if (!game || actionInFlight) return;
+  try {
+    const snapshot = await request("/api/snapshot");
   const blob = new Blob([JSON.stringify(snapshot, null, 2)], {type: "application/json"});
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
   link.download = "varde-game.json";
   link.click();
-  URL.revokeObjectURL(link.href);
+    URL.revokeObjectURL(link.href);
+  } catch (error) { message.textContent = error.message; }
 });
-document.querySelector("#load-btn").addEventListener("click", () => {
+loadButton.addEventListener("click", () => {
+  if (actionInFlight) return;
   if (
     playtestRecord
     && !confirm("Load a game and clear the current local playtest record? Export it first if you need it.")
@@ -1001,11 +1386,9 @@ document.querySelector("#load-btn").addEventListener("click", () => {
 document.querySelector("#load-file").addEventListener("change", async (event) => {
   const file = event.target.files[0];
   if (!file) return;
-  stopPlayback();
+  if (actionInFlight) { event.target.value = ""; return; }
   try {
-    const loaded = await request("/api/load", JSON.parse(await file.text()));
-    clearPlaytestRecord();
-    setGame(loaded, loaded.match.mode !== "watch");
+    await replaceGame("/api/load", JSON.parse(await file.text()));
   }
   catch (error) { message.textContent = error.message; }
   event.target.value = "";
@@ -1049,6 +1432,7 @@ async function refreshTraining() {
 }
 
 trainButton.addEventListener("click", async () => {
+  if (labContext()) return;
   try {
     renderTraining(await request("/api/training/start", {
       games: Number(trainingGamesSelect.value),
@@ -1061,6 +1445,7 @@ trainButton.addEventListener("click", async () => {
 });
 
 cancelTrainingButton.addEventListener("click", async () => {
+  if (labContext()) return;
   try {
     renderTraining(await request("/api/training/cancel", {}));
     clearTimeout(trainingPoll);
@@ -1071,6 +1456,7 @@ cancelTrainingButton.addEventListener("click", async () => {
 });
 
 resetTrainingButton.addEventListener("click", async () => {
+  if (labContext()) return;
   if (!confirm("Reset Personal learning to zero games?")) return;
   try {
     renderTraining(await request("/api/training/reset", {}));
@@ -1080,11 +1466,47 @@ resetTrainingButton.addEventListener("click", async () => {
 });
 
 document.addEventListener("keydown", async (event) => {
+  if (event.isComposing || event.target.closest?.("button, input, select, textarea, [contenteditable]")) return;
+  if (constructionPreview) {
+    const site = previewSite();
+    if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) {
+      event.preventDefault();
+      if (humanInputLocked() || !site) return;
+      const choices = site.legal_orientations;
+      const delta = ["ArrowLeft", "ArrowUp"].includes(event.key) ? -1 : 1;
+      const index = choices.indexOf(constructionPreview.orientation);
+      constructionPreview.orientation = choices[(index + delta + choices.length) % choices.length];
+      orientationSelect.value = String(constructionPreview.orientation);
+      draw();
+      return;
+    }
+    if (event.key === "Escape") { event.preventDefault(); cancelConstruction(); return; }
+    if (event.key === "Enter") { event.preventDefault(); await confirmConstruction(); return; }
+  }
   if (event.key.toLowerCase() === "f") {
-    if (document.fullscreenElement) await document.exitFullscreen();
-    else await document.querySelector(".game-card").requestFullscreen();
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await document.querySelector(".game-card").requestFullscreen();
+    } catch (error) { message.textContent = error.message; }
   }
 });
+
+function fitFullscreen() {
+  if (document.fullscreenElement) {
+    const card = document.querySelector(".game-card");
+    const controlsHeight = Array.from(card.children).filter((item) => item !== canvas)
+      .reduce((height, item) => height + item.getBoundingClientRect().height, 0);
+    const width = Math.min(window.innerWidth, Math.max(240, window.innerHeight - controlsHeight) * canvas.width / canvas.height);
+    canvas.style.width = `${width}px`;
+    canvas.style.marginInline = "auto";
+  } else {
+    canvas.style.width = "";
+    canvas.style.marginInline = "";
+  }
+  draw();
+}
+window.addEventListener("resize", fitFullscreen);
+document.addEventListener("fullscreenchange", fitFullscreen);
 
 function advanceTime(ms) {
   if (animation) {
@@ -1115,6 +1537,25 @@ window.render_game_to_text = () => JSON.stringify({
   current_player: game?.current_player,
   move: game ? game.moves_played + 1 : null,
   finished: game?.finished,
+  experimental: game?.experimental || false,
+  rules_revision: game?.rules_revision,
+  actor_color: game?.actor_color ?? null,
+  actor_seat: game?.actor_seat ?? null,
+  accepted: game?.accepted ?? null,
+  placements_played: game?.placements_played,
+  constructions_played: game?.constructions_played,
+  original_control: game?.original_control,
+  topology: game?.topology,
+  construction_sites: game?.construction_sites,
+  legal_actions: game?.legal_actions,
+  cells: game?.cells,
+  construction_preview: constructionPreview ? {
+    ...constructionPreview,
+    spokes: previewSite()?.orientations[constructionPreview.orientation].map((index) => previewSite().corners[index]),
+  } : null,
+  inspection: inspectionData(),
+  native_opponent: game?.native_opponent,
+  mcts_admission: game?.mcts_admission,
   thinking,
   swap_available: game?.swap_available,
   resumption_available: game?.resumption_available,
@@ -1127,15 +1568,19 @@ window.render_game_to_text = () => JSON.stringify({
     playing: watchPlaying,
     speed_ms: Number(speedSelect.value),
     action_in_flight: actionInFlight,
+    replacement_in_flight: replacementInFlight,
   },
-  training,
+  training: labContext() ? null : training,
   playtest: playtestRecord ? {
+    format: playtestRecord.format,
     status: playtestRecord.status,
     actions: playtestRecord.actions.length,
     rules_revision: playtestRecord.rules.revision,
     local_only: true,
+    imported: playtestImported,
+    interrupted: playtestInterrupted,
   } : null,
-  profiles: profileCatalog ? {
+  profiles: profileCatalog && !labContext() ? {
     version: profileCatalog.version,
     catalog_hash: profileCatalog.catalog_hash,
     available: profileCatalog.profiles.filter((profile) => profile.available).map((profile) => profile.id),
@@ -1148,7 +1593,8 @@ window.render_game_to_text = () => JSON.stringify({
   } : null,
   rulesets: rulesetCatalog ? {
     version: rulesetCatalog.version,
-    available: rulesetCatalog.rulesets.filter((ruleset) => ruleset.public_new_game).map((ruleset) => ruleset.id),
+    available: rulesetCatalog.rulesets.filter(canCreateRuleset).map((ruleset) => ruleset.id),
+    experimental_enabled: experimentalCheckbox.checked,
     selected: rulesSelect.value,
     selected_status: rulesetById(rulesSelect.value)?.status,
     selected_revision: rulesetById(rulesSelect.value)?.evaluation_id,
@@ -1161,10 +1607,17 @@ window.render_game_to_text = () => JSON.stringify({
     spacing: visual.spacing,
     stone_radius: visual.stoneRadius,
     diameter_ratio: 2 * visual.stoneRadius / visual.spacing,
+    hit_radius: visual.hitRadius,
+    targets: isLabGame() ? [
+      ...Array.from(projected, ([key, point]) => ({kind: "point", key, canvas: point})),
+      ...Array.from(projectedSites, ([key, point]) => ({kind: "site", key, canvas: point})),
+    ] : undefined,
   } : null,
   legal_points: game?.points.filter((p) => p.legal).map((p) => p.coord),
   legal_extensions: game?.points.filter((p) => p.extension).map((p) => p.coord),
-  occupied: game?.points.filter((p) => p.stack.length).map((p) => ({coord: p.coord, stack: p.stack, sky: p.sky})),
+  occupied: game?.points.filter((p) => p.stack.length).map((p) => ({coord: p.coord, stack: p.stack, sky: p.sky,
+    ...(isLabGame() ? {original: p.original, scoring: p.scoring, center: p.center, neighbors: p.neighbors, group_libs: p.group_libs} : {}),
+  })),
   capture_animation_wave: animation?.index ?? null,
 });
 

@@ -1,5 +1,38 @@
 Original prompt: yes to all in best order proceed and execute according to your recommendation
 
+## Rules Laboratory Batch6 · 2026-09-07
+
+- Added authenticated evidence assembly, exact existing-record analysis and an
+  offline HTML/SVG report;16 cards,13 final scripted traces,40 diagram classes.
+- 937tests pass in325.683s, zero skips; report regeneration byte-identical.
+  Report screenshots/text/filter/details/atlas/narrow layout inspected; no console
+  errors. No game/server/browser/search source changes in this batch.
+- Certification bootstrap remains stopped:0 certified/admitted/comparative games.
+  Further charged research requires a separately predeclared feasibility plan.
+  Do not retry or relax guards. See docs/rules-lab-run-report.md and the live guide.
+
+## Rules Laboratory Batch4C · 2026-09-06
+
+- Independent stdlib graph mechanics and tri-state local-proof runner implemented;
+  all10 definitions/n3–6 checked without production resolver/geometry imports.
+- 528tests pass in80.297s, zero skips; independent review clean. Provenance,
+  cache type-alias, deep-horizon and partial-failure accounting regressions fixed.
+- No production/browser/agent change, actual game certification or research run.
+  Research budget remains0; lab browser/records next, then gated MCTS/evidence.
+
+## Rules Laboratory Batch4B · 2026-09-06
+
+- Provisional lab-native-objective-v1 Casual/Standard opponents now execute one
+  shared legal action through the server; separate objectives, original-seat pie
+  perspective, both ending decisions and save continuation are tested.
+- 474 tests pass in76.967s, zero skips; independent native/server review clean.
+  Existing seeded engine and exact API/save fixtures remain unchanged.
+- Fresh three-seed engineering latency smokes: Toy medians27–81ms, Full278–1267ms.
+  Not a strength or p95 claim. No research games/calibration launched.
+- Existing Classic browser computer opening/human takeover/automatic White reply
+  verified with screenshots/text and no application errors; existing favicon404.
+  Isolated server stopped. Lab browser and independent oracle are still pending.
+
 ## 2026-07-12
 
 - Preserved the imported prototype as Git baseline `9e14357`.
@@ -229,3 +262,72 @@ Original prompt: yes to all in best order proceed and execute according to your 
 - Legacy saves captured after the final rescue but before the old manual finish
   are normalized on load, so restoring a game cannot reintroduce the dead-end
   button press.
+
+## Rules Laboratory launch — 2026-09-06
+
+- Draft PR23 launched explicitly; no merges. Batches1–2 freeze compatibility and
+  implement three scoring variants behind an opt-in factory, immutable graph
+  geometry, structured actions, complete analysis keys and replay-validated v2
+  saves. Existing engine/server/browser source and v1 behavior remain unchanged.
+- 340 tests pass; all218 frozen decisions and24 save cases retain exact parity.
+- Bundled web-game client checked isolated Classic startup, opening and pie;
+  three screenshots/text states inspected with zero errors. Server stopped.
+- Four junction games, browser laboratory, oracle and gated research remain
+  subsequent batches. No research time consumed; no game-quality claim made.
+
+## Rules Laboratory Batch 3 internal checkpoint — 2026-09-06
+
+- Y/six construction and three static controls are playable through the opt-in
+  factory. Topology persists through captures; only original vertices score.
+- Added legal-sequence tests for liberties, merging, suicide and capture reopening,
+  strict topology/history replay, symmetry, pie and both-seat endings.
+- 363 tests pass, zero skips; frozen legacy decisions/saves unchanged. Independent
+  scoped reviews clean. No browser exposure yet; planted/passage are next in Batch 3.
+- Research charged zero; this checkpoint does not end the launched six-batch run.
+
+## Rules Laboratory Batch 3 complete — 2026-09-06
+
+- Planted Y and opposite-pair passages complete the seven opt-in engine games.
+  Planting is one action with one placement and one construction; no empty
+  intermediate position enters the history. Empty building remains unavailable
+  in planted rules. Later captures preserve every activated connection.
+- 386 tests pass in64.481s, zero skips; scoped independent reviews clean.
+  Added Full Passage cache-eviction coverage without changing production caching.
+- Browser laboratory, objective-aware provisional opponents and independent
+  mechanical oracle are next. Research remains unlaunched and comparisons blocked.
+
+## Rules Laboratory Batch 4 browser/oracle complete locally — 2026-09-06
+
+- Seven opt-in lab rulesets now playable in hotseat, human/computer and spectator
+  modes; construction previews/orientations, permanent zero-point hubs and actual
+  neighbor/liberty inspection are rendered. No Classic profile or Personal model
+  is applied to lab opponents. Both ending seats use the authoritative actor.
+- Separate v2 local lab records replay all legal structured actions with neutral
+  identities. Legacy v1 records/saves remain unchanged. Import is structural,
+  not a claim of mechanical certification or qualified human evidence.
+- 547 tests pass in88.975s, zero skips; Ruff/compile/JS and independent review clean.
+  Thirty-three real browser checks have zero final errors;25 actual exports
+  mechanically replay. All seven boards, every orientation, both pie directions,
+  capture/reoccupation, ending/resumption, interrupted records, save/load,
+  delayed-request locks, spectator playback, resizing/fullscreen inspected.
+- Isolated server/browser stopped; no model writes or research charge. Closure
+  push/CI next, then Batch5 certification/MCTS. No comparative result or merge.
+
+## Rules Laboratory Batch 4 API checkpoint — 2026-09-06
+
+- Added explicit lab catalog/new-game selection and one structured action API,
+  plus persistent seat-aware ending state and strict v2 match/save crossvalidation.
+  Ordinary routes retain legacy behavior; no static control is publicly playable.
+- Public topology exposes actual neighbors, unused faces/orientations, scoring
+  vertices versus zero-point hubs, and separate placement/construction counters.
+- 426 tests pass in71.033s, zero skips. New pinned legacy-server fixture protects
+  216 public-state observations and168 saved payloads under both format identifiers.
+  Original218 seeded decisions remain exact. Ruff/compile/JS/reviews are clean.
+- Real browser verified Classic opening at(-1,-1), takeover, two-pass ending and
+  resumption; five canvas screenshots/text states plus viewport inspected. No
+  application error; CLI recorded one pre-existing favicon404. Initial harness
+  click used unscaled coordinates and missed; retained failed artifacts, then
+  corrected from the measured canvas bounds and reran the actual interactions.
+- Lab computers intentionally fail closed at this internal API checkpoint. Native
+  opponents, mechanical oracle, lab browser/records and gated research still follow.
+  No model writes, live cutoff, research charge, merge or checkpoint stop.

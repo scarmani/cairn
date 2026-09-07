@@ -8,6 +8,15 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
 
+from actions import RulesAction, RulesState
+from game_factory import new_game
+from lab_match import (
+    LAB_ALIAS_ROUTES, action_from_alias, apply_lab_action, assert_lab_actor,
+    attach_lab_state, is_lab_game, lab_catalog_entries, lab_computer_color,
+    lab_computer_settings, lab_state, laboratory_public_view, validate_lab_profiles,
+)
+from lab_spec import LAB_REGISTRY, STATIC_CONTROL_REGISTRY
+from lab_opponent import LabDecision, choose_lab_decision
 from varde import (
     BLACK, BREATH_RULESETS, EXTENSION_RULES, RULESETS,
     WHITE, Game, Illegal, get_ruleset_spec, groups_of, has_sky, other,
@@ -59,13 +68,25 @@ class Seat:
         return payload
 
     @classmethod
-    def from_dict(cls, payload):
+    def from_dict(cls, payload, *, experimental=False):
         if not isinstance(payload, dict) or payload.get("kind") not in ("human", "computer"):
             raise ValueError("invalid match seat")
+        if experimental:
+            required = {"identity", "kind", "name"}
+            if payload["kind"] == "computer":
+                required.update(("difficulty", "seed"))
+            if not required <= set(payload) <= required | {"profile"}:
+                raise ValueError("invalid laboratory seat fields")
+            if any(not isinstance(payload[key], str) or not payload[key]
+                   or len(payload[key]) > 40 for key in ("identity", "name")):
+                raise ValueError("invalid laboratory seat identity or name")
+            if payload.get("profile") is not None:
+                raise ValueError("laboratory opponents cannot use Classic or Personal profiles")
         difficulty = payload.get("difficulty", "standard")
         profile = payload.get("profile")
         if payload["kind"] == "computer":
-            difficulty, profile = normalize_computer_settings(
+            settings = lab_computer_settings if experimental else normalize_computer_settings
+            difficulty, profile = settings(
                 difficulty, profile
             )
         if payload["kind"] == "human":
@@ -89,6 +110,7 @@ class MatchConfig:
     seats: dict | None = None
     explain: bool = True
     end_acceptances: set | None = None
+    lab_state: RulesState | None = None
 
     def __post_init__(self):
         if self.seats is None:
@@ -102,6 +124,8 @@ class MatchConfig:
     @property
     def end_decided(self):
         """Legacy compatibility view: every computer seat has accepted."""
+        if self.lab_state is not None:
+            return self.lab_state.accepted
         computers = {
             seat.identity for seat in self.seats.values() if seat.kind == "computer"
         }
@@ -109,6 +133,8 @@ class MatchConfig:
 
     @end_decided.setter
     def end_decided(self, decided):
+        if self.lab_state is not None:
+            raise ValueError("laboratory ending state requires a shared rules action")
         if decided:
             self.end_acceptances = {
                 seat.identity
@@ -159,6 +185,10 @@ class MatchConfig:
 
     @classmethod
     def from_new_game(cls, game, body):
+        experimental = is_lab_game(game)
+        if experimental:
+            validate_lab_profiles(body)
+        settings = lab_computer_settings if experimental else normalize_computer_settings
         mode = body.get("mode", "hotseat")
         if mode == "computer_vs_computer":
             mode = "watch"
@@ -183,7 +213,7 @@ class MatchConfig:
             human_color = body.get("human_color", BLACK)
             if human_color not in (BLACK, WHITE):
                 raise ValueError("human_color must be B or W")
-            difficulty, profile = normalize_computer_settings(
+            difficulty, profile = settings(
                 body.get("difficulty", "standard"), body.get("profile")
             )
             computer_color = other(human_color)
@@ -200,11 +230,11 @@ class MatchConfig:
             }
             match = cls(mode="computer", seats=seats, explain=explain)
         else:
-            black_difficulty, black_profile = normalize_computer_settings(
+            black_difficulty, black_profile = settings(
                 body.get("black_difficulty", "standard"),
                 body.get("black_profile"),
             )
-            white_difficulty, white_profile = normalize_computer_settings(
+            white_difficulty, white_profile = settings(
                 body.get("white_difficulty", "standard"),
                 body.get("white_profile"),
             )
@@ -232,11 +262,19 @@ class MatchConfig:
                 explain=explain,
             )
         match.sync_players(game)
+        if experimental:
+            attach_lab_state(game, match)
         return match
 
     @classmethod
     def from_snapshot(cls, payload):
+        experimental = payload.get("version") == 2
         saved_match = payload.get("match")
+        if experimental and (
+            not isinstance(saved_match, dict)
+            or set(saved_match) != {"mode", "seats", "explain", "end_decided", "end_acceptances"}
+        ):
+            raise ValueError("a complete laboratory match envelope is required")
         if saved_match is not None:
             if not isinstance(saved_match, dict):
                 raise ValueError("invalid match configuration")
@@ -244,6 +282,8 @@ class MatchConfig:
             if mode not in ("hotseat", "computer", "watch"):
                 raise ValueError("invalid match mode")
             raw_seats = saved_match.get("seats", {})
+            if experimental and not isinstance(raw_seats, dict):
+                raise ValueError("invalid laboratory match seats")
             if set(raw_seats) != {BLACK, WHITE}:
                 raise ValueError("invalid match seats")
             explain = saved_match.get("explain", True)
@@ -251,13 +291,15 @@ class MatchConfig:
             if not isinstance(explain, bool) or not isinstance(end_decided, bool):
                 raise ValueError("invalid match flags")
             seats = {
-                color: Seat.from_dict(raw_seats[color])
+                color: Seat.from_dict(raw_seats[color], experimental=experimental)
                 for color in (BLACK, WHITE)
             }
             identities = {seat.identity for seat in seats.values()}
             if len(identities) != 2:
                 raise ValueError("match seat identities must be unique")
             raw_acceptances = saved_match.get("end_acceptances")
+            if experimental and not isinstance(raw_acceptances, list):
+                raise ValueError("laboratory end acceptances must be a list")
             if raw_acceptances is None:
                 acceptances = (
                     {
@@ -317,12 +359,16 @@ class MatchConfig:
         game.players = {color: self.seats[color].name for color in (BLACK, WHITE)}
 
     def computer_can_act(self, game):
+        if self.lab_state is not None:
+            return lab_computer_color(game, self) is not None
         if game.finished:
             return self.next_computer_color(game) is not None
         return self.seats[game.to_move].kind == "computer"
 
     def next_computer_color(self, game):
         """Return the next computer seat owed an ending decision."""
+        if self.lab_state is not None:
+            return lab_computer_color(game, self)
         if not game.finished:
             return game.to_move if self.seats[game.to_move].kind == "computer" else None
         if game.no_progress_end:
@@ -340,6 +386,8 @@ class MatchConfig:
         return None
 
     def accept_end(self, game, color):
+        if self.lab_state is not None:
+            raise ValueError("laboratory acceptance requires a shared rules action")
         if game.resumption_used:
             self.end_acceptances = {
                 seat.identity
@@ -350,6 +398,8 @@ class MatchConfig:
             self.end_acceptances.add(self.seats[color].identity)
 
     def clear_end_acceptances(self):
+        if self.lab_state is not None:
+            raise ValueError("laboratory ending state requires a shared rules action")
         self.end_acceptances.clear()
 
     def swap_owners(self, game=None):
@@ -375,7 +425,7 @@ LAST_DECISION = None
 
 
 def snapshot_payload(game, match):
-    payload = game.to_dict()
+    payload = lab_state(game, match).to_dict() if is_lab_game(game) else game.to_dict()
     payload["match"] = match.snapshot_data()
     return payload
 
@@ -396,6 +446,7 @@ def ruleset_catalog_public():
         "version": native["version"],
         "hash": native["hash"],
     }
+    payload["rulesets"].extend(lab_catalog_entries())
     return payload
 
 
@@ -420,6 +471,16 @@ def validate_ruleset_size(rules, n, *, public_new_game):
 def load_snapshot(payload):
     if not isinstance(payload, dict):
         raise ValueError("invalid Varde snapshot")
+    if payload.get("version") == 2:
+        if payload.get("rules") not in LAB_REGISTRY:
+            raise ValueError("unsupported browser laboratory ruleset; static controls are research-only")
+        if "rules_state" not in payload or "match" not in payload:
+            raise ValueError("laboratory snapshots require rules-state and match envelopes")
+        state = RulesState.from_dict(payload)
+        game = state.game
+        match = MatchConfig.from_snapshot(payload)
+        attach_lab_state(game, match, state, saved_end_decided=payload["match"]["end_decided"])
+        return game, match
     validate_ruleset_size(
         payload.get("rules", "classic"),
         payload.get("n"),
@@ -441,7 +502,7 @@ def _decision_payload(decision, explain):
     payload.pop("score", None)
     if not explain:
         payload["reason_text"] = ""
-    elif decision.profile:
+    elif getattr(decision, "profile", None):
         label = get_profile(decision.profile).label
         payload["reason_text"] = f"{label}: {payload['reason_text']}"
     return payload
@@ -449,6 +510,11 @@ def _decision_payload(decision, explain):
 
 def public_view(game, match=None, last_decision=None):
     match = match or MatchConfig()
+    if is_lab_game(game):
+        return laboratory_public_view(
+            game, match, decision=_decision_payload(last_decision, match.explain),
+            learning=MODEL.status(),
+        )
     legal = set() if game.finished else set(game.legal_placements())
     extensions = set(game.extension_candidates())
     board = game.board
@@ -533,6 +599,9 @@ def public_view(game, match=None, last_decision=None):
 
 
 def assert_human_action(game, match):
+    if is_lab_game(game):
+        assert_lab_actor(game, match, "human")
+        return
     if game.finished:
         if not any(seat.kind == "human" for seat in match.seats.values()):
             raise Illegal("no human player is seated in this match")
@@ -576,6 +645,22 @@ def computer_take_extensions(game):
 
 
 def apply_computer_action(game, match, model=None):
+    if is_lab_game(game):
+        state = assert_lab_actor(game, match, "computer")
+        seat = match.seats[state.actor_color]
+        analyzed = state.clone()
+        before = analyzed.to_dict()
+        decision = choose_lab_decision(
+            analyzed, difficulty=seat.difficulty, seed=seat.seed,
+        )
+        if not isinstance(decision, LabDecision) or not isinstance(decision.action, RulesAction):
+            raise Illegal("laboratory opponent returned an invalid decision")
+        if analyzed.to_dict() != before:
+            raise Illegal("laboratory opponent mutated its analyzed position")
+        # Never install a searched successor: the live identity/acceptance
+        # envelope and journal advance through exactly one shared rules action.
+        apply_lab_action(game, match, decision.action, actor_kind="computer")
+        return decision
     if not match.computer_can_act(game):
         raise Illegal("it is not the computer's turn")
     color = match.next_computer_color(game) if game.finished else game.to_move
@@ -681,6 +766,8 @@ class VardeHandler(SimpleHTTPRequestHandler):
         route = urlparse(self.path).path
         try:
             body = self._body()
+            if not isinstance(body, dict):
+                raise ValueError("JSON request body must be an object")
             if route.startswith("/api/training/"):
                 if route == "/api/training/start":
                     games = body.get("games", 10)
@@ -704,14 +791,30 @@ class VardeHandler(SimpleHTTPRequestHandler):
             with GAME_LOCK:
                 if route == "/api/new":
                     raw_n = body.get("n", 3)
-                    if isinstance(raw_n, bool):
-                        raise ValueError("board size must be an integer")
-                    n = int(raw_n)
                     rules = body.get("rules", "classic")
-                    validate_ruleset_size(rules, n, public_new_game=True)
-                    game = Game(n, rules=rules)
-                    MATCH = MatchConfig.from_new_game(game, body)
-                    GAME = game
+                    experimental = body.get("experimental", False)
+                    if type(experimental) is not bool:
+                        raise ValueError("experimental must be boolean")
+                    if rules in STATIC_CONTROL_REGISTRY:
+                        raise ValueError("static controls are research-only")
+                    if rules in LAB_REGISTRY:
+                        game = new_game(raw_n, rules=rules, experimental=experimental)
+                    else:
+                        if isinstance(raw_n, bool):
+                            raise ValueError("board size must be an integer")
+                        n = int(raw_n)
+                        validate_ruleset_size(rules, n, public_new_game=True)
+                        game = Game(n, rules=rules)
+                    match = MatchConfig.from_new_game(game, body)
+                    GAME, MATCH = game, match
+                    LAST_DECISION = None
+                elif route == "/api/action":
+                    if not is_lab_game(GAME):
+                        raise Illegal("structured laboratory actions require an experimental game")
+                    apply_lab_action(GAME, MATCH, RulesAction.from_dict(body))
+                    LAST_DECISION = None
+                elif is_lab_game(GAME) and route in LAB_ALIAS_ROUTES:
+                    apply_lab_action(GAME, MATCH, action_from_alias(route, body))
                     LAST_DECISION = None
                 elif route == "/api/play":
                     assert_human_action(GAME, MATCH)

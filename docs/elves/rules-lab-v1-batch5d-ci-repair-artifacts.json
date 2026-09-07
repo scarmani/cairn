@@ -1,0 +1,48 @@
+{
+  "format": "varde-rules-lab-artifact-index",
+  "version": 1,
+  "unit": "5D-ci-fixture-repair",
+  "source_parent": "64cbe84bf9d6a94b478a6dd2f50069d0cfaff20d",
+  "raw_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "engine/test_lab_supervisor_invariants.py",
+      "sha256": "4905ad0c7cd4b82cce415dfbf15ebb45f36d50e97834a11c86f0c7c69c426f1f"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5d-ci-failure.log",
+      "sha256": "a09afd9d957bad625232cf4c9d2d93e7aeabee4ba1cac5a62a17351ed21f0dd5"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5d-ci-repair-focused.log",
+      "sha256": "cfe34cbb01032eefa1ad4038a39c7f01758ee9bac7fe5b76e728f2466a040868"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5d-ci-repair-tests.log",
+      "sha256": "010dbe8c86fd2d3a029db7f05800f1ecb16027edaf8b15709cb6c3603fe77d18"
+    }
+  ],
+  "verification": {
+    "focused_tests": 10,
+    "focused_seconds": 5.377,
+    "tests_passed": 738,
+    "test_seconds": 165.026,
+    "skipped": 0,
+    "lint_compile_js": "pass"
+  },
+  "scope": "Synthetic worker-equivalence fixture timing and truthful reservation only. All completion/hash/accounting assertions, dedicated timeout tests, production and research limits unchanged.",
+  "negative_ci": {
+    "run": 34095638240,
+    "tests": 738,
+    "seconds": 320.888,
+    "failures": 2,
+    "failure": "Eight-worker timeout plus derivative partial-result hash mismatch; task vs cohort cause not distinguished by log.",
+    "other_exact_tip_run": 34095642547,
+    "other_conclusion": "SUCCESS"
+  },
+  "research_charged_seconds": 0
+}

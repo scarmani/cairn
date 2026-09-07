@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "source_parent": "ad7269026db64b8177c45185f51fa7748fb18c1a",
+  "engineering_only": true,
+  "research_seconds": 0,
+  "tests": {"passed": 597, "added": 50, "skipped": 0, "seconds": 180.222},
+  "independent_review": "clean",
+  "real_game_certificates": 0,
+  "admitted_agents": 0,
+  "raw_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "sources": [
+    {"path": "research/harness/lab_terminal_cert.py", "sha256": "71d14278493e8649681dc4d6782e46b212049c00f6778e98fce3c03d875925a6"},
+    {"path": "research/harness/lab_research_adapter.py", "sha256": "01a16fa464178272b2a6d8f9a29f486662659ddc56f62da60a0ddb53fbca7996"},
+    {"path": "engine/test_lab_terminal_cert.py", "sha256": "41b30f71f3994ca7a736a4d2689e71170f66eaacbcbe07c7149c26c0686042cb"},
+    {"path": "engine/test_lab_terminal_cert_invariants.py", "sha256": "52c3e50b234baebbfdbabbe0e7aac0345b89b3984a36ad11587ccefcf8eb10b5"},
+    {"path": "engine/test_lab_research_adapter.py", "sha256": "1db2466d79ccb753efec92b6f7783ede8d5fd288fd70a439fe7af9dbfac7afe8"},
+    {"path": "engine/test_lab_research_adapter_invariants.py", "sha256": "63094c116670ea156e8e8e42a718d1bfef82d3d16d45c520b77fa807f9b7d6c0"},
+    {"path": "docs/rules-lab-terminal-cert.md", "sha256": "6b348bc3424c931a480db61f58c55a98ddbb80e9e0d8ea87d6a723379e197235"}
+  ],
+  "selected_artifacts": [
+    {"path": "batch-5a-tests.log", "sha256": "39076b67b8298539be1d2692299d450a1938d6f1036d2a20bfabf4ac0a2e27ac"},
+    {"path": "batch-5-goal-cycle.json", "sha256": "6272f5cf9bb1ccc83941f88333514066f77bac25cc611fb25089d2178cd3e267"},
+    {"path": "batch-5-context.md", "sha256": "01768179b1c8338fc5e393d0fbbd686c0c5db19ef9fc5841520cb29513686892"},
+    {"path": "batch-5-integration-review.md", "sha256": "3c7832152260b9b52b214808f7417bf2c042c1be033a8612c6874ee09587f382"}
+  ],
+  "claim_limit": "Synthetic proof-graph verification and mechanical adapter checks only; no real-game terminal certificate, corpus admission, comparative match or game-quality result."
+}

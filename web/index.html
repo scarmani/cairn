@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Varde</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -17,8 +18,12 @@
     </header>
 
     <section class="game-card">
-      <canvas id="game" width="960" height="680" aria-label="Varde game board"></canvas>
+      <canvas id="game" width="960" height="680" tabindex="0" aria-label="Varde game board"></canvas>
       <div class="controls" aria-label="Game controls">
+        <label class="toggle">
+          <input id="experimental-lab" type="checkbox">
+          Experimental lab
+        </label>
         <select id="game-mode" aria-label="Game mode">
           <option value="hotseat">Two players</option>
           <option value="computer">Vs computer</option>
@@ -78,14 +83,30 @@
         <button id="pass-btn">Pass</button>
         <button id="swap-btn" class="accent" hidden>Take over Black</button>
         <button id="resume-btn" class="accent" hidden>Resume once</button>
+        <button id="accept-btn" class="accent" hidden>Accept result</button>
         <button id="finish-ext-btn" class="accent" hidden>End extension turn</button>
         <button id="save-btn">Save</button>
         <button id="load-btn">Load</button>
         <input id="load-file" type="file" accept="application/json" hidden>
       </div>
+      <div id="construction-controls" class="subcontrols construction-controls" hidden aria-label="Construction preview">
+        <strong id="construction-title">Construction preview</strong>
+        <select id="construction-orientation" aria-label="Junction orientation"></select>
+        <button id="confirm-construction-btn" class="accent">Construct</button>
+        <button id="cancel-construction-btn">Cancel</button>
+        <span>Preview only · arrows change orientation · Enter confirms · Escape cancels</span>
+      </div>
       <div id="ruleset-controls" class="subcontrols ruleset-controls" aria-label="Ruleset description">
         <strong>Rules</strong>
         <span id="ruleset-note">Classic — loading ruleset revision…</span>
+      </div>
+      <div id="lab-evidence" class="subcontrols lab-evidence" hidden aria-label="Laboratory evidence">
+        <strong>Experimental</strong>
+        <span id="lab-evidence-note">Casual and Standard are provisional objective-aware opponents. MCTS admission is unmeasured; no comparative game evidence.</span>
+      </div>
+      <div id="lab-inspector" class="subcontrols lab-inspector" hidden aria-label="Laboratory point inspection">
+        <strong>Inspect</strong>
+        <span id="lab-inspector-note">Hover over an intersection or a construction site to inspect its actual connections.</span>
       </div>
       <div id="profile-controls" class="subcontrols profile-controls any-computer-setting" hidden aria-label="Computer profile description">
         <strong>Style</strong>
@@ -111,7 +132,7 @@
         <input id="import-record-file" type="file" accept="application/json" hidden>
         <span id="playtest-status" aria-live="polite">Hotseat only · local export · no names or network submission</span>
       </div>
-      <div class="subcontrols training-controls" aria-label="Personal computer learning controls">
+      <div id="training-controls" class="subcontrols training-controls" aria-label="Personal computer learning controls">
         <strong>Personal learning</strong>
         <select id="training-games" aria-label="Training batch size">
           <option value="10">10 games</option>
@@ -127,15 +148,18 @@
 
     <footer>
       <span><i class="legend legal"></i> legal placement</span>
-      <span><i class="legend sky"></i> sky liberty</span>
+      <span id="sky-legend"><i class="legend sky"></i> sky liberty</span>
+      <span class="lab-legend" hidden><i class="legend junction"></i> permanent junction · 0 points</span>
+      <span class="lab-legend" hidden><i class="legend site"></i> unused construction site · not a liberty</span>
       <span><i class="legend atari"></i> one liberty</span>
       <span><i class="legend lowlibs"></i> two liberties</span>
       <span><i class="legend phantom"></i> board edge (no liberty)</span>
-      <span>Hover to inspect stacks · press <kbd>F</kbd> for fullscreen</span>
+      <span id="inspection-hint">Hover to inspect stacks · press <kbd>F</kbd> for fullscreen</span>
       <span id="ai-note" aria-live="polite"></span>
       <span id="message" role="status"></span>
     </footer>
   </main>
+  <script src="/lab-record.js"></script>
   <script src="/game.js"></script>
 </body>
 </html>

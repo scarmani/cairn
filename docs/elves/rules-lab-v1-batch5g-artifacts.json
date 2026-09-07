@@ -1,0 +1,127 @@
+{
+  "format": "varde-rules-lab-artifact-index",
+  "version": 1,
+  "unit": "5G",
+  "source_parent": "fef0bfd7f62d311435bd87bdf386d8c69b151e1b",
+  "raw_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "docs/rules-lab-bootstrap-report.md",
+      "sha256": "33c4f56fabb982eb51431d8e502140b58041c5419e1905a1c4925f3594417b62"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-bootstrap/manifest.json",
+      "sha256": "a6bd506af553bddb423bc47a1758b65f3db6def49848d7265343072b80729af2"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-prepare.json",
+      "sha256": "500aba01c33656794a715d04137b78409228de92c643ef3b4ad232f1f170a3d7"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-run.json",
+      "sha256": "f71d50306e87cfabc004abf3f46f42b6fd91f594515191d6b54fd891b2f957ca"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-audit.json",
+      "sha256": "2435da54dc806effc0e303cc685789d17b656a5d8f603caf55792047aeec2e98"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-budget-initial.json",
+      "sha256": "675b137ff12adaf1254ec06b11c9426c6b6d55d6fa4bfcca9810cf333c269073"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-budget-final.json",
+      "sha256": "be95f284684548109961ffb3ea85c05968beda39a8f9079533c0121d68807f4e"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-checkpoint-snapshot.json",
+      "sha256": "a3d97dfb39c216e8d6d35827f6a482d413206dd74335b7a639f6641cea8a3d05"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-summary.json",
+      "sha256": "f8f03aaabac81e0b4ab08650b774befb05b453c2a3720339e85840c808e87aa6"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-summarize.py",
+      "sha256": "e3043a447f35098ed8045e1bd2949702d810bd69052a6133f0087d553d1f0b9a"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-artifact-files.sha256",
+      "sha256": "4d84c37e47699b4abcd7207286841c43ceed558c89c6588e6c8a8cc0213c2ca4"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-tests.log",
+      "sha256": "9b86bc982d52198e9352f30c39f645450f42fdfae72c872f3f11001a6fe04ddc"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-goal-cycle.json",
+      "sha256": "96c0900fb0a275c48ea773b50edf467d41f9508204baf0233eb5846e6b1b8d40"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5g-context.md",
+      "sha256": "23e3ad4d5667c67982a3de8bdbd8aee5bc8fe68d6ec315df99671b0dec8def27"
+    }
+  ],
+  "verification": {
+    "tests_passed": 886,
+    "test_seconds": 313.055,
+    "skipped": 0,
+    "additive_tests": 0,
+    "source_changes": 0,
+    "lint_compile_js_diff": "pass",
+    "independent_result_and_report_review": "clean",
+    "summary_regeneration": "byte-equivalent",
+    "stored_file_hashes_verified": 48,
+    "completed_result_artifact_references": 24,
+    "uncompleted_stage_artifacts": 17
+  },
+  "bootstrap": {
+    "manifest_hash": "7016c258169cdbca9d8a28372e3f7ed0fbf12016333632a344343d6c006f8207",
+    "canonical_results_hash": "667ccf1ccb3823f3c496a296c41bba29ec0d88a1f2e997337b6f11bad041e882",
+    "summary_semantic_hash": "a139ba05226e5eda7bc620ce61aff385b9351166aa8386229b38dc80fa308db7",
+    "status": "timeout",
+    "reason": "task-timeout",
+    "task_count": 32,
+    "attempted": 14,
+    "completed": 6,
+    "interrupted": 8,
+    "unstarted": 18,
+    "independently_certified": 0,
+    "admitted_agents": 0,
+    "all_cleanup_confirmed": true,
+    "integrity_contradiction_detected": false,
+    "scope": "One incomplete bootstrap. Sibling timeout statuses do not mean every task exhausted its own guard."
+  },
+  "research": {
+    "ledger_path": "research-budget.json",
+    "coordinator_session": "rules-lab-v1-5g-20260907-bootstrap-01",
+    "job_id": "rules-lab-v1-5g-bootstrap-001",
+    "charged_seconds": 20.186600923538208,
+    "windows_opened": 1,
+    "active_jobs": [],
+    "overrun": false,
+    "completed_worker_self_cpu_seconds": 56.716693,
+    "total_cpu_seconds": null
+  },
+  "gate": {
+    "full_certification": "blocked-no-defensible-comparable-runtime-projection",
+    "mcts_admission": "blocked-certification-incomplete",
+    "comparative_games": "blocked-no-admitted-agent",
+    "batch6_unmeasured_cards_and_tools": "may-proceed"
+  },
+  "claim_limit": "Operational feasibility evidence only. No game-defect, termination, strength, balance, strategic-depth or human-aesthetic conclusion."
+}

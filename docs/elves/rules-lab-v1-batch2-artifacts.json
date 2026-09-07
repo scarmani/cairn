@@ -1,0 +1,16 @@
+{
+  "kind": "engineering-verification-not-research",
+  "artifact_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "tests": {"passed": 340, "skipped": 0, "seconds": 61.001},
+  "research_charged_seconds": 0,
+  "artifacts": {
+    "batch-2-tests.log": "8080d1b65324decf448b5ed0e2dac3fb623e22d7dacb2472c8caf3033f28fc88",
+    "batch-2-early-parity.log": "69248546c998d57a071255648a8847c693888f72254aed16b5d6876f9d619bc9",
+    "batch-2-browser/start/shot-0.png": "d0cba7ea2311d4dce5b756a541e10dbcb10fc48b87824dc6844f4f3c4d4ecc09",
+    "batch-2-browser/start/state-0.json": "0c8377548f943d641f24be1191b33557637f534ed39f3a51e8f1798dc9852333",
+    "batch-2-browser/opening/shot-0.png": "c36475920f73887e0a4ee343ed94ebd6b423ee0af36211d003fc38dc689be741",
+    "batch-2-browser/opening/state-0.json": "02959d0bc1fc4f7fa63c45fa665970bcbfb604c99ee27135b4aa1f76d8474ab3",
+    "batch-2-browser/swap/shot-0.png": "4db978a3b924b7b398e115bb392effd4612331ddd585ab3deded405681553f33",
+    "batch-2-browser/swap/state-0.json": "ae9e5baec67c110fa840e1c0814dbd2a862e61622c70d1a01b3a23f8b03c5ecd"
+  }
+}

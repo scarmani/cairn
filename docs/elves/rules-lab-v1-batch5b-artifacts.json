@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "source_parent": "b554a82f49076ed6c0abc7700f0067932dbd6a2a",
+  "engineering_only": true,
+  "research_seconds": 0,
+  "tests": {"passed": 646, "added": 49, "skipped": 0, "seconds": 90.663},
+  "independent_review": "clean; final closure delta review recorded in execution log",
+  "real_game_certificates": 0,
+  "admitted_agents": 0,
+  "raw_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "sources": [
+    {"path": "research/harness/lab_proof_producer.py", "sha256": "7fbd837f7a0a7a7912a9da6e0f542093f1bd4694c837f263199117ceb091704f"},
+    {"path": "research/harness/lab_fixed_tasks.py", "sha256": "27ad29f841167b1fdf85a8d7f6137a9106fc43f04953413f17a0d54d9de6c808"},
+    {"path": "engine/test_lab_proof_producer.py", "sha256": "d8a81ec1d9659e7cee5cbe8d8c19cb38551a670cc57b2fac9ab75aa9e292550b"},
+    {"path": "engine/test_lab_proof_producer_invariants.py", "sha256": "7de8c6d7efb81c9499784edafe0a6a10c77ff531301597029ae0cb77b73e4145"},
+    {"path": "engine/test_lab_fixed_tasks.py", "sha256": "c4836b7a55768bd6a926bc9ba9a141a0402466b6f6b678fcdb3f4be8d3a9547a"},
+    {"path": "engine/test_lab_proof_pipeline.py", "sha256": "299794e3ba7e494bb335db89a228d615f7de3cf3766bb3891f7d360a2d6b8047"},
+    {"path": "docs/rules-lab-proof-producer.md", "sha256": "0490ad4e873d2e5a31bb835fb8cda64c091e1baad25a4295e67561aed63beffc"}
+  ],
+  "selected_artifacts": [
+    {"path": "batch-5b-tests-final.log", "sha256": "1dee2c087e9e248bc362887a2f78bd7721e10bd61395692f9fb71b7da1424d5b"},
+    {"path": "batch-5b-tests-initial.log", "sha256": "09d2fe6f235d1ace26d41a3035e097b8a9dd64c12abd03c7e512b07a5a5a8a50"},
+    {"path": "batch-5b-goal-cycle.json", "sha256": "3e9063b6cf754bacd2341fd01ddd9f1ed6fa926ca52c43ff8766c1f8c9d4b00a"},
+    {"path": "batch-5b-context.md", "sha256": "f6079521cc6f16437f6a8d0df4a4d2e5f8327c5672dac74f6022ef724fdf8563"}
+  ],
+  "claim_limit": "Synthetic exact proof production checked independently, plus sequential fixed-task persistence. No actual-game certificate, reachability attestation, worker hard-stop enforcement, MCTS admission, comparative match or game-quality result."
+}

@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "source_parent": "8c590d49a7bd4a043fa3dac2efb1d65c761be67f",
+  "engineering_only": true,
+  "research_seconds": 0,
+  "tests": {
+    "passed": 547,
+    "skipped": 0,
+    "seconds": 88.975
+  },
+  "browser": {
+    "checks": 33,
+    "final_errors": 0,
+    "actual_exports_replayed": 25,
+    "independent_review": "clean",
+    "server_stopped": true,
+    "personal_model_written": false
+  },
+  "raw_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "raw_manifest": {
+    "path": "batch-4d-artifacts.json",
+    "sha256": "604de796e25ea9f01320270a7dd469e6e68e83a2426a4f1faaad185d5a9fe3fa",
+    "artifacts": 465
+  },
+  "sources": [
+    {
+      "path": "web/game.js",
+      "sha256": "561f7df71a3d3ca8b6b7ac679b7a45044cd01162913236cf6028380050eccad2"
+    },
+    {
+      "path": "web/index.html",
+      "sha256": "4dcf742ddbaca119d84bcadd7fa052d0adf4d62cb0f3352811a3829150dcc998"
+    },
+    {
+      "path": "web/styles.css",
+      "sha256": "ed8ed1e417d09c51d5c780380a7aa9b39dca3cf0f6500a392f70e6b8fb3a6e70"
+    },
+    {
+      "path": "web/favicon.svg",
+      "sha256": "9b245b3a17609f34ab7f68a4ae8047af0de2f12a6998fc881a3a2c5fe82d3807"
+    },
+    {
+      "path": "web/lab-record.js",
+      "sha256": "889bcf2f3c8a119057e97bc30fedbef71688cfeed987ba18832833b2e503f217"
+    },
+    {
+      "path": "research/harness/lab_record.py",
+      "sha256": "5bf698b3a5d125e6024354062ed8a61e269b5093460697413cc758ba19fa3f1c"
+    },
+    {
+      "path": "engine/test_lab_record.py",
+      "sha256": "ce92fb281b8c031696c44d539c0ec006f16e6a70f062b07ddea7cc1ccdc8c3ea"
+    },
+    {
+      "path": "engine/test_lab_record_invariants.py",
+      "sha256": "1be287d3d15a897ce0cfec53d94da6391ffb99e901184e450d56110574d3d07d"
+    },
+    {
+      "path": "docs/rules-lab-browser.md",
+      "sha256": "57bc6d9d70310557b58c9dd33cfa602a86a5658769462cf4023e688d59833f6a"
+    }
+  ],
+  "selected_artifacts": [
+    {
+      "path": "batch-4d-browser/bundled-reoccupation-2/shot-0.png",
+      "bytes": 746210,
+      "sha256": "3fe0a2e31634f3246100f4cbe0a05fa589d007c4aadc5aeb73b05cf73415caa1"
+    },
+    {
+      "path": "batch-4d-browser/bundled-reoccupation-2/state-0.json",
+      "bytes": 16271,
+      "sha256": "7132bc149dc4d15011562fa9ef26bce24aaa2210982fa26e20d92fd88a92eabe"
+    },
+    {
+      "path": "batch-4d-browser/majority-four-edges-replay.json",
+      "bytes": 298,
+      "sha256": "417c1fb56a7aba28608d5171e7ef64f0c97082730be52286fd6ac4bfb322a535"
+    },
+    {
+      "path": "batch-4d-browser/matrix-2-and-3-mechanical-replay.json",
+      "bytes": 18801,
+      "sha256": "89537e0a288d96e69151059e845bc56b253b7079cc48511be40bba008ac05f5d"
+    },
+    {
+      "path": "batch-4d-browser/matrix-3/summary.json",
+      "bytes": 12074,
+      "sha256": "dc72769f46b3aa83f8c2e2cbf66cdda3499d9b3a90779fa5fba8f888ec7c7638"
+    },
+    {
+      "path": "batch-4d-browser/modes-3/summary.json",
+      "bytes": 33624,
+      "sha256": "d9e982d08f24fe3b532528ba0108e86d99427c710a5b489102c2639c738015ee"
+    },
+    {
+      "path": "batch-4d-browser/objectives-2/summary.json",
+      "bytes": 276,
+      "sha256": "518922d1cb7aa13b1c29095cef2034d3b50bdfa0338732fb12abb93c23252600"
+    },
+    {
+      "path": "batch-4d-goal-cycle.json",
+      "bytes": 1239,
+      "sha256": "21fb22aa20fa19f9b4621cf934684bad728b6e2419dacc52ea51d74178a4b9c1"
+    },
+    {
+      "path": "batch-4d-tests.log",
+      "bytes": 87165,
+      "sha256": "588db8f1ebaae80c68793940cb3e3df73256e55e8f3fd78f1a34747ed71c9998"
+    }
+  ],
+  "claim_limit": "Engineering verification, not independent accepted-terminal certification or comparative game-quality evidence."
+}
+

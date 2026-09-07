@@ -1,0 +1,115 @@
+{
+  "format": "varde-rules-lab-artifact-index",
+  "version": 1,
+  "unit": "5D",
+  "source_parent": "47f5a87d7c8a672e06c8398b9333889fd44a7e75",
+  "raw_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "research/harness/lab_corpus.py",
+      "sha256": "dc273a0c54cd44d75e94b0db0a08bc1f7c24066bec76a180d124e6d03b10fc9a"
+    },
+    {
+      "kind": "source",
+      "path": "research/harness/lab_symmetry.py",
+      "sha256": "e2ee9e6e9e6dcbd01251b70408c2c3b8a741f838a217a513a126679d3b9e081b"
+    },
+    {
+      "kind": "source",
+      "path": "research/harness/lab_corpus_candidates.py",
+      "sha256": "1e2c847b9789ffbd36d85083dd3b0c391cf2f0ad25b5540af5131a708ca663f4"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_corpus.py",
+      "sha256": "4540aae8d46d88ff8b67bb0f5281762d02e400ddd0df29a47e3a5ecc8768cbc5"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_symmetry.py",
+      "sha256": "707217c6367249d2c9fddb4b2cc496f5d44a6cac71c795ba25840dca44477105"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_corpus_candidates.py",
+      "sha256": "4888101941e919277eea917c4a71b218bcd70b71bef55b19c3c5c2fe3eef4a2e"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_corpus_invariants.py",
+      "sha256": "bfaf7a6ce7179070f9d38e1d06238586f8ba72686ebd578d9a26c1b5f75adfeb"
+    },
+    {
+      "kind": "source",
+      "path": "docs/rules-lab-corpus-contract.md",
+      "sha256": "0ce5de6b12bf7002ec25adb3c93aab3a2f6dab68f2ff3017b81a54af03536dc0"
+    },
+    {
+      "kind": "source",
+      "path": "docs/elves/rules-lab-v1-candidate-index.json",
+      "sha256": "5b0cedefb4b8ced6ce8786ac5cb197b79d8c9c76117a8eccc5e59eeb8c123561"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5d-corpus.json",
+      "sha256": "d1dc7d7bd23b036862ddcffe9915fb5b7932147c838f93c4ef29fea9e255f7fc"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5d-candidate-index.json",
+      "sha256": "5b0cedefb4b8ced6ce8786ac5cb197b79d8c9c76117a8eccc5e59eeb8c123561"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5d-generation.log",
+      "sha256": "84e1eebd6a27c58476170a29ee88dec8e6edfc8d12dfef36246a04aedf30d15c"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5d-generate.py",
+      "sha256": "1e410ad5c6ff07f2ac2e2375c90dda54106fa99270696fe4645e2008989e1d6d"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5d-tests.log",
+      "sha256": "5dbece60f0519712409c5a7a2bf7c88be6981906631bce81b9ff6cf3fc923841"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5d-goal-cycle.json",
+      "sha256": "f90ba74b4a1894c1d08427a97145e4909a4189fb6f6215270ecf8666b424bbb5"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5d-context.md",
+      "sha256": "a8cf58794239516596dae182f8657547f64965bfc20ac895a497f34e59f36719"
+    }
+  ],
+  "tests": {
+    "passed": 738,
+    "seconds": 215.425,
+    "skipped": 0
+  },
+  "candidate_pool": {
+    "proposed": 512,
+    "eligible": 476,
+    "single_action": 32,
+    "duplicate": 2,
+    "invalid_origin": 2,
+    "source_table_order_hash": "b06d1cb986813f8fb227b8674def9c8cdc59ba4ea07f9ee967449c460858e06b",
+    "canonical_definitions_hash": "16aa38b04fa323f1ffa94552a657da92cc1f38560cd3bdfa01e8f6b47a7d3d6b",
+    "manifest_hash": "e6331d93f1a2cf887eedc8c7c95f01585808cdc7a09b0b903433d765da9b64b8",
+    "index_hash": "bd9b9c7cac33876c43af7060c7892a4ee556ba67dddeb2a47dac024f2d2fa9c7",
+    "exact_regeneration": true,
+    "first_compile_seconds": 91.42881166699226,
+    "compile_and_regeneration_seconds": 222.9517879169871
+  },
+  "research": {
+    "charged_seconds": 0,
+    "windows_opened": 0,
+    "certified_positions": 0,
+    "admitted_agents": 0
+  },
+  "claim_limit": "Proof-free authored origins and structural splits only; no game-quality evidence."
+}

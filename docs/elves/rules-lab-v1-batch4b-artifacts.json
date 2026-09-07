@@ -1,0 +1,19 @@
+{
+  "root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "scope": "Native product verification, not research admission or strength evidence",
+  "agent_hash": "6cddcdea5eaf4f1a09a61d1d024783c24449aa8f6803021ecbefab5a13f6d26b",
+  "tests": {"passed": 474, "skipped": 0, "seconds": 76.967},
+  "browser": {"application_errors": 0, "preexisting_favicon_404": 1, "server_stopped": true},
+  "sha256": {
+    "batch-4b-tests.log": "fb66dbd7c62a91781805d0533a91c61c887f1320e0b36c2efdaeea8ea7096f90",
+    "batch-4b-latency.py": "e4c766d7428b63bb8684259c23c1d3bbe6bc32fdeb80240cca25b290edf34d39",
+    "batch-4b-latency.jsonl": "9fc355678774c11a2731d93a949c41e0b5224dcf10c996f282e2445ad7a40915",
+    "batch-4b-browser/start/shot-0.png": "d0cba7ea2311d4dce5b756a541e10dbcb10fc48b87824dc6844f4f3c4d4ecc09",
+    "batch-4b-browser/start/state-0.json": "0c8377548f943d641f24be1191b33557637f534ed39f3a51e8f1798dc9852333",
+    "batch-4b-browser/computer-opening/shot-0.png": "d5a9c45b9ac86ba0f95e3c17224e4b56d8d640a67d4e423bef2086810ed762f9",
+    "batch-4b-browser/computer-opening/state-0.json": "f4e8d571255eb5734a59ac331de29f39c7ae1fa2df0c520c12413973541a4002",
+    "batch-4b-browser/takeover/shot-0.png": "19b1ae76a7a1a6a667eca55ac8599b1c058194b5a25abff6109c7169cd79253e",
+    "batch-4b-browser/takeover/state-0.json": "53a866c9a81d4eeffff3770d00402e345f0f83f20c9fab539e59fbf4602050fb",
+    "batch-4b-browser/takeover-viewport.png": "28a2f147ae10baa742da9314284ed171f4e1eb63f402c81a03cb34b22f758581"
+  }
+}

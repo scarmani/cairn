@@ -1,0 +1,294 @@
+{
+  "format": "varde-rules-lab-artifact-index",
+  "version": 1,
+  "unit": "6",
+  "source_parent": "e8e428ad31e594c3843ed29eb7ccee6311900f0f",
+  "raw_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "docs/rules-lab-analysis-contract.md",
+      "sha256": "a9984d09d20c9bbeace16838570b2ab60b186da017fd346451fe064ffb2b963a"
+    },
+    {
+      "kind": "source",
+      "path": "docs/rules-lab-run-report.md",
+      "sha256": "41137a805e164572a9d0c9e8cf3fcd29e2ab3120f0883a9c88ce4a2f77e3e61f"
+    },
+    {
+      "kind": "source",
+      "path": "research/harness/lab_analysis_cli.py",
+      "sha256": "72dcd154a3255f8f8f4fc2605f46b2e752894a7dd318a6bbf0bbba8d766391e8"
+    },
+    {
+      "kind": "source",
+      "path": "research/harness/lab_evidence_bundle.py",
+      "sha256": "b630f8cbd1ebbaaa4bf48261903041f9f79a11acd7d72e916c1d88efd214d5f4"
+    },
+    {
+      "kind": "source",
+      "path": "research/harness/lab_record_analysis.py",
+      "sha256": "cd53812bc9a61fdddb5a437f0e9235957b87269ee03026f34cb5b8f4dc8eca06"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_analysis_cli.py",
+      "sha256": "172f4e2a49af16614f3c46943d65855ce684b61e06dc9747acd4a4415c590bbe"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_analysis_invariants.py",
+      "sha256": "e833e2b63810d03d671cd96436eaee0eb6f1be9965c1a878b5b217bd8862c6ea"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_evidence_bundle.py",
+      "sha256": "93dc9460c53c176c4e3c4256c0a2c9160d300ff0a2ec0be436d9f5343f69818c"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_record_analysis.py",
+      "sha256": "f597ad0457e0da1dc5a36896d3fd4469a7c0bfe96afb52a68e119d97b5e93e46"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser-client.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser-verification.md",
+      "sha256": "2c3a89faf21de014ba99348b7dd35dd97d0c673eb8ca1592663ba0cbf2eeec9b"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-cli-focused-2.log",
+      "sha256": "a2cc06715e137e7d93a24b36ec27f9d4ede812db6d81d754eb5b597855ac0212"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-cli-focused-3.log",
+      "sha256": "48772cc393881136bd9e5c1dff3de2333fbe8dde2683e6202b8f9fb75c32c952"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-cli-focused-4.log",
+      "sha256": "9bfe0957f56b0e5f05b80d32479e9a994df81310677481b031cb40c0af6ab247"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-cli-focused-5.log",
+      "sha256": "b8ebdf3dbca114d11e8ce8e8c1409dae0fe40f0f42adb46514fe859a9d1e63c9"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-cli-focused.log",
+      "sha256": "ba0d6f2f12e584887e57877a7a57df4c1bb82e81a26fbc128d14d5b8a85dfa99"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-context.md",
+      "sha256": "ec1a4406ad621e73650a1ef24398814f22c4660a14449d9af9ab1b3ef5e03f6f"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-evidence-bundle-tests.log",
+      "sha256": "00b6c6053d42fd666552cb9260cec2a204d04df8c3ab650c04d4f47b2800f522"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-final-review.md",
+      "sha256": "9297b929c3d13f4cc76d5f381db4457470bc3e126042a30ede4d69bf8cc00c11"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-full-tests.log",
+      "sha256": "211b0f3a8c620f3535f991fdde9500c1dcb8a147f56d286982a67c69fd8e2663"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-goal-cycle.json",
+      "sha256": "c979743c5ba58e2b2c9217bc03f83e02ab6b0b2ed7ada7e9e85f4aa1429bf07b"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-goal-cycle.py",
+      "sha256": "2fdf7c4b72f03b83f7ca3c6ba05794cef3e6256f3142e44235ad67744260545e"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-pr-body.md",
+      "sha256": "a3c3193b941ff2e7b550188c1dd5c74e86ccd75ec9641770f1e3f3153b857251"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-record-owner-verification.md",
+      "sha256": "a40f173b1e9b8813dc306328f8ffd00a830268975ef62a5f428ea7ec3a4a00b1"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-report-1-errors.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-report-1-run.json",
+      "sha256": "c4800f9aedf0eaa6435a5d86d8aff4b1bcf91128fbfe7da9841d55afa6727e08"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-report-2-errors.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-report-2-run.json",
+      "sha256": "06512bb09d2a50982ae3acc3d6496008095356a60572cefa64ee35d17b142f5a"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-report-3-errors.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-report-3-run.json",
+      "sha256": "06512bb09d2a50982ae3acc3d6496008095356a60572cefa64ee35d17b142f5a"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-report-server.log",
+      "sha256": "dde0a708a553ca510c6f7fe27eeb1218b71b689decd643f63b5225930df75e9b"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-report-1/manifest.json",
+      "sha256": "ee3a24bf57f812fad6b4f0e29c3b4bd6694fdbe0f8d51c35a59eb444f7160745"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-report-2/manifest.json",
+      "sha256": "f0c9be9227069c1a064cded07ccc382f5957ba71f2cdc0158d5c639665e5784b"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-report-3/manifest.json",
+      "sha256": "f0c9be9227069c1a064cded07ccc382f5957ba71f2cdc0158d5c639665e5784b"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/cli-artifacts/page-2026-09-07T10-55-45-708Z.yml",
+      "sha256": "c563b29e7bdb8dfcd1ea8e68eb8b3add388c2ba97a03b15b5d591108ab335149"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/cli-artifacts/page-2026-09-07T10-56-12-196Z.yml",
+      "sha256": "1ffc975b30d520377d635f4456bc184959eedaf01f99f3329cabb9a3e51565da"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/cli-artifacts/page-2026-09-07T10-56-36-053Z.yml",
+      "sha256": "0e674b11b8dbc47663529fdf848b3819d5c149b8bde3b5e228dd523f9b1162a0"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/cli-artifacts/page-2026-09-07T10-56-37-870Z.yml",
+      "sha256": "92bf9e89cb276e505a3e71a5668fb2703be25672b6c5d886b19a4f4e0d00db40"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/cli-artifacts/page-2026-09-07T10-56-39-724Z.yml",
+      "sha256": "490730d936aab79eee6710efb2c189acdfeffebfcd2eb5fb978464db71d2e2a4"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/cli-artifacts/page-2026-09-07T10-57-51-113Z.yml",
+      "sha256": "87019e417f2d70b43de9388a4e953ad44e81eea4fceb5787a4b781bc42c340d0"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/cli-artifacts/page-2026-09-07T10-57-52-282Z.yml",
+      "sha256": "87019e417f2d70b43de9388a4e953ad44e81eea4fceb5787a4b781bc42c340d0"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/client-1/shot-0.png",
+      "sha256": "db979c677aea81fa9bc51c114fe0275ce17d8f77d2fbe45a50a5e4527c41918a"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/client-1/state-0.json",
+      "sha256": "3e8689c57ac06badeb0f322366efbc4708249a5e1bf807cb5758b1ac74376a72"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/narrow-header.png",
+      "sha256": "f572873749572f7d760cb4c26571bce1561c52ef05d7366480252045b967a937"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/narrow-majority-coverage-2.png",
+      "sha256": "860a29573500fd26ee80829dcdd23dc1feabb090723453031c1b4c74e43be709"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/narrow-majority-coverage.png",
+      "sha256": "8a92c3ea01f5672a01f417bce054f7bc4afab6ff6e670c5caf2288fa430e75dc"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/y-atlas.png",
+      "sha256": "2e4457d831bdd959ef8acf30800c4b2e104f2d1086417122a9923766cfaddc02"
+    },
+    {
+      "kind": "external",
+      "path": "batch-6-browser/y-card.png",
+      "sha256": "df0283154ecc5e70bec1b6af6f76b7415d2fdb83777a196f5b5b96b8845e4f46"
+    }
+  ],
+  "verification": {
+    "tests_passed": 937,
+    "test_seconds": 325.683,
+    "skipped": 0,
+    "additive_tests": 51,
+    "previous_source_changes": 0,
+    "lint_compile_js_diff": "pass",
+    "report_content_hashes_verified": 93,
+    "report_regeneration": "report2 and report3 byte-equivalent",
+    "browser": "inspected screenshots and text, zero console errors/warnings",
+    "final_tip_ci": "required post-push; exact SHA and check URLs in final PR receipt"
+  },
+  "report": {
+    "admitted_comparative_games": 0,
+    "analysis_hash": "c06f4e6af71c219315041171f8a631832e62162f86af26217811c724853ca0bc",
+    "bundle_hash": "8f2da864483cf7eaf631711b0b17fba791ab366e79840e43c44be0b3b1b4d448",
+    "evidence_parent": "e8e428ad31e594c3843ed29eb7ccee6311900f0f",
+    "human_observations": 0,
+    "publication": "manifest-last; interrupted directories are not completed reports",
+    "report_sources": {
+      "research/harness/lab_analysis_cli.py": "72dcd154a3255f8f8f4fc2605f46b2e752894a7dd318a6bbf0bbba8d766391e8",
+      "research/harness/lab_evidence_bundle.py": "b630f8cbd1ebbaaa4bf48261903041f9f79a11acd7d72e916c1d88efd214d5f4",
+      "research/harness/lab_record_analysis.py": "cd53812bc9a61fdddb5a437f0e9235957b87269ee03026f34cb5b8f4dc8eca06"
+    },
+    "selected_scripted_traces": 13,
+    "manifest_sha256": "f0c9be9227069c1a064cded07ccc382f5957ba71f2cdc0158d5c639665e5784b",
+    "cards": 16,
+    "selected_scripts": 13,
+    "excluded_superseded_scripts": 12,
+    "rules_actions": 40,
+    "placements": 25,
+    "constructions": 9,
+    "spatial_phase_classes": 40,
+    "raw_heatmaps": 49,
+    "qualified_shortlist": [],
+    "historical_output": "report1 is pre-final-validator, retained not current"
+  },
+  "research": {
+    "charged_seconds": 20.186600923538208,
+    "new_batch6_charged_seconds": 0,
+    "ledger_sha256": "215986e6de1100633b4ff1098ce29c282f1e8926d58d2918b47d9d2eb95ea1cf",
+    "active_jobs": [],
+    "gate": "certification incomplete; MCTS and comparative work blocked"
+  },
+  "claim_limit": "Mechanical engineering evidence and design hypotheses only; no strategic-depth, beauty, balance or qualified shortlist claim."
+}
