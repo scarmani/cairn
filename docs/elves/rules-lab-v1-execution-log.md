@@ -2,13 +2,71 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–3 complete locally; Batch3 closure push/CI next.
+- Phase: launched, Batches1–3 pushed/CI green; Batch4 API-spine closure push next.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
 - Next: browser/API, provisional opponents and mechanical oracle; three batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 4 API-spine closure: 2026-09-06
+
+426 tests pass in71.033s, zero skips:386 prior +40 additive. Full frozen legacy
+decision/save/history parity remains exact. New legacy API fixture captures exact
+496a1fe server behavior:24 ruleset/size flows with216 public-state observations,
+168 saved payloads loaded under both format identifiers, seven match configurations,
+profile/rules catalogs and ending continuations. No public/save field is excluded;
+only inputs are deterministic (in-memory model/idle trainer/synthetic0ms decision).
+Content hash407407ba353a8a9943e09b037d00a6fa85589f3179f214a708b8e166fd18f552;
+file hashc3b88a6194a65d6a5bc05d0cf0903ddb1ecc247ec4cdbf334684ef2594d6993e.
+
+Independent ownership review11tests plus47 existing server/action tests found no
+blocker. Root9real-HTTP tests transitioned from missing-feature failures to green.
+Adapter15tests cover one authoritative ending state, complete-seat swaps, strict
+v2 envelopes, profiles/AI isolation and constructed topology metadata. Scoped
+Ruff, compileall, JS syntax and diffcheck pass. Reference engine, legacy opponent
+and web/game.js remain byte-unchanged from approvedbase; server gains additive
+lab branches and an object-body JSON400 guard instead of crashing on invalidlists.
+
+Browser: isolated8773 disposable-model server; actual Classic opening(-1,-1),
+pie, pass/pass and resume exercised. Five final canvas screenshots/text states
+and a viewport inspected. Zero application errors; one existing favicon404 in
+CLI (favicon absent atapprovedbase). Initial unscaled click missed and subsequent
+swap timedout because there was noopening; artifacts preserved, measured canvas
+bounds corrected the test and the full interaction chain then passed. No product
+bug hidden as a successful click. Server/session stopped; model file never written.
+Raw testlog batch-4a-tests.log hash77bec0e8194f94ee9d53526a13907909051690d1a53699b0bcbdf064d2bcb913.
+Compact browser/test provenance: rules-lab-v1-batch4a-artifacts.json.
+
+Confidence HIGH for API/legacy isolation; not a complete Batch4 or labbrowser
+claim. Current lab /api/computer explicitly rejects execution, no legacy fallback.
+Next internal unit supplies objective-aware native opponents and independent
+mechanical oracle, followed by browser/records. Research0; no cohort launched.
+Commit/push this unit, immediately rereadguide/hash/checkfeedback, then continue.
+
+## Batch 4 API-spine contract: 2026-09-06
+
+Baseline is the verified386-test Batch3 tip496a1fe; both exact-tip checks pass.
+Rollback tag exists atthathead. The bounded advisory completed in169.7s through
+CLI fallback claude-opus-4-8, receipt20260907T024159Z. Its API-first unit is adopted;
+advisory wording about pytest/origin-main/unrelated governance is not a replacement
+for the actual unittest, approved-base and repo-local run gates.
+
+Freeze public schema before wiring in docs/rules-lab-engine-contract.md. Behaviors:
+explicit lab opt-in; shared structured actions; actual neighbors/liberties and
+zero-point hubs; complete-seat swap; authoritative actor and accepted-terminal;
+strict v2 snapshot/match crossvalidation; all legacy defaults/responses preserved.
+Build on LabGame/factory/RulesState, never duplicate capture/ending authority.
+Blast radius: new lab_match adapter, additive server branches and tests. Reference
+engine, old opponent and browser untouched in this unit. Native/oracle/browser/
+records remain subsequent internal Batch4 units; no partial delivery claim.
+
+Root's nine real-HTTP tests are red before implementation:20 parameterized failures
+and1 error in0.056s, because new rules/actions/catalog are not yet wired. Raw log
+batch-4a-http-before.log outsidegit. Independent workers own adapter production,
+legacy public-data fixture capture, and seat/ending/save integration respectively.
+No research/advisory/server process remains; proof/calibration/game charge0.
 
 ## Batch 3 closure: 2026-09-06
 

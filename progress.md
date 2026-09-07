@@ -262,3 +262,22 @@ Original prompt: yes to all in best order proceed and execute according to your 
   Added Full Passage cache-eviction coverage without changing production caching.
 - Browser laboratory, objective-aware provisional opponents and independent
   mechanical oracle are next. Research remains unlaunched and comparisons blocked.
+
+## Rules Laboratory Batch 4 API checkpoint — 2026-09-06
+
+- Added explicit lab catalog/new-game selection and one structured action API,
+  plus persistent seat-aware ending state and strict v2 match/save crossvalidation.
+  Ordinary routes retain legacy behavior; no static control is publicly playable.
+- Public topology exposes actual neighbors, unused faces/orientations, scoring
+  vertices versus zero-point hubs, and separate placement/construction counters.
+- 426 tests pass in71.033s, zero skips. New pinned legacy-server fixture protects
+  216 public-state observations and168 saved payloads under both format identifiers.
+  Original218 seeded decisions remain exact. Ruff/compile/JS/reviews are clean.
+- Real browser verified Classic opening at(-1,-1), takeover, two-pass ending and
+  resumption; five canvas screenshots/text states plus viewport inspected. No
+  application error; CLI recorded one pre-existing favicon404. Initial harness
+  click used unscaled coordinates and missed; retained failed artifacts, then
+  corrected from the measured canvas bounds and reran the actual interactions.
+- Lab computers intentionally fail closed at this internal API checkpoint. Native
+  opponents, mechanical oracle, lab browser/records and gated research still follow.
+  No model writes, live cutoff, research charge, merge or checkpoint stop.

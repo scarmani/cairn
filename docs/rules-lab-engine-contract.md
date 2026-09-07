@@ -72,3 +72,61 @@ introduced by validation or search safety mechanisms.
 Constructed mechanical test positions may exercise local invariants directly.
 They must not be exported as reachable journal-certified game evidence unless
 their legal replay actually establishes that provenance.
+
+## Batch 4 public API contract (frozen before wiring)
+
+Laboratory creation requires `experimental: true` and one of the seven lab IDs.
+Static controls remain research-only and never appear in the public catalog.
+Existing catalog entries and legacy request/response/save semantics are preserved.
+New catalog entries have `experimental: true`, `experimental_available: true`,
+`public_new_game: false`, `status: "experimental"`, `rules_revision: "0.1"`,
+allowed sizes 3–6, supported actions, scoring description and
+`analysis_status: "unmeasured"`. Ordinary browser choices remain unchanged.
+
+`POST /api/action` takes exactly a `RulesAction.to_dict()` object: placement uses
+`point`, construction/planting use axial `face` and integer `orientation`, and
+administrative actions have only `action`. Laboratory play/pass/swap/resume
+aliases use that same adapter; none duplicates game or ending logic. Invalid
+actions and wrong-seat human actions fail without mutating the displayed match.
+
+Laboratory public state adds:
+
+- `experimental`, `rules_revision`, and `flat: true`;
+- `accepted`, `actor_color`, and `actor_seat` (null actors after acceptance);
+- `placements_played`, `constructions_played`, and canonical `topology`;
+- `legal_actions`, using the shared structured action wire representation;
+- `construction_sites`, each with `face`, `center`, ordered `corners`, `active`,
+  `orientation` (null if unused), `legal_orientations`, action `kind`, and all
+  allowed `orientations` as corner-index arrays;
+- point flags `original`, `scoring`, `center`, and actual `neighbors`;
+- separate original-point control, all-active-point control, and objective score.
+
+Inactive centers are not points or liberties. Active sites retain their orientation
+but have no legal construction orientations. Scoring variants have no construction
+sites. Every lab point has `sky: false`; ordinary liberties are distinct empty
+actual neighbors. Majority lines are original but not individually scoreable:
+its objective is cell ownership, exposed separately. `finished` means the two-pass
+ending has begun, not that the result is accepted. Ending controls use actor identity.
+`current_player` is the acting seat's name, null after acceptance; `to_move` retains
+the engine color. `cells` contains Majority objects with axial `face`, doubled
+coordinate `center`, six line-coordinate `edges`, per-color `counts`, and nullable
+`owner`. Other lab games have an empty cells list. `original_control` is distinct
+from all-active `control`; neither is substituted for the objective `score`.
+
+One persistent `RulesState` is authoritative for lab seat identities, ending
+acceptances, next ending decider and accepted-terminal state. `MatchConfig` holds
+seat presentation/settings and references that state. A takeover swaps complete
+Seat objects exactly once. Do not reuse legacy ending shortcuts which skip human
+decisions or synthesize extra acceptances after resumption.
+
+Version-2 server snapshots are `RulesState.to_dict()` plus `match`; loading
+cross-validates seat identities, names, acceptance state and mode. The rules-state
+loader still validates the complete game journal. Version-1 loading is unchanged.
+
+Lab computers use only Casual/Standard and no Classic/Personal profile. Explicit
+profile requests are rejected; absent profile data remains absent/null, never
+silently normalized to Balanced. All three match configurations are representable.
+During the API-only internal checkpoint, computer execution fails explicitly as
+not yet available; the subsequent native-opponent unit supplies the shared action
+decision API before the browser lab is exposed. This is staging, not a delivered
+computer-play claim. No Personal model is read as a lab evaluator or overwritten.

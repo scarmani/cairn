@@ -51,17 +51,24 @@ Three planned batches remain. Estimates are planning ranges, not launch guarante
 - Planned batches remaining: 3.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: push Batch3 closure, check exact-tip CI and feedback,
-  then implement Batch4 under a bounded advisory. Do not stop at this checkpoint.
+- Next required action: push/check the verified426-test Batch4 API checkpoint,
+  then run one bounded advisory and implement native/oracle before browser/records.
 
 ## Current Phase
 
-Status: Batch3 complete locally:386 tests in64.481s, zero skips, scoped independent
+Status: Batch3 pushed at496a1fef19a45b8faea1c67c5e08993d5ccbb5a1; both CI checks pass.
+386 tests in64.481s, zero skips, scoped independent
 reviews clean. All seven lab games and three static controls are available through
 the explicit opt-in factory, not yet the browser. Graph geometry is immutable;
 version2 saves validate complete histories by legal journal replay. Planted Y is
 atomic and separate from empty construction; passages support three orientations.
-Single next action: closure push/CI, then Batch4 playable laboratory and oracle.
+Batch4 API-spine is verified locally:426tests in71.033s, zero skips, Ruff/compile/
+JS/diffchecks and independent review clean. The new legacy-public fixture protects
+216 observations and168 saved inputs under both identifiers. Five actual Classic
+browser phases inspected; no application errors, one pre-existingfavicon404.
+Server/session stopped. Push/check internal checkpoint then native/oracle/browser/
+records follow, not omitted work or new authorization gates. Labcomputer remains
+explicitly unavailable until the next unit; no legacy fallback or labbrowser claim.
 
 ## Active Compute
 
@@ -75,7 +82,12 @@ stop. Unit B advisory completed successfully in336.5s via the same CLI fallback,
 receipt `.aragora/goal_cycles/20260907T022500Z/`. Process tree is absent and capacity
 was explicitly released to task019f2b0a-45dd-7543-a985-f43a5cb241fb. That task has
 now explicitly released capacity and reports no reviewer process remaining.
-Reinventory before the next bounded advisory. No research computation is active.
+Batch4 advisory completed successfully in169.7s via CLI fallback claude-opus-4-8,
+receipt `.aragora/goal_cycles/20260907T024159Z/`, envelope outsidegit
+`batch-4-goal-cycle.json`. Its API-first internal unit is accepted; legacy response
+preservation means legacy rules, not a ban on the explicitly requested lab API.
+No advisory/research/server process remains. Disjoint implementation and independent
+API tests follow the agreed schema. Research charge remains zero.
 
 ## Non-Negotiables
 
@@ -102,7 +114,9 @@ Scope: Batch4 adds experimental browser/API support, shared structured actions,
 replay/export, provisional objective-aware Casual/Standard opponents and an
 independent mechanical graph oracle. Build on the existing factory, immutable
 graphs and RulesState; preserve legacy server branches and all ordinary defaults.
-Create rollback tag `elves/rules-lab-v1/pre-batch-4` after Batch3 CI closes.
+Rollback tag `elves/rules-lab-v1/pre-batch-4` exists locally at496a1fe; push with
+the first internal checkpoint. First unit is API adapter only; no browser exposure
+or silently reused legacy AI until subsequent units have passed their tests.
 
 Acceptance: explicit lab opt-in, all seven games, construction preview/orientation
 by mouse/keyboard, zero-point hubs, actual neighbor/liberty inspection, three match

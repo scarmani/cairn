@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "scope": "Batch4 API-spine product verification, not research admission",
+  "raw_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "tests": {"file": "batch-4a-tests.log", "sha256": "77bec0e8194f94ee9d53526a13907909051690d1a53699b0bcbdf064d2bcb913", "passed": 426, "skipped": 0, "seconds": 71.033},
+  "legacy_fixture": {"file": "research/fixtures/rules-lab-server-legacy-v1.json", "sha256": "c3b88a6194a65d6a5bc05d0cf0903ddb1ecc247ec4cdbf334684ef2594d6993e", "source_commit": "496a1fef19a45b8faea1c67c5e08993d5ccbb5a1", "public_observations": 216, "save_inputs": 168, "format_identifiers": 2},
+  "browser": {
+    "directory": "batch-4a-browser",
+    "isolated_port": 8773,
+    "server_stopped": true,
+    "application_errors": 0,
+    "console_note": "One pre-existing favicon.ico 404 in CLI. Initial unscaled click and unavailable-swap test attempts retained separately; verified chain used measured canvas bounds.",
+    "inspected": [
+      {"phase": "start", "shot_sha256": "d0cba7ea2311d4dce5b756a541e10dbcb10fc48b87824dc6844f4f3c4d4ecc09", "state_sha256": "0c8377548f943d641f24be1191b33557637f534ed39f3a51e8f1798dc9852333"},
+      {"phase": "opening-verified", "shot_sha256": "edee3bcc79749fea5c21a296a942b3ed2cb06eba96397cdc6f69e1bd69499802", "state_sha256": "2fbcd6b27acbdc875f2e8dfdb4e06f98f21d400caa0fc9ed63259f04bcf6ca1f"},
+      {"phase": "swap-verified", "shot_sha256": "edee3bcc79749fea5c21a296a942b3ed2cb06eba96397cdc6f69e1bd69499802", "state_sha256": "ee738c6fa2651e14b410d916ca23ca16d04d8d9f1c588979ae11988fd5925940"},
+      {"phase": "ending", "shot_sha256": "9e2a3d67a8a45f1b244df54c43efff55ff59139cc38931372aa470a9c1251fa4", "state_sha256": "5d2462cd24c4b46f64d20dfc2c338e4f21960e603ddba0b8020a389cbb433687"},
+      {"phase": "resumed", "shot_sha256": "edee3bcc79749fea5c21a296a942b3ed2cb06eba96397cdc6f69e1bd69499802", "state_sha256": "b9daa9691bfc8de9b02a70a49b5989f2a74764fb67ecc77352c6df623c5dbcf5"}
+    ]
+  },
+  "research_seconds": 0
+}
