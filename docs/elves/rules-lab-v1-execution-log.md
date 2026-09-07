@@ -2,13 +2,69 @@
 
 ## Run digest
 
-- Phase: launched, Batches 1–2 complete; Batch 3 next after push/check closure.
+- Phase: launched, Batches 1–2 complete; Batch 3 unit A validated, unit B next.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
 - Next: four junction variants and static controls; four batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 3 unit A checkpoint: 2026-09-06
+
+Y/six construction and all three static controls now use the immutable graph
+factory with capture-first Go, original-vertex opening/scoring, permanent neutral
+topology, substantive construction counters, and topology-width-aware historical
+replay. Legal short sequences demonstrate added/shared liberties, occupied-hub
+merging, capture reopening, suicide rejection, and spatial/color symmetry.
+Both save identifiers, pie seats, separate ending acceptances and resumption pass.
+
+Three scoped independent implementation/mechanics/integration reviews report no
+remaining blockers. Test-first integration cases failed before implementation;
+all 363 tests now pass in64.829s, zero skips (340 prior +23 additive). Changed-file
+Ruff, compilation, JS syntax, whitespace and frozen legacy parity pass. Reference
+engine/server/browser remain unchanged; browser exposure is still Batch 4.
+
+Clone isolation allowed immutable history tuples to be shared rather than deeply
+copied. Engineering Full-board 12-placement clone microbenchmark improved from
+1.07672041 to0.01698750ms (best of three 100-clone repeats). This is not a search
+performance or strength measurement. Journal dictionaries remain independently copied.
+
+Raw test log outside git: `batch-3a-tests.log`, SHA256
+`df287042aadb0629266becf1d88fa2f34df0db3d2f83cbe38d4761d22195a6ed`.
+Research charged0/129600s. No research/server/advisory process belongs to this run.
+SDK task019f807d currently holds Claude capacity; honor its explicit release
+before the next bounded advisory. Local checkpoint closure is unblocked.
+
+Confidence HIGH for this engine unit: legal replay fixtures, strict save tamper
+tests, complete legacy parity, full suite and independent review. Planted/passage
+remain unimplemented; Batch 3 is not complete. Push/check this internal checkpoint
+and continue, without changing the plan, launching research or merging.
+
+## Batch 3 contract and ordered units: 2026-09-06
+
+Batch 2 tip `3a2eb58730d24e771dda0c5669ef47dd107f3898` is pushed; both CI tests
+pass (1m45s,2m40s), plan hash unchanged, no review blockers. Rollback tag
+`elves/rules-lab-v1/pre-batch-3` created at this tip. Bounded advisory succeeded
+in181.5s via CLI `claude-opus-4-8`, `.aragora/goal_cycles/20260907T020236Z/`.
+Use its Y/six-first unit followed by planted/passage, as ordered in the plan.
+Each internal checkpoint validates/reviews/pushes but does not complete Batch 3
+or permit stopping. Four batches still require completion.
+
+Behaviors: neutral permanent graph construction, first original-vertex opening,
+capture-first Go, all orientations, static seeded controls, original-only area,
+topology-aware full journal/history, legal pie/pass/resumption/acceptance.
+Build on: immutable graph factory, shared RulesAction, isolated LabGame and v2
+journal loader. No browser/server changes until Batch 4. No new rule/revision.
+Acceptance: explicit short legal replay fixtures for added liberties, shared
+liberty deduplication, merging, capture reopening, planted no-capture consequence,
+suicide, original-only scoring, counters and topology persistence; save tamper
+rejection, full parity, full tests, independent review and exact-tip CI.
+Risk: historical graph widths and permanent orientation, scoring over zero-point
+hubs, expensive cloning. Engineering clone microbenchmark found1.077ms per Full
+12-placement snapshot due to recursively copying immutable history tuples;
+shallow copying immutable members is permissible if alias-isolation tests remain.
+No certification/calibration/research games launched: research charged0.
 
 ## Batch 2 closure: 2026-09-06
 

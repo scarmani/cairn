@@ -8,6 +8,7 @@ Seat acceptances belong to RulesState/the match envelope, not this game journal.
 from collections import deque
 from copy import deepcopy
 
+from lab_graph import GraphBoard, graph_board, initial_graph_board
 from lab_spec import get_experiment_spec
 from varde import (
     BLACK, WHITE, Game, Illegal, control, groups_of, other, resolve,
@@ -15,6 +16,10 @@ from varde import (
 
 
 SCORING_RULESETS = ("line-breath", "gjerde-majority", "breath-connection")
+CONSTRUCTION_RULESETS = ("junction-y", "junction-six")
+STATIC_RULESETS = ("go-honeycomb", "go-static-y", "go-static-six")
+GRAPH_RULESETS = CONSTRUCTION_RULESETS + STATIC_RULESETS
+IMPLEMENTED_RULESETS = SCORING_RULESETS + GRAPH_RULESETS
 RESOLUTION_ALIASES = {
     "line-breath": "gjerde", "gjerde-majority": "gjerde",
     "breath-connection": "breath",
@@ -39,18 +44,26 @@ def _players(value):
 
 
 class LabGame(Game):
-    """The three frozen scoring variants; construction games arrive separately."""
+    """Frozen scoring variants, empty Y/six junctions, and static controls."""
 
-    def __init__(self, n=3, rules="breath-connection"):
+    def __init__(self, n=3, rules="breath-connection", *, seed=0):
         spec = get_experiment_spec(rules)
-        if rules not in SCORING_RULESETS:
+        if rules not in IMPLEMENTED_RULESETS:
             raise ValueError("laboratory ruleset is not implemented yet")
         if type(n) is not int or n not in spec.allowed_sizes:
             raise ValueError("laboratory board size must be an integer from 3 through 6")
-        super().__init__(n, rules=RESOLUTION_ALIASES[rules])
+        if type(seed) is not int:
+            raise ValueError("initial topology seed must be an integer")
+        super().__init__(n, rules=RESOLUTION_ALIASES.get(rules, "breath"))
         self.rules = rules
         self.rules_revision = spec.revision
         self.topology = ()
+        if rules in GRAPH_RULESETS:
+            self.board = initial_graph_board(rules, n, seed=seed)
+            self.state = {point: () for point in self.board.points}
+            self.topology = self.board.topology
+            self.initial_topology = self.topology
+            self.topology_seed = seed
         self.placements_played = 0
         self.constructions_played = 0
         self.action_journal = []
@@ -59,17 +72,22 @@ class LabGame(Game):
     def clone(self):
         target = object.__new__(type(self))
         for name, value in self.__dict__.items():
-            # Geometry and tuple topology are shared, never modified. All game-
-            # owned mutable collections (including nested journal points) copy.
-            setattr(target, name, deepcopy(value) if isinstance(value, (dict, list, set)) else value)
+            # States, histories, and other lists have immutable members. Only
+            # journal events contain nested mutable coordinate lists.
+            if name == "action_journal":
+                value = deepcopy(value)
+            elif isinstance(value, (dict, list, set)):
+                value = value.copy()
+            setattr(target, name, value)
         return target
 
-    def repetition_key(self, state=None, to_move=None):
+    def repetition_key(self, state=None, to_move=None, *, board=None):
         state = self.state if state is None else state
         to_move = self.to_move if to_move is None else to_move
+        board = self.board if board is None else board
         return (
-            self.rules, self.rules_revision, self.board.n, self.topology,
-            to_move, tuple(state[point] for point in self.board.points),
+            self.rules, self.rules_revision, board.n, getattr(board, "topology", self.topology),
+            to_move, tuple(state[point] for point in board.points),
         )
 
     def _resolve_placement(self, point, *, trace=None):
@@ -81,11 +99,14 @@ class LabGame(Game):
             raise Illegal(str(error)) from error
         if point not in self.state:
             raise Illegal("point is not an active intersection")
+        if (self.moves_played == 0 and isinstance(self.board, GraphBoard)
+                and point not in self.board.scoring_points):
+            raise Illegal("opening must be on an original vertex")
         # Alias only the local flat resolution rule. Laboratory repetition has
         # a different key, and must be checked after this real transition.
         state, captured = resolve(
             self.board, self.state, point, self.to_move, set(),
-            trace=trace, rules=RESOLUTION_ALIASES[self.rules],
+            trace=trace, rules=RESOLUTION_ALIASES.get(self.rules, "gjerde-go"),
         )
         if self.repetition_key(state, other(self.to_move)) in self.history:
             raise Illegal("repetition")
@@ -126,6 +147,64 @@ class LabGame(Game):
         self.action_journal.append({"action": "play", "point": list(point)})
         return captured
 
+    def try_construct(self, face, orientation):
+        """Return candidate board/stones, without changing any current snapshot."""
+        if self.finished:
+            raise Illegal("game over")
+        if self.rules not in CONSTRUCTION_RULESETS:
+            raise Illegal("empty construction is unavailable in this ruleset")
+        if self.moves_played == 0:
+            raise Illegal("first move must be a placement on an original vertex")
+        try:
+            face = _strict_point(face)
+            board = self.board.with_junction(face, orientation)
+        except ValueError as error:
+            raise Illegal(str(error)) from error
+        state = dict(self.state)
+        state[board.centers[face]] = ()
+        # Adding an empty neutral neighbor cannot remove any existing liberty.
+        # No capture resolution or speculative stone placement is appropriate.
+        if self.repetition_key(state, other(self.to_move), board=board) in self.history:
+            raise Illegal("repetition")
+        return board, state
+
+    def construction_actions(self):
+        from actions import RulesAction
+
+        if self.finished or self.moves_played == 0 or self.rules not in CONSTRUCTION_RULESETS:
+            return ()
+        choices = []
+        orientations = get_experiment_spec(self.rules).orientation_sets
+        for face in self.board.faces:
+            if self.board.centers[face] in self.board.active_centers:
+                continue
+            for orientation in range(len(orientations)):
+                try:
+                    self.try_construct(face, orientation)
+                except Illegal:
+                    continue
+                choices.append(RulesAction("construct", face, orientation=orientation))
+        return tuple(choices)
+
+    def construct(self, face, orientation):
+        from actions import RulesAction
+
+        board, state = self.try_construct(face, orientation)
+        face = tuple(face)
+        was_swap_reply = self.moves_played == 1
+        self.board, self.state, self.topology = board, state, board.topology
+        self.to_move = other(self.to_move)
+        self.moves_played += 1
+        self.constructions_played += 1
+        self.consecutive_passes = 0
+        self.quiet_moves = 0
+        self.last_capture_waves = []
+        if was_swap_reply:
+            self.swap_decided = True
+        self.history.add(self.repetition_key())
+        self.action_journal.append(RulesAction("construct", face, orientation=orientation).to_dict())
+        return 0
+
     def play_pass(self):
         if self.finished:
             raise Illegal("game over")
@@ -150,8 +229,18 @@ class LabGame(Game):
         super().demand_resumption()
         self.action_journal.append({"action": "resume"})
 
+    def original_control_count(self):
+        """Scoreable occupancy, separate from control_count's all-node count."""
+        score = {BLACK: 0, WHITE: 0}
+        for point in getattr(self.board, "scoring_points", self.board.points):
+            color = control(self.state, point)
+            if color:
+                score[color] += 1
+        return score
+
     def _area_score(self):
-        score = self.control_count()
+        score = self.original_control_count()
+        scoring_points = getattr(self.board, "scoring_points", frozenset(self.board.points))
         seen = set()
         for point in self.board.points:
             if point in seen or self.state[point]:
@@ -170,7 +259,7 @@ class LabGame(Game):
                         seen.add(neighbor)
                         queue.append(neighbor)
             if len(borders) == 1:
-                score[next(iter(borders))] += len(region)
+                score[next(iter(borders))] += sum(point in scoring_points for point in region)
         return score
 
     def score(self):
@@ -201,7 +290,7 @@ class LabGame(Game):
         initial_players = dict(self.players)
         if sum(event["action"] == "swap" for event in self.action_journal) % 2:
             initial_players[BLACK], initial_players[WHITE] = initial_players[WHITE], initial_players[BLACK]
-        return {
+        payload = {
             "format": "varde-game", "version": SNAPSHOT_VERSION,
             "rules": self.rules, "rules_revision": self.rules_revision,
             "n": self.board.n, "topology": [list(item) for item in self.topology],
@@ -218,6 +307,12 @@ class LabGame(Game):
             "players": dict(self.players), "initial_players": initial_players,
             "journal": deepcopy(self.action_journal),
         }
+        if isinstance(self.board, GraphBoard):
+            payload.update(
+                topology_seed=self.topology_seed,
+                initial_topology=[list(item) for item in self.initial_topology],
+            )
+        return payload
 
     @classmethod
     def from_dict(cls, payload):
@@ -232,7 +327,9 @@ class LabGame(Game):
                 or type(payload.get("version")) is not int
                 or payload["version"] != SNAPSHOT_VERSION):
             raise ValueError("unsupported laboratory snapshot")
-        game = cls(payload.get("n"), rules=payload.get("rules"))
+        game = cls(
+            payload.get("n"), rules=payload.get("rules"), seed=payload.get("topology_seed", 0),
+        )
         expected_fields = set(game.to_dict())
         if set(payload) - OUTER_FIELDS != expected_fields:
             raise ValueError("missing or unsupported laboratory snapshot fields")
@@ -246,9 +343,33 @@ class LabGame(Game):
                       "swap_decided", "extension_used"):
             if type(payload[field]) is not bool:
                 raise ValueError(f"invalid Boolean laboratory state: {field}")
-        if payload["topology"] != [] or type(payload["topology"]) is not list:
-            raise ValueError("scoring variants have no constructed topology")
-        if (payload["constructions_played"] != 0 or payload["no_progress_end"]
+        def board_for_topology(raw):
+            if type(raw) is not list:
+                raise ValueError("topology must be a list")
+            if not isinstance(game.board, GraphBoard):
+                if raw != []:
+                    raise ValueError("scoring variants have no constructed topology")
+                return game.board
+            if any(type(row) is not list for row in raw):
+                raise ValueError("topology activation records must be lists")
+            board = graph_board(game.board.n, game.board.spoke_family, raw)
+            if raw != [list(item) for item in board.topology]:
+                raise ValueError("topology must be canonically ordered")
+            return board
+
+        current_board = board_for_topology(payload["topology"])
+        initial_topology = set()
+        current_topology = set()
+        if isinstance(game.board, GraphBoard):
+            initial_board = board_for_topology(payload["initial_topology"])
+            if initial_board.topology != game.initial_topology:
+                raise ValueError("initial topology does not match the frozen rules and seed")
+            initial_topology = set(game.initial_topology)
+            current_topology = set(current_board.topology)
+            if not initial_topology <= current_topology:
+                raise ValueError("current topology removed or changed an initial junction")
+        if ((game.rules not in CONSTRUCTION_RULESETS and payload["constructions_played"] != 0)
+                or payload["no_progress_end"]
                 or payload["extension_used"] or payload["extension_points"] != []
                 or type(payload["extension_points"]) is not list):
             raise ValueError("invented construction, extension, or stagnation state")
@@ -257,15 +378,15 @@ class LabGame(Game):
         if payload["to_move"] not in (BLACK, WHITE):
             raise ValueError("invalid next color")
 
-        def validate_stacks(stacks):
-            if type(stacks) is not list or len(stacks) != len(game.board.points):
+        def validate_stacks(stacks, board):
+            if type(stacks) is not list or len(stacks) != len(board.points):
                 raise ValueError("invalid flat stone array")
             for stack in stacks:
                 if (type(stack) is not list or len(stack) > 1
                         or any(color not in (BLACK, WHITE) for color in stack)):
                     raise ValueError("invalid flat stack")
 
-        validate_stacks(payload["stacks"])
+        validate_stacks(payload["stacks"], current_board)
         if type(payload["history"]) is not list or not payload["history"]:
             raise ValueError("complete laboratory history is required")
         history_fields = set(game._history_record(game.repetition_key()))
@@ -274,10 +395,14 @@ class LabGame(Game):
                 raise ValueError("invalid laboratory history entry")
             if (record["rules"] != game.rules or record["rules_revision"] != game.rules_revision
                     or type(record["n"]) is not int or record["n"] != game.board.n
-                    or type(record["topology"]) is not list or record["topology"] != []
                     or record["to_move"] not in (BLACK, WHITE)):
                 raise ValueError("incompatible laboratory history entry")
-            validate_stacks(record["stacks"])
+            historical_board = board_for_topology(record["topology"])
+            if isinstance(historical_board, GraphBoard):
+                historical_topology = set(historical_board.topology)
+                if not initial_topology <= historical_topology <= current_topology:
+                    raise ValueError("history has a removed, rotated, or future junction")
+            validate_stacks(record["stacks"], historical_board)
         if type(payload["journal"]) is not list:
             raise ValueError("complete laboratory action journal is required")
         # Local import keeps factory -> LabGame -> adapter loading acyclic.
@@ -286,7 +411,7 @@ class LabGame(Game):
 
         for event in payload["journal"]:
             action = RulesAction.from_dict(event)
-            if action.kind not in ("play", "pass", "swap", "resume"):
+            if action.kind not in ("play", "pass", "swap", "resume", "construct"):
                 raise ValueError("unsupported laboratory journal action")
             try:
                 if action.kind == "play":
@@ -295,6 +420,8 @@ class LabGame(Game):
                     game.play_pass()
                 elif action.kind == "swap":
                     game.take_over()
+                elif action.kind == "construct":
+                    game.construct(action.point, action.orientation)
                 else:
                     game.demand_resumption()
             except Illegal as error:

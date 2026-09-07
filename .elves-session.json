@@ -38,10 +38,10 @@
     "remaining_batches": 4,
     "stop_allowed": false,
     "checkpoint_is_stop": false,
-    "next_required_action": "Close Batch 2 push/check loop, then implement the four junction variants and static research controls in Batch 3."
+    "next_required_action": "Push validated Batch 3 unit A, close exact-tip CI, then implement planted/passage. Continue through both units; an internal checkpoint is not a stop."
   },
   "test_baseline": {"passed": 254, "total": 254, "skipped": 0, "status": "captured", "seconds": 25.285},
-  "current_batch": {"id": 3, "name": "Four junction variants", "status": "pending"},
+  "current_batch": {"id": 3, "name": "Four junction variants", "status": "in_progress", "unit": "Y/six and static controls checkpoint; planted/passage next"},
   "preflight": {
     "python": "3.13.0",
     "node": "25.9.0",
@@ -60,7 +60,7 @@
   "batches": [
     {"id": 1, "name": "Freeze specifications and compatibility", "status": "complete", "rollback_tag": "elves/rules-lab-v1/pre-batch-1", "tests_passed": 299, "compatibility_hash": "0797f216e00869ce6f3dbc5644f3367f89923904451657700a3a30bd57896dc6"},
     {"id": 2, "name": "Scoring variants and graph foundation", "status": "complete", "rollback_tag": "elves/rules-lab-v1/pre-batch-2", "tests_passed": 340, "tests_seconds": 61.001, "parity": "103 positions, 218 decisions, 24 saves unchanged", "browser": "Classic startup, opening and pie; three screenshots/text states inspected; zero errors; server stopped"},
-    {"id": 3, "name": "Four junction variants", "status": "pending"},
+    {"id": 3, "name": "Four junction variants", "status": "in_progress", "rollback_tag": "elves/rules-lab-v1/pre-batch-3", "unit_a": {"status": "validated", "tests_passed": 363, "tests_seconds": 64.829, "skipped": 0, "review": "three scoped reviews clean"}},
     {"id": 4, "name": "Browser laboratory and mechanical oracle", "status": "pending"},
     {"id": 5, "name": "Certified corpora and gated MCTS", "status": "pending"},
     {"id": 6, "name": "Conditional comparisons and evidence cards", "status": "pending"}

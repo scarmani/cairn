@@ -51,23 +51,31 @@ Four planned batches remain. Estimates are planning ranges, not launch guarantee
 - Planned batches remaining: 4.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: close Batch 2 push/check loop, then implement Batch 3.
+- Next required action: push the validated Batch 3 Y/six/controls checkpoint,
+  close exact-tip CI, then continue planted/passage. Do not stop at this checkpoint.
 
 ## Current Phase
 
-Status: In progress. Batch 2 implemented and independently reviewed; 340 tests,
-exact legacy parity and isolated Classic browser smoke pass. Three scoring rules
+Status: In progress. Batch 2 pushed at3a2eb58; both exact-tip CI checks pass, no new
+review blockers. Batch 3 unit A (Y/six and static controls) passes 363 tests and
+independent review; its checkpoint is followed by unit B (planted/passage) before
+Batch 3 can complete. Three scoring rules
 are available through the opt-in factory, not yet the browser. Graph geometry is
 immutable; version-2 saves validate complete histories by legal journal replay.
-Single next action: closure push/check loop, then four junction games and controls.
+Single next action: checkpoint push/CI, then atomic planted Y and opposite passages.
 
 ## Active Compute
 
 No active research workers, paid jobs, or servers. Isolated port8773 browser server
 stopped cleanly. Ordinary tests/CI are engineering verification only. Batch 2
 goal cycle completed in 514.5 seconds (CLI fallback `claude-opus-4-8`), receipt
-`.aragora/goal_cycles/20260907T013611Z/`. Separate Evergreen capacity hold was
-explicitly released; no reviewer process from this run remains active.
+`.aragora/goal_cycles/20260907T013611Z/`. Batch 3 unit A advisory completed in
+181.5 seconds (same CLI fallback), receipt `.aragora/goal_cycles/20260907T020236Z/`.
+Its two-unit sequencing is internal to Batch 3; it does not omit scope or permit a
+stop. Separate Evergreen capacity hold was released. SDK task
+`019f807d-64fd-7502-8043-9c42ec27be88` subsequently reserved Claude capacity for
+one bounded review. No new Claude/Fable call until its explicit terminal release;
+local checkpoint/testing may continue. No advisory process belongs to this run.
 
 ## Non-Negotiables
 

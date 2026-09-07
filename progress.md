@@ -241,3 +241,13 @@ Original prompt: yes to all in best order proceed and execute according to your 
   three screenshots/text states inspected with zero errors. Server stopped.
 - Four junction games, browser laboratory, oracle and gated research remain
   subsequent batches. No research time consumed; no game-quality claim made.
+
+## Rules Laboratory Batch 3 internal checkpoint — 2026-09-06
+
+- Y/six construction and three static controls are playable through the opt-in
+  factory. Topology persists through captures; only original vertices score.
+- Added legal-sequence tests for liberties, merging, suicide and capture reopening,
+  strict topology/history replay, symmetry, pie and both-seat endings.
+- 363 tests pass, zero skips; frozen legacy decisions/saves unchanged. Independent
+  scoped reviews clean. No browser exposure yet; planted/passage are next in Batch 3.
+- Research charged zero; this checkpoint does not end the launched six-batch run.
