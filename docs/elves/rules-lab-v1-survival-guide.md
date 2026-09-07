@@ -51,18 +51,36 @@ Two planned batches remain. Estimates are planning ranges, not launch guarantees
 - Planned batches remaining: 2.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action:5E full811tests pass306.600s,zero skips,finalcode reviewclean.
-  Fullsuite34812 terminal0; close artifact review/commit/push/exact-tip CI.
-  Core51/adapter14/worker8 focused tests pass. Then trustedproof-job integration
-  and the separately charged bootstrap, not an internal checkpoint stop.
-  Preserve researchcaps and dedicated timeouttests.5Eadvisory79082 disposed/released;
-  no second consult this unit. No actual-game search/proof or official research in5E.
-  Both prior substrate CI checks pass at47f5a87.5D advisory56693 disposed.
-  All738 tests pass locally; no proof/research/window in5D.
-  Prior5C advisory failed exit2, no response accepted/retry; reservation released.
-  No internal checkpoint stop; two planned batches remain.
+- Next required action: close5F artifact review/commit/push/CI, then the charged
+  bootstrap. Fullsuite35709 terminal0:886tests311.219s,zero skips; independent
+  frozen code/test review clean. Ruff/compile/bothJS/diff pass. No old source edits.
+  5E pushed7f882f2;811tests pass306.600s,zero skips,reviewclean. Both exact-tip
+  CI PASS34100817766(12m8s)/34100822588(12m3s). No old source edits or gate bypass.
+  5F advisory95026 terminal/disposed/released; no second consultation this unit.
+  No official research or actual-game proof/search yet. Internal checkpoints do
+  not stop the run; two batches remain.
 
 ## Current Phase
+
+Batch5F locally verified; closure pending. Main fully read/froze docs/rules-lab-proof-jobs-contract.md,
+SHAfbea47378786b19b0172962f269abcafde3b693fb6a760e2d41dbb11a880758c.
+Jobs/manifest ownerlab_budget; actualproof/artifacts ownerlab_compatibility;
+independenttests/reviewlab_plan_review; CLI/fullvalidation/rootdocs main.
+Implementation starts only after both5E CI green, fullguide/hash/tip/feedbackcheck.
+Fresh selected-origin replay stays charged; pinned loader never recompiles512.
+Each mechanics path separately produces/checks; semantic values are compared.
+Fullsuite35709 terminal0:886tests311.219s,zero skips,75 additive. Jobs19 synthetic
+tests0.734s; taskowner14+independent25 unique39tests0.265s; CLI15tests0.104s;
+worker2tests6.493s. Independent final code/test review clean at task7a1a03d8,
+jobsdaa20aba,CLIea2f6ad6. Retain all REDs, including resealed checker reports
+inverting unchanged certificates; fixed audit binding does not rerun proofs.
+Ruff/compile/bothJS/diff pass. Existing tracked product/research source unchanged.
+Report docs/rules-lab-proof-jobs.md; artifact closure review/push/CI next.
+Final independent closure review clean: all18 artifact hashes verified, including
+full/focusedlogs, retainednegatives, oldsourceparity and truthful no-admission.
+IndexSHA7e4fb9432c7861e99d727c5c99d465ec135115856c868e4ef14f55b56e3711a8.
+Commit/push/CI remains the next gate before chargedbootstrap.
+Earlier milestone details below are historical.
 
 Batch5E contract fully read/frozen before implementation at
 `docs/rules-lab-mcts-contract.md`, SHA256
@@ -167,6 +185,14 @@ inline blockers. Corrected-tip CI both PASS34096839267(6m40s) and34096836729(6m3
 
 ## Active Compute
 
+5F engineering only. No official research ledger/window exists; charged0/129600s.
+Advisory95026 terminal0 (188.4sCLI,193.169swrapper); ownedinventoryempty and
+reservation explicitlyreleased toSDK/#10010. No secondconsult or paidAPI.
+Prior5E localtests/processes allterminal; bothGitHubtestsPASS.5F source owners and
+independent code reviewer quiescent, fullsuite35709 terminal0. Artifact closure
+review follows. No browser/server/livegame/researchworker.
+Historical validation/process details follow; none denotes an active job.
+
 5E source implementation frozen: corec71db729465343db5a25ef992343bb189f44e9c9ef53c9bfafb350629a3d04bd;
 adapter4b6790fc0be3dda7e61874a7fe046d7b6c70c9079969e68043d285e4843d4c8b.
 Core24+independent27 synthetic tests pass1.016s; adapter14 full mechanical tests
@@ -246,10 +272,11 @@ Last disk check332GiB free. No new research throughput measurement exists.
 
 ## Next Exact Batch
 
-5E is locally verified:811tests306.600s, zero skips, final source and13-artifact
-review clean. Commit/push this unit, reread guide/hash, inspect PR feedback and
-close exact-tip CI. Then take one bounded conductor cycle for trusted real-proof
-workers/job manifests and their synthetic integration tests. Do not redo5A–5E.
+5F trusted proof jobs/manifests/artifacts/CLI are locally verified under the frozen
+contract above:886tests311.219s,zero skips; final code review clean.5E7f882f2 is
+green locally and onbothCI; guide/hash/PRfeedback checked. One5F advisory is
+complete/disposed/released. Finish artifact review/commit/push/CI before the
+charged bootstrap. Do not redo5A–5E or seek a second5F advisory.
 The Batch5 rollback tag remains at ad72690. All historical contracts, source,
 corpus and evidence stay byte-identical. No corpus or agent is qualified yet.
 

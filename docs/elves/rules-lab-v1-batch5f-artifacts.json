@@ -1,0 +1,129 @@
+{
+  "format": "varde-rules-lab-artifact-index",
+  "version": 1,
+  "unit": "5F",
+  "source_parent": "7f882f27edd11a7e2192b18f62c911f7de6e2b04",
+  "raw_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "research/harness/lab_proof_jobs.py",
+      "sha256": "daa20aba1994f796c6c62f83df9285518450637d85f49c9ec636ae145d8ff993"
+    },
+    {
+      "kind": "source",
+      "path": "research/harness/lab_proof_task.py",
+      "sha256": "7a1a03d8580bf6458685df065f6e37d61bac53edbf895af6fd0f2b1a282efb95"
+    },
+    {
+      "kind": "source",
+      "path": "research/harness/lab_research_cli.py",
+      "sha256": "ea2f6ad614193c8f64ecf1b613236a71fe73b89b2119b1ca955e649c738667a8"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_proof_jobs.py",
+      "sha256": "28fcdc1345af933d06333c3f58e3b98066f700e4d7df2c09268ad050d8d8ce72"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_proof_task.py",
+      "sha256": "9d23ad510129df7e2b68a2687ac2207f2f6229cb82f5db5b1b8580499fc5bc81"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_proof_job_invariants.py",
+      "sha256": "178aae692261566b977a8cdd7a0b99538b34647238c2ff198f78be9b713c60bf"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_proof_job_workers.py",
+      "sha256": "89b22a9b41c6b8bce2e248763a76193168429d7e5114e180fb4f71c1ea8b5177"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_research_cli.py",
+      "sha256": "6f93d2d09a36460d9edea74ca64a6fc92e9ae2ad80735cc6dd9411a8483b282f"
+    },
+    {
+      "kind": "source",
+      "path": "docs/rules-lab-proof-jobs-contract.md",
+      "sha256": "fbea47378786b19b0172962f269abcafde3b693fb6a760e2d41dbb11a880758c"
+    },
+    {
+      "kind": "source",
+      "path": "docs/rules-lab-proof-jobs.md",
+      "sha256": "36e397391ad042d9fc423eb781374d20137aba2c6c7496ff1ba4d88cf5a260d4"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5f-tests.log",
+      "sha256": "fc5e1510b05277c29975639cb29b2d1bbf0f6fa443824482c3f7c273a58e544f"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5f-worker-tests.log",
+      "sha256": "237d1f0f3df0f87a6a311312f5bf76f8a345c6e331703162441e8a7de7469567"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5f-cli-prepare-red.log",
+      "sha256": "934233688abaee5bc6c8699c46726ef6eb2c1134e74fbf12834ee778201f8e8a"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5f-cli-tests-final.log",
+      "sha256": "524d9a1ed20f5dacdcc753ac1738c56bcbb1ac3c10a28d3c1b5c20c04f7368e0"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5f-independent-review.md",
+      "sha256": "85dd47a7c0d9f4ee6579ac7be4c7a933429c21abb55bb70d18bdd980287d8888"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5f-task-verification.md",
+      "sha256": "a45063b11a2868e52376cb669dd0ec4500f5e63ed59c6291773e26463e6cef51"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5f-context.md",
+      "sha256": "35633b108e2bbe366cd49959c91e055530fcef86830dd9cca24d543c611b755b"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5f-goal-cycle.json",
+      "sha256": "14e13d783eeb93da021fe067989d77330b9d8afb8738979d7e68d12f70c34e7d"
+    }
+  ],
+  "verification": {
+    "tests_passed": 886,
+    "test_seconds": 311.219,
+    "skipped": 0,
+    "additive_tests": 75,
+    "job_tests": 19,
+    "job_test_seconds": 0.734,
+    "task_owner_independent_unique_tests": 39,
+    "task_test_seconds": 0.265,
+    "cli_tests": 15,
+    "cli_test_seconds": 0.104,
+    "worker_tests": 2,
+    "worker_test_seconds": 6.493,
+    "lint_compile_js_diff": "pass",
+    "independent_code_review": "clean",
+    "new_actual_game_proofs": 0
+  },
+  "retained_negatives": {
+    "raw_cli_failure": "batch-5f-cli-prepare-red.log",
+    "independent_transcription": "batch-5f-independent-review.md",
+    "owner_transcription": "batch-5f-task-verification.md",
+    "key_repair": "Persisted verified checker reports now bind action/root/resource semantics to their unchanged certificates; audit does not reprove. Original negative and unchanged regression retained."
+  },
+  "research": {
+    "charged_seconds": 0,
+    "windows_opened": 0,
+    "certified_positions": 0,
+    "admitted_agents": 0
+  },
+  "claim_limit": "Synthetic proof-job, artifact, process and CLI engineering only. No actual-game certification, MCTS admission, throughput, strength or game-quality conclusion."
+}

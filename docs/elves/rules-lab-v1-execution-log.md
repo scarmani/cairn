@@ -2,13 +2,83 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–4 complete;5E MCTS verified811tests, artifact closure next.
+- Phase: launched, Batches1–4 complete;5F locally verified, closure pending.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
 - Next: terminal certification interfaces, then charged gated MCTS; two batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 5F verification: 2026-09-07
+
+Fullsuite35709 terminal0:886tests311.219s,zero skips,75 additive. Jobs19tests0.734s;
+taskowner14+independent25 unique39tests0.265s; CLI15tests0.104s; syntheticworker2
+tests6.493s. All scoped Ruff/compile/bothJS/diff pass. Independent final code/test
+review clean at task7a1a03d8/jobsdaa20aba/CLIea2f6ad6. All existing tracked engine,
+research,web,server source untouched from7f882f2. New proof artifacts/task/CLI do
+not alter the frozen producer/checker/corpus/MCTS or any rule/public behavior.
+Negative evidence retained outsidegit, including the final test-first report
+inversion exploit: complete matching resealed reports could contradict unchanged
+certificates. Audit now compares certificate-bound verified root/action/resource
+claims without replay/search; unknown stays unknown. Independent25tests pass
+unchanged. Reviewer/owner receipts are explicitly transcriptions, not rawlogs.
+No official ledger/window or actual-game proof/search; research0/129600s.
+Artifact closure review/commit/push/CI follows, then charged32-task bootstrap.
+No internal checkpoint ends the launched run; two batches remain.
+
+Final independent closure review clean: all18 physical artifact hashes match,
+index7e4fb9432c7861e99d727c5c99d465ec135115856c868e4ef14f55b56e3711a8.
+Rawfull/focused counts, owner/reviewer transcription labels, retained negatives,
+frozenplan/oldsource parity and next-step/no-admission claims all verified.
+No official ledger/checkpoint/bootstrap manifest exists. Commit/push/CI next.
+
+## Batch 5E push: 2026-09-07
+
+5F pre-outcome ordering clarification: fullcertification only now fixes per-rule
+four-subcell ordinal interleave (n3dev,n3holdout,n4dev,n4holdout, sorted fixedIDs
+within each), then outer frozenrulesetroundrobin. Main+independentreviewer agree
+this resolves 'collectively acrosssizes/splits' withoutchangingmembership/gates.
+Distinct configurationorderID prevents silentmanifest reinterpretation. No proof,
+manifest or outcome preceded this clarification. Bootstraporder is unchanged.
+Frozenrow hasonly legal_action_count, notprior fullactionIDs: fresh task compares
+count/rootfingerprint to row and complete oriented domains acrossmechanics.
+
+5F focusedengineering: CLI15tests0.104s pass after preserved prepare-parent RED;
+newnamedmanifest publication now createsexternalparent aftersourcevalidation.
+Taskowner14+independent24=38tests0.365s pass aftertest-firstintegration fixes:
+checkerunknown nullterminalflag, contradictorycompletevalue claims, classlabel,
+forbiddenmkdir, originalrootcallbackmutation/clockguards, and descriptor typealiases.
+No frozenchecker, rules, priorMCTS/source or researchgate changed. Rootprocess
+tests awaitingfinaljoborderfreeze; fullsuite/review/CI stillpending.
+
+5E CI closure:34100817766 PASS12m8s;34100822588 PASS12m3s. AllPR23 issuecomments
+read (our historical checkpoints only), no reviews/inline feedback. Main reread
+entireguide and verifiedHEAD/planhash unchanged before5F implementation.
+New5F contract fullyread/frozen fbea47378786b19b0172962f269abcafde3b693fb6a760e2d41dbb11a880758c.
+Owners:budget jobs/schema,compatibility task/artifacts,review independentinvariants,
+root CLI/runcontrol/fullverification. Existing sources untouched. Complete but
+all-equivalent decision roots remain explicitly classified terminal certificates,
+not depth evidence; no new exclusion beyondfrozenplan. All actualresearch gated.
+
+5F conductor advisory95026 terminal0, receipt20260907T083606Z:188.4s CLI
+fallbackclaude-opus-4-8,193.169s wrapper. Full response/prompt read; owned process
+inventory empty and reservation explicitly released to SDK/#10010. No retry/API.
+Accept trusted proof-job integration before separately charged bootstrap. Reject
+the internally contradictory instruction to feed a production certificate to the
+oracle checker: each mechanics path must separately produce AND check its own
+certificate, then compare semantic action values only. No tier/quorum contract
+exists here; generic packet residue grants no authority. CI remains a gate, not
+permission to stop the launched run; bootstrap may launch after this unit's
+review/CI within the same overall user request. No second5F consultation.
+
+7f882f27edd11a7e2192b18f62c911f7de6e2b04 committed/pushed; exec27427 terminal0.
+Guide fully reread after commit and confirmed push, frozen plan hash unchanged.
+PR23 remains draft/open/unmerged; no reviews/inline comments. Both exact-tip tests
+pending:34100822588/job101674631087 and34100817766/job101674617285.
+Checkpoint https://github.com/scarmani/varde/pull/23#issuecomment-5567713881.
+Protected PR20–22 exact/draft/unmerged. No official research, worker or server.
+Next5F begins with one bounded goal cycle; no code/research before5E CI green.
 
 ## Batch 5E verification: 2026-09-07
 
