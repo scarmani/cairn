@@ -66,7 +66,7 @@ class TestLabSupervisorInvariants(unittest.TestCase):
         options = {"task_timeout": 2, "cohort_timeout": 8, "reap_timeout": 0.1} | options
         result = run_supervised(
             manifest, self.worker, output_dir=self.root / name, budget=budget,
-            job_id=name, kind="calibration", projected_seconds=8,
+            job_id=name, kind="calibration", projected_seconds=options["cohort_timeout"],
             measurement="Synthetic engineering hard reservation; no game-throughput claim.",
             workers=workers, **options,
         )
@@ -78,9 +78,13 @@ class TestLabSupervisorInvariants(unittest.TestCase):
         hashes = []
         for workers in (1, 2, 8):
             with self.subTest(workers=workers):
-                result, accounting = self.run_block(manifest, f"workers-{workers}", workers=workers)
+                # Correctness equivalence, not a process-startup speed gate.
+                # Eight workers reserve4.85s cleanup; the default8s cohort left
+                # only3.15s for hosted-runner imports, protocol and result handling.
+                result, accounting = self.run_block(manifest, f"workers-{workers}", workers=workers,
+                                                    task_timeout=10, cohort_timeout=30)
                 hashes.append(result.canonical_results_hash)
-                self.assertEqual(result.to_dict()["status"], "complete")
+                self.assertEqual(result.to_dict()["status"], "complete", result.to_dict())
                 self.assertEqual(result.to_dict()["remaining_ids"], [])
                 self.assertEqual(len(result.to_dict()["completed"]), 8)
                 self.assertFalse(accounting["active_jobs"])

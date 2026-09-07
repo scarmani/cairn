@@ -38,7 +38,7 @@
     "remaining_batches": 2,
     "stop_allowed": false,
     "checkpoint_is_stop": false,
-    "next_required_action": "Commit/push verified5D specific files, reread guide/hash/check PR feedback and exact-tip CI. Then one bounded cycle for trusted proof jobs and three frozen MCTS recipes; research0. No internal checkpoint stop."
+    "next_required_action": "Narrow CIrepair review clean; commit/push/reread/check exactCI, then freeze5E MCTS-only contract. Focused10/full738passed. Advisorycomplete/released; no extra consult. Research0/no window."
   },
   "test_baseline": {
     "passed": 254,
@@ -51,14 +51,14 @@
     "id": 5,
     "name": "Certified corpora and gated MCTS",
     "status": "in_progress",
-    "unit": "5D locally verified:738tests,512proposals and exact regeneration; final independent review clean; commit pending",
+    "unit": "5D CIrepair locallyverified10focused/738full; final review clean;5E MCTS heldfor exactCI",
     "rollback_tag": "elves/rules-lab-v1/pre-batch-5",
-    "substrate_commit": "47f5a87d7c8a672e06c8398b9333889fd44a7e75",
-    "substrate_ci": "both exact-tip tests pass:34092752672 and34092894182",
+    "substrate_commit": "64cbe84bf9d6a94b478a6dd2f50069d0cfaff20d",
+    "substrate_ci": "34095638240 failed738suite:workers8equivalence timeout andpartialhash mismatch;34095642547 passed6m46s",
     "tests_passed": 738,
-    "tests_seconds": 215.425,
+    "tests_seconds": 165.026,
     "skipped": 0,
-    "advisory": "20260907T065400Z exit0:182.2s CLI fallbackclaude-opus-4-8,186.506s wrapper. Full response read; corrected proof-free equivalence inference, unspecified margin gate, smallest-rule bootstrap bias and internal-stop suggestion. Owned processes terminal and capacity released. No paid API/retry/research.",
+    "advisory": "20260907T073029Z exit0:157.7s CLI fallbackclaude-opus-4-8,161.459s wrapper. Full response read; accept MCTS engineering unit. Reject pending-CI bypass, duplicate independent recipe cores, uniform-light conflation and final stop. Owned79082terminal, capacityreleased toSDK/#10010. No retry/API/research.",
     "contract": "docs/rules-lab-corpus-contract.md",
     "contract_sha256": "0ce5de6b12bf7002ec25adb3c93aab3a2f6dab68f2ff3017b81a54af03536dc0",
     "independent_review": "5D final source/table/raw/compact/index/docs review clean; all16 artifact hashes verified",

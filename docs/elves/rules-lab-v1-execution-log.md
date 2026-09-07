@@ -2,13 +2,66 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–4 complete;5D locally verified, closure pending.
+- Phase: launched, Batches1–4 complete;5D CI fixture failure under review;5E held.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
 - Next: terminal certification interfaces, then charged gated MCTS; two batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 5D fixture-only CI repair: 2026-09-07
+
+Two independent read-only reviews agree: correctness-equivalence fixture deadline
+is machine-sensitive, no supervisor source defect evidenced. Log cannot distinguish
+task-vs-cohort timeout; do not claim which fired. Eight-worker cleanupreserve4.85s
+leaves3.15s cohorttime, while task2s includes launch/import/handshake/result handling.
+Only equivalence call changed to task10/cohort30; helper projection matches chosen
+cohort (other defaults remain8). Allcompletion/count/hash/accounting assertions
+retained; failure message nowincludesfullresult. Dedicatedtimeouts/backpressure/
+cleanup/cap tests and allproduction/researchlimits unchanged. No workflowchange.
+OriginalsecondCI34095642547 passed6m46s. Focused24334 passed10tests5.377s;
+full84126 passed738tests165.026s,zero skips; bothterminal0. ScopedRuff/compile/
+bothJS/diff green. Finalnarrowreview clean, all4hashes/logs/diff verified. Root-only existing testdelta,
+notcandidate/rules/sourcechange. Prior5C/5D
+artifactindices remain historical byte-identical; repairreceipts separate.
+Repairindex docs/elves/rules-lab-v1-batch5d-ci-repair-artifacts.json pins4hashes.
+No second5E consult; MCTSengineering waits for corrected exact-tip CI.
+
+## Batch 5D CI negative and 5E advisory disposition: 2026-09-07
+
+Run34095638240 at64cbe84 failed after738tests320.888s: eight-worker canonical-
+equivalence test returnedtimeout instead ofcomplete; the following aggregatehash
+assertion then compared a partial result and failed. Allother tests pass. Full
+rawnegative preserved batch-5d-ci-failure.log. Fixturetask2/cohort8/reap.1 reserves
+4.85seconds for8worker cleanup, leaving3.15s cohort execution. Independent scoped
+review requested before any fix; no MCTS implementation or research started.
+
+Single5E advisory79082 exited0; receipt20260907T073029Z CLI fallbackclaude-opus-4-8
+157.7s,161.459s wrapper. Fullresponse/prompt read; capacity explicitly released
+toSDK/#10010, ownedinventoryempty. Accept substantial three-recipe engineering
+unit; bootstrap remains separate after trustedjobs/CI. Reject advice's pendingCI
+bypass, three independently duplicated cores (plan requires samecontrol), ambiguous
+uniform/light conflation (two distinct policies required), and internalfinalstop.
+No secondconsult/retry/API; advice is input,notauthority. CIrepair mustpreserve
+all semantic assertions, dedicated timeout tests and frozen researchbudgets.
+
+## Batch 5D push and 5E advisory: 2026-09-07
+
+64cbe84bf9d6a94b478a6dd2f50069d0cfaff20d committed/pushed, exec86834 terminal0.
+Immediate full guide reread and plan hash/PRfeedback checked. PR23 draft/open/
+unmerged, reviews/inlinecomments empty. Exact-tip CI tests running
+34095642547/34095638240. Protected PR20–22 exact/draft/unmerged.147 prior tracked
+engine/browser/server/research paths unchanged; new5D files only. No active test/
+replay/worker process, research0.
+
+Read goal-cycle skill fully; fresh separate SDK/#10010 snapshots idle, narrow
+bounded-consult process inventory empty. One5E capacity reservation sent toboth,
+#10010 acknowledged. External context/wrapper prepared with actual64cbe84 and
+pendingCI truth. Single CLI-only bounded advisory79082 active,240s/attempt,
+570s total+bounded cleanup, no paidAPI/retry/parallel call. Response must be read/
+disposed and reservation explicitly released. No5E implementation before exact
+CI and frozen contract. Continue launched run; no internal-checkpoint stop.
 
 ## Batch 5D verification: 2026-09-07
 

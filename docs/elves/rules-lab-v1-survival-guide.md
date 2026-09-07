@@ -51,10 +51,11 @@ Two planned batches remain. Estimates are planning ranges, not launch guarantees
 - Planned batches remaining: 2.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action:5D final artifact review clean; commit/push specific files,
-  reread guide/hash/check feedback and exact-tip CI. Then one bounded conductor
-  cycle for trusted proof jobs and the three frozen MCTS recipes. Both substrate
-  CI checks pass at47f5a87. Advisory56693 succeeded and was disposed.
+- Next required action:5D64cbe84 CIworker8equivalence fixture-only repair passes
+  focused10tests5.377s/full738tests165.026s; final narrowreview clean,commit/push/CI.
+  Preserve researchcaps and dedicated timeouttests.5Eadvisory79082 disposed/released;
+  then freeze the MCTS contract only after corrected exact-tip CI is green.
+  Both prior substrate CI checks pass at47f5a87.5D advisory56693 disposed.
   All738 tests pass locally; no proof/research/window in5D.
   Prior5C advisory failed exit2, no response accepted/retry; reservation released.
   No internal checkpoint stop; two planned batches remain.
@@ -147,15 +148,34 @@ review clean, including closure index/docs and all16 artifact hashes. Compact
 docs/elves/rules-lab-v1-candidate-index.json SHA256
 5b0cedefb4b8ced6ce8786ac5cb197b79d8c9c76117a8eccc5e59eeb8c123561.
 No replacements, policy games, certification or official research/window.
+Closure64cbe84bf9d6a94b478a6dd2f50069d0cfaff20d pushed; guide fully reread,
+plan hash unchanged, PR23 draft/open/no review/inline blockers. Both new exact-tip
+CI tests in progress runs34095642547 and34095638240. Protected PR20–22 exact.
 
 ## Active Compute
+
+5E CLI-only bounded advisory79082 terminal0, receipt20260907T073029Z:
+157.7s CLI fallbackclaude-opus-4-8,161.459s wrapper. Fullresponse read/disposed;
+capacity explicitlyreleased toSDK/#10010 and ownedinventoryempty. No retry/API.
+Advice cannot bypass pendingCI or stop launchedrun. Accept MCTS-only engineering
+unit, shared controlled core/three immutable recipes and two rolloutpolicies.
+No5E implementation yet:64cbe84 run34095638240 failed worker8 canonical-equivalence
+synthetic test ontimeout (plus derivedpartialhash mismatch),738tests320.888s.
+Rawnegative batch-5d-ci-failure.log. Fixture task2/cohort8 reserves4.85scleanup
+for8workers; both independent reviews find no evidenced sourcebug. Only canonical-
+equivalence call now uses task10/cohort30, matching projection; assertions retained
+with richer failure message. Dedicatedtimeouttests and productioncaps unchanged.
+Focused24334/full84126 terminal0:10tests5.377s/738tests165.026s,zero skips;
+Ruff/compile/bothJS/diff green. Finalnarrowreview clean,all4hashesverified. Artifactindex
+rules-lab-v1-batch5d-ci-repair-artifacts.json. Other64cbe84CI34095642547 passed6m46s.
+Allgame/scoring/corpus tests passed in both original runs. No newMCTS/research.
 
 Batch5D advisory exec56693 terminal0, receipt20260907T065400Z: CLI fallback
 claude-opus-4-8 in182.2s,186.506s wrapper. Full response/prompt read and sanity-
 checked; corrections/disposition recorded in log. No paid API/retry/parallel call.
 Owned processes absent and capacity explicitly released to SDK/#10010. External
 context/wrapper/JSON prefixbatch-5d. Both substrate47f5a87 CI checks pass;
-5D closure-tip push/CI remains pending.
+5D closure-tip64cbe84 pushed; CI remains pending.
 No active official research jobs, paid jobs, testserver or browser. Mechanical
 corpus regeneration24609 and fullsuite79297 both terminal0. Research
 charged0/129600s; no window opened. Product fullsuite exec85175 exited0:
