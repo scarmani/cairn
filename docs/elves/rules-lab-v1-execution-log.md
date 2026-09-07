@@ -2,16 +2,92 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–3 complete; Batch4 API/native checkpoints pushed/CI
-  green; independent mechanical oracle verified, push/CI closure next.
+- Phase: launched, Batches1–3 complete; Batch4 all product/oracle/browser work
+  locally verified, awaiting closure push/exact-tip CI.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
-- Next: experimental browser and records; three batches remain.
+- Next: Batch4 closure CI, then terminal certification and gated MCTS.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
 
+## Batch 4 browser/records verification: 2026-09-06T23:47 CDT
+
+547tests pass in88.975s, zero skips (19 additive record tests). Scoped Ruff,
+compileall, both JS syntax checks and diff whitespace checks pass. Independent
+code/record review clean. Review fixes preserved: malformed nested types,
+JSON integral-number parity, Enter on focused Cancel, replacement Play lock,
+timer/epoch ownership and interrupted-record adoption. No old tests weakened.
+
+Actual browser matrices passed33 interaction chains with zero final console,
+page or HTTP errors. Every ruleset and construction orientation, all three modes,
+real human/computer pie directions, exact Step and Fast Play/Pause, delayed load
+locks, pause during committed computer action, ahead acceptance/loser resumption,
+final acceptance, local exports/import/interruption, Majority4-of6 scoring,
+Toy–Full labels/layout, resize/fullscreen and real capture wave0→clear verified.
+Root inspected screenshots, rendered semantic/text states and console evidence.
+Bundled game client also captured actual pass then hub reoccupation; topology
+remained permanent and the hub scored zero. Legacy Breath-run v1 save/record,
+ordinary choices/profiles/Personal panel preserved on leaving lab.
+
+Twenty-four actual exports from Matrix2/3 mechanically replay; corresponding
+canonical hashes agree despite timing/session differences. One additional
+seven-placement Majority export also replays (25 total). Imported-record UI
+snapshots are not records; strict CLI rejection is retained, not called a
+product failure. These are engineering fixtures, not research game evidence.
+
+Negative/tooling history retained: partial UI initially requested not-yet-written
+lab-record.js and existing favicon404 (now a local SVG); driver wrong DOM refs,
+stack-array assertion, attempted mutation of a frozen helper, missing fixture
+prerequisite, illegal first-pass assumption, rounded-ratio assertion, and an
+off-viewport canvas click were corrected in test drivers, not product rules.
+All raw earlier failures remain in465-file hash manifest outsidegit. No failing
+assertion was removed to change a product acceptance criterion.
+
+Personal disposable path never created. Root stopped owned server31058/exec60631
+(exit143), verified port8773 closed and browser rules-lab closed. No provider or
+research process active; charged research remains0. New source scope is browser,
+additive record helpers/tests and docs only; engine/native/oracle source unchanged
+from8c590d4. Legacy fixture file SHA06bc1c5a... is unchanged;0797f216... is its
+embedded content digest, not its file-byte hash. Compact artifact index records
+sources and raw manifest604de796e25ea9f01320270a7dd469e6e68e83a2426a4f1faaad185d5a9fe3fa.
+
+Next: commit/push, reread guide/hash/check feedback/CI, then continue Batch5.
+No merge or internal checkpoint stop; MCTS and comparative admission unmeasured.
+
+## Batch 4 browser/records contract: 2026-09-06T23:18 CDT
+
+At green8c590d4, freeze docs/rules-lab-browser.md hash
+57bc6d9d70310557b58c9dd33cfa602a86a5658769462cf4023e688d59833f6a.
+Bounded goal cycle20260907T041217Z failed exit2 in153.54s (primaryCLI error,
+fallback150s timeout, API deliberately unavailable). Complete stdout/stderr
+envelope saved outsidegit, SHA25621fb22aa20fa19f9b4621cf934684bad728b6e2419dacc52ea51d74178a4b9c1.
+No recommendation accepted/retry. Goal-cycle skill Hard rule3 explicitly directs
+own judgment this cycle; proceed only with the approved plan. Process inventory
+empty, capacity released to both coordinating tasks. No research charge.
+
+Build on shared public action/topology/actor schema, existing playback/rendering
+and v1 records. UI agent owns web integration, record agent additive pureJS/Python
+schema/replay modules, independent reviewer separate tests; root real browser QA,
+fullsuite and docs. Strictly preserve native/oracle hashes, old rules/saves/tests.
+New varde-lab-playtest v2 uses neutral identities and complete structured actions,
+separate placement/construction/capture units and accepted-only completion.
+Import parsing is not mechanical certification. No native-only match evidence.
+
+Identified integration hazards are part of scope: existing browser ending guards
+use computer_turn instead of pending actor; finished is not accepted; replacement
+can race a committed request; recording failure after successful mutation must
+not leave stale UI; line geometry/cell centers have distinct coordinate units.
+Tests/browser exercise these without changing rules, server or frozen opponents.
+
 ## Batch 4 independent-oracle closure: 2026-09-06T23:13 CDT
+
+Closure8c590d49a7bd4a043fa3dac2efb1d65c761be67f pushed; both exact-tip CI checks
+pass, no review/inline blockers. Guide reread and frozen plan hash verified after
+commit/push. PR update5564922768. SDK explicitly released reviewer capacity;
+one new browser-unit goal cycle20260907T041217Z launched CLI-only150s/attempt,
+570s overall+5s cleanup cap. Two ordinary in-app agents prepare UI/record interfaces
+read-only; no implementation until contract freeze, no research clock opened.
 
 Delivered independent stdlib mechanics for all seven lab games and three static
 controls/n3–6: immutable geometry, union-find groups, distinct liberties, both

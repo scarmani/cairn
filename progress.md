@@ -285,6 +285,23 @@ Original prompt: yes to all in best order proceed and execute according to your 
 - Browser laboratory, objective-aware provisional opponents and independent
   mechanical oracle are next. Research remains unlaunched and comparisons blocked.
 
+## Rules Laboratory Batch 4 browser/oracle complete locally — 2026-09-06
+
+- Seven opt-in lab rulesets now playable in hotseat, human/computer and spectator
+  modes; construction previews/orientations, permanent zero-point hubs and actual
+  neighbor/liberty inspection are rendered. No Classic profile or Personal model
+  is applied to lab opponents. Both ending seats use the authoritative actor.
+- Separate v2 local lab records replay all legal structured actions with neutral
+  identities. Legacy v1 records/saves remain unchanged. Import is structural,
+  not a claim of mechanical certification or qualified human evidence.
+- 547 tests pass in88.975s, zero skips; Ruff/compile/JS and independent review clean.
+  Thirty-three real browser checks have zero final errors;25 actual exports
+  mechanically replay. All seven boards, every orientation, both pie directions,
+  capture/reoccupation, ending/resumption, interrupted records, save/load,
+  delayed-request locks, spectator playback, resizing/fullscreen inspected.
+- Isolated server/browser stopped; no model writes or research charge. Closure
+  push/CI next, then Batch5 certification/MCTS. No comparative result or merge.
+
 ## Rules Laboratory Batch 4 API checkpoint — 2026-09-06
 
 - Added explicit lab catalog/new-game selection and one structured action API,

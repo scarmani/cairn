@@ -58,6 +58,36 @@ python3 -m pip install -e . --no-deps
 varde-server
 ```
 
+### Experimental Rules Laboratory
+
+Enable **Experimental lab** to add seven revision-0.1 choices: Line Breath,
+Gjerde Majority, Breath Connection, Y-Junction Go, Six-Spoke Go, Planted Y Go,
+and Passage Go. Ordinary choices and defaults remain available unchanged.
+The [frozen definitions](docs/rules-lab-specs.md) explain each independent change.
+
+In junction games, click a dashed unused center to preview construction; choose
+an orientation and explicitly confirm. With the board focused, arrow keys cycle
+orientations, Enter confirms, and Escape cancels. Blue junctions persist after
+capture but score zero; only original vertices score. Hover to inspect actual
+neighbors, distinct liberties, and construction state.
+
+Hotseat, Vs computer, and paused spectator playback are supported. Laboratory
+Casual/Standard opponents are provisional and objective-aware: they do not use
+Classic profiles or your Personal model. MCTS admission and comparative game
+quality remain unmeasured; playable software is not evidence of strategic depth.
+
+Lab saved games use version 2, while legacy saves remain version 1. Local hotseat
+lab records use a separate `varde-lab-playtest` version-2 format. Browser import
+checks structure only. Independently replay an exported record with:
+
+```bash
+python3 research/harness/lab_record.py /path/to/local-record.json
+```
+
+Replay checks the recorded legal actions and state transitions; it does not
+qualify the record as a human study or comparative-agent result. Records stay
+local and contain neutral seat identifiers rather than player names.
+
 ## Verify
 
 ```bash
@@ -68,7 +98,9 @@ python3 engine/selfplay.py 3 100 greedy
 python3 engine/selfplay.py 3 100 epsilon
 ```
 
-The executable suite currently has 201 tests covering geometry, terrain,
+The Batch-4 laboratory verification ran 547 tests with zero skips, including
+legacy decision/save parity, immutable junction topology, independent mechanical
+oracle checks, and cross-language local-record replay. The suite also covers geometry, terrain,
 summits, flat capture, collar-dependent wells, wall stranding, eight-support
 twin wells, multi-wave peeling, global mover-suicide, full-stack superko,
 opening placement, pie-rule identity, resumption, scoring, serialization,

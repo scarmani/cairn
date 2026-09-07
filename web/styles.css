@@ -29,6 +29,7 @@ h1 { margin: 0; font: 700 clamp(2.2rem, 6vw, 4.5rem)/.9 Georgia, serif; letter-s
 .turn small { display: block; color: var(--muted); font-weight: 500; margin-top: 4px; }
 
 .game-card { overflow: hidden; border: 1px solid rgba(62,55,42,.28); border-radius: 18px; background: var(--card); box-shadow: 0 18px 54px rgba(53,43,27,.16); }
+.game-card:fullscreen { overflow: auto; border: 0; border-radius: 0; }
 canvas { display: block; width: 100%; height: auto; aspect-ratio: 24 / 17; touch-action: none; }
 .controls, .subcontrols { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 12px; border-top: 1px solid #d8cfbc; background: rgba(255,255,255,.42); }
 .subcontrols { padding-block: 9px; font-size: .8rem; }
@@ -39,13 +40,19 @@ canvas { display: block; width: 100%; height: auto; aspect-ratio: 24 / 17; touch
 .profile-controls span { max-width: 76ch; }
 .playtest-controls { background: rgba(71,92,118,.055); }
 .playtest-controls span { max-width: 76ch; }
+.lab-evidence { background: rgba(183,101,69,.075); }
+.lab-inspector { min-height: 48px; background: rgba(71,92,118,.045); }
+.lab-inspector span { overflow-wrap: anywhere; }
+.construction-controls { background: rgba(71,92,118,.11); }
+.construction-controls span { font-size: .75rem; }
+canvas:focus-visible { outline: 3px solid var(--moss); outline-offset: -3px; }
 button, select { border: 1px solid #bcb19c; border-radius: 999px; padding: 9px 15px; color: var(--ink); background: #fffdf8; font: 650 .85rem inherit; cursor: pointer; }
 button:hover { border-color: var(--moss); transform: translateY(-1px); }
 button:disabled { cursor: not-allowed; opacity: .45; transform: none; }
 button.accent { border-color: var(--moss); color: white; background: var(--moss); }
 .toggle { display: inline-flex; align-items: center; gap: 7px; padding: 7px 11px; border: 1px solid #bcb19c; border-radius: 999px; background: #fffdf8; color: var(--ink); font-size: .8rem; font-weight: 650; }
 .toggle input { accent-color: var(--moss); }
-.versus-setting[hidden], .watch-setting[hidden], .any-computer-setting[hidden], .subcontrols[hidden] { display: none; }
+.versus-setting[hidden], .watch-setting[hidden], .any-computer-setting[hidden], .subcontrols[hidden], [hidden] { display: none; }
 
 footer { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; padding: 12px 4px 0; color: var(--muted); font-size: .78rem; }
 .legend { display: inline-block; width: 11px; height: 11px; margin-right: 5px; vertical-align: -1px; }
@@ -54,6 +61,8 @@ footer { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; pa
 .legend.atari { border: 2px solid rgba(196,49,32,.9); border-radius: 50%; }
 .legend.lowlibs { border: 2px solid rgba(214,138,32,.75); border-radius: 50%; }
 .legend.phantom { background: rgba(140,60,45,.5); height: 3px; vertical-align: 3px; }
+.legend.junction { border: 2px solid #466a8d; outline: 1px solid #466a8d; outline-offset: 2px; border-radius: 50%; }
+.legend.site { border: 1px dashed #466a8d; border-radius: 50%; }
 #message { margin-left: auto; color: #a13d2e; font-weight: 700; }
 #ai-note { flex-basis: 100%; color: var(--moss); font-weight: 700; }
 kbd { border: 1px solid #aaa08c; border-bottom-width: 2px; border-radius: 4px; padding: 1px 5px; background: #f9f5ea; }

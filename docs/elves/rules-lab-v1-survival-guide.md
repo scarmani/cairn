@@ -51,8 +51,9 @@ Three planned batches remain. Estimates are planning ranges, not launch guarante
 - Planned batches remaining: 3.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: push verified independent-oracle checkpoint and close CI,
-  then browser/records within Batch4. Native1feb9f1 remains the prior green tip.
+- Next required action: push the verified Batch4 browser/records closure and
+  close exact-tip CI/review checks, then begin Batch5 research interfaces and
+  charged certification under frozen gates. No internal checkpoint stop.
 
 ## Current Phase
 
@@ -76,14 +77,30 @@ final review clean. Oracle supports all10 definitions/n3–6 with no production
 imports; full-history versus imported-continuation provenance is explicit.
 Review fixes: nonfresh replay flags, warm-cache bool/float topology aliases,
 Python recursion ceiling and partial-enumerator counters. Prior RED preserved.
-No production/rules/server/browser/native source changed in this unit. Commit,
-push and exact-tip CI closure next; browser/records then remain within Batch4.
-No lab browser exposure or admitted comparative agent is claimed.
+No production/rules/server/browser/native source changed in this unit. Closure
+8c590d49a7bd4a043fa3dac2efb1d65c761be67f is pushed; both exact-tip CI checks pass.
+Browser/records are locally verified:547tests in88.975s, zero skips, scoped
+Ruff/compile/JS/diff green and independent review clean. All seven opt-in games,
+every construction orientation, actual topology inspection, all modes/both pie
+directions, paused watch save/load, delayed-request locks, both ending seats,
+record interruption/import and Toy–Full/resize/fullscreen verified in33 browser
+checks with zero final console/page/HTTP errors. Twenty-five actual exports
+replayed mechanically. Source/native/oracle/legacy hashes remain unchanged where
+protected. Closure commit/push/exact-tip CI is next. No admitted comparative
+agent or game-quality result is claimed.
 
 ## Active Compute
 
-No active research workers, paid jobs, advisory or server. All oracle engineering
-subagents and test processes are terminal. Ordinary product tests and CI are
+No active research workers or paid jobs. Product tests/browser verification are
+terminal. Isolated server PID31058/exec60631 exited143 by owned SIGTERM; port8773
+closed, Playwright rules-lab closed, and disposable model file remains absent.
+All three in-app agents are idle after clean review; one read-only Batch5
+integration map is prepared outsidegit, without proofs/calibration/games.
+Browser goal cycle20260907T041217Z failed exit2 in153.54s: CLI error plus150s
+fallback timeout, API disabled/unavailable. No output accepted or same-cycle retry.
+Wrapper/session terminal, process inventory empty and capacity explicitly returned.
+Proceed with approved scope under goal-cycle skill Hard rule3; no guessed advice.
+Ordinary product tests and CI are
 engineering verification only. Last successful bounded goal cycle167.5s via CLI
 fallback claude-opus-4-8, receipt `.aragora/goal_cycles/20260907T030657Z/`.
 Prior receipts and advisory dispositions are preserved in the execution log.
@@ -92,9 +109,9 @@ One oracle goal cycle at20260907T034232Z failed exit2: primaryCLI error, fallbac
 inventory empty and capacity explicitly returned to#10010. Normal already-approved
 oracle engineering continues under the bounded-consult failure protocol; no
 approval, evidence or relaxed gate inferred. #10010 released with an empty process
-inventory; SDK task019f807d-64fd-7502-8043-9c42ec27be88 now holds the next single
-provider-review window. No additional Claude/CLI reviewer/consult/evidence launch
-until that task's explicit release. Existing in-app engineering/tests continue.
+inventory; SDK task019f807d-64fd-7502-8043-9c42ec27be88 then completed its one
+pass and explicitly released. RulesLab's subsequent single advisory is terminal
+and its explicit capacity release sent to both tasks. No provider job remains.
 Research charge0.
 
 ## Non-Negotiables
@@ -118,17 +135,14 @@ Research charge0.
 
 ## Next Exact Batch
 
-Scope: Batch4 adds experimental browser/API support, shared structured actions,
-replay/export, provisional objective-aware Casual/Standard opponents and an
-independent mechanical graph oracle. Build on the existing factory, immutable
-graphs and RulesState; preserve legacy server branches and all ordinary defaults.
-Rollback tag `elves/rules-lab-v1/pre-batch-4` is pushed at496a1fe. API and native
-units are complete. Oracle contract docs/rules-lab-oracle.md is implemented and
-verified; test/review closure logged, push/CI pending. No actual game proof/corpus/
-calibration work yet. Next browser draft is outsidegit at
-batch-4d-browser-draft.md; freeze it after the next bounded cycle. Provider
-capacity is held by SDK task019f807d-64fd-7502-8043-9c42ec27be88; await explicit
-release before the browser-unit consult, never retry the failed4C consult.
+Close Batch4 exact-tip CI after commit/push, then create Batch5 rollback tag and
+run one bounded goal cycle with fresh source, frozen plan and the external
+batch-5-integration-review.md. Browser contract remains frozen at
+SHA25657bc6d9d70310557b58c9dd33cfa602a86a5658769462cf4023e688d59833f6a.
+Build Batch5 terminal-certificate interfaces and deterministic run controls using
+synthetic tests before charged real-position proof/calibration. No corpus or
+agent is qualified yet. Raw browser manifest has465 artifacts; compact index is
+docs/elves/rules-lab-v1-batch4d-artifacts.json. Preserve v1/native/oracle hashes.
 
 Acceptance: explicit lab opt-in, all seven games, construction preview/orientation
 by mouse/keyboard, zero-point hubs, actual neighbor/liberty inspection, three match
