@@ -1,0 +1,19 @@
+{
+  "root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "scope": "Independent mechanical and synthetic proof verification; no game certification, research admission or strength evidence",
+  "tests": {"passed": 528, "skipped": 0, "seconds": 80.297},
+  "prior_red": {"tests": 528, "failures": 3, "seconds": 80.488, "reason": "warm-cache Boolean/float topology aliases before strict pre-cache validation"},
+  "research_charged_seconds": 0,
+  "advisory": {"exit_code": 2, "accepted_output": false, "retry": false, "receipt_note": "compact transcription of observed stderr failure envelope"},
+  "source_sha256": {
+    "research/harness/lab_oracle.py": "53fd2012a971b6d9faefccea4cd9f55538a820b56ed886ebfcf48c1f43b554af",
+    "research/harness/lab_oracle_geometry.py": "4ab22a0a6275470759002005cdd311b5d9253522ff2aa8d0ec0b3632e163d01e",
+    "research/harness/lab_local_proof.py": "b8908f4c140a2cdfae62604d3e987536c4a975839a13b99817111bc9f6477f89"
+  },
+  "sha256": {
+    "batch-4c-provenance-before.log": "61c2b3439418c0c1b2507c0af3191ced5504acf10561a60b4626b1e1d5c247f5",
+    "batch-4c-tests.log": "f3b57b00df8a35fdb9998b042c4d5cdf5f7753a25a669cd8ab1fb8c99608b95e",
+    "batch-4c-final-tests.log": "11505366ebdbf9b1d11991a37be7d27d81e6d56f16b6638d428874fa09926336",
+    "batch-4c-goal-cycle.json": "aa3e5a2b76bad51e780eacf480ea1fd69952d921c4837f260781a2f413ac0069"
+  }
+}

@@ -1,5 +1,14 @@
 Original prompt: yes to all in best order proceed and execute according to your recommendation
 
+## Rules Laboratory Batch4C · 2026-09-06
+
+- Independent stdlib graph mechanics and tri-state local-proof runner implemented;
+  all10 definitions/n3–6 checked without production resolver/geometry imports.
+- 528tests pass in80.297s, zero skips; independent review clean. Provenance,
+  cache type-alias, deep-horizon and partial-failure accounting regressions fixed.
+- No production/browser/agent change, actual game certification or research run.
+  Research budget remains0; lab browser/records next, then gated MCTS/evidence.
+
 ## Rules Laboratory Batch4B · 2026-09-06
 
 - Provisional lab-native-objective-v1 Casual/Standard opponents now execute one

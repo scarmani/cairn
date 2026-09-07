@@ -2,14 +2,86 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–3 complete; Batch4 API checkpoint pushed/CI green,
-  provisional native-opponent internal unit verified, closure push next.
+- Phase: launched, Batches1–3 complete; Batch4 API/native checkpoints pushed/CI
+  green; independent mechanical oracle verified, push/CI closure next.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
-- Next: browser/API, provisional opponents and mechanical oracle; three batches remain.
+- Next: experimental browser and records; three batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 4 independent-oracle closure: 2026-09-06T23:13 CDT
+
+Delivered independent stdlib mechanics for all seven lab games and three static
+controls/n3–6: immutable geometry, union-find groups, distinct liberties, both
+capture orders, original-only and altered objectives, permanent construction,
+topology-aware repetition, strict v2 journals and current seat-envelope checks.
+No production imports, resolver calls or public consumers. Full seat-action
+replay is claimed only from a fresh initial state; snapshot/suffix limitations
+remain explicit. A production primitive can be deliberately broken without
+changing the oracle's answer.
+
+Generic local proofs accept caller-declared predicates, finite quantifier/domain
+schedules and hashes. Complete orientation-preserving proven/disproven/unknown
+root sets, actor traces, default10000node ceiling, explicit-stack traversal,
+honest cancellation/failure counters and no memoization. Local success is never
+an optimal move or a backed game value. Only synthetic trees were solved here.
+
+Independent review found and fixed two reproduced mechanics defects: imported
+continuation provenance and Boolean/float topology aliases bypassing a warm cache.
+Owner synthetic review found Python recursion limiting a declared1100ply horizon
+and partial-generator failure undercounting. Tests cover each. Root's initial
+replay test incorrectly used an ignored factory seed; corrected the test setup
+to actual initial metadata, retaining exact state equality. No old test changed.
+
+Verification: final528tests in80.297s, zero skips (+54); changed-file Ruff,
+compileall/JS/diffcheck green. Independent final54test run in5.276s and source
+review clean. First full run528tests80.488s preserved RED for three warm-cache
+alias cases; final corrected run green. Full suite includes frozen legacy
+103positions/218decisions/24saves and216publicobservations/168savedinputs parity.
+No browser changes in this unit; prior native browser evidence remains historical.
+
+Regression attestation: three additive oracle/proof modules, four additive test
+files and run documentation. Zero production consumers, old tests, rules,
+server/browser/native recipe or historical artifacts changed. Confidence HIGH
+for mechanical scope; no corpus, admitted agent or strategic claim. Raw logs and
+failed advisory receipt linked by SHA256 in batch4c-artifacts.json. Research0.
+Push and exact-tip CI pending at this logged checkpoint; do not stop afterward.
+Next browser/records contract drafted outsidegit; consult awaits SDK capacity.
+
+## Batch 4 independent-oracle contract: 2026-09-06T22:46 CDT
+
+Capacity update: #10010 completed its one review pass and explicitly released
+after an empty process inventory. SDK task019f807d-64fd-7502-8043-9c42ec27be88
+reserved the next provider-review window for#10014. Acknowledged the hold; no
+RulesLab CLI advisory/reviewer/research launch. Existing in-app engineering
+subagents continue ordinary product checks. Next browser-unit advisory waits.
+
+Native1feb9f151dbc13b86ad72fe036d93e91fe3fdf48 pushed; both exact-tip checks pass,
+no review blockers. Protected PR20–22/shared5bfea5e verified unchanged. One bounded
+goal cycle at20260907T034232Z failed exit2: primaryCLI error, fallback150s timeout,
+API unavailable by design. No recommendation or approval accepted, no retry.
+Process inventory empty; capacity explicitly returned to#10010. Per bounded
+consult failure protocol, proceed with already-approved engineering judgment,
+not a guessed returned prompt or relaxed gate. Receipt outsidegit preserved.
+
+Behaviors/build-on/acceptance/blast-radius frozen in docs/rules-lab-oracle.md.
+Independent stdlib graph mechanics, strict journal/envelope import, complete-action
+replay and generic tri-state local proof plumbing. Reuse written wire/schema
+conventions, not production geometry/groups/resolve/score. New research modules
+and additive tests/docs only; no production consumer or agent hash changes.
+Baseline474tests, no skips. Geometry/capture/scoring/superko/administration checks
+and synthetic bounded proof trees only. Corpus generation/certification remains
+Batch5 and charged. Local certificates never label game-optimal actions.
+
+Survey found no reusable independent oracle here. HistoricalV5 implementation has
+orientation/context/history weaknesses; preserve as evidence, do not port blindly.
+Save journals omit historical seat acceptances; report mechanical replay/current
+envelope consistency honestly, full seat replay only with complete action logs.
+Terminal WDL-versus-margin objective must be explicit in Batch5, not inferred from
+local survival. Independent workers own mechanics and generic proof separately;
+root/third reviewer exercise differential invariants and preserve old behavior.
 
 ## Batch 4 native-opponent closure: 2026-09-06T22:31 CDT
 

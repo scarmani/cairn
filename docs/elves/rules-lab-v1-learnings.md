@@ -34,6 +34,12 @@
 - A planted new hub cannot remove any pre-existing enemy liberty. A test reporting
   immediate enemy capture from planting alone signals a topology/resolution error.
 - A local survival proof does not show survival is preferable to a sacrifice.
+- A complete game journal does not recover omitted historical seat acceptances.
+  A replayed suffix must not regain a full-action-history provenance flag.
+- Python cache keys equate bool/int/float scalar aliases. Validate exact topology
+  scalar types before entering an LRU, including when the canonical key is warm.
+- Generic bounded proof traversal needs an explicit stack: Python recursion must
+  not become an undeclared horizon. Count yielded actions even if enumeration fails.
 - Scoring variants change units/incentives. Keep objective score and physical
   occupancy separate; no cross-ruleset pooled Elo or implicit beauty metric.
 

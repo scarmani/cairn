@@ -51,8 +51,8 @@ Three planned batches remain. Estimates are planning ranges, not launch guarante
 - Planned batches remaining: 3.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: push the verified native-opponent checkpoint, poll CI,
-  then independent mechanical oracle and browser/records within Batch4.
+- Next required action: push verified independent-oracle checkpoint and close CI,
+  then browser/records within Batch4. Native1feb9f1 remains the prior green tip.
 
 ## Current Phase
 
@@ -64,24 +64,38 @@ independent cumulative review clean. Frozen lab-native-objective-v1 uses origina
 seat identity, all legal replies and separate hub capture telemetry. Agent hash
 6cddcdea5eaf4f1a09a61d1d024783c24449aa8f6803021ecbefab5a13f6d26b.
 Legacy103positions/218choices/24saves plus216publicobservations/168savedinputs
-remain exact. Native closure commit/push and exact-tip CI are next.
+remain exact. Native closure1feb9f151dbc13b86ad72fe036d93e91fe3fdf48 is pushed;
+both exact-tip CI checks pass and no PR review blockers were returned.
 Three-seed fresh engineering checks per ruleset: Toy medians27–81ms, Full278–1267ms;
 not a p95 or strength claim. Classic browser computer opening, human takeover and
 automatic White reply inspected in three screenshots/texts and viewport. No app
 errors; existing favicon404 only. Server/session stopped, model never written.
-Independent mechanical oracle and browser/records remain pending within Batch4.
+Independent mechanical oracle and generic local-proof plumbing now verified:
+528tests in80.297s, zero skips, scoped Ruff/compile/JS/diff green. Independent
+final review clean. Oracle supports all10 definitions/n3–6 with no production
+imports; full-history versus imported-continuation provenance is explicit.
+Review fixes: nonfresh replay flags, warm-cache bool/float topology aliases,
+Python recursion ceiling and partial-enumerator counters. Prior RED preserved.
+No production/rules/server/browser/native source changed in this unit. Commit,
+push and exact-tip CI closure next; browser/records then remain within Batch4.
 No lab browser exposure or admitted comparative agent is claimed.
 
 ## Active Compute
 
-No active research workers, paid jobs, advisory or server. Ordinary product tests
-and CI are engineering verification only. Last bounded goal cycle167.5s via CLI
+No active research workers, paid jobs, advisory or server. All oracle engineering
+subagents and test processes are terminal. Ordinary product tests and CI are
+engineering verification only. Last successful bounded goal cycle167.5s via CLI
 fallback claude-opus-4-8, receipt `.aragora/goal_cycles/20260907T030657Z/`.
 Prior receipts and advisory dispositions are preserved in the execution log.
-Reviewer capacity remains held by task019f2b0a-45dd-7543-a985-f43a5cb241fb (#10010),
-currently yielded to its coordinated #9903 prepare-only pass. No additional
-Claude/CLI reviewer/consult/evidence launch until explicit terminal release.
-Normal implementation and product tests continue independently. Research charge0.
+One oracle goal cycle at20260907T034232Z failed exit2: primaryCLI error, fallback
+150s timeout, API unavailable by design. No output accepted or retried; process
+inventory empty and capacity explicitly returned to#10010. Normal already-approved
+oracle engineering continues under the bounded-consult failure protocol; no
+approval, evidence or relaxed gate inferred. #10010 released with an empty process
+inventory; SDK task019f807d-64fd-7502-8043-9c42ec27be88 now holds the next single
+provider-review window. No additional Claude/CLI reviewer/consult/evidence launch
+until that task's explicit release. Existing in-app engineering/tests continue.
+Research charge0.
 
 ## Non-Negotiables
 
@@ -108,9 +122,13 @@ Scope: Batch4 adds experimental browser/API support, shared structured actions,
 replay/export, provisional objective-aware Casual/Standard opponents and an
 independent mechanical graph oracle. Build on the existing factory, immutable
 graphs and RulesState; preserve legacy server branches and all ordinary defaults.
-Rollback tag `elves/rules-lab-v1/pre-batch-4` exists locally at496a1fe; push with
-the first internal checkpoint. First unit is API adapter only; no browser exposure
-or silently reused legacy AI until subsequent units have passed their tests.
+Rollback tag `elves/rules-lab-v1/pre-batch-4` is pushed at496a1fe. API and native
+units are complete. Oracle contract docs/rules-lab-oracle.md is implemented and
+verified; test/review closure logged, push/CI pending. No actual game proof/corpus/
+calibration work yet. Next browser draft is outsidegit at
+batch-4d-browser-draft.md; freeze it after the next bounded cycle. Provider
+capacity is held by SDK task019f807d-64fd-7502-8043-9c42ec27be88; await explicit
+release before the browser-unit consult, never retry the failed4C consult.
 
 Acceptance: explicit lab opt-in, all seven games, construction preview/orientation
 by mouse/keyboard, zero-point hubs, actual neighbor/liberty inspection, three match
