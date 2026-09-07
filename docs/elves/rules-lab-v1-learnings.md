@@ -34,6 +34,14 @@
 - A planted new hub cannot remove any pre-existing enemy liberty. A test reporting
   immediate enemy capture from planting alone signals a topology/resolution error.
 - A local survival proof does not show survival is preferable to a sacrifice.
+- Exact root WDL does not classify unresolved root alternatives. Keep complete
+  optimal-action sets separate, including all equivalent winning margins.
+- Compare finite JSON identities canonically: Python equality treats true,1 and
+  1.0 as equal. Unknown proof successors still need conserved actor/seat checks.
+- Legacy Game.clone shares mutable geometry. Research cache/provider ownership
+  needs deep isolation even though new laboratory GraphBoard geometry is immutable.
+- Use canonical package imports for shared callback descriptor classes; mixing
+  flat and package imports creates distinct Python types. Test outside repo cwd.
 - A complete game journal does not recover omitted historical seat acceptances.
   A replayed suffix must not regain a full-action-history provenance flag.
 - Python cache keys equate bool/int/float scalar aliases. Validate exact topology

@@ -2,14 +2,75 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–3 complete; Batch4 all product/oracle/browser work
-  locally verified, awaiting closure push/exact-tip CI.
+- Phase: launched, Batches1–4 complete; Batch5A verified, closure push/CI next.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
-- Next: Batch4 closure CI, then terminal certification and gated MCTS.
+- Next: terminal certification interfaces, then charged gated MCTS; two batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 5A verification: 2026-09-07T00:24 CDT
+
+597tests pass in180.222s, zero skips (50 additive synthetic/mechanical tests).
+Scoped Ruff, compileall, both JS checks, diff whitespace and independent cumulative
+review clean. Fullsuite exec79604 exited0; raw log hash
+39076b67b8298539be1d2692299d450a1938d6f1036d2a20bfabf4ac0a2e27ac.
+Protected engine/actions/factory/native/oracle/browser/historical files unchanged
+fromad72690; legacy fixture byte hashes unchanged. PR20–22 remain exact/draft/open.
+
+Independent review found and fixed pre-research REDs: Python JSON equality aliases
+(true versus1/1.0), unchecked identity replacement on unknown edges, forged accepted
+ending envelopes, and mutable legacy geometry escaping through shallow clones.
+Unknown successors now get actor/identity checks and separately counted work under
+the checker limit; they still receive no score or terminal-backup credit. Canonical
+JSON identity, structural callback mutation guards, complete root alternatives and
+deep caller/cache ownership have adversarial regressions. Standalone import checks
+also caught a missing repository path and mixed flat/package provider identity;
+new tests/helpers use the canonical package, verified from an external cwd.
+Initial missing-module test REDs were development-order checks, not research failures.
+No old test weakened/deleted/skipped. All findings occurred before any research job.
+
+The additive checker does not produce actual-game proofs. Its checked values do not
+establish reachability or admission; provider metadata explicitly withholds full
+action-replay provenance. Production16/oracle10 coverage is explicit; legacy-six
+independent certification remains for the next freeze, not silently waived.
+No source/rule/search recipe changed outside the six new Python files. Raw artifacts
+and source hashes linked in docs/elves/rules-lab-v1-batch5a-artifacts.json.
+
+All local workers/reviewers are terminal. SDK task requested one built-in-review
+capacity reservation and received an acknowledgment; hold our next advisory until
+its release. Research0/129600, no window or paid compute. Next commit/push/CI then
+continue Batch5; no merge or internal-checkpoint stop.
+
+## Batch 5A contract: 2026-09-07
+
+Bounded advisory20260907T045202Z succeeded via CLI fallback claude-opus-4-8
+in180.7s (184.16s wrapper), full response and prompt read. No same-cycle retry,
+provider inventory empty, explicit shared-capacity release sent to both tasks.
+Accepted interface-only unit. Aragora tier/quorum template residue is inapplicable;
+no redundant housekeeping commit or rollback tag. PR23 remains draft/unmerged.
+
+Freeze docs/rules-lab-terminal-cert.md hash
+6b348bc3424c931a480db61f58c55a98ddbb80e9e0d8ea87d6a723379e197235.
+Add independent accepted-terminal graph checker and production/oracle adapters.
+Synthetic proof graphs only; real states only for mechanical transition/key tests.
+No real-game proof producer/corpus/search/calibration, research0. Full action
+domains, exact equivalent WDL sets, original-seat minimax and accepted-only leaves
+are mandatory; provider provenance must not imply full replay from a save journal.
+Production/oracle/native/browser/historical sources unchanged. Legacy-six
+independent verification strategy remains explicitly deferred, not silently waived.
+
+## Batch 4 closure and Batch 5 preparation: 2026-09-06T23:53 CDT
+
+ad7269026db64b8177c45185f51fa7748fb18c1a pushed and both exact-tip CI test jobs
+pass. Guide reread/hash verified after commit/push. PR23 draft/open/unmerged,
+reviews and inline comments empty; protected PR20–22 heads unchanged/unmerged.
+Create pre-batch-5 rollback tag on this head. Research0, no active testserver.
+One new CLI-only bounded goal cycle240s/attempt/570s overall is launched after
+empty process inventory and shared-capacity reservation; no same-cycle retry.
+The higher per-attempt limit reflects prior successful167.5s advisory latency,
+not relaxed research or claim gates. Research remains unlaunched.
 
 ## Batch 4 browser/records verification: 2026-09-06T23:47 CDT
 

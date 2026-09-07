@@ -44,16 +44,16 @@ both the active window and total remainder. Do not launch a full cohort just to
 cross a boundary. Persist completed fixed blocks and resume their exact manifest.
 
 No research window has opened. Research charged: 0 / 129,600 seconds.
-Three planned batches remain. Estimates are planning ranges, not launch guarantees.
+Two planned batches remain. Estimates are planning ranges, not launch guarantees.
 
 ## Stop Gate
 
-- Planned batches remaining: 3.
+- Planned batches remaining: 2.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: push the verified Batch4 browser/records closure and
-  close exact-tip CI/review checks, then begin Batch5 research interfaces and
-  charged certification under frozen gates. No internal checkpoint stop.
+- Next required action: commit/push verified Batch5A, reread guide/hash/feedback
+  and close exact-tip CI; then one bounded Batch5B cycle for proof producer,
+  recipes and enforced run controls before research. No internal checkpoint stop.
 
 ## Current Phase
 
@@ -86,16 +86,34 @@ directions, paused watch save/load, delayed-request locks, both ending seats,
 record interruption/import and Toy–Full/resize/fullscreen verified in33 browser
 checks with zero final console/page/HTTP errors. Twenty-five actual exports
 replayed mechanically. Source/native/oracle/legacy hashes remain unchanged where
-protected. Closure commit/push/exact-tip CI is next. No admitted comparative
-agent or game-quality result is claimed.
+protected. Closure ad7269026db64b8177c45185f51fa7748fb18c1a is pushed, both
+exact-tip CI checks pass. PR20–22 still exact/draft/unmerged; PR23 reviews/inline
+comments empty. Batch4 complete. No admitted comparative agent or game-quality
+result is claimed.
+
+Batch5A locally verified:597tests in180.222s, zero skips,50 additive tests.
+Independent terminal graph checker separates exact root value from complete
+optimal alternatives, uses conserved seat identity, and keeps all partial/unknown
+branches unvalued. All16 production and10 independent providers have full-history
+fingerprints and isolated cache/geometry ownership; arbitrary snapshots never
+claim full replay/admission. Scoped Ruff/compile/both JS/diff and independent
+review clean. Source/contract hashes in batch5a artifact index; closure push/CI
+pending. This is synthetic/mechanical engineering, not real-position certification.
 
 ## Active Compute
 
 No active research workers or paid jobs. Product tests/browser verification are
-terminal. Isolated server PID31058/exec60631 exited143 by owned SIGTERM; port8773
+terminal; Batch5A fullsuite exec79604 exited0. Isolated server PID31058/exec60631 exited143 by owned SIGTERM; port8773
 closed, Playwright rules-lab closed, and disposable model file remains absent.
 All three in-app agents are idle after clean review; one read-only Batch5
 integration map is prepared outsidegit, without proofs/calibration/games.
+SDK task019f807d-64fd-7502-8043-9c42ec27be88 currently reserves shared reviewer
+capacity for one built-in review; RulesLab acknowledged and will start no new
+provider/reviewer-dependent work until its explicit release. Local closure only.
+Batch5 goal cycle20260907T045202Z succeeded via CLI fallback claude-opus-4-8
+in180.7s (184.16s wrapper). Full response/prompt read; scope accepted as interface
+engineering only. Process inventory empty; capacity explicitly released to both
+SDK/#10010 tasks. No active advisory, parallel provider call or retry.
 Browser goal cycle20260907T041217Z failed exit2 in153.54s: CLI error plus150s
 fallback timeout, API disabled/unavailable. No output accepted or same-cycle retry.
 Wrapper/session terminal, process inventory empty and capacity explicitly returned.
@@ -135,9 +153,16 @@ Research charge0.
 
 ## Next Exact Batch
 
-Close Batch4 exact-tip CI after commit/push, then create Batch5 rollback tag and
-run one bounded goal cycle with fresh source, frozen plan and the external
-batch-5-integration-review.md. Browser contract remains frozen at
+Batch4 exact-tip CI is closed. Batch5 rollback tag is at ad72690; bounded
+goal cycle succeeded using fresh source/plan and batch-5-integration-review.md.
+Batch5A contract: docs/rules-lab-terminal-cert.md, SHA256
+6b348bc3424c931a480db61f58c55a98ddbb80e9e0d8ea87d6a723379e197235.
+Only additive certificate/checker, research adapter and synthetic/mechanical
+tests now; no actual game proof producer, corpus or calibrated decision.
+That interface unit is now locally green and ready for closure push/CI. Next
+unit must freeze the proof producer/recipe/execution contracts and test worker
+hard-stop behavior before any charged real-state certification or calibration.
+Browser contract remains frozen at
 SHA25657bc6d9d70310557b58c9dd33cfa602a86a5658769462cf4023e688d59833f6a.
 Build Batch5 terminal-certificate interfaces and deterministic run controls using
 synthetic tests before charged real-position proof/calibration. No corpus or
