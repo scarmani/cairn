@@ -4,7 +4,7 @@ from copy import deepcopy
 import unittest
 from unittest.mock import Mock, patch
 
-from actions import RulesAction
+from actions import RulesAction, legal_actions
 from game_factory import new_game
 from lab_match import (
     action_from_alias, apply_lab_action, lab_computer_settings, lab_state,
@@ -136,15 +136,20 @@ class TestLabMatchAdapter(unittest.TestCase):
         restored, restored_match = server.load_snapshot(saved)
         self.assertEqual(server.snapshot_payload(restored, restored_match), saved)
 
-    def test_internal_checkpoint_computer_execution_fails_without_legacy_fallback(self):
-        game, match = laboratory(mode="computer", human_color=WHITE)
+    def test_computer_executes_native_legal_action_without_legacy_fallback(self):
+        game, match = laboratory(mode="computer", human_color=WHITE, difficulty="casual")
         before = server.snapshot_payload(game, match)
+        available = legal_actions(match.lab_state)
         with patch.object(server, "choose_decision") as legacy, patch.object(server, "get_profile") as profile:
-            with self.assertRaisesRegex(Illegal, "not yet available"):
-                server.apply_computer_action(game, match)
+            decision = server.apply_computer_action(game, match)
             legacy.assert_not_called()
             profile.assert_not_called()
-        self.assertEqual(server.snapshot_payload(game, match), before)
+        self.assertIn(decision.action, available)
+        self.assertEqual(decision.action.kind, "play")
+        self.assertEqual(game.placements_played, 1)
+        self.assertEqual(game.constructions_played, 0)
+        self.assertNotEqual(server.snapshot_payload(game, match), before)
+        self.assertTrue(decision.to_dict()["provisional"])
 
     def test_binding_drift_and_legacy_ending_shortcuts_are_rejected(self):
         game, match = laboratory()

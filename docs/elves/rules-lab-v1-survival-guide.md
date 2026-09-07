@@ -51,43 +51,37 @@ Three planned batches remain. Estimates are planning ranges, not launch guarante
 - Planned batches remaining: 3.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: push/check the verified426-test Batch4 API checkpoint,
-  then run one bounded advisory and implement native/oracle before browser/records.
+- Next required action: push the verified native-opponent checkpoint, poll CI,
+  then independent mechanical oracle and browser/records within Batch4.
 
 ## Current Phase
 
-Status: Batch3 pushed at496a1fef19a45b8faea1c67c5e08993d5ccbb5a1; both CI checks pass.
-386 tests in64.481s, zero skips, scoped independent
-reviews clean. All seven lab games and three static controls are available through
-the explicit opt-in factory, not yet the browser. Graph geometry is immutable;
-version2 saves validate complete histories by legal journal replay. Planted Y is
-atomic and separate from empty construction; passages support three orientations.
-Batch4 API-spine is verified locally:426tests in71.033s, zero skips, Ruff/compile/
-JS/diffchecks and independent review clean. The new legacy-public fixture protects
-216 observations and168 saved inputs under both identifiers. Five actual Classic
-browser phases inspected; no application errors, one pre-existingfavicon404.
-Server/session stopped. Push/check internal checkpoint then native/oracle/browser/
-records follow, not omitted work or new authorization gates. Labcomputer remains
-explicitly unavailable until the next unit; no legacy fallback or labbrowser claim.
+Batches1–3 complete. All seven games and three controls work through the opt-in
+factory, immutable topology and strict v2 legal journal replay. Batch4 API spine
+pushed at2e7bd63f46af096354ec41a7e4073a79fe206e3f, both CI checks pass.
+Native unit verified:474tests in76.967s, zero skips; Ruff/compile/JS/diff and
+independent cumulative review clean. Frozen lab-native-objective-v1 uses original
+seat identity, all legal replies and separate hub capture telemetry. Agent hash
+6cddcdea5eaf4f1a09a61d1d024783c24449aa8f6803021ecbefab5a13f6d26b.
+Legacy103positions/218choices/24saves plus216publicobservations/168savedinputs
+remain exact. Native closure commit/push and exact-tip CI are next.
+Three-seed fresh engineering checks per ruleset: Toy medians27–81ms, Full278–1267ms;
+not a p95 or strength claim. Classic browser computer opening, human takeover and
+automatic White reply inspected in three screenshots/texts and viewport. No app
+errors; existing favicon404 only. Server/session stopped, model never written.
+Independent mechanical oracle and browser/records remain pending within Batch4.
+No lab browser exposure or admitted comparative agent is claimed.
 
 ## Active Compute
 
-No active research workers, paid jobs, or servers. Isolated port8773 browser server
-stopped cleanly. Ordinary tests/CI are engineering verification only. Batch 2
-goal cycle completed in 514.5 seconds (CLI fallback `claude-opus-4-8`), receipt
-`.aragora/goal_cycles/20260907T013611Z/`. Batch 3 unit A advisory completed in
-181.5 seconds (same CLI fallback), receipt `.aragora/goal_cycles/20260907T020236Z/`.
-Its two-unit sequencing is internal to Batch 3; it does not omit scope or permit a
-stop. Unit B advisory completed successfully in336.5s via the same CLI fallback,
-receipt `.aragora/goal_cycles/20260907T022500Z/`. Process tree is absent and capacity
-was explicitly released to task019f2b0a-45dd-7543-a985-f43a5cb241fb. That task has
-now explicitly released capacity and reports no reviewer process remaining.
-Batch4 advisory completed successfully in169.7s via CLI fallback claude-opus-4-8,
-receipt `.aragora/goal_cycles/20260907T024159Z/`, envelope outsidegit
-`batch-4-goal-cycle.json`. Its API-first internal unit is accepted; legacy response
-preservation means legacy rules, not a ban on the explicitly requested lab API.
-No advisory/research/server process remains. Disjoint implementation and independent
-API tests follow the agreed schema. Research charge remains zero.
+No active research workers, paid jobs, advisory or server. Ordinary product tests
+and CI are engineering verification only. Last bounded goal cycle167.5s via CLI
+fallback claude-opus-4-8, receipt `.aragora/goal_cycles/20260907T030657Z/`.
+Prior receipts and advisory dispositions are preserved in the execution log.
+Reviewer capacity remains held by task019f2b0a-45dd-7543-a985-f43a5cb241fb (#10010),
+currently yielded to its coordinated #9903 prepare-only pass. No additional
+Claude/CLI reviewer/consult/evidence launch until explicit terminal release.
+Normal implementation and product tests continue independently. Research charge0.
 
 ## Non-Negotiables
 

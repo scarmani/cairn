@@ -38,10 +38,10 @@
     "remaining_batches": 3,
     "stop_allowed": false,
     "checkpoint_is_stop": false,
-    "next_required_action": "Push verified426-test Batch4 API-spine checkpoint, close exact-tip CI/review, then one bounded advisory for native/opponent and mechanical-oracle unit. Browser/records still follow; do not stop."
+    "next_required_action": "Commit/push verified Batch4B native unit, poll exact-tip CI, then independent mechanical oracle and browser/records. Honor #10010 Claude-capacity hold until explicit release; normal engineering continues. No checkpoint stop."
   },
   "test_baseline": {"passed": 254, "total": 254, "skipped": 0, "status": "captured", "seconds": 25.285},
-  "current_batch": {"id": 4, "name": "Browser laboratory and mechanical oracle", "status": "in_progress", "unit": "API spine verified; push/check next", "tests_passed": 426, "tests_seconds": 71.033, "skipped": 0},
+  "current_batch": {"id": 4, "name": "Browser laboratory and mechanical oracle", "status": "in_progress", "unit": "Native opponent verified; closure push pending", "api_commit": "2e7bd63f46af096354ec41a7e4073a79fe206e3f", "api_ci": "both tests pass", "tests_passed": 474, "tests_seconds": 76.967, "skipped": 0, "native_agent_hash": "6cddcdea5eaf4f1a09a61d1d024783c24449aa8f6803021ecbefab5a13f6d26b", "native_review": "independent cumulative review clean", "browser": "Classic computer opening, human takeover and automatic White reply; three screenshots/texts and viewport inspected; existing favicon404 only; server stopped"},
   "preflight": {
     "python": "3.13.0",
     "node": "25.9.0",

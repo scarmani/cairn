@@ -126,7 +126,9 @@ loader still validates the complete game journal. Version-1 loading is unchanged
 Lab computers use only Casual/Standard and no Classic/Personal profile. Explicit
 profile requests are rejected; absent profile data remains absent/null, never
 silently normalized to Balanced. All three match configurations are representable.
-During the API-only internal checkpoint, computer execution fails explicitly as
-not yet available; the subsequent native-opponent unit supplies the shared action
-decision API before the browser lab is exposed. This is staging, not a delivered
-computer-play claim. No Personal model is read as a lab evaluator or overwritten.
+`/api/computer` uses the provisional `lab-native-objective-v1` recipe described in
+`rules-lab-native-agent.md`. It analyzes an isolated rules-state clone and commits
+exactly one returned action through the shared adapter. The public decision and
+catalog identify the recipe and source hash; neither implies MCTS admission.
+Browser laboratory exposure remains a subsequent unit. No Personal model is read
+as a lab evaluator or overwritten.

@@ -279,14 +279,18 @@ class TestLabServerOwnership(unittest.TestCase):
                         server.load_snapshot(bad)
         self.round_trip(game, match)
 
-    def test_api_spine_computer_stage_fails_closed_without_legacy_search(self):
-        game, match = self.make_match(mode="computer", human_color=WHITE)
+    def test_native_computer_execution_never_uses_legacy_search(self):
+        game, match = self.make_match(mode="computer", human_color=WHITE, difficulty="casual")
         before = server.snapshot_payload(game, match)
+        available = legal_actions(match.lab_state)
         with patch.object(server, "choose_decision", side_effect=AssertionError("legacy search")), \
                 patch.object(server, "get_profile", side_effect=AssertionError("legacy profile")):
-            with self.assertRaisesRegex(Illegal, "not yet available"):
-                server.apply_computer_action(game, match)
-        self.assertEqual(server.snapshot_payload(game, match), before)
+            decision = server.apply_computer_action(game, match)
+        self.assertIn(decision.action, available)
+        self.assertEqual(game.placements_played, 1)
+        self.assertEqual(game.constructions_played, 0)
+        self.assertNotEqual(server.snapshot_payload(game, match), before)
+        self.round_trip(game, match)
 
 
 if __name__ == "__main__":

@@ -16,6 +16,7 @@ from lab_match import (
     lab_computer_settings, lab_state, laboratory_public_view, validate_lab_profiles,
 )
 from lab_spec import LAB_REGISTRY, STATIC_CONTROL_REGISTRY
+from lab_opponent import LabDecision, choose_lab_decision
 from varde import (
     BLACK, BREATH_RULESETS, EXTENSION_RULES, RULESETS,
     WHITE, Game, Illegal, get_ruleset_spec, groups_of, has_sky, other,
@@ -645,8 +646,21 @@ def computer_take_extensions(game):
 
 def apply_computer_action(game, match, model=None):
     if is_lab_game(game):
-        assert_lab_actor(game, match, "computer")
-        raise Illegal("laboratory computer opponent is not yet available")
+        state = assert_lab_actor(game, match, "computer")
+        seat = match.seats[state.actor_color]
+        analyzed = state.clone()
+        before = analyzed.to_dict()
+        decision = choose_lab_decision(
+            analyzed, difficulty=seat.difficulty, seed=seat.seed,
+        )
+        if not isinstance(decision, LabDecision) or not isinstance(decision.action, RulesAction):
+            raise Illegal("laboratory opponent returned an invalid decision")
+        if analyzed.to_dict() != before:
+            raise Illegal("laboratory opponent mutated its analyzed position")
+        # Never install a searched successor: the live identity/acceptance
+        # envelope and journal advance through exactly one shared rules action.
+        apply_lab_action(game, match, decision.action, actor_kind="computer")
+        return decision
     if not match.computer_can_act(game):
         raise Illegal("it is not the computer's turn")
     color = match.next_computer_color(game) if game.finished else game.to_move

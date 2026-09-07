@@ -1,5 +1,18 @@
 Original prompt: yes to all in best order proceed and execute according to your recommendation
 
+## Rules Laboratory Batch4B · 2026-09-06
+
+- Provisional lab-native-objective-v1 Casual/Standard opponents now execute one
+  shared legal action through the server; separate objectives, original-seat pie
+  perspective, both ending decisions and save continuation are tested.
+- 474 tests pass in76.967s, zero skips; independent native/server review clean.
+  Existing seeded engine and exact API/save fixtures remain unchanged.
+- Fresh three-seed engineering latency smokes: Toy medians27–81ms, Full278–1267ms.
+  Not a strength or p95 claim. No research games/calibration launched.
+- Existing Classic browser computer opening/human takeover/automatic White reply
+  verified with screenshots/text and no application errors; existing favicon404.
+  Isolated server stopped. Lab browser and independent oracle are still pending.
+
 ## 2026-07-12
 
 - Preserved the imported prototype as Git baseline `9e14357`.

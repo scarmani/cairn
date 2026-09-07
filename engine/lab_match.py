@@ -6,6 +6,7 @@ model. Legacy matches never use this adapter. No search or research runs here.
 
 from actions import RulesAction, RulesState, apply_action, legal_actions
 from lab_game import LabGame
+from lab_opponent import lab_native_public
 from lab_spec import LAB_REGISTRY, LAB_SPECS, get_lab_spec
 from varde import BLACK, WHITE, Illegal, control, groups_of
 
@@ -136,7 +137,8 @@ def lab_catalog_entries():
             status="experimental", rules_revision=spec.revision,
             family=spec.id, min_size=min(spec.allowed_sizes), max_size=max(spec.allowed_sizes),
             archival_reason=None, scoring_description=spec.description,
-            analysis_status="unmeasured", native_evaluator_revision=None,
+            analysis_status="unmeasured", native_evaluator_revision="lab-native-objective-v1",
+            native_opponent=lab_native_public(),
         )
         entries.append(item)
     return entries
@@ -224,5 +226,5 @@ def laboratory_public_view(game, match, *, decision=None, learning=None):
         "learning": learning, "computer_decision": decision,
         "analysis_status": "unmeasured",
         "mcts_admission": {"status": "unmeasured", "comparative_games": 0},
-        "native_opponent": {"status": "not-yet-available", "provisional": True},
+        "native_opponent": lab_native_public(),
     }

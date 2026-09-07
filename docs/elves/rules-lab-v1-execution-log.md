@@ -2,13 +2,86 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–3 pushed/CI green; Batch4 API-spine closure push next.
+- Phase: launched, Batches1–3 complete; Batch4 API checkpoint pushed/CI green,
+  provisional native-opponent internal unit verified, closure push next.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
 - Next: browser/API, provisional opponents and mechanical oracle; three batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 4 native-opponent closure: 2026-09-06T22:31 CDT
+
+Delivered the frozen lab-native-objective-v1 recipe: objective-aware Casual and
+Standard, complete original-seat pie perspective, all reply actions, honest node
+counts, single-resolution bounded cache and isolated successors. The server
+analyzes a clone and commits one legal action; both seat ending decisions persist.
+No Classic profile or Personal evaluator is applied to laboratory games.
+
+Verification:474tests in76.967s, zero skips (+48 since API checkpoint); Ruff,
+Python compilation, JS syntax and diffcheck pass. Independent final native/server/
+legacy review reran34tests in10.317s and found no blocker. Review caught missing
+recipe metadata, reproduced red before repair. Early unused area floods were
+removed without changing values, protected by exact feature tests. Root real-HTTP
+tests were red against unavailable hook, then11green in1.039s after integration.
+
+Three-seed fresh Standard engineering checks per new ruleset on Toy/Full (42
+decisions, no games or tuning): Toy medians26.7–81.1ms; Full277.5–1267.5ms. Passage
+Full scans5116legal transitions and took1057.6ms median. These are small usability
+smokes, not p95 qualification, agent calibration, or comparative evidence. Raw
+timings remain outsidegit and are hash-linked in batch4b-artifacts.json.
+
+Browser: real Classic vs-computer startup, automatic Black opening, human takeover
+and automatic White reply. Three canvas images/text states and control viewport
+opened/inspected; correct complete-seat reassignment and returned human Black turn.
+Zero application errors; existing favicon404 remains. Isolated8773 server/session
+stopped cleanly and disposable model file was never written. Lab browser is still
+pending, explicitly not claimed by this legacy regression chain.
+
+Regression attestation: new lab-only modules plus narrow server/lab_match hooks;
+server has six test consumers, lab_match five including server. Reference engine,
+old opponent/native evaluator, browser, profiles, learning and historical fixtures
+are byte-unchanged. Both legacy fixtures replay completely with no excluded output
+fields. Two API-stage unavailable assertions advanced to requested real execution,
+retaining all no-legacy/no-profile assertions; no test was removed or skipped.
+Confidence HIGH for isolation and mechanical legality; opponent strength remains
+provisional, browser lab/oracle remain next internal units. All contract items for
+this native unit met. No research charged. No merge. Approximate unit time:
+implementation12min, validation/review10min, advisory3min; overhead recorded not
+charged as research. Push/CI loop then continue, subject to coordinated CLI hold.
+
+## Batch 4 native-opponent contract: 2026-09-06
+
+API checkpoint2e7bd63f46af096354ec41a7e4073a79fe206e3f is pushed with both CI checks
+green; no review blockers. Protected PR20–22 and shared clean5bfea5e are unchanged.
+One bounded advisory completed in167.5s via CLI fallback claude-opus-4-8,
+receipt20260907T030657Z. Adopt native-only first, oracle in the next unit. Reject
+its stale claim that old native_evaluators.py contains lab weights: it only has
+six legacy definitions. A separate immutable lab recipe is frozen before code in
+docs/rules-lab-native-agent.md, leaving the legacy hash untouched. Server fixture
+is pinned to its actual2e7bd63 checkpoint, not b620a11 where it did not exist.
+
+Behaviors: one-pass real transition generation, journal-safe clone-returning
+bounded cache, original-seat perspective through pie, objective-aware fixed
+weights, pass replies, actual ending accept/resume policy, provisional public
+rationales, no Classic/Personal fallback and no live cutoff. Build on shared
+RulesAction/RulesState and the tested API adapter. No new rules or research recipe.
+Blast radius: new lab_actions/lab_opponent, narrow server/lab_match hook and
+additive native tests. The two staging-only unavailable tests advance to real
+legal execution without removing their no-legacy/model isolation assertions.
+
+Acceptance: all seven lab games and three controls legal/deterministic/nonmutating,
+cache alias/history safety, original-vs-hub capture telemetry, distinctive scoring,
+pie identities, pass/resumption, strict save continuation; full426+ tests, Ruff,
+compile/JS, frozen parity, independent test review and exact-tip CI. Mechanical
+oracle and browser/records remain pending within Batch4. No empirical evaluator
+calibration or comparative match is substituted for MCTS admission.
+
+Claude capacity released to task019f2b0a for#10010, which yielded the current
+window to SDK task019f807d for#10014. No new CLI reviewer/consult/evidence job
+until coordinated release. Normal implementation/product tests continue.
+Research0; no proof certification or research job launched.
 
 ## Batch 4 API-spine closure: 2026-09-06
 

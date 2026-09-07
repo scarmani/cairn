@@ -252,6 +252,68 @@ class TestLabHTTP(unittest.TestCase):
         self.request("/api/load", bad, status=400)
         self.assertEqual(self.snapshot(), saved)
 
+    def test_native_computer_opening_and_human_takeover_for_every_lab(self):
+        for spec in LAB_SPECS:
+            with self.subTest(rules=spec.id):
+                opening = self.new(
+                    spec.id, mode="computer", human_color="W", difficulty="casual", seed=17,
+                )
+                moved = self.request("/api/computer", {})
+                decision = moved["computer_decision"]
+                self.assertEqual(decision["action"], "play")
+                self.assertIn({"action": "play", "point": decision["point"]}, opening["legal_actions"])
+                self.assertTrue(decision["provisional"])
+                self.assertTrue(decision["reason_text"])
+                self.assertNotIn("score", decision)
+                self.assertNotIn("weights", decision)
+                self.assertEqual(moved["placements_played"], 1)
+                self.assertEqual(moved["actor_color"], "W")
+                self.assertFalse(moved["match"]["computer_can_act"])
+                self.assertEqual(moved["native_opponent"]["status"], "provisional")
+                swapped = self.request("/api/swap", {})
+                self.assertEqual(swapped["match"]["computer_color"], "W")
+                self.assertTrue(swapped["match"]["computer_can_act"])
+                reply = self.request("/api/computer", {})
+                fields = {key: value for key, value in reply["computer_decision"].items()
+                          if key in ("action", "point", "face", "orientation")}
+                self.assertIn(fields, swapped["legal_actions"])
+                self.assertEqual(reply["actor_seat"], "human")
+                self.assertEqual(reply["moves_played"], 2)
+                saved = self.snapshot()
+                self.request("/api/load", saved)
+                self.assertEqual(self.snapshot(), saved)
+
+    def test_real_computers_accept_then_resume_without_skipping_losing_seat(self):
+        self.new("breath-connection")
+        for point in ([-8, 0], [8, -2], [-7, -1], [8, 2]):
+            self.act("play", point=point)
+        self.act("pass")
+        pending = self.act("pass")
+        self.assertGreater(pending["score"]["B"], pending["score"]["W"])
+        self.assertEqual(pending["actor_color"], "B")
+        saved = self.snapshot()
+        saved["match"]["mode"] = "watch"
+        saved["match"]["explain"] = False
+        for index, seat in enumerate(saved["match"]["seats"].values()):
+            seat.update(kind="computer", difficulty="casual", profile=None, seed=101 + index)
+        self.request("/api/load", saved)
+        first = self.request("/api/computer", {})
+        self.assertEqual(first["computer_decision"]["action"], "accept")
+        self.assertEqual(first["computer_decision"]["reason_text"], "")
+        self.assertFalse(first["accepted"])
+        self.assertEqual(first["actor_color"], "W")
+        between = self.snapshot()
+        self.request("/api/load", between)
+        second = self.request("/api/computer", {})
+        self.assertEqual(second["computer_decision"]["action"], "resume")
+        self.assertFalse(second["finished"])
+        self.assertTrue(second["resumption_used"])
+        self.assertEqual(second["match"]["end_acceptances"], [])
+        # Resume keeps the engine's normal turn order; accepting first did not
+        # transfer an ordinary move to the requesting seat.
+        self.assertEqual(second["actor_color"], "B")
+        self.assertEqual(second["placements_played"], 4)
+
 
 if __name__ == "__main__":
     unittest.main()
