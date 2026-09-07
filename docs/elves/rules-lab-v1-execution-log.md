@@ -2,13 +2,79 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–4 complete; Batch5A verified, closure push/CI next.
+- Phase: launched, Batches1–4 complete; Batch5B locally verified, closure next.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
 - Next: terminal certification interfaces, then charged gated MCTS; two batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 5B verification: 2026-09-07
+
+646tests pass in90.663s, zero skips (49 additive synthetic tests). Earlier642
+suite also passed in90.875s; preserved separately before four final scaffold
+tests. Scoped Ruff, compileall, both JS and diff checks green. Final independent
+producer/task/pipeline review clean, including the narrow timing-validation delta
+and all11 compact artifact hashes. PR20–22 heads/draft/unmerged states reverified.
+Producer/checker are distinct traversals and share only public certificate helpers.
+Original-seat minimax, same-seat turns, pie, equivalent oriented wins, partial
+exact roots, strict node limits, >1100-ply synthetic chains, malformed callbacks,
+mutation, detached canonical outputs and separate proof/checker counters verified.
+
+Fixed tasks test durable pre-callback running records, exact ordered prefixes,
+atomic replace/fsync failure, reentrant ownership, inert manifest content,
+duplicate-key/checksum tamper rejection, cancellation/resume and failure blocking.
+Root synthetic pipeline proves byte-equivalent canonical checked results after
+resume, and records partial proofs as partial evidence rather than admission.
+One invalid-input RED found during owner testing: an oversized integer deadline
+raised raw OverflowError. It now fails through the strict invalid-time API;
+the regression and earlier successful full log are retained. No old test weakened.
+
+Both fullsuite sessions are terminal. New source/raw hashes linked in batch5b
+artifact index. Frozen5A checker/adapters and production/legacy/historical sources
+unchanged. Research0, no window, actual-game certificate, MCTS decision, worker,
+origin attestation or model write. The in-process runner cannot enforce a hard
+deadline; that limitation is explicit. Next commit/push/CI then continue Batch5.
+
+## Batch 5B contract: 2026-09-07
+
+Bounded advisory20260907T053346Z completed exit0:181.9s CLI fallback
+claude-opus-4-8,186.30s wrapper. Full response/prompt read. Fresh process inventory
+empty; explicit capacity release sent to SDK and#10010. No retry or research.
+Accepted substantial generic terminal-proof production plus deterministic fixed
+tasks. Rejected inferred full-origin attestation from journal prefixes and
+inapplicable Aragora tier/quorum template residue. Expected synthetic unknowns
+are not permission to stop the whole launched run.
+
+Freeze docs/rules-lab-proof-producer.md SHA256
+0490ad4e873d2e5a31bb835fb8cda64c091e1baad25a4295e67561aed63beffc.
+Three scoped agents own producer/tests, fixed-task scaffold/tests and independent
+synthetic invariants/review. Root owns integration/full verification and run docs.
+Frozen5A checker/adapters and all production/historical surfaces unchanged.
+No actual game proofs, MCTS, workers or ledger jobs. The in-process scaffold's
+deadline only prevents starting another task; it is not a hard-stop supervisor.
+Full-origin attestation and enforced charged-worker execution remain next work.
+
+## Batch 5B advisory launch: 2026-09-07T00:33 CDT
+
+SDK's reviewer completed and explicitly released capacity. Empty local provider
+inventory verified; reservation sent to SDK and#10010. One new CLI-only bounded
+cycle launched as exec75983; external batch-5b-goal-cycle.py/context.md/receipt.json.
+240s/attempt,570s total+5s cleanup, API fallback disabled and aragora import guard.
+No repeated consult, research job or window. Must read/sanity-check actual response
+and release capacity when terminal. Source tip b554a82 remains verified/CI green.
+
+## Batch 5A closure: 2026-09-07T00:30 CDT
+
+b554a82f49076ed6c0abc7700f0067932dbd6a2a pushed; guide reread and plan hash
+verified immediately after commit and push. Both exact-tip CI tests pass (runs
+34086765336 and34086768013). PR23 draft/open/unmerged with no reviews/inline
+comments; protected PR20–22 unchanged. Eleven compact source/raw artifact hashes
+reverified. Published checkpoint comment; no merge or research claim.
+Next bounded-cycle context/wrapper prepared outsidegit, not launched while SDK's
+one-review capacity reservation remains active. All RulesLab processes/agents idle.
+Research0, no window. Continue on release; this checkpoint is not a stop.
 
 ## Batch 5A verification: 2026-09-07T00:24 CDT
 

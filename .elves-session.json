@@ -38,7 +38,7 @@
     "remaining_batches": 2,
     "stop_allowed": false,
     "checkpoint_is_stop": false,
-    "next_required_action": "Commit/push verified Batch5A, reread guide/hash/feedback/exact-tip CI, then one bounded cycle for Batch5B proof producer/recipes/run controls. No research before its execution gates."
+    "next_required_action": "Commit/push verified Batch5B, reread guide/hash and exact-tip CI/feedback; then continue full-origin attestation and enforced execution controls before charged research. No internal checkpoint stop."
   },
   "test_baseline": {
     "passed": 254,
@@ -51,18 +51,18 @@
     "id": 5,
     "name": "Certified corpora and gated MCTS",
     "status": "in_progress",
-    "unit": "5A verified; closure push and exact-tip CI pending",
+    "unit": "5B proof producer and fixed tasks verified/review clean; push/CI next",
     "rollback_tag": "elves/rules-lab-v1/pre-batch-5",
-    "substrate_commit": "ad7269026db64b8177c45185f51fa7748fb18c1a",
+    "substrate_commit": "b554a82f49076ed6c0abc7700f0067932dbd6a2a",
     "substrate_ci": "both tests pass",
-    "tests_passed": 597,
-    "tests_seconds": 180.222,
+    "tests_passed": 646,
+    "tests_seconds": 90.663,
     "skipped": 0,
-    "advisory": "20260907T045202Z success via CLI fallback claude-opus-4-8;184.16s wrapper; capacity released; no retry",
-    "contract": "docs/rules-lab-terminal-cert.md",
-    "contract_sha256": "6b348bc3424c931a480db61f58c55a98ddbb80e9e0d8ea87d6a723379e197235",
-    "independent_review": "clean;50 additive synthetic/mechanical tests; protected sources unchanged",
-    "artifact_index": "docs/elves/rules-lab-v1-batch5a-artifacts.json",
+    "advisory": "20260907T053346Z exit0; claude-opus-4-8 fallback181.9s, wrapper186.30s; full response/prompt read and scoped; capacity explicitly released, no active call or retry",
+    "contract": "docs/rules-lab-proof-producer.md",
+    "contract_sha256": "0490ad4e873d2e5a31bb835fb8cda64c091e1baad25a4295e67561aed63beffc",
+    "independent_review": "final clean, including11 artifact hashes and narrow timing-validation delta;49 additive synthetic tests, protected sources unchanged",
+    "artifact_index": "docs/elves/rules-lab-v1-batch5b-artifacts.json",
     "research_launched": false
   },
   "preflight": {

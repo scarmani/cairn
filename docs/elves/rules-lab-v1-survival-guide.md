@@ -51,9 +51,9 @@ Two planned batches remain. Estimates are planning ranges, not launch guarantees
 - Planned batches remaining: 2.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: commit/push verified Batch5A, reread guide/hash/feedback
-  and close exact-tip CI; then one bounded Batch5B cycle for proof producer,
-  recipes and enforced run controls before research. No internal checkpoint stop.
+- Next required action: commit/push verified Batch5B and close exact-tip CI
+  and continue. All646 tests pass locally,49 additive. Origin attestation and worker hard stops remain
+  prerequisite work before actual research. No internal checkpoint stop.
 
 ## Current Phase
 
@@ -97,19 +97,35 @@ optimal alternatives, uses conserved seat identity, and keeps all partial/unknow
 branches unvalued. All16 production and10 independent providers have full-history
 fingerprints and isolated cache/geometry ownership; arbitrary snapshots never
 claim full replay/admission. Scoped Ruff/compile/both JS/diff and independent
-review clean. Source/contract hashes in batch5a artifact index; closure push/CI
-pending. This is synthetic/mechanical engineering, not real-position certification.
+review clean. Source/contract hashes in batch5a artifact index; closure
+b554a82f49076ed6c0abc7700f0067932dbd6a2a is pushed and both exact-tip CI checks
+pass. Guide reread, frozen plan hash and PR feedback checked. This is synthetic/
+mechanical engineering, not real-position certification.
+
+Batch5B locally verified:646tests in90.663s, zero skips,49 additive synthetic
+tests. Exact producer uses a nonrecursive full-action traversal, conserved seat
+minimax, accepted scores only, explicit unknowns and all equivalent root actions.
+Independent checker roundtrips and resumable fixed-task integration pass. Task
+checkpoints preserve a running receipt before callback entry; crashes/faults never
+auto-retry or become scores. Timings stay outside canonical results. Scoped Ruff,
+compileall/both JS/diff green; final independent review clean, including all11
+artifact hashes and the narrow oversized-time validation delta.
+No actual-game proof or origin attestation; no worker-hard-stop claim. Artifact
+index docs/elves/rules-lab-v1-batch5b-artifacts.json. Commit/push/CI next.
 
 ## Active Compute
 
 No active research workers or paid jobs. Product tests/browser verification are
 terminal; Batch5A fullsuite exec79604 exited0. Isolated server PID31058/exec60631 exited143 by owned SIGTERM; port8773
 closed, Playwright rules-lab closed, and disposable model file remains absent.
-All three in-app agents are idle after clean review; one read-only Batch5
-integration map is prepared outsidegit, without proofs/calibration/games.
-SDK task019f807d-64fd-7502-8043-9c42ec27be88 currently reserves shared reviewer
-capacity for one built-in review; RulesLab acknowledged and will start no new
-provider/reviewer-dependent work until its explicit release. Local closure only.
+Implementation and final independent-review agents are terminal and clean.
+Both local5B fullsuite sessions84641/44956 exited0; final646tests90.663s.
+No research worker, testserver or browser active. SDK released its review at05:33Z.
+The subsequent single Batch5B advisory exec75983 exited0 in186.30s, receipt
+20260907T053346Z, CLI fallback claude-opus-4-8 in181.9s. Full response and prompt
+read/sanity-checked; provenance inference and irrelevant Aragora template rules
+not accepted. Process inventory empty and capacity explicitly released to both
+coordinating tasks. No active provider call, paid API or same-cycle retry.
 Batch5 goal cycle20260907T045202Z succeeded via CLI fallback claude-opus-4-8
 in180.7s (184.16s wrapper). Full response/prompt read; scope accepted as interface
 engineering only. Process inventory empty; capacity explicitly released to both
@@ -159,9 +175,14 @@ Batch5A contract: docs/rules-lab-terminal-cert.md, SHA256
 6b348bc3424c931a480db61f58c55a98ddbb80e9e0d8ea87d6a723379e197235.
 Only additive certificate/checker, research adapter and synthetic/mechanical
 tests now; no actual game proof producer, corpus or calibrated decision.
-That interface unit is now locally green and ready for closure push/CI. Next
-unit must freeze the proof producer/recipe/execution contracts and test worker
-hard-stop behavior before any charged real-state certification or calibration.
+That interface unit is green/pushed with exact-tip CI closed. Current Batch5B
+contract docs/rules-lab-proof-producer.md is frozen at SHA256
+0490ad4e873d2e5a31bb835fb8cda64c091e1baad25a4295e67561aed63beffc.
+Add the exact terminal producer and deterministic in-process fixed-task scaffold,
+with independent synthetic producer/checker round trips. Both frozen5A modules
+stay byte-identical. The scaffold cannot interrupt callbacks or launch workers;
+full-origin attestation and hard-stop supervisor remain explicit next prerequisites
+before charged real-state certification/calibration. No corpus/search outcomes yet.
 Browser contract remains frozen at
 SHA25657bc6d9d70310557b58c9dd33cfa602a86a5658769462cf4023e688d59833f6a.
 Build Batch5 terminal-certificate interfaces and deterministic run controls using
