@@ -43,26 +43,54 @@ crash cannot reset the clock. Before a cohort, measured projection × 1.30 must 
 both the active window and total remainder. Do not launch a full cohort just to
 cross a boundary. Persist completed fixed blocks and resume their exact manifest.
 
-No research window has opened. Research charged: 0 / 129,600 seconds.
+Official ledger initialized once at external `research-budget.json`, coordinator
+`rules-lab-v1-5g-20260907-bootstrap-01`. Never reset or replace this allowance.
+Window1 opened; one ended bootstrap job charged20.186600923538208/129600 seconds.
+No active research job/worker and no overrun. Keep the ledger and all partials.
 Two planned batches remain. Estimates are planning ranges, not launch guarantees.
 
 ## Stop Gate
 
 - Planned batches remaining: 2.
 - Stop allowed right now: no.
-- Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: close5F artifact review/commit/push/CI, then the charged
-  bootstrap. Fullsuite35709 terminal0:886tests311.219s,zero skips; independent
-  frozen code/test review clean. Ruff/compile/bothJS/diff pass. No old source edits.
-  5E pushed7f882f2;811tests pass306.600s,zero skips,reviewclean. Both exact-tip
-  CI PASS34100817766(12m8s)/34100822588(12m3s). No old source edits or gate bypass.
-  5F advisory95026 terminal/disposed/released; no second consultation this unit.
-  No official research or actual-game proof/search yet. Internal checkpoints do
-  not stop the run; two batches remain.
+- Why: further charged research is projection-gated, but unblocked Batch6 evidence
+  cards/tooling remain; a research stop does not finish those deliverables.
+- Next required action: close5G negative report/fullverification/review/push/CI,
+  then Batch6 outcome-independent cards/analysis tools. Do not rerun bootstrap,
+  raise limits, or launch full certification/MCTS/comparisons. The single measured
+  cohort provides no completed dual-provider or Beginner timing projection.
+  5G advisory alreadycomplete/disposed/released; no duplicateconsult thisunit.
 
 ## Current Phase
 
-Batch5F locally verified; closure pending. Main fully read/froze docs/rules-lab-proof-jobs-contract.md,
+5Gbootstrap59438 terminalexit3, status timeout/task-timeout. Job
+rules-lab-v1-5g-bootstrap-001 used20.186600923538208 chargedseconds. Sixcompleted
+legacyToytasks are allpartial/unverified/shared-mechanics-unqualified;8inflight
+interrupted and18unstarted, includingeveryBeginner. A20stask guard stoppedcohort,
+not120scohortexpiry;6siblings ranonly7.67–11.35s. All14groupscleanupconfirmed,
+noownedresearchprocesses, nooverrun.0certified/0admitted/0comparativegames.
+Independent result/24referencedartifact/checkpoint/ledger audit clean;17additional
+stageartifacts confernocompletion. No proofintegrityfailure detected. Completed
+selfCPU56.716693s; totalCPUunknown. Fullcertprojectioncannotbedefended fromthese
+samples, so furtherchargedwork isblockedpendingapredeclaredcomparablemeasurement
+continuation. FinishunblockedBatch6tools/cards; no native-onlycomparisonfallback.
+
+Output externalbatch-5g-run.json; manifest/checkpoint/artifacts batch-5g-bootstrap/.
+Manifestsemantic7016c258169cdbca9d8a28372e3f7ed0fbf12016333632a344343d6c006f8207;
+physicala6bd506af553bddb423bc47a1758b65f3db6def49848d7265343072b80729af2.
+Canonicalcompleted667ccf1ccb3823f3c496a296c41bba29ec0d88a1f2e997337b6f11bad041e882.
+Read-onlysummary exactregenerationcmp0; semantic
+a139ba05226e5eda7bc620ce61aff385b9351166aa8386229b38dc80fa308db7.
+Report docs/rules-lab-bootstrap-report.md; closuretests73305terminal0:
+886tests313.055s,zero skips. Ruff/compile/bothJS/diff pass; sourceunchanged.
+Summaryregenerationcmp0; all48storedartifactfilehashesvalid. Noownedprocessactive.
+Finalreport/artifactreview,push/CI next, then unblockedBatch6.
+
+Historical5F engineering closure:
+Batch5F fef0bfd7f62d311435bd87bdf386d8c69b151e1b pushed; exact-tip CI PASS
+34104697915/job101686921202(12m28s) and34104694706/job101686911669(12m23s). Main fully reread
+guide aftercommit/push, verifiedplanhash unchanged, PR23draft/open/unmerged,
+reviews/inline/newcomments empty before5G. Main fully read/froze docs/rules-lab-proof-jobs-contract.md,
 SHAfbea47378786b19b0172962f269abcafde3b693fb6a760e2d41dbb11a880758c.
 Jobs/manifest ownerlab_budget; actualproof/artifacts ownerlab_compatibility;
 independenttests/reviewlab_plan_review; CLI/fullvalidation/rootdocs main.
@@ -79,7 +107,7 @@ Report docs/rules-lab-proof-jobs.md; artifact closure review/push/CI next.
 Final independent closure review clean: all18 artifact hashes verified, including
 full/focusedlogs, retainednegatives, oldsourceparity and truthful no-admission.
 IndexSHA7e4fb9432c7861e99d727c5c99d465ec135115856c868e4ef14f55b56e3711a8.
-Commit/push/CI remains the next gate before chargedbootstrap.
+Both exact-tip CI checks passed before the5G bootstrap above.
 Earlier milestone details below are historical.
 
 Batch5E contract fully read/frozen before implementation at
@@ -185,7 +213,15 @@ inline blockers. Corrected-tip CI both PASS34096839267(6m40s) and34096836729(6m3
 
 ## Active Compute
 
-5F engineering only. No official research ledger/window exists; charged0/129600s.
+5Gbootstrap terminal59438exit3; allownedresearchgroupsstopped andledgerjobclosed.
+Officialledger charged20.186600923538208s/window1; noactivejob/worker/nooverrun.
+Sessionrules-lab-v1-5g-20260907-bootstrap-01; neverinitializeanotherledger.
+Engineeringfullsuite73305terminal0; sourcefef0bfdunchanged,bothCIgreen atlaunch.
+Next5G boundedadvisory95382 terminal0:170.7sCLI fallbackclaude-opus-4-8,
+176.315swrapper,receipt20260907T091741Z. Fullresponse/prompt read/disposed;
+ownedinventoryempty and reservation explicitlyreleased toSDK/#10010. Accept
+frozenbootstrap/audit only; discard pendingCI-as-negative, extra doc-onlycommit,
+mistypedhash and templatequorum advice. No second5Gconsult; CIstillgateslaunch.
 Advisory95026 terminal0 (188.4sCLI,193.169swrapper); ownedinventoryempty and
 reservation explicitlyreleased toSDK/#10010. No secondconsult or paidAPI.
 Prior5E localtests/processes allterminal; bothGitHubtestsPASS.5F source owners and
@@ -275,19 +311,22 @@ Last disk check332GiB free. No new research throughput measurement exists.
 5F trusted proof jobs/manifests/artifacts/CLI are locally verified under the frozen
 contract above:886tests311.219s,zero skips; final code review clean.5E7f882f2 is
 green locally and onbothCI; guide/hash/PRfeedback checked. One5F advisory is
-complete/disposed/released. Finish artifact review/commit/push/CI before the
-charged bootstrap. Do not redo5A–5E or seek a second5F advisory.
+complete/disposed/released. Commit/push/artifactreview andbothCI are complete at
+fef0bfd.5Gbootstrap andindependentaudit complete as anoperationalnegative;
+fullsuite73305passed886tests313.055s; finishreport/artifactreview/push/CI,
+then unblockedBatch6 tools/cards.
+Do not redo5A–5G, rerunbootstrap, or spendmore researchwithoutcomparableprojection.
 The Batch5 rollback tag remains at ad72690. All historical contracts, source,
 corpus and evidence stay byte-identical. No corpus or agent is qualified yet.
 
-After trusted job integration and its review/CI gate, run the frozen32-task
+Historical executed bootstrap specification (do not relaunch): the frozen32-task
 bootstrap: first eligible fixed-ID development candidate for every16 rulesets at
 n3/n4;32 producer/128 checker node caps per provider path;8 workers,20s/task,
 120s hard cohort reservation (156s budget capacity including30% safety).
 Charge origin replay, production and independent proof/check paths, failures,
 cleanup and observation. Preserve missing/incomplete tasks explicitly; never
 replace them based on outcomes. Legacy-six independence limits remain visible.
-No official research ledger/window has opened yet. Full certification remains
+Officialledger/window1 now records20.186600923538208seconds. Full certification remains
 bounded at10,000 nodes. Project later cohorts from measured relevant work, not
 cheap ending positions. Comparative matches stay blocked until per-rule admission.
 

@@ -2,15 +2,76 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–4 complete;5F locally verified, closure pending.
+- Phase: launched, Batches1–4 complete;5G audited operationalnegative, closure thenBatch6.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
-- Next: terminal certification interfaces, then charged gated MCTS; two batches remain.
-- Active research: none; charged time 0/129,600 seconds.
-- Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
-  `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+- Next:5Greport/verification/review/push/CI, then unblockedBatch6 cards/tools.
+- Active research:none;charged20.186600923538208/129600s; fullcert/MCTS/comparisons gatedoff.
+- Current research report: `docs/rules-lab-bootstrap-report.md`, an audited
+  operational negative. Historical prelaunch HTML only:
+  `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`.
 
-## Batch 5F verification: 2026-09-07
+## Batch 5G closure: 2026-09-07
+
+Final independent review verifies all14 closure-index hashes and all48 stored
+file hashes. Summary regeneration and checkpoint snapshot are byte-equivalent.
+Index SHA197468deca08caf5c83ef435682ce86a45430c84d40fcefd4369d4a129488af5.
+No engine/research/web/server changes; session artifact pointer corrected to5G.
+Commit/push and exact-tip CI closure follow, then unblocked Batch6.
+
+5Gclosurefullsuite73305terminal0:886tests313.055s,zero skips,no testchanges.
+Scoped Ruff/compile/bothJS/diff pass; alltrackedsourceunchangedfef0bfd.
+Read-onlysummaryexactregenerationcmp0; externalfileinventory48hashesallvalid.
+Report/artifactclosure review/push/CI next,thenunblockedBatch6. No furtherresearch.
+
+5Gbootstrap59438terminalexit3,status timeout/task-timeout. SixcompletedlegacyToy
+tasks allpartial/unverified/shared-mechanics-unqualified;8interrupted,18unstarted,
+includingallBeginner. Task20sguard stoppedcohort;120scohortcapdidnotexpire. Six
+siblingshadonly7.67–11.35s,so notall8individuallytimedout. All14ownedgroupscleanup
+confirmed andfreshprocessinventoryempty. Chargedunion20.186600923538208s,first
+window,oneendedjob,nooverrun. CompletedselfCPU56.716693s; totalCPUunknown.
+Independentall6result/24referencedartifact/checkpoint/ledger auditclean,nointegrity
+contradiction.17orphan/stageartifactsof41contents confernocompletion.0certified,
+0admitted,0comparativegames. No replay/proof/retry inpostrunaudits.
+Read-onlysummary semantic a139ba05226e5eda7bc620ce61aff385b9351166aa8386229b38dc80fa308db7,
+exactregenerationcmp0. Canonicalcompleted667ccf1ccb3823f3c496a296c41bba29ec0d88a1f2e997337b6f11bad041e882.
+Independentfeasibilityreview agrees no defensiblefullcertprojection: no completed
+dual-provider/Beginner sample; onlylegacy32/128nodes. Do notextrapolateorauto
+retry. Furtherchargedworkgatedpendingpredeclaredcomparablemeasurementcontinuation.
+UnblockedBatch6cards/toolingremain; no falsegamequalityclaim/finalcheckpointstop.
+Reportdocs/rules-lab-bootstrap-report.md; fullsuite73305terminal0 as recorded above.
+
+5G independentprelaunchreview clean onall26pins/order/limits. Manifestphysical
+SHAa6bd506af553bddb423bc47a1758b65f3db6def49848d7265343072b80729af2.
+Launched trustedCLI exec59438,jobrules-lab-v1-5g-bootstrap-001, sourcefef0bfd,
+singleledger/sessionrules-lab-v1-5g-20260907-bootstrap-01. Poll existingprocess,
+never rerunonuncertainty. Outputbatch-5g-run.json,checkpoints/artifactsbootstrapdir.
+
+5F exact-tip CIbothPASS:34104697915/job10168692120212m28s,34104694706/
+job10168691166912m23s. Main fullyrereadguide andverifiedplan/contract/rawhash;
+no newPRreviews/inline/comments. 5Gprepare60423terminal0,manifest7016c258169cdbca9d8a28372e3f7ed0fbf12016333632a344343d6c006f8207,
+sourcefef0bfd,32fixeddevelopmenttasks,32producer/128checker,8workers20swhole/
+120scohort156capacity. Officialledgerinitializedonceexternalresearch-budget.json,
+sessionrules-lab-v1-5g-20260907-bootstrap-01. Zerocharge/noactivejob/window.
+Independentprelaunch manifestcheckpending; no prooflaunchedyet.
+
+5G conductor advisory95382 terminal0, receipt20260907T091741Z:170.7s CLI
+fallbackclaude-opus-4-8,176.315s wrapper. Fullresponse/prompt read; ownedprocess
+inventoryempty and reservation explicitlyreleased toSDK/#10010. No retry/API.
+Advisory overlappedCIwait only, not research or sourceimplementation. Accept
+frozenbootstrap thenfullartifact/accounting/cleanup audit. Reject classifying
+pendingCI as negative, templatequorum residue, and an extra doc-onlyprelaunch
+commit:5Fclosure is alreadycommitted, currentmetadata is5Gprogress; sourceguard
+explicitly permits unrelateddocumentationdirt. Reject its mistypedrawSHA
+d1dc7d7dbd...; authoritativepinned rawhash remainsd1dc7d7bd23b036862ddcffe9915fb5b7932147c838f93c4ef29fea9e255f7fc.
+No second5Gconsult; no latercohortwithoutseparate measuredfreeze. Continue
+unblockedBatch5/6 after thisunit; no internalcheckpointfinalstop.
+
+Closurefef0bfd7f62d311435bd87bdf386d8c69b151e1b committed/pushed,77145terminal0.
+Immediate fullguide reread aftercommit/push, planhash unchanged, PR23draft/open/
+unmerged withreviews/inline/newcomments empty. Exact-tip CI34104697915/
+job101686921202 and34104694706/job101686911669 running. Bootstrap waits forboth.
+No officialresearchwindow. ContinueafterCI; no internalfinalstop.
 
 Fullsuite35709 terminal0:886tests311.219s,zero skips,75 additive. Jobs19tests0.734s;
 taskowner14+independent25 unique39tests0.265s; CLI15tests0.104s; syntheticworker2
