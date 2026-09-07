@@ -229,3 +229,15 @@ Original prompt: yes to all in best order proceed and execute according to your 
 - Legacy saves captured after the final rescue but before the old manual finish
   are normalized on load, so restoring a game cannot reintroduce the dead-end
   button press.
+
+## Rules Laboratory launch — 2026-09-06
+
+- Draft PR23 launched explicitly; no merges. Batches1–2 freeze compatibility and
+  implement three scoring variants behind an opt-in factory, immutable graph
+  geometry, structured actions, complete analysis keys and replay-validated v2
+  saves. Existing engine/server/browser source and v1 behavior remain unchanged.
+- 340 tests pass; all218 frozen decisions and24 save cases retain exact parity.
+- Bundled web-game client checked isolated Classic startup, opening and pie;
+  three screenshots/text states inspected with zero errors. Server stopped.
+- Four junction games, browser laboratory, oracle and gated research remain
+  subsequent batches. No research time consumed; no game-quality claim made.

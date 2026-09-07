@@ -2,13 +2,75 @@
 
 ## Run digest
 
-- Phase: launched, Batch 1 complete; Batch 2 next after push/check closure.
+- Phase: launched, Batches 1–2 complete; Batch 3 next after push/check closure.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
-- Next: scoring variants and graph foundation; five batches remain.
+- Next: four junction variants and static controls; four batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 2 closure: 2026-09-06
+
+Delivered isolated `LabGame` for three scoring rules, explicit opt-in factory,
+immutable cached graph geometry (stable coordinate IDs, all spoke families,
+frozen static-Y initialization and pickle reconstruction), structured actions,
+complete analysis keys and seat-aware research snapshot envelopes. Reference
+engine, server and browser source remain byte-unchanged from approved base.
+
+Version-2 saves include replayable journals as well as complete typed histories.
+Loading certifies that legal replay reproduces the supplied state/history/counters;
+omitted or invented forbidden entries are rejected. This closes the completeness
+gap of unordered-history-only validation without changing legacy version-1 saves.
+
+Independent review resolved impossible ending envelopes test-first: initial
+decider must be the actual next color, first acceptance hands off once, and after
+resumption exactly one acceptance by the authorized seat is terminal. Also
+rejected mutable construction-face lists in otherwise frozen action objects.
+Three independent scoped reviews now report no blockers.
+
+Verification: 340 tests in 61.001 seconds, zero skips (299 prior +41 additive);
+103 legacy positions, 218 seeded choices and 24 saves replay identically. Changed
+Python Ruff, compileall, JS syntax and whitespace checks pass. No old product
+tests changed. Construction's implementation status is not frozen as a permanent
+invalid-ID test: the new test uses genuinely unsupported/legacy-only IDs.
+
+The required web-game client verified isolated Classic startup, a real canvas
+opening at (-2,0), and pie takeover. All three screenshots opened and semantic
+states inspected; Black changes from player-1 to player-2 while White remains
+to move and the board is unchanged. Zero console/page errors; port8773 server
+stopped, disposable Personal path never trained or written. Artifact hashes are
+in `docs/elves/rules-lab-v1-batch2-artifacts.json`.
+
+Regression confidence HIGH: exact frozen parity plus full suite, branch-owned
+additive modules, independent save/key/scoring reviews, and live browser check.
+No research/proof/calibration jobs: charged time remains 0/129600 seconds.
+No merge. Next is commit/push and exact-tip feedback/CI closure, then Batch 3.
+
+## Batch 2 contract: 2026-09-06
+
+Batch 1 pushed at `4af29e434a5eee6a5cb92ef8467297295e77dcd7`; both GitHub
+test checks pass (2m03s and 2m40s), no new reviews/comments, plan hash unchanged.
+Rollback tag: `elves/rules-lab-v1/pre-batch-2`.
+
+Bounded advisory completed successfully in 514.5 seconds using the CLI fallback
+`claude-opus-4-8`; receipt `.aragora/goal_cycles/20260907T013611Z/`. Accepted its
+isolation-first sequencing and preservation checks. Its suggested foundation-only
+unit is an internal step, not permission to omit Batch 2 scoring/saves or stop the
+launched run. No plan/gate changes. Reviewer capacity explicitly released to the
+separate Evergreen task; no further Claude/reviewer launch until its release.
+
+Behaviors: three frozen scoring variants using existing Breath resolution;
+strict revisioned version-2 game snapshots; immutable topology-keyed graph
+geometry; opt-in game factory; history/seat/phase-complete analysis keys.
+Build on: `lab_spec.py`, flat `resolve`, `groups_of`, board geometry, Game's pie
+and ending semantics, and existing `RulesState`. Leave reference varde.py unchanged.
+Acceptance: all scoring boundaries, group penalties, geometry n=3–6, clone/cache
+isolation, strict save/history rejection, legacy v1 and seeded parity, full tests.
+Blast radius: new lab modules plus additive shared action-interface capabilities;
+server/browser remain unwired until Batch 4. Dynamic construction rules/actions
+become playable only in Batch 3. Independent review targets save validation and
+cache omissions. No research computation or comparative claims in this batch.
 
 ## Batch 1 closure: 2026-09-06
 

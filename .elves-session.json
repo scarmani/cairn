@@ -35,13 +35,13 @@
     "active_jobs": []
   },
   "continuation_guard": {
-    "remaining_batches": 5,
+    "remaining_batches": 4,
     "stop_allowed": false,
     "checkpoint_is_stop": false,
-    "next_required_action": "Close Batch 1 push/check loop, then execute Batch 2 scoring variants and graph foundation under the frozen compatibility contract."
+    "next_required_action": "Close Batch 2 push/check loop, then implement the four junction variants and static research controls in Batch 3."
   },
   "test_baseline": {"passed": 254, "total": 254, "skipped": 0, "status": "captured", "seconds": 25.285},
-  "current_batch": {"id": 2, "name": "Scoring variants and graph foundation", "status": "pending"},
+  "current_batch": {"id": 3, "name": "Four junction variants", "status": "pending"},
   "preflight": {
     "python": "3.13.0",
     "node": "25.9.0",
@@ -59,7 +59,7 @@
   },
   "batches": [
     {"id": 1, "name": "Freeze specifications and compatibility", "status": "complete", "rollback_tag": "elves/rules-lab-v1/pre-batch-1", "tests_passed": 299, "compatibility_hash": "0797f216e00869ce6f3dbc5644f3367f89923904451657700a3a30bd57896dc6"},
-    {"id": 2, "name": "Scoring variants and graph foundation", "status": "pending"},
+    {"id": 2, "name": "Scoring variants and graph foundation", "status": "complete", "rollback_tag": "elves/rules-lab-v1/pre-batch-2", "tests_passed": 340, "tests_seconds": 61.001, "parity": "103 positions, 218 decisions, 24 saves unchanged", "browser": "Classic startup, opening and pie; three screenshots/text states inspected; zero errors; server stopped"},
     {"id": 3, "name": "Four junction variants", "status": "pending"},
     {"id": 4, "name": "Browser laboratory and mechanical oracle", "status": "pending"},
     {"id": 5, "name": "Certified corpora and gated MCTS", "status": "pending"},

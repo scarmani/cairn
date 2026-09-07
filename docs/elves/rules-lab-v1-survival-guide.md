@@ -44,28 +44,30 @@ both the active window and total remainder. Do not launch a full cohort just to
 cross a boundary. Persist completed fixed blocks and resume their exact manifest.
 
 No research window has opened. Research charged: 0 / 129,600 seconds.
-Five planned batches remain. Estimates are planning ranges, not launch guarantees.
+Four planned batches remain. Estimates are planning ranges, not launch guarantees.
 
 ## Stop Gate
 
-- Planned batches remaining: 5.
+- Planned batches remaining: 4.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action: close Batch 1 push/check loop, then execute Batch 2.
+- Next required action: close Batch 2 push/check loop, then implement Batch 3.
 
 ## Current Phase
 
-Status: In progress. Batch 1 implemented, validated and independently reviewed;
-Batch 2 starts after the closure push/check loop. Frozen compatibility contains
-103 positions, 218 seeded decisions, 24 save examples across six rulesets and four
-sizes, both legacy format IDs, and 16 protected historical artifact digests.
-Single next action: implement three scoring variants and immutable graph foundation.
+Status: In progress. Batch 2 implemented and independently reviewed; 340 tests,
+exact legacy parity and isolated Classic browser smoke pass. Three scoring rules
+are available through the opt-in factory, not yet the browser. Graph geometry is
+immutable; version-2 saves validate complete histories by legal journal replay.
+Single next action: closure push/check loop, then four junction games and controls.
 
 ## Active Compute
 
-No active research workers, paid jobs, or servers. Ordinary batch tests and
-GitHub PR CI are verification only. Batch 1 Fable goal cycle completed successfully
-in 123 seconds; receipt `.aragora/goal_cycles/20260907T011308Z/`.
+No active research workers, paid jobs, or servers. Isolated port8773 browser server
+stopped cleanly. Ordinary tests/CI are engineering verification only. Batch 2
+goal cycle completed in 514.5 seconds (CLI fallback `claude-opus-4-8`), receipt
+`.aragora/goal_cycles/20260907T013611Z/`. Separate Evergreen capacity hold was
+explicitly released; no reviewer process from this run remains active.
 
 ## Non-Negotiables
 
@@ -88,17 +90,18 @@ in 123 seconds; receipt `.aragora/goal_cycles/20260907T011308Z/`.
 
 ## Next Exact Batch
 
-Scope: Batch 2 implements Line Breath, Gjerde Majority and Breath Connection,
-plus immutable topology-keyed graph geometry, a game factory and complete analysis
-keys behind the shared rules-action interface. Construction play belongs to Batch 3;
-browser/server exposure belongs to Batch 4. Build on frozen `lab_spec.py`, existing
-flat resolution/group primitives, legacy action adapter and compatibility corpus.
-Create `elves/rules-lab-v1/pre-batch-2` without overwriting existing tags.
+Scope: Batch 3 implements Y and six-spoke construction first, then planted Y and
+opposite-pair passages. Build on `lab_graph.py`, `LabGame`, shared RulesAction and
+factory, not a second resolver. Add three static research-only controls. Browser
+and server exposure remain Batch 4. Create `elves/rules-lab-v1/pre-batch-3`.
 
-Acceptance: exact scoring boundaries/group penalties, graph geometry/immutability,
-version-2 strict save/history round trips, legacy version-1 parity, full forbidden
-history in analysis keys, old seeded decisions unchanged. No research matches.
-Risk: shared action and factory consumers; leave `engine/varde.py` unchanged.
+Acceptance: neutral permanent topology; inactive centers absent; original-vertex
+opening/scoring; capture-first/suicide/superko; orientation equivalence and symmetry;
+empty versus planted counters; planted construction cannot immediately capture;
+strict topology-aware journal/history replay; complete-seat pie/end/resumption;
+legacy parity/full tests. No live cutoff. No research computation or match claims.
+Risk: topology-specific histories, scoring through zero-point hubs, clone isolation.
+Keep `engine/varde.py` unchanged and preserve all historical evidence.
 
 Before any measured recipe outcomes, freeze these operational interpretations:
 one globally selected recipe, equally weighted by certification-complete ruleset

@@ -19,6 +19,14 @@
   topology-keyed, never changed in place on a shared Board instance.
 - Existing repetition histories are not complete analysis keys. Include forbidden
   positions and seat/ending/turn state for proof/transposition caches.
+- An unordered save history cannot prove that no forbidden entry was omitted.
+  New lab saves carry a legal action journal and compare the replayed complete
+  history and state; old version-1 saves retain their original loader.
+- Shared action repr/order/key changes can perturb historical seeded decisions.
+  Keep the legacy key path and expose complete analysis keys separately.
+- Dynamic-board cache keys include spoke family: orientation zero is not the
+  same graph in Y, six and passage. Original rim metadata must not be recomputed
+  as three minus an increased degree. Pickle reconstructs immutable maps by key.
 - A planted new hub cannot remove any pre-existing enemy liberty. A test reporting
   immediate enemy capture from planting alone signals a topology/resolution error.
 - A local survival proof does not show survival is preferable to a sacrifice.
