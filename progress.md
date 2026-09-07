@@ -1,5 +1,16 @@
 Original prompt: yes to all in best order proceed and execute according to your recommendation
 
+## Rules Laboratory Batch6 · 2026-09-07
+
+- Added authenticated evidence assembly, exact existing-record analysis and an
+  offline HTML/SVG report;16 cards,13 final scripted traces,40 diagram classes.
+- 937tests pass in325.683s, zero skips; report regeneration byte-identical.
+  Report screenshots/text/filter/details/atlas/narrow layout inspected; no console
+  errors. No game/server/browser/search source changes in this batch.
+- Certification bootstrap remains stopped:0 certified/admitted/comparative games.
+  Further charged research requires a separately predeclared feasibility plan.
+  Do not retry or relax guards. See docs/rules-lab-run-report.md and the live guide.
+
 ## Rules Laboratory Batch4C · 2026-09-06
 
 - Independent stdlib graph mechanics and tri-state local-proof runner implemented;

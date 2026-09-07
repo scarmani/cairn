@@ -88,6 +88,14 @@ Replay checks the recorded legal actions and state transitions; it does not
 qualify the record as a human study or comparative-agent result. Records stay
 local and contain neutral seat identifiers rather than player names.
 
+The [Rules Laboratory run report](docs/rules-lab-run-report.md) distinguishes the
+completed playable implementation from blocked research: the first bounded
+certification bootstrap produced no accepted certificate, so MCTS admission and
+comparative matches were not launched. The new offline evidence CLI produces
+16 cards, raw scripted-event maps and a mechanical diagram atlas without assigning
+unmeasured strategic or human-aesthetic outcomes a score. Reproduction commands
+and the exact continuation gate are in that report.
+
 ## Verify
 
 ```bash
@@ -98,7 +106,7 @@ python3 engine/selfplay.py 3 100 greedy
 python3 engine/selfplay.py 3 100 epsilon
 ```
 
-The Batch-4 laboratory verification ran 547 tests with zero skips, including
+The Batch-6 laboratory verification ran 937 tests with zero skips, including
 legacy decision/save parity, immutable junction topology, independent mechanical
 oracle checks, and cross-language local-record replay. The suite also covers geometry, terrain,
 summits, flat capture, collar-dependent wells, wall stranding, eight-support

@@ -2,16 +2,78 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–4 complete;5G audited operationalnegative, closure thenBatch6.
+- Phase: Batches1–4 and independent Batch5–6 engineering complete; charged research blocked.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
-- Next:5Greport/verification/review/push/CI, then unblockedBatch6 cards/tools.
+- Next: final closure push/CI/feedback receipt, then handoff; no automatic research retry.
 - Active research:none;charged20.186600923538208/129600s; fullcert/MCTS/comparisons gatedoff.
 - Current research report: `docs/rules-lab-bootstrap-report.md`, an audited
   operational negative. Historical prelaunch HTML only:
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`.
 
+## Batch6 closure: 2026-09-07
+
+Frozen analysis contract implemented as three additive modules: authenticated
+evidence bundle, existing-record mechanical analysis and offline HTML/SVG CLI.
+Four new test files add51 cases; all937tests pass in325.683s,zero skips. Ruff,
+compileall,bothJSsyntax anddiffchecks pass. No old engine/research/browser source
+changed. All prior plans/contracts/artifacts remain frozen. README/progress and
+finalreport updated from generated evidence, not from strategic inference.
+
+Independent tests reproduced and fixed evidence-interchange false upgrades,
+boolean aliases, mismatched identities, source pins and partial-bootstrap flags.
+No assertions weakened. Owner focused15tests and independent16tests pass;
+mechanical owner10plus independent9 pass. Tool-only results are explicitly
+transcribed, not presented as raw logs. First CLItest's macOS /var symlink error
+was fixed in test fixture path resolution, not by relaxing output protection.
+
+Final report2/report3 trees diff-rq exit0,93 content files plus manifest.
+Manifest f0c9be9227069c1a064cded07ccc382f5957ba71f2cdc0158d5c639665e5784b;
+bundle8f2da864483cf7eaf631711b0b17fba791ab366e79840e43c44be0b3b1b4d448;
+analysisc06f4e6af71c219315041171f8a631832e62162f86af26217811c724853ca0bc.
+13 final scripts selected from25 audited exports;12supersededcopies excluded.
+40actions,25placements,9constructions,40spatial/phaseclasses,49rawmaps,16cards.
+One scripted accepted ending is not a natural-game sample. All strategic/human
+fields remain unmeasured; qualified shortlistempty. Report1 preserved as the
+pre-final-validator artifact. Report tools pinned separately from evidenceparent.
+
+Required webgameclient completed. Desktop/narrow/filter/navigation/details/atlas
+screenshots and render_game_to_text inspected.0browserconsoleerrors/warnings;
+narrow table scroll is contained. Tool file-protocol and stale-ref failures
+preserved separately from application behavior. Named browser and localreport
+server stopped,port8774closed. RawCLIartifacts moved out ofrepo,not deleted.
+
+Researchledgerunchanged:20.186600923538208seconds,onefailedendedjob,0active.
+No newproof/MCTS/match run. Finalreport documents a proposed certification
+feasibility continuation, not authorization for a retry/newcorpus or biggercaps.
+No merge. Final exact-tip CI/feedback must close after push before handoff.
+
 ## Batch 5G closure: 2026-09-07
+
+Both e8e428a exact-tip CI checks PASS:34107663020 completed09:52:13UTC,
+34107659930 completed09:54:30UTC. Main fully reread shortened live guide and
+verified frozen plan/contract/tip/PR feedback. No new review blocker. Batch6
+contract a9984d09d20c9bbeace16838570b2ab60b186da017fd346451fe064ffb2b963a
+frozen before implementation. Rollback tag elves/rules-lab-v1/pre-batch-6 at
+e8e428a. Additive modules only; prior proof/engine/browser sources unchanged.
+Evidence assembly ownerlab_budget, record analysis ownerlab_compatibility,
+independent tests/reviewlab_plan_review; main report CLI/integration/verification.
+
+Batch6 one advisory79630 terminalexit2, receipt20260907T094452Z: CLI error then
+240s fallback timeout,244.450s wrapper; no paid API/no accepted advice/no retry.
+Owned process inventory empty and reservation explicitly released to SDK/#10010.
+Proceed under goal-cycle HardRule3 with own judgment, within approved scope.
+Independent contract review found only wording conflict with existing replay's
+legal-action enumeration; clarified that mandatory mechanical validation stays,
+while analytical alternatives/search/new policies remain prohibited.
+
+Closure e8e428ad31e594c3843ed29eb7ccee6311900f0f committed and pushed;83171
+terminal0. Immediate complete guide reread and plan hash check passed. PR23
+draft/open/unmerged, reviews/inline empty. Exact-tip CI34107663020 and34107659930
+running. No source change in5G. Batch6 preparatory read-only work and one bounded
+advisory79630 overlap CI; implementation still waits for green. Coordination
+reservation sent to SDK/#10010 after fresh idle snapshots and empty owned
+consult/research process inventory. No further charged research.
 
 Final independent review verifies all14 closure-index hashes and all48 stored
 file hashes. Summary regeneration and checkpoint snapshot are byte-equivalent.
