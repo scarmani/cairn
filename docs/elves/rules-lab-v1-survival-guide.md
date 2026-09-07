@@ -51,16 +51,26 @@ Two planned batches remain. Estimates are planning ranges, not launch guarantees
 - Planned batches remaining: 2.
 - Stop allowed right now: no.
 - Why: the user launched all six batches; work remains and no stop condition applies.
-- Next required action:5D64cbe84 CIworker8equivalence fixture-only repair passes
-  focused10tests5.377s/full738tests165.026s; final narrowreview clean,commit/push/CI.
+- Next required action:5E full811tests pass306.600s,zero skips,finalcode reviewclean.
+  Fullsuite34812 terminal0; close artifact review/commit/push/exact-tip CI.
+  Core51/adapter14/worker8 focused tests pass. Then trustedproof-job integration
+  and the separately charged bootstrap, not an internal checkpoint stop.
   Preserve researchcaps and dedicated timeouttests.5Eadvisory79082 disposed/released;
-  then freeze the MCTS contract only after corrected exact-tip CI is green.
+  no second consult this unit. No actual-game search/proof or official research in5E.
   Both prior substrate CI checks pass at47f5a87.5D advisory56693 disposed.
   All738 tests pass locally; no proof/research/window in5D.
   Prior5C advisory failed exit2, no response accepted/retry; reservation released.
   No internal checkpoint stop; two planned batches remain.
 
 ## Current Phase
+
+Batch5E contract fully read/frozen before implementation at
+`docs/rules-lab-mcts-contract.md`, SHA256
+`a393bb35b943d20ea8bedc9c1ea07eacbf40ac92476438c0a6fc746371239125`.
+Three recipes share a generic core and production cache/facts; uniform and light
+remain distinct. Exact tree proofs are not terminal rollout estimates. Watchdog
+is total root-to-terminal transition actions, later20P original points, not hubs.
+All5E validation is synthetic/mechanical; real proof/MCTS remains separately gated.
 
 Batches1–3 complete. All seven games and three controls work through the opt-in
 factory, immutable topology and strict v2 legal journal replay. Batch4 API spine
@@ -151,15 +161,28 @@ No replacements, policy games, certification or official research/window.
 Closure64cbe84bf9d6a94b478a6dd2f50069d0cfaff20d pushed; guide fully reread,
 plan hash unchanged, PR23 draft/open/no review/inline blockers. Both new exact-tip
 CI tests in progress runs34095642547 and34095638240. Protected PR20–22 exact.
+Subsequent CI fixture-only repair136312eda4d201b5883a80c87a6b608bd8668035
+pushed; immediate fullguide/hash/feedback check complete. PR23 draft/no review/
+inline blockers. Corrected-tip CI both PASS34096839267(6m40s) and34096836729(6m35s).
 
 ## Active Compute
+
+5E source implementation frozen: corec71db729465343db5a25ef992343bb189f44e9c9ef53c9bfafb350629a3d04bd;
+adapter4b6790fc0be3dda7e61874a7fe046d7b6c70c9079969e68043d285e4843d4c8b.
+Core24+independent27 synthetic tests pass1.016s; adapter14 full mechanical tests
+pass122.058s. Worker72549 terminal0:8tests12.459s. Firstworker5660 RED (incorrect
+automatic-resume expectation) preserved, corrected to explicit reconciliation.
+Full product suite34812 terminal0:811tests306.600s,zero skips. Scoped Ruff/compile/bothJS/
+diff and existing tracked product/research parity green. Final code review clean.
+No new actual-game laboratory MCTS/proof/policy run.
+No official budget ledger/window opened. All prior source/evidence still protected.
 
 5E CLI-only bounded advisory79082 terminal0, receipt20260907T073029Z:
 157.7s CLI fallbackclaude-opus-4-8,161.459s wrapper. Fullresponse read/disposed;
 capacity explicitlyreleased toSDK/#10010 and ownedinventoryempty. No retry/API.
 Advice cannot bypass pendingCI or stop launchedrun. Accept MCTS-only engineering
 unit, shared controlled core/three immutable recipes and two rolloutpolicies.
-No5E implementation yet:64cbe84 run34095638240 failed worker8 canonical-equivalence
+Historical5D CInegative:64cbe84 run34095638240 failed worker8 canonical-equivalence
 synthetic test ontimeout (plus derivedpartialhash mismatch),738tests320.888s.
 Rawnegative batch-5d-ci-failure.log. Fixture task2/cohort8 reserves4.85scleanup
 for8workers; both independent reviews find no evidenced sourcebug. Only canonical-
@@ -168,14 +191,14 @@ with richer failure message. Dedicatedtimeouttests and productioncaps unchanged.
 Focused24334/full84126 terminal0:10tests5.377s/738tests165.026s,zero skips;
 Ruff/compile/bothJS/diff green. Finalnarrowreview clean,all4hashesverified. Artifactindex
 rules-lab-v1-batch5d-ci-repair-artifacts.json. Other64cbe84CI34095642547 passed6m46s.
-Allgame/scoring/corpus tests passed in both original runs. No newMCTS/research.
+Allgame/scoring/corpus tests passed in both original runs. No actual-game research.
 
 Batch5D advisory exec56693 terminal0, receipt20260907T065400Z: CLI fallback
 claude-opus-4-8 in182.2s,186.506s wrapper. Full response/prompt read and sanity-
 checked; corrections/disposition recorded in log. No paid API/retry/parallel call.
 Owned processes absent and capacity explicitly released to SDK/#10010. External
 context/wrapper/JSON prefixbatch-5d. Both substrate47f5a87 CI checks pass;
-5D closure-tip64cbe84 pushed; CI remains pending.
+Historical64cbe84 had one failed and one successfulCI; corrected136312e CI both PASS.
 No active official research jobs, paid jobs, testserver or browser. Mechanical
 corpus regeneration24609 and fullsuite79297 both terminal0. Research
 charged0/129600s; no window opened. Product fullsuite exec85175 exited0:
@@ -223,44 +246,41 @@ Last disk check332GiB free. No new research throughput measurement exists.
 
 ## Next Exact Batch
 
-Batch4 exact-tip CI is closed. Batch5 rollback tag is at ad72690; bounded
-goal cycle succeeded using fresh source/plan and batch-5-integration-review.md.
-Batch5A contract: docs/rules-lab-terminal-cert.md, SHA256
-6b348bc3424c931a480db61f58c55a98ddbb80e9e0d8ea87d6a723379e197235.
-Only additive certificate/checker, research adapter and synthetic/mechanical
-tests now; no actual game proof producer, corpus or calibrated decision.
-That interface unit is green/pushed with exact-tip CI closed. Current Batch5B
-contract docs/rules-lab-proof-producer.md is frozen at SHA256
-0490ad4e873d2e5a31bb835fb8cda64c091e1baad25a4295e67561aed63beffc.
-That producer/scaffold unit is complete at86392fa with both exact-tip checks green.
-Current5C contract docs/rules-lab-origin-supervision.md SHA256
-cdd61dde5762a596ce2a366bb5931d9ef844dd2c871902ead46fa6967314acfa is frozen.
-That unit is locally verified at697tests/114.184s; final source/artifact review
-clean, pushed47f5a87 and both exact-tip CI checks pass. Existing5A/5B and product sources
-remain byte-identical. Only short known mechanics and synthetic jobs ran in
-disposable ledgers. Actual corpus/probe remains deferred until the pre-research
-manifest and charged bootstrap are separately frozen. The single5D conductor
-cycle is complete/disposed; the frozen corpus contract is locally verified above.
-Close final artifact review/commit/push/CI and continue required MCTS and charged
-proof program under one next bounded conductor cycle.
-Browser contract remains frozen at
-SHA25657bc6d9d70310557b58c9dd33cfa602a86a5658769462cf4023e688d59833f6a.
-Build Batch5 terminal-certificate interfaces and deterministic run controls using
-synthetic tests before charged real-position proof/calibration. No corpus or
-agent is qualified yet. Raw browser manifest has465 artifacts; compact index is
-docs/elves/rules-lab-v1-batch4d-artifacts.json. Preserve v1/native/oracle hashes.
+5E is locally verified:811tests306.600s, zero skips, final source and13-artifact
+review clean. Commit/push this unit, reread guide/hash, inspect PR feedback and
+close exact-tip CI. Then take one bounded conductor cycle for trusted real-proof
+workers/job manifests and their synthetic integration tests. Do not redo5A–5E.
+The Batch5 rollback tag remains at ad72690. All historical contracts, source,
+corpus and evidence stay byte-identical. No corpus or agent is qualified yet.
 
-Acceptance: explicit lab opt-in, all seven games, construction preview/orientation
-by mouse/keyboard, zero-point hubs, actual neighbor/liberty inspection, three match
-modes, complete-seat takeover and both ending decisions, paused spectator load,
-strict v2 replay and legacy saves, no Classic profiles/Personal application to lab,
-structured local records/text state, real browser interaction/screenshots/errors,
-independent oracle invariants, full tests and review. MCTS remains research-only.
-Risk: live server ownership must use RulesState.actor_seat, not legacy computer
-ending shortcuts; game.finished is not accepted terminal. One authoritative lab
-ending state, no duplicated acceptance logic. Preparatory integration map outside
-git: `batch-4-integration-map.md`. Keep engine/varde.py and history unchanged.
-Mechanical unit tests only: proof certification and research are Batch5 and charged.
+After trusted job integration and its review/CI gate, run the frozen32-task
+bootstrap: first eligible fixed-ID development candidate for every16 rulesets at
+n3/n4;32 producer/128 checker node caps per provider path;8 workers,20s/task,
+120s hard cohort reservation (156s budget capacity including30% safety).
+Charge origin replay, production and independent proof/check paths, failures,
+cleanup and observation. Preserve missing/incomplete tasks explicitly; never
+replace them based on outcomes. Legacy-six independence limits remain visible.
+No official research ledger/window has opened yet. Full certification remains
+bounded at10,000 nodes. Project later cohorts from measured relevant work, not
+cheap ending positions. Comparative matches stay blocked until per-rule admission.
+
+Historical contract references (completed engineering, not new instructions):
+
+- 5A `docs/rules-lab-terminal-cert.md`:
+  6b348bc3424c931a480db61f58c55a98ddbb80e9e0d8ea87d6a723379e197235.
+- 5B `docs/rules-lab-proof-producer.md`:
+  0490ad4e873d2e5a31bb835fb8cda64c091e1baad25a4295e67561aed63beffc.
+- 5C `docs/rules-lab-origin-supervision.md`:
+  cdd61dde5762a596ce2a366bb5931d9ef844dd2c871902ead46fa6967314acfa.
+- 5D `docs/rules-lab-corpus-contract.md`:
+  0ce5de6b12bf7002ec25adb3c93aab3a2f6dab68f2ff3017b81a54af03536dc0.
+- 5E `docs/rules-lab-mcts-contract.md`:
+  a393bb35b943d20ea8bedc9c1ea07eacbf40ac92476438c0a6fc746371239125.
+
+The playable lab/browser is complete from Batch4; no UI changed in5E. Its raw
+manifest has465 artifacts and compact index `rules-lab-v1-batch4d-artifacts.json`.
+Keep v1/native/oracle hashes and `engine/varde.py` unchanged. RulesState acceptance,
+not game.finished, defines terminal research results. No public MCTS exposure.
 
 Before any measured recipe outcomes, freeze these operational interpretations:
 one globally selected recipe, equally weighted by certification-complete ruleset

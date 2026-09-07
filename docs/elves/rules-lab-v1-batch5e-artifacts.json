@@ -1,0 +1,105 @@
+{
+  "format": "varde-rules-lab-artifact-index",
+  "version": 1,
+  "unit": "5E",
+  "source_parent": "136312eda4d201b5883a80c87a6b608bd8668035",
+  "raw_root": "/Users/armand/Development/varde-research/rules-lab-v1",
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "research/harness/lab_mcts.py",
+      "sha256": "c71db729465343db5a25ef992343bb189f44e9c9ef53c9bfafb350629a3d04bd"
+    },
+    {
+      "kind": "source",
+      "path": "research/harness/lab_search_adapter.py",
+      "sha256": "4b6790fc0be3dda7e61874a7fe046d7b6c70c9079969e68043d285e4843d4c8b"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_mcts.py",
+      "sha256": "627bd8ee8d592cd834eaffe1da83dd8f14e2cac7b6eb8348c154b51cbfe5dd55"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_mcts_invariants.py",
+      "sha256": "a5a2750116345d9248325d3e3b5610b60ac6f92927912801ab60e08252edf831"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_mcts_workers.py",
+      "sha256": "4e4b824aba76cb06fb2b0ef8b20c9bc28ebab272abcf7b9410eceaeb9993628c"
+    },
+    {
+      "kind": "source",
+      "path": "engine/test_lab_search_adapter.py",
+      "sha256": "3907df01a26f1128f2047b710d168a194ef94741eed9dbdb156a5e524d29f66e"
+    },
+    {
+      "kind": "source",
+      "path": "docs/rules-lab-mcts-contract.md",
+      "sha256": "a393bb35b943d20ea8bedc9c1ea07eacbf40ac92476438c0a6fc746371239125"
+    },
+    {
+      "kind": "source",
+      "path": "docs/rules-lab-mcts-engineering-report.md",
+      "sha256": "3d12d5cd088437acb0911ccda03aae9830d4512d8e5346fcfe03d5519f642b67"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5e-tests.log",
+      "sha256": "11cc03427934e9cd840a9bc0944a55419c9d7f105ce307643f8a773bd030e1f6"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5e-worker-tests.log",
+      "sha256": "bc6b36ae06fb607978bea6421e2c39d62d1fad79674ae589b10a2ac9f3ff67c6"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5e-worker-tests-final.log",
+      "sha256": "a42beb3ba75bf722435dc8fe335c1046c96f70f7b601b39fde49588f3d586471"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5e-goal-cycle.json",
+      "sha256": "8a86a7590ec6dd870556a7bdfa66c286ed96fa99bb0d4843d0a4b38526747ece"
+    },
+    {
+      "kind": "external",
+      "path": "batch-5e-context.md",
+      "sha256": "8ecf8bbfd04c8e2cc6fe94ea4214d73ffd411ebdb147154213ab0ef2fc75032c"
+    }
+  ],
+  "verification": {
+    "tests_passed": 811,
+    "test_seconds": 306.6,
+    "skipped": 0,
+    "additive_tests": 73,
+    "owner_independent_synthetic_tests": 51,
+    "owner_independent_seconds": 1.016,
+    "mechanical_adapter_tests": 14,
+    "mechanical_adapter_seconds": 122.058,
+    "worker_tests": 8,
+    "worker_test_seconds": 12.459,
+    "lint_compile_js_diff": "pass",
+    "independent_code_review": "clean",
+    "new_actual_game_searches": 0
+  },
+  "retained_negative": {
+    "worker_test_run": "batch-5e-worker-tests.log",
+    "tests": 8,
+    "failures": 1,
+    "seconds": 10.372,
+    "cause": "New test incorrectly expected implicit resume after pre-dispatch cancellation. Frozen supervisor correctly required explicit reconciliation; only the new test changed."
+  },
+  "recipes": ["lab-uct-0.1", "lab-reserved-0.1", "lab-terminal-proof-0.1"],
+  "rollout_policies": ["uniform", "light"],
+  "research": {
+    "charged_seconds": 0,
+    "windows_opened": 0,
+    "certified_positions": 0,
+    "admitted_agents": 0
+  },
+  "claim_limit": "Synthetic search and mechanical transition engineering only; no tactical admission, strength, or game-quality conclusion."
+}

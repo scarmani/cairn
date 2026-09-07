@@ -38,7 +38,7 @@
     "remaining_batches": 2,
     "stop_allowed": false,
     "checkpoint_is_stop": false,
-    "next_required_action": "Narrow CIrepair review clean; commit/push/reread/check exactCI, then freeze5E MCTS-only contract. Focused10/full738passed. Advisorycomplete/released; no extra consult. Research0/no window."
+    "next_required_action": "5E full811tests pass306.600s zero skips; finalcode reviewclean. Close artifactreview/commit/push/CI, then trustedproof-job unit and chargedbootstrap. Research0/no window."
   },
   "test_baseline": {
     "passed": 254,
@@ -51,18 +51,18 @@
     "id": 5,
     "name": "Certified corpora and gated MCTS",
     "status": "in_progress",
-    "unit": "5D CIrepair locallyverified10focused/738full; final review clean;5E MCTS heldfor exactCI",
+    "unit": "5E MCTS verified811tests; final source/artifact review clean; closure push next",
     "rollback_tag": "elves/rules-lab-v1/pre-batch-5",
-    "substrate_commit": "64cbe84bf9d6a94b478a6dd2f50069d0cfaff20d",
-    "substrate_ci": "34095638240 failed738suite:workers8equivalence timeout andpartialhash mismatch;34095642547 passed6m46s",
-    "tests_passed": 738,
-    "tests_seconds": 165.026,
+    "substrate_commit": "136312eda4d201b5883a80c87a6b608bd8668035",
+    "substrate_ci": "both corrected-tip tests PASS:34096839267(6m40s),34096836729(6m35s); prior64cbe84 onefail/onepass preserved",
+    "tests_passed": 811,
+    "tests_seconds": 306.600,
     "skipped": 0,
     "advisory": "20260907T073029Z exit0:157.7s CLI fallbackclaude-opus-4-8,161.459s wrapper. Full response read; accept MCTS engineering unit. Reject pending-CI bypass, duplicate independent recipe cores, uniform-light conflation and final stop. Owned79082terminal, capacityreleased toSDK/#10010. No retry/API/research.",
-    "contract": "docs/rules-lab-corpus-contract.md",
-    "contract_sha256": "0ce5de6b12bf7002ec25adb3c93aab3a2f6dab68f2ff3017b81a54af03536dc0",
-    "independent_review": "5D final source/table/raw/compact/index/docs review clean; all16 artifact hashes verified",
-    "artifact_index": "docs/elves/rules-lab-v1-batch5d-artifacts.json",
+    "contract": "docs/rules-lab-mcts-contract.md",
+    "contract_sha256": "a393bb35b943d20ea8bedc9c1ea07eacbf40ac92476438c0a6fc746371239125",
+    "independent_review": "5E complete core/cache/four-test-file review clean; final deadline/reconciliation deltas clean. All13 physical artifact hashes,811/full and8/focused test logs, retained negative and no-admission claims verified. Recovery-doc next-step wording corrected.",
+    "artifact_index": "docs/elves/rules-lab-v1-batch5e-artifacts.json",
     "research_launched": false
   },
   "preflight": {

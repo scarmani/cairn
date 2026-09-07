@@ -2,13 +2,94 @@
 
 ## Run digest
 
-- Phase: launched, Batches1–4 complete;5D CI fixture failure under review;5E held.
+- Phase: launched, Batches1–4 complete;5E MCTS verified811tests, artifact closure next.
 - Base: `b620a11a72097f22e5addbfaf58b56073f9612cd`.
 - Branch: `codex/rules-lab-v1`; draft PR #23.
 - Next: terminal certification interfaces, then charged gated MCTS; two batches remain.
 - Active research: none; charged time 0/129,600 seconds.
 - Report: staging preflight markdown/artifact hashes and local checkpoint HTML at
   `/tmp/elves-report-varde-rules-lab-v1-checkpoint-2026-09-06.html`; no research results.
+
+## Batch 5E verification: 2026-09-07
+
+Fullsuite34812 terminal0:811tests306.600s, zero skips;73 additive. All scoped Ruff,
+compileall,bothJS,diff checks green. Existing128 tracked engine/harness/web/server
+paths unchanged from136312e; all earlier sources/artifacts preserved. Newcore
+c71db729465343db5a25ef992343bb189f44e9c9ef53c9bfafb350629a3d04bd andadapter
+4b6790fc0be3dda7e61874a7fe046d7b6c70c9079969e68043d285e4843d4c8b frozen.
+Owner24+independent27 synthetic tests pass1.016s. Adapter14 final tests122.058s
+pass; worker72549 terminal0:8tests12.459s. Final independent code review clean,
+including endpoint deadline and explicit reconciliation deltas. Newtests never
+search/prove actual games; unchanged historical product smoke fixtures remain.
+Firstworker5660 RED7/8 in10.372s is retained separately; frozen supervisorcorrectly
+blocked implicit resume, test now verifiesblock plus exact reconciliationreceipt.
+All owned validation processes stopped; no official research/window/budget charge.
+Report docs/rules-lab-mcts-engineering-report.md. Artifact review/closure push next,
+then trusted proof jobs and charged bootstrap; two batches remain, no finalstop.
+
+Final independent artifact review verifies all13 physical hashes, full/focused
+test counts and preserved negative. No false research/admission claims. Its one
+recovery-doc finding was corrected: Next Exact Batch now points to5E closure and
+trusted proof-job integration/bootstrap, with old5A–5D contracts reference-only.
+Session no longer says fullsuite pending. No source/evidence hash changed.
+
+## Batch 5E engineering freeze: 2026-09-07
+
+Corrected136312e both CI checks pass:34096836729(6m35s),34096839267(6m40s).
+Main fully read/froze docs/rules-lab-mcts-contract.md before code, SHA256
+a393bb35b943d20ea8bedc9c1ea07eacbf40ac92476438c0a6fc746371239125.
+One shared generic core for three recipes, separate uniform/light policies;
+root-seat objective, total root-to-terminal transition watchdog, tree-local
+statistics/proofs and accepted-root behavior now explicit. Defense is one-step;
+fence descriptor is positive net cell gain. A rollout never proves its starting
+nonterminal. No value from local obligations. Lab_budget owns core, compatibility
+owns cached production transitions/facts, review owns independent synthetic
+invariants, root owns worker/checkpoint tests and full verification. All new
+modules additive; old sources/evidence unchanged. No second advisory, no official
+research, no actual-game MCTS/proof decisions. Continue after checkpoint.
+
+Independent pre-code authority clarification: legal-domain equality is not
+successor equality. Each used expansion successor must match the authoritative
+provider transition's full state identity, with mutation guards on both calls.
+The shared production cache makes this a lookup/copy rather than a second rules
+resolution. Synthetic mismatch tests are required; no fourth search factor or
+contract/gate change. Root added synthetic worker/checkpoint integration tests;
+syntax/lint clean, execution waits for the new core rather than invoking games.
+
+Rosette descriptor limitation reviewed: the frozen one-liberty/no-strict-sky
+predicate is only an ordering proxy. Rosette ring life differs, so it must not be
+described as a certified endangered/rescued-group classifier. Flat-game stacks
+cannot have strict skies. Preserve the literal frozen recipe, report this limit,
+and do not redesign it opportunistically before admission measurements.
+
+Preliminary validation: independent23 synthetic tests pass0.566s. Adapter14
+mechanical tests pass192.332s, then final rerun after per-yield failure counters;
+the full reference compares every fresh legal successor across16x4 configurations.
+No proof or search on these real positions. Core review added final-callback
+deadline/cancellation, source checks on interrupted exits, and contradictory
+accepted-score observation guards. Independent RED demonstrated domain/facts/
+successor changes at one full identity across distinct tree nodes; repair underway.
+An owner finite40-seed light-exploration coverage assertion was an invalid test
+assumption; replacing it with explicit branch forcing retains the policy's actual
+preference and full-support tests. No recipe or gate is weakened.
+
+Root8 worker-integration tests independently reviewed clean (12 tasks, all3x2
+arms, actual1/2/8 worker configuration, source pins and cancelled-search status).
+Adapter final reference suite repeated green123.325s; reviewer then found mutable
+public capacity diverging from its hashed identity. New adapter only now exposes
+read-only capacity and rejects private drift/aliasing; final mechanical rerun
+active. Earlier outcomes retained. Still no actual-game research.
+
+## Batch 5D CI repair push: 2026-09-07
+
+136312eda4d201b5883a80c87a6b608bd8668035 committed/pushed, exec40214 terminal0.
+Immediate full survival-guide reread, unchangedplanhash and PRfeedback checked.
+PR23 draft/no reviews/inline blockers. Corrected-tip checks34096839267/34096836729
+running. No5E codebeforebothgreen.5E advisoryalreadycomplete/disposed/released;
+no secondconsult needed. Read-only transition-cache API planning confirmslab10
+canreuse existing single-resolution legal_transitions;legacy6enumerateonce/apply
+verifiedmembers withoutnestedlegalscans. Allrecipesmustsharethatlayer/sourcehash,
+full keys/detachedcopies andtransitionparitytests. No actualagentdecision/proof.
 
 ## Batch 5D fixture-only CI repair: 2026-09-07
 
